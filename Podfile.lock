@@ -1,0 +1,129 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - HTMLKit (2.0.6)
+  - LCNetwork (1.4.0):
+    - AFNetworking
+  - libextobjc (0.4.1):
+    - libextobjc/EXTADT (= 0.4.1)
+    - libextobjc/EXTConcreteProtocol (= 0.4.1)
+    - libextobjc/EXTKeyPathCoding (= 0.4.1)
+    - libextobjc/EXTNil (= 0.4.1)
+    - libextobjc/EXTSafeCategory (= 0.4.1)
+    - libextobjc/EXTScope (= 0.4.1)
+    - libextobjc/EXTSelectorChecking (= 0.4.1)
+    - libextobjc/EXTSynthesize (= 0.4.1)
+    - libextobjc/NSInvocation+EXT (= 0.4.1)
+    - libextobjc/NSMethodSignature+EXT (= 0.4.1)
+    - libextobjc/RuntimeExtensions (= 0.4.1)
+    - libextobjc/UmbrellaHeader (= 0.4.1)
+  - libextobjc/EXTADT (0.4.1):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTConcreteProtocol (0.4.1):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTKeyPathCoding (0.4.1):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTNil (0.4.1):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSafeCategory (0.4.1):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTScope (0.4.1):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSelectorChecking (0.4.1):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/EXTSynthesize (0.4.1):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/NSInvocation+EXT (0.4.1):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/NSMethodSignature+EXT (0.4.1):
+    - libextobjc/RuntimeExtensions
+  - libextobjc/RuntimeExtensions (0.4.1)
+  - libextobjc/UmbrellaHeader (0.4.1)
+  - Masonry (1.0.2)
+  - MJExtension (3.0.13)
+  - MJRefresh (3.1.12)
+  - NSDate+TimeAgo (1.0.6)
+  - PINCache (3.0.1-beta.5):
+    - PINCache/Arc-exception-safe (= 3.0.1-beta.5)
+    - PINCache/Core (= 3.0.1-beta.5)
+  - PINCache/Arc-exception-safe (3.0.1-beta.5):
+    - PINCache/Core
+  - PINCache/Core (3.0.1-beta.5):
+    - PINOperation (= 1.0.3)
+  - PINOperation (1.0.3)
+  - PINRemoteImage/Core (3.0.0-beta.11):
+    - PINOperation
+  - PINRemoteImage/iOS (3.0.0-beta.11):
+    - PINRemoteImage/Core
+  - PINRemoteImage/PINCache (3.0.0-beta.11):
+    - PINCache (= 3.0.1-beta.5)
+    - PINRemoteImage/Core
+  - Reveal-SDK (10)
+  - SDWebImage (3.8.2):
+    - SDWebImage/Core (= 3.8.2)
+  - SDWebImage/Core (3.8.2)
+  - SGQRCode (2.1.8)
+  - Texture (2.4):
+    - Texture/PINRemoteImage (= 2.4)
+  - Texture/Core (2.4)
+  - Texture/PINRemoteImage (2.4):
+    - PINRemoteImage/iOS (= 3.0.0-beta.11)
+    - PINRemoteImage/PINCache
+    - Texture/Core
+  - TMCache (2.1.0)
+  - UITableView+FDTemplateLayoutCell (1.6)
+  - WMPageController (2.4.0)
+
+DEPENDENCIES:
+  - AFNetworking
+  - HTMLKit
+  - LCNetwork
+  - libextobjc
+  - Masonry
+  - MJExtension
+  - MJRefresh
+  - NSDate+TimeAgo
+  - Reveal-SDK
+  - SDWebImage (~> 3.8)
+  - SGQRCode
+  - Texture
+  - TMCache
+  - UITableView+FDTemplateLayoutCell (~> 1.6)
+  - WMPageController
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  HTMLKit: 9e1bde384fbc20be51eb62f2c1ad331d6ceccfa2
+  LCNetwork: 4b9a0d4189be541d9c2b3bb2ca75a8a8fc058ebc
+  libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  NSDate+TimeAgo: 35601c619b2d59290055e4fe76e61d97677a2360
+  PINCache: 98e7b1ef782824ad231ade51987c218b758c30d8
+  PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
+  PINRemoteImage: d71988f11914a050d6d4cf51efc4ad1de8c0a9d8
+  Reveal-SDK: 7869ddf1f902cabbb07a1f0dd06bd25861a126f7
+  SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
+  SGQRCode: 989df341fb231fc7bf7e82316de2fc8de2961e10
+  Texture: a5526314780eab35f642d956627f09316b9514e8
+  TMCache: 95ebcc9b3c7e90fb5fd8fc3036cba3aa781c9bed
+  UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
+  WMPageController: e9af37a2c7f259582578b35f2b67530b061e3862
+
+PODFILE CHECKSUM: 54bfaf1610d4273145dac607b35faaf60584537d
+
+COCOAPODS: 1.2.1
