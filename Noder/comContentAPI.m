@@ -12,6 +12,7 @@
 
 - (NSString *)apiMethodName
 {
+    NSLog(@"^^^^^^%@",_topic_id);
     return [NSString stringWithFormat:@"api/v1/topic/%@/replies",self.topic_id];
 }
 

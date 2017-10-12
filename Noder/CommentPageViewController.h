@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSDictionary *dictionary;
 @property (nonatomic, strong) UIButton *rightButton;
 @property (nonatomic, strong) NSString *topic_id;
-@property (nonatomic, strong) NSString *IDString;
+@property (nonatomic, strong) NSString *reply_id;
 
 @property (nonatomic, strong) UIButton *ZG_upButton;
 @property (nonatomic, strong) UIButton *ZG_evaButton;

@@ -15,6 +15,7 @@
 #import "MJRefresh.h"
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "MJExtension.h"
+#import "comContentAPI.h"
 
 #import "ThumbsUpAPI.h"
 
@@ -143,8 +144,11 @@
 {
     NSArray *array = self.dictionary[@"data"];
     _array = [array valueForKey:@"replies"];
-    _IDString = [self.array valueForKey:@"reply_id"];
-//    NSLog(@"array = %@",array);
+    _reply_id = [self.array valueForKey:@"id"];
+    _topic_id = [array valueForKey:@"id"];
+    
+    comContentAPI *comAPI = [[comContentAPI alloc] init];
+    comAPI.topic_id = _topic_id;
     
     if (!_listArry){
         _listArry = [NSMutableArray array];
@@ -158,14 +162,14 @@
 {
     ComContentViewContrnt *comConent = [[ComContentViewContrnt alloc] init];
     comConent.topic_id = self.topic_id;
-    comConent.reply_id = _IDString;
+    comConent.reply_id = _reply_id;
     [self.navigationController pushViewController:comConent animated:YES];
 }
 
 - (void)evaluation
 {
     PersonalComViewController *personal = [[PersonalComViewController alloc] init];
-    personal.reply_id = _IDString;
+    personal.reply_id = _reply_id;
     [self.navigationController pushViewController:personal animated:YES];
   
 }
@@ -173,7 +177,7 @@
 - (void)praise
 {
     ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
-    thumAPI.reply_id = _IDString;
+    thumAPI.reply_id = _reply_id;
     NSString *access = [ControllerManager shareManager].string;
     thumAPI.requestArgument = @{@"accesstoken" : access};
     [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
