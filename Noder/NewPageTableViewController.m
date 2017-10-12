@@ -25,6 +25,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _pickLabel = [[UILabel alloc] init];
+    
     UIButton *rightButton = [[UIButton alloc] init];
     rightButton.frame = CGRectMake(16, 32, 30, 20);
     rightButton.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
@@ -206,7 +208,6 @@
     _choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
     _choseLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
     self.choseLabel.text = notification.object;
-    NSLog(@"self.choseLabel.text = %@",self.choseLabel.text);
     _pickLabel.text = @"dev";
 }
 
@@ -255,16 +256,15 @@
 
 - (void)reless:(id)sender
 {
-    NSLog(@"%@",sender);
+    NSLog(@"%@",_pickLabel.text);
     NSString *accessToken = [ControllerManager shareManager].string;
-    
     NewpageAPI *newAPI = [[NewpageAPI alloc] init];
     
-    if ( !accessToken) {
+    if (accessToken != nil) {
         if ((self.TitleView.text.length) && (self.ContentView.text.length) >= 5){
             newAPI.requestArgument = @{@"accesstoken": accessToken,
                                        @"title": self.TitleView.text,
-                                       @"tab": @"dev",
+                                       @"tab": self.pickLabel.text,
                                        @"content": self.ContentView.text};
             
             
