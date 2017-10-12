@@ -145,7 +145,7 @@
     _array = [array valueForKey:@"replies"];
     _IDString = [self.array valueForKey:@"reply_id"];
 //    NSLog(@"array = %@",array);
-    NSLog(@"321312");
+    
     if (!_listArry){
         _listArry = [NSMutableArray array];
     }
