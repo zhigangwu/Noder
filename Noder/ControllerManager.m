@@ -18,7 +18,7 @@ static ControllerManager *manager = nil;
     dispatch_once(&onceToken, ^{
         manager = [[ControllerManager alloc] init];
     });
-    
+    // 31231232131231312312
     return manager;
 }
 
