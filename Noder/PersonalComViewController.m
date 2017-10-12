@@ -91,8 +91,7 @@
             [self.navigationController popViewControllerAnimated:YES];
         } failure:NULL];
     } else
-//        NSLog(@"请输入内容！");
-    
+        NSLog(@"请输入内容！");
 }
 
 
