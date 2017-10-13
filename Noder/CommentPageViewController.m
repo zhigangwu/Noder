@@ -116,9 +116,9 @@
     if (success.boolValue == true) {
         [_rightButton addTarget:self action:@selector(appraise) forControlEvents:UIControlEventTouchUpInside];
         self.ZG_evaButton = cell.ZGevaButton;
-        [_ZG_evaButton addTarget:self action:@selector(evaluation) forControlEvents:UIControlEventTouchUpInside];
+        [_ZG_evaButton addTarget:self action:@selector(evaluation:) forControlEvents:UIControlEventTouchUpInside];
         self.ZG_upButton = cell.ZGupButton;
-        [_ZG_upButton addTarget:self action:@selector(praise) forControlEvents:UIControlEventTouchUpInside];
+        [_ZG_upButton addTarget:self action:@selector(praise:) forControlEvents:UIControlEventTouchUpInside];
     } else {
         [self.rightButton setHidden:YES];
         self.ZG_evaButton = cell.ZGevaButton;
@@ -143,6 +143,7 @@
 - (void)AccessNetworkForDateMethod
 {
     NSArray *array = self.dictionary[@"data"];
+    NSLog(@"array = %@",array);
     _array = [array valueForKey:@"replies"];
     _reply_id = [self.array valueForKey:@"id"];
     _topic_id = [array valueForKey:@"id"];
@@ -166,18 +167,25 @@
     [self.navigationController pushViewController:comConent animated:YES];
 }
 
-- (void)evaluation
+- (void)evaluation:(id)sender
 {
+
     PersonalComViewController *personal = [[PersonalComViewController alloc] init];
     personal.reply_id = _reply_id;
     [self.navigationController pushViewController:personal animated:YES];
-  
+    
 }
 
-- (void)praise
+- (void)praise:(UIButton *)sender 
 {
+    CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+    _reply_id = dictionary[@"id"];
+    NSLog(@"^^^^^^%@",_reply_id);
+
     ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
-    thumAPI.reply_id = _reply_id;
+//    thumAPI.reply_id = _reply_id;
     NSString *access = [ControllerManager shareManager].string;
     thumAPI.requestArgument = @{@"accesstoken" : access};
     [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
