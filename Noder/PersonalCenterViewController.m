@@ -22,13 +22,14 @@
 #import "ReadMessageTableViewController.h"
 #import "SetPageViewController.h"
 
+#import "MessageCountAPI.h"
 #import "CollectionAPI.h"
 #import "Loginapi.h"
+
 
 @interface PersonalCenterViewController ()
 
 @property (nonatomic, strong) NSDictionary *success;
-
 
 @end
 
@@ -43,14 +44,13 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1/1.0];
     
-    headerview *header = [[headerview alloc] init];
-    [self.view addSubview:header];
-    [header mas_makeConstraints:^(MASConstraintMaker *make){
+    _Header = [[headerview alloc] init];
+    [self.view addSubview:_Header];
+    [_Header mas_makeConstraints:^(MASConstraintMaker *make){
         make.width.equalTo(self.view.mas_width);
         make.height.equalTo(@110);
     }];
-    [header setBackgroundColor:[UIColor whiteColor]];
-    self.Header = header;
+    
     
     UITableView *tableview = [[UITableView alloc] init];
     [self.view addSubview:tableview];
@@ -64,9 +64,7 @@
     tableview.delegate = self;
     tableview.dataSource = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
-
-    
-    [tableview registerClass:[UITableViewCell class] forCellReuseIdentifier:@"ScanloginCell"];
+    [tableview registerClass:[ScanLoginCell class] forCellReuseIdentifier:@"ScanloginCell"];
     
     UIView *bottomview = [UIView new];
     UIImageView *logoImageView = [UIImageView new];
@@ -104,20 +102,16 @@
         make.size.mas_equalTo(CGSizeMake(40, 18));
     }];
     
-    [header.button addTarget:self action:@selector(buttonaction) forControlEvents:UIControlEventTouchUpInside];
+    [_Header.button addTarget:self action:@selector(buttonaction) forControlEvents:UIControlEventTouchUpInside];
     
     NSArray *arr = [[NSArray alloc] init];
     arr = @[@"最近回复",@"最近发布",@"我的收藏",@"未读消息",@"已读消息"];
     self.array = arr;
     
-
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(addnotification:)
                                                  name:@"zongzi"
                                                object:nil];
-
-
 
 }
 
@@ -126,11 +120,12 @@
     self.QRCodeString = notification.object;
     
     AssesstokenAPI *assAPI = [[AssesstokenAPI alloc] init];
+
     
 //     必须传入为非空值
     if (self.QRCodeString != nil) {
         assAPI.requestArgument = @{@"accesstoken" : self.QRCodeString};
-    
+        
         [assAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
             NSDictionary *dic = request.responseJSONObject;
             [ControllerManager shareManager].dic = dic;
@@ -198,17 +193,17 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
     return self.array.count;
-
+//    return _listArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell *scanlogincell = [tableView dequeueReusableCellWithIdentifier:@"ScanloginCell"];
+    ScanLoginCell *scanlogincell = [tableView dequeueReusableCellWithIdentifier:@"ScanloginCell"];
     scanlogincell.textLabel.text = self.array[indexPath.row];
     scanlogincell.imageView.image = [UIImage imageNamed:@"Rectangle 4"];
     scanlogincell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
+    
     return scanlogincell;
 }
 
@@ -256,6 +251,9 @@
         }
     }
 }
+
+
+
 
 
 @end

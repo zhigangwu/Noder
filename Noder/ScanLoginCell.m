@@ -8,6 +8,8 @@
 
 #import "ScanLoginCell.h"
 #import "Masonry.h"
+#import "MessageCountAPI.h"
+#import "ControllerManager.h"
 
 
 @implementation ScanLoginCell
@@ -16,7 +18,6 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-//        UIImageView *titleimage = [UIImageView new];
         UILabel *labelB = [UILabel new];
         [self.contentView addSubview:labelB];
         [self.contentView addSubview:self.imageView];
@@ -33,10 +34,11 @@
             make.top.equalTo(self.contentView).with.offset(17);
             make.left.equalTo(self.imageView.mas_right).with.offset(16);
         }];
+        
+        
         labelB.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
         labelB.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
         self.labelA = labelB;
-        
 
     }
     return self;

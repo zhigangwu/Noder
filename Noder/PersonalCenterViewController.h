@@ -17,6 +17,7 @@
 @property (nonatomic, strong) NSString *loginname;
 @property (nonatomic, strong) NSString *QRCodeString;
 @property (nonatomic, strong) UIButton *button;
+@property (nonatomic, strong) NSString *messageString;
 
 @property (nonatomic, strong) headerview *Header;
 

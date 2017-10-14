@@ -11,6 +11,6 @@
 @interface ScanLoginCell : UITableViewCell
 
 @property (nonatomic, weak) UILabel *labelA;
-//@property (nonatomic, readonly) UIImageView *imageView;
+
 
 @end

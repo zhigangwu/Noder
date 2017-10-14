@@ -75,8 +75,8 @@
             make.left.equalTo(avatarImageView.mas_right).with.offset(20);
         }];
         self.nameLabel = name;
-        
         self.button = button;
+        [self setBackgroundColor:[UIColor whiteColor]];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(addnotification:)

@@ -10,35 +10,40 @@
 #import "Masonry.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
+
 @implementation UnreadMessageCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        UILabel *title = [UILabel new];
-        UIImageView *imageview = [UIImageView new];
-        [self.contentView addSubview:title];
-        [self.contentView addSubview:imageview];
+        _TitleLabel = [[UILabel alloc] init];
+        _imageview = [[UIImageView alloc] init];
+
+        [self.contentView addSubview:_TitleLabel];
+        [self.contentView addSubview:_imageview];
+
         
-        title.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
-        title.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
+        _TitleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
+        _TitleLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
         
-        [imageview.layer setCornerRadius:25.85];
-        [imageview.layer setMasksToBounds:YES];
+        [_imageview.layer setCornerRadius:25.85];
+        [_imageview.layer setMasksToBounds:YES];
         
-        [imageview mas_makeConstraints:^(MASConstraintMaker *make){
+        [_imageview mas_makeConstraints:^(MASConstraintMaker *make){
             make.centerY.equalTo(self.contentView);
             make.left.equalTo(self.contentView).with.offset(15.9);
             make.size.mas_equalTo(CGSizeMake(52, 51.7));
         }];
-        self.ImageView = imageview;
         
-        [title mas_makeConstraints:^(MASConstraintMaker *make){
+        [_TitleLabel mas_makeConstraints:^(MASConstraintMaker *make){
             make.top.equalTo(self.contentView).with.offset(11.6);
-            make.left.equalTo(imageview.mas_right).with.offset(11);
+            make.left.equalTo(_imageview.mas_right).with.offset(11);
         }];
-        self.TitleLabel = title;
+        
+
+        
+        
     }
     return self;
 }
@@ -47,7 +52,17 @@
 {
     self.TitleLabel.text = [dicationary objectForKey:@"title"];
     
-    [self.ImageView sd_setImageWithURL:dicationary[@"author"][@"avatar_url"]];
+    [_imageview sd_setImageWithURL:dicationary[@"author"][@"avatar_url"]];
+    
+
+//    MessageCountAPI *messAPI = [[MessageCountAPI alloc] init];
+//    NSString *access = [ControllerManager shareManager].string;
+//    messAPI.requestArgument = @{@"accesstoken" : access};
+//    [messAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+//        NSDictionary *dic = request.responseJSONObject;
+//        NSLog(@"dic = %@",dic);
+//        _messageCount.text = dic[@"data"];
+//    } failure:NULL];
 }
 
 @end

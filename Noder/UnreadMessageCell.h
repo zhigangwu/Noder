@@ -10,10 +10,11 @@
 
 @interface UnreadMessageCell : UITableViewCell
 
-@property (nonatomic, weak) UILabel *TitleLabel;
-@property (nonatomic, weak) UILabel *durationLabel;
+@property (nonatomic, strong) UILabel *TitleLabel;
+@property (nonatomic, strong) UILabel *durationLabel;
 
-@property (nonatomic, retain) UIImageView *ImageView;
+@property (nonatomic, strong) UIImageView *imageview;
+
 
 - (void)configWithItem:(NSDictionary *)dic;
 

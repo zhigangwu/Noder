@@ -15,7 +15,9 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         _label = [[UILabel alloc] init];
+
         [self.contentView addSubview:_label];
+
         
         [_label mas_makeConstraints:^(MASConstraintMaker *make){
             make.centerX.equalTo(self.contentView);
