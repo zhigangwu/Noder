@@ -66,7 +66,7 @@
     [self.imageview setBackgroundColor:[UIColor yellowColor]];
     [_imageview.layer setCornerRadius:25];
     
-    self.contentView.text = @"嘿！说点什么吧。。。。。。";
+    self.contentView.text = @"嘿！说点什么。。。。。。";
     self.contentView.font = [UIFont boldSystemFontOfSize:18];
     
 
@@ -83,7 +83,7 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    if ([_contentView.text isEqualToString:@"嘿！说点什么吧。。。。。。"]) {
+    if ([_contentView.text isEqualToString:@"嘿！说点什么。。。。。。"]) {
         _contentView.text = @"";
     }
 }
@@ -97,7 +97,6 @@
     comconAPI.requestArgument = @{@"accesstoken" : self.QRCodeString,
                                       @"content" : self.contentView.text,
                                       };
-    NSLog(@" ^^^^^^^ = %@",comconAPI.requestArgument);
     [comconAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
         NSDictionary *dictionary = request.responseJSONObject;
         NSLog(@"dictionary = %@",dictionary);

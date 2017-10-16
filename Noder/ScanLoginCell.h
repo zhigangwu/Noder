@@ -10,7 +10,7 @@
 
 @interface ScanLoginCell : UITableViewCell
 
-@property (nonatomic, weak) UILabel *labelA;
+
 
 
 @end

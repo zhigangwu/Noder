@@ -26,7 +26,7 @@
     rightButton.frame = CGRectMake(0, 0, 40, 40);
     [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [rightButton setTitle:@"发布" forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(releaseContent:) forControlEvents:UIControlEventTouchUpInside];
+    [rightButton addTarget:self action:@selector(release:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem = rightItem;
     
@@ -74,17 +74,20 @@
     
 }
 
-- (void)releaseContent:(UIButton *)sender
+- (void)release:(UIButton *)sender
 {
     self.QRCodeString = [ControllerManager shareManager].string;
     
-    if (self.contentView.text != nil) {
+    if (self.QRCodeString != nil) {
         comContentAPI *comconAPI = [[comContentAPI alloc] init];
         comconAPI.topic_id = self.topic_id;
         comconAPI.requestArgument = @{@"accesstoken" : self.QRCodeString,
                                       @"content" : self.contentView.text,
-                                      @"reply_id" : self.reply_id
+                                      @"reply_id" : self.reply_id,
                                       };
+        
+        NSLog(@"comconAPI.requestArgument = %@",comconAPI.requestArgument);
+        
         [comconAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
             NSDictionary *dictionary = request.responseJSONObject;
             NSLog(@"dictionary = %@",dictionary);

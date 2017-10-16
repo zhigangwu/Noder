@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ThumbsUpAPI.h"
+#import "MMJDIYHeader.h"
 
 @interface CommentPageViewController : UITableViewController
+
+@property (nonatomic, strong) ThumbsUpAPI *thumAPI;
 
 @property (nonatomic, strong) NSMutableArray *array;
 
@@ -21,6 +25,7 @@
 @property (nonatomic, strong) UIButton *ZG_upButton;
 @property (nonatomic, strong) UIButton *ZG_evaButton;
 
+@property (nonatomic, strong) NSString *string_id;
 
 
 

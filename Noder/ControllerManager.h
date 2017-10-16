@@ -14,6 +14,7 @@
 @property (nonatomic, copy) NSDictionary *dictionary;
 @property (nonatomic, copy) NSString *IDString;
 @property (nonatomic, copy) NSDictionary *dic;
+@property (nonatomic, copy) NSString *reply_ID;
 
 + (ControllerManager *)shareManager;
 

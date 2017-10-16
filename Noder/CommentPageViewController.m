@@ -17,9 +17,11 @@
 #import "MJExtension.h"
 #import "comContentAPI.h"
 
-#import "ThumbsUpAPI.h"
+
+
 
 @interface CommentPageViewController ()
+
 
 @property (nonatomic, strong) NSMutableArray *listArry;
 
@@ -31,7 +33,7 @@
     [super viewDidLoad];
     
     [self AccessNetworkForDateMethod];
-
+    
     self.rightButton = [[UIButton alloc] init];
     [self.view addSubview:_rightButton];
     _rightButton.frame = CGRectMake(0, 0, 40, 40);
@@ -47,37 +49,25 @@
     static NSString *string = @"CommentTableViewCell";
     [self.tableView registerClass:[CommentTableViewCell class] forCellReuseIdentifier:string];
     
-    
-    __weak typeof(self) weakSelf = self;
-    
-    self.tableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
-        [weakSelf loadNewData];
-    }];
-    
-    self.tableView.mj_footer = [MJRefreshBackNormalFooter footerWithRefreshingBlock:^{
-        [weakSelf loadNoreData];
-    }];
-
+    [self setupRefresh];
 }
 
-- (void)loadNewData{
+
+- (void)setupRefresh
+{
+    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    [refresh addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refresh];
     
+    [refresh beginRefreshing];
     
-    __weak typeof(self) weakSelf = self;
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.tableView reloadData];
-        [weakSelf.tableView.mj_header endRefreshing];
-    });
+    [self refreshStateChange:refresh];
 }
 
-- (void)loadNoreData{
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.tableView reloadData];
-        [weakSelf.tableView.mj_footer endRefreshing];
-    });
-    
+- (void)refreshStateChange:(UIRefreshControl *)refresh
+{
+    [self.tableView reloadData];
+    [refresh endRefreshing];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -85,10 +75,12 @@
     [self.tableView reloadData];
 }
 
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 #pragma mark - Table view data source
 
@@ -112,7 +104,6 @@
     
     NSDictionary *dic = [ControllerManager shareManager].dictionary;
     NSString *success = dic[@"success"];
-    
     if (success.boolValue == true) {
         [_rightButton addTarget:self action:@selector(appraise) forControlEvents:UIControlEventTouchUpInside];
         self.ZG_evaButton = cell.ZGevaButton;
@@ -132,12 +123,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    return [self.tableview fd_heightForCellWithIdentifier:@"CommentTableViewCell"
-//                                               cacheByKey:indexPath
-//                                            configuration:^(CommentTableViewCell *cell){
-//                                                cell.cellModel = _listArry[indexPath.row];
-//                                            }];
-    return 400;
+    return 200;
 }
 
 - (void)AccessNetworkForDateMethod
@@ -169,26 +155,32 @@
 
 - (void)evaluation:(id)sender
 {
-
+    CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+    _string_id = dictionary[@"id"];
+//    NSLog(@"^^^^^^%@",_string_id);
+    [ControllerManager shareManager].reply_ID = _reply_id;
+    
     PersonalComViewController *personal = [[PersonalComViewController alloc] init];
     personal.reply_id = _reply_id;
     [self.navigationController pushViewController:personal animated:YES];
     
 }
 
-- (void)praise:(UIButton *)sender 
+- (void)praise:(UIButton *)sender
 {
     CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
-    _reply_id = dictionary[@"id"];
-    NSLog(@"^^^^^^%@",_reply_id);
+    _string_id = dictionary[@"id"];
+//    NSLog(@"^^^^^^%@",_string_id);
 
-    ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
-//    thumAPI.reply_id = _reply_id;
+    
+    _thumAPI.reply_id = _string_id;
     NSString *access = [ControllerManager shareManager].string;
-    thumAPI.requestArgument = @{@"accesstoken" : access};
-    [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+    _thumAPI.requestArgument = @{@"accesstoken" : access};
+    [_thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
         NSDictionary *dic = request.responseJSONObject;
         NSLog(@"dic = %@",dic);
     } failure:NULL];

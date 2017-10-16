@@ -79,16 +79,15 @@
     versionlabel.text = @"V 1.0.0";
     versionlabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:13];
     versionlabel.textColor = [UIColor colorWithRed:171/255.0 green:171/255.0 blue:171/255.0 alpha:1/1.0];
-    
     logoImageView.image = [UIImage imageNamed:@"N"];
+    bottomview.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1/1.0];
     
     [bottomview mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(tableview.mas_bottom);
         make.left.and.right.equalTo(self.view);
         make.height.mas_equalTo(146);
     }];
-    bottomview.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1/1.0];
-    
+
     [logoImageView mas_makeConstraints:^(MASConstraintMaker *make){
 //        make.top.equalTo(bottomview.mas_top).with.offset(77);
         make.centerX.mas_equalTo(bottomview);

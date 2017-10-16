@@ -13,9 +13,8 @@
 
 - (NSString *)apiMethodName
 {
+    return [NSString stringWithFormat:@"api/v1/reply/%@/ups ",self.reply_id];
 
-//    return [NSString stringWithFormat:@"api/v1/reply/%@/ups ",self.reply_id];
-    return @"api/v1/59deec8b61932717683d228c/ups";
 }
 
 - (LCRequestMethod)requestMethod
