@@ -15,5 +15,6 @@
 @property (nonatomic, strong) NSDictionary *dic;
 
 @property (nonatomic, strong) NSString *ZGreply_id;
+@property (nonatomic, strong) NSNumber *reply_count;
 
 @end

@@ -14,7 +14,7 @@
 #import "CommentPageViewController.h"
 #import "comContentAPI.h"
 #import "ThumbsUpAPI.h"
-
+#import "ComContentViewContrnt.h"
 
 @interface DetailViewController ()
 
@@ -47,8 +47,10 @@
     
     [api startWithBlockSuccess:^(__kindof LCBaseRequest *request) {
         self.dic = request.responseJSONObject;
-        
         NSArray *arrayData = self.dic[@"data"];
+        
+        _reply_count = [arrayData valueForKey:@"reply_count"];
+        
         NSArray *arrayReply = [arrayData valueForKey:@"replies"];
         _ZGreply_id = [arrayReply valueForKey:@"reply_id"];
         ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
@@ -67,8 +69,6 @@
     } failure:NULL];
 }
 
-
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -76,10 +76,19 @@
 
 - (void)comment
 {
-    CommentPageViewController *comment = [[CommentPageViewController alloc] init];
-    comment.dictionary = self.dic;
-    comment.topic_id = self.detailId;
-    [self.navigationController pushViewController:comment animated:YES];
+    NSLog(@"_reply_count = %@",_reply_count);
+    if (_reply_count == 0) {
+        ComContentViewContrnt *com = [[ComContentViewContrnt alloc] init];
+        [self.navigationController pushViewController:com animated:YES];
+        
+    }
+//    else {
+//        CommentPageViewController *comment = [[CommentPageViewController alloc] init];
+//        comment.dictionary = self.dic;
+//        comment.topic_id = self.detailId;
+//        [self.navigationController pushViewController:comment animated:YES];
+//    }
+
 }
 
 

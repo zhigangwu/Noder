@@ -22,8 +22,4 @@
     return LCRequestMethodPost;
 }
 
-//- (LCRequestSerializerType)requestSerializerType{
-//    return LCRequestSerializerTypeJSON;
-//}
-
 @end

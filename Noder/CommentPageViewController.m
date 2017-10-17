@@ -129,7 +129,6 @@
 - (void)AccessNetworkForDateMethod
 {
     NSArray *array = self.dictionary[@"data"];
-    NSLog(@"array = %@",array);
     _array = [array valueForKey:@"replies"];
     _reply_id = [self.array valueForKey:@"id"];
     _topic_id = [array valueForKey:@"id"];
@@ -155,25 +154,25 @@
 
 - (void)evaluation:(id)sender
 {
-    CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
-    _string_id = dictionary[@"id"];
+//    CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
+//    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+//    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+//    _string_id = dictionary[@"id"];
 //    NSLog(@"^^^^^^%@",_string_id);
-    [ControllerManager shareManager].reply_ID = _reply_id;
+//    [ControllerManager shareManager].reply_ID = _reply_id;
     
     PersonalComViewController *personal = [[PersonalComViewController alloc] init];
-    personal.reply_id = _reply_id;
+    personal.reply_id = _string_id;
     [self.navigationController pushViewController:personal animated:YES];
     
 }
 
 - (void)praise:(UIButton *)sender
 {
-    CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
-    _string_id = dictionary[@"id"];
+//    CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
+//    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+//    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+//    _string_id = dictionary[@"id"];
 //    NSLog(@"^^^^^^%@",_string_id);
 
     
