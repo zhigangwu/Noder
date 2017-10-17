@@ -365,6 +365,14 @@
 				337F22241F13B6D100C8488A /* NETWorkConnection.m */,
 				04B15AF01EFA54AE00C01CA4 /* QRCodeViewController.h */,
 				04B15AF11EFA54AE00C01CA4 /* QRCodeViewController.m */,
+				04599F0B1F95DF9600F4883C /* New Group */,
+			);
+			name = Main;
+			sourceTree = "<group>";
+		};
+		04599F0B1F95DF9600F4883C /* New Group */ = {
+			isa = PBXGroup;
+			children = (
 				3335F0241ED31F3B00FBB58D /* RecentReplyViewController.h */,
 				3335F0251ED31F3B00FBB58D /* RecentReplyViewController.m */,
 				3335F02A1ED46E8800FBB58D /* RecentReplyCell.h */,
@@ -394,7 +402,7 @@
 				043A43FB1F7601C6009F022E /* SetPageViewController.h */,
 				043A43FC1F7601C6009F022E /* SetPageViewController.m */,
 			);
-			name = Main;
+			name = "New Group";
 			sourceTree = "<group>";
 		};
 		334012211E4DF2CC00E92B48 = {

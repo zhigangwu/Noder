@@ -178,8 +178,8 @@
     
     _thumAPI.reply_id = _string_id;
     NSString *access = [ControllerManager shareManager].string;
-    _thumAPI.requestArgument = @{@"accesstoken" : access};
-    [_thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+    self.thumAPI.requestArgument = @{@"accesstoken" : access};
+    [self.thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
         NSDictionary *dic = request.responseJSONObject;
         NSLog(@"dic = %@",dic);
     } failure:NULL];

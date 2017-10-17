@@ -179,7 +179,7 @@
 
 - (void)buttonaction{
     QRCodeViewController *QRCode = [[QRCodeViewController alloc] init];
-    [self presentViewController:QRCode animated:YES completion:nil];
+    [self.navigationController pushViewController:QRCode animated:YES];
 }
 
 - (void)logout

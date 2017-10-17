@@ -12,12 +12,8 @@
 #import "SGQRCodeAlbumManager.h"
 
 
-@interface QRCodeViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate,UIImagePickerControllerDelegate>
+@interface QRCodeViewController : UIViewController <AVCaptureMetadataOutputObjectsDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
-@property (nonatomic, weak) UIImageView *imageView;
-@property (nonatomic, weak) NSString *stringValue;
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event;
-- (void)myAlbum;
+@property (nonatomic, strong) NSString *stringValue;
 
 @end

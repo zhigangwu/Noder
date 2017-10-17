@@ -73,21 +73,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 - (void)comment
 {
-    NSLog(@"_reply_count = %@",_reply_count);
-    if (_reply_count == 0) {
+    if (self.reply_count.integerValue == 0) {
         ComContentViewContrnt *com = [[ComContentViewContrnt alloc] init];
         [self.navigationController pushViewController:com animated:YES];
         
+    }else {
+        CommentPageViewController *comment = [[CommentPageViewController alloc] init];
+        comment.dictionary = self.dic;
+        comment.topic_id = self.detailId;
+        [self.navigationController pushViewController:comment animated:YES];
     }
-//    else {
-//        CommentPageViewController *comment = [[CommentPageViewController alloc] init];
-//        comment.dictionary = self.dic;
-//        comment.topic_id = self.detailId;
-//        [self.navigationController pushViewController:comment animated:YES];
-//    }
 
 }
 
