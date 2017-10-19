@@ -16,4 +16,9 @@
 
 @property (nonatomic, strong) NSString *stringValue;
 
+//@property (nonatomic,copy)UIImageView * readLineView;
+//@property (nonatomic,assign)BOOL is_Anmotion;
+//@property (nonatomic,assign)BOOL is_AnmotionFinished;
+//- (void)loopDrawLine;
+
 @end
