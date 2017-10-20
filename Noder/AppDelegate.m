@@ -31,11 +31,10 @@
     
     ZHTabBarController *tabBar = [[ZHTabBarController alloc] init];
     self.window.rootViewController = tabBar;
-
     
 //    UITabBarController *tabBarController = [[UITabBarController alloc] init];
 //    self.window.rootViewController = tabBarController;
-//
+
 //    PersonalCenterViewController *personalCenterVC = [[PersonalCenterViewController alloc] init];
 //    UINavigationController *navpersonal = [[UINavigationController alloc] initWithRootViewController:personalCenterVC];
 //    navpersonal.tabBarItem.title = @"我的";

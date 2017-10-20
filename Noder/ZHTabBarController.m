@@ -44,7 +44,7 @@
     PersonalCenterViewController *personal = [[PersonalCenterViewController alloc] init];
     UINavigationController *navPersonal = [[UINavigationController alloc] initWithRootViewController:personal];
     navPersonal.tabBarItem.title = @"我的";
-    navPersonal.tabBarItem.image = [UIImage imageNamed:@"Rectangle 4"];;
+    navPersonal.tabBarItem.image = [UIImage imageNamed:@"Rectangle 4"];
     
     self.viewControllers = @[navHome,navPersonal];
 }
@@ -59,7 +59,13 @@
         UINavigationController *navNewPage = [[UINavigationController alloc] initWithRootViewController:newPage];
         [self presentViewController:navNewPage animated:YES completion:nil];
     } else {
-        NSLog(@"请登入");
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示"
+                                                                       message:@"请登入!"
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        [alert addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:nil]];
+        
+        [self presentViewController:alert animated:YES completion:nil];
     }
 
 }

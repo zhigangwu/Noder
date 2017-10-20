@@ -273,7 +273,8 @@
             [newAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
                 NSDictionary *dictionary = request.responseJSONObject;
                 NSLog(@"dictionary = %@", dictionary);
-                [self.navigationController popViewControllerAnimated:YES];
+//                [self.navigationController popViewControllerAnimated:YES];
+                [self dismissViewControllerAnimated:YES completion:nil];
             } failure:NULL];
         }
     }

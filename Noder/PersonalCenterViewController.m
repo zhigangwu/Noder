@@ -107,6 +107,8 @@
     arr = @[@"最近回复",@"最近发布",@"我的收藏",@"未读消息",@"已读消息"];
     self.array = arr;
     
+    [self.navigationController.tabBarController setSelectedIndex:1];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(addnotification:)
                                                  name:@"zongzi"

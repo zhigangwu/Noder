@@ -8,6 +8,11 @@
 
 #import "SetPageViewController.h"
 
+#import "PersonalCenterViewController.h"
+#import "AppDelegate.h"
+
+
+
 @interface SetPageViewController ()
 
 @end
@@ -86,5 +91,23 @@
     return 10;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+//            cell.textLabel.text = @"清理缓存";
+        }
+        if (indexPath.row == 1) {
+//            cell.textLabel.text = @"个人博客";
+        }
+        if (indexPath.row == 2 ) {
+//            cell.textLabel.text = @"Github";
+        }
+    } else if (indexPath.section == 1){
+        
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+    
+}
 
 @end

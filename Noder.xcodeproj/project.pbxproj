@@ -375,6 +375,7 @@
 				0451806F1F983E4A001B7C1B /* scanLine@2x.png */,
 				045180711F983F2C001B7C1B /* scanLine@3x.png */,
 				04599F0B1F95DF9600F4883C /* New Group */,
+				045DE86C1F99BF6600CA6A4A /* SetPage */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -408,10 +409,17 @@
 				043A43F61F75F980009F022E /* ReadMessageTableViewController.m */,
 				043A43F21F75F971009F022E /* ReadMessageCell.h */,
 				043A43F31F75F971009F022E /* ReadMessageCell.m */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
+		045DE86C1F99BF6600CA6A4A /* SetPage */ = {
+			isa = PBXGroup;
+			children = (
 				043A43FB1F7601C6009F022E /* SetPageViewController.h */,
 				043A43FC1F7601C6009F022E /* SetPageViewController.m */,
 			);
-			name = "New Group";
+			name = SetPage;
 			sourceTree = "<group>";
 		};
 		334012211E4DF2CC00E92B48 = {

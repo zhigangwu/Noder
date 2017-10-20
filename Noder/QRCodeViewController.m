@@ -97,6 +97,7 @@
         [ControllerManager shareManager].string = self.stringValue;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"zongzi" object:self.stringValue];
         
+        [self.navigationController popViewControllerAnimated:YES];
     }
 //    NSDictionary *dictionary = [ControllerManager shareManager].dictionary;
 //    NSString *success = dictionary[@"success"];
