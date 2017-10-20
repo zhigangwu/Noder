@@ -129,6 +129,7 @@
 - (void)AccessNetworkForDateMethod
 {
     NSArray *array = self.dictionary[@"data"];
+//    NSLog(@"%@",array);
     _array = [array valueForKey:@"replies"];
     _reply_id = [self.array valueForKey:@"id"];
     _topic_id = [array valueForKey:@"id"];
@@ -169,17 +170,18 @@
 
 - (void)praise:(UIButton *)sender
 {
-//    CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
-//    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-//    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
-//    _string_id = dictionary[@"id"];
-//    NSLog(@"^^^^^^%@",_string_id);
+    CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+    self.string_id = dictionary[@"id"];
+//    NSLog(@"^^^^^^%@",dictionary);
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"replyid" object:self.string_id];
 
-    
-    _thumAPI.reply_id = _string_id;
+    ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
+    thumAPI.reply_id = self.string_id;
     NSString *access = [ControllerManager shareManager].string;
-    self.thumAPI.requestArgument = @{@"accesstoken" : access};
-    [self.thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+    thumAPI.requestArgument = @{@"accesstoken" : access};
+    [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
         NSDictionary *dic = request.responseJSONObject;
         NSLog(@"dic = %@",dic);
     } failure:NULL];

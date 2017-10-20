@@ -13,7 +13,8 @@
 
 - (NSString *)apiMethodName
 {
-    return [NSString stringWithFormat:@"api/v1/reply/%@/ups ",self.reply_id];
+    NSLog(@"reply_id = %@",self.reply_id);
+    return [NSString stringWithFormat:@"api/v1/reply/%@/ups",self.reply_id];
 
 }
 

@@ -12,8 +12,6 @@
 
 @interface CommentPageViewController : UITableViewController
 
-@property (nonatomic, strong) ThumbsUpAPI *thumAPI;
-
 @property (nonatomic, strong) NSMutableArray *array;
 
 @property (nonatomic, strong) NSString *comAuthor_id;

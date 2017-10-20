@@ -78,23 +78,26 @@
 {
     self.QRCodeString = [ControllerManager shareManager].string;
     
-    if (self.QRCodeString != nil) {
-        comContentAPI *comconAPI = [[comContentAPI alloc] init];
-        comconAPI.topic_id = self.topic_id;
-        comconAPI.requestArgument = @{@"accesstoken" : self.QRCodeString,
-                                      @"content" : self.contentView.text,
-                                      @"reply_id" : self.reply_id,
-                                      };
-        
-        NSLog(@"comconAPI.requestArgument = %@",comconAPI.requestArgument);
-        
-        [comconAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-            NSDictionary *dictionary = request.responseJSONObject;
-            NSLog(@"dictionary = %@",dictionary);
-            [self.navigationController popViewControllerAnimated:YES];
-        } failure:NULL];
-    } else
-        NSLog(@"请输入内容！");
+    if (self.QRCodeString && self.reply_id != nil) {
+        if (self.contentView.text.length > 0){
+            comContentAPI *comconAPI = [[comContentAPI alloc] init];
+            comconAPI.topic_id = self.topic_id;
+            
+            comconAPI.requestArgument = @{@"accesstoken" : self.QRCodeString,
+                                          @"content" : self.contentView.text,
+                                          @"reply_id" : self.reply_id,
+                                          };
+            
+            NSLog(@"comconAPI.requestArgument = %@",comconAPI.requestArgument);
+            
+            [comconAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+                NSDictionary *dictionary = request.responseJSONObject;
+                NSLog(@"dictionary = %@",dictionary);
+                [self.navigationController popViewControllerAnimated:YES];
+            } failure:NULL];
+
+        }
+    }
 }
 
 

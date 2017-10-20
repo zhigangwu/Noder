@@ -15,6 +15,8 @@
 #import "comContentAPI.h"
 #import "ThumbsUpAPI.h"
 #import "ComContentViewContrnt.h"
+#import "ThumbsUpAPI.h"
+#import "PersonalComViewController.h"
 
 @interface DetailViewController ()
 
@@ -67,6 +69,21 @@
         self.htmlNode = htmlNode;
         
     } failure:NULL];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(addnotification:)
+                                                 name:@"replyid"
+                                               object:nil];
+}
+
+- (void)addnotification:(NSNotification *)notification
+{
+    ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
+    thumAPI.reply_id = notification.object;
+    NSLog(@"thumAPI.reply_id = %@",thumAPI.reply_id);
+    
+    PersonalComViewController *personalCom = [[PersonalComViewController alloc] init];
+    personalCom.reply_id = notification.object;
 }
 
 - (void)didReceiveMemoryWarning {
