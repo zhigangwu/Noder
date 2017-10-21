@@ -195,12 +195,12 @@
 
 - (void)instanceDevice
 {
-//    UIImage *scanImage = [UIImage imageNamed:@"scanscanBg"];
+    UIImage *scanImage = [UIImage imageNamed:@"scanscanBg"];
     UIImageView *scanImageView = [[UIImageView alloc] init];
     scanImageView.backgroundColor = [UIColor clearColor];
     scanImageView.layer.borderColor = [UIColor whiteColor].CGColor;
     scanImageView.layer.borderWidth = 2.5;
-//    scanImageView.image = scanImage;
+    scanImageView.image = scanImage;
     
     CGRect imageRect = CGRectMake(60*widthRate, (DeviceMaxHeight - 200*widthRate)/3, 200*widthRate, 200*widthRate);
     [scanImageView setFrame:imageRect];

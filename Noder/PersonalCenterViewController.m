@@ -8,23 +8,25 @@
 
 #import "PersonalCenterViewController.h"
 #import "ScanLoginCell.h"
-#import "Masonry.h"
 #import "RecentReplyViewController.h"
 #import "RecentTopicsViewController.h"
 #import "CollectionTableViewController.h"
 #import "ViewController.h"
 #import "QRCodeViewController.h"
-#import "AssesstokenAPI.h"
 #import "NewPageTableViewController.h"
 #import "HomePageController.h"
-#import "ControllerManager.h"
 #import "UnreadMessageTableViewController.h"
 #import "ReadMessageTableViewController.h"
 #import "SetPageViewController.h"
 
+#import "ControllerManager.h"
+#import "Masonry.h"
+
+#import "AssesstokenAPI.h"
 #import "MessageCountAPI.h"
 #import "CollectionAPI.h"
 #import "Loginapi.h"
+
 
 
 @interface PersonalCenterViewController ()
@@ -164,9 +166,8 @@
                         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
                         self.navigationItem.rightBarButtonItem = rightItem;
                     }
-                    
-                
                     [self.Header configWithData:dic];
+                    
                 } failure:NULL];
                 }
             

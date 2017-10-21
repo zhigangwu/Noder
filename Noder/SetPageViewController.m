@@ -10,7 +10,7 @@
 
 #import "PersonalCenterViewController.h"
 #import "AppDelegate.h"
-
+#import "ZHTabBarController.h"
 
 
 @interface SetPageViewController ()
@@ -104,7 +104,6 @@
 //            cell.textLabel.text = @"Github";
         }
     } else if (indexPath.section == 1){
-        
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
     
