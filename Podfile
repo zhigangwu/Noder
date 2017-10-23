@@ -1,6 +1,7 @@
 platform :ios, '10.0'
 
 target 'Noder' do
+pod 'CYLTabBarController', '~> 1.14.1'
 pod 'MJExtension'
 pod 'UITableView+FDTemplateLayoutCell', '~> 1.6'
 pod 'SGQRCode'

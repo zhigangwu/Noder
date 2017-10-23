@@ -14,6 +14,7 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - CYLTabBarController (1.14.1)
   - HTMLKit (2.0.6)
   - LCNetwork (1.4.0):
     - AFNetworking
@@ -89,6 +90,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
+  - CYLTabBarController (~> 1.14.1)
   - HTMLKit
   - LCNetwork
   - libextobjc
@@ -106,6 +108,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  CYLTabBarController: ec44b6e44166d9869fa649ce22bc728d107ecafc
   HTMLKit: 9e1bde384fbc20be51eb62f2c1ad331d6ceccfa2
   LCNetwork: 4b9a0d4189be541d9c2b3bb2ca75a8a8fc058ebc
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
@@ -124,6 +127,6 @@ SPEC CHECKSUMS:
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   WMPageController: e9af37a2c7f259582578b35f2b67530b061e3862
 
-PODFILE CHECKSUM: 54bfaf1610d4273145dac607b35faaf60584537d
+PODFILE CHECKSUM: c7aacb5d301cbc8572d9c81175486d8cfb908417
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1
