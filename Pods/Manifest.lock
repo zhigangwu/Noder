@@ -15,8 +15,8 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - CYLTabBarController (1.14.1)
-  - HTMLKit (2.0.6)
-  - LCNetwork (1.4.0):
+  - HTMLKit (2.1.1)
+  - LCNetwork (1.5.0):
     - AFNetworking
   - libextobjc (0.4.1):
     - libextobjc/EXTADT (= 0.4.1)
@@ -53,9 +53,9 @@ PODS:
     - libextobjc/RuntimeExtensions
   - libextobjc/RuntimeExtensions (0.4.1)
   - libextobjc/UmbrellaHeader (0.4.1)
-  - Masonry (1.0.2)
+  - Masonry (1.1.0)
   - MJExtension (3.0.13)
-  - MJRefresh (3.1.12)
+  - MJRefresh (3.1.14.1)
   - NSDate+TimeAgo (1.0.6)
   - PINCache (3.0.1-beta.5):
     - PINCache/Arc-exception-safe (= 3.0.1-beta.5)
@@ -72,7 +72,6 @@ PODS:
   - PINRemoteImage/PINCache (3.0.0-beta.11):
     - PINCache (= 3.0.1-beta.5)
     - PINRemoteImage/Core
-  - Reveal-SDK (10)
   - SDWebImage (3.8.2):
     - SDWebImage/Core (= 3.8.2)
   - SDWebImage/Core (3.8.2)
@@ -98,28 +97,26 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - NSDate+TimeAgo
-  - Reveal-SDK
   - SDWebImage (~> 3.8)
   - SGQRCode
-  - Texture
+  - Texture (= 2.4)
   - TMCache
   - UITableView+FDTemplateLayoutCell (~> 1.6)
-  - WMPageController
+  - WMPageController (= 2.4.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   CYLTabBarController: ec44b6e44166d9869fa649ce22bc728d107ecafc
-  HTMLKit: 9e1bde384fbc20be51eb62f2c1ad331d6ceccfa2
-  LCNetwork: 4b9a0d4189be541d9c2b3bb2ca75a8a8fc058ebc
+  HTMLKit: 05e54c503c39606402cd84498955bfad3a08dd5d
+  LCNetwork: 746a151ffc946ed75aac0029019fab6516cc228e
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
-  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
-  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  MJRefresh: 238e6a37e2dba12160ee3b79f6d2a2b26abcab42
   NSDate+TimeAgo: 35601c619b2d59290055e4fe76e61d97677a2360
   PINCache: 98e7b1ef782824ad231ade51987c218b758c30d8
   PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
   PINRemoteImage: d71988f11914a050d6d4cf51efc4ad1de8c0a9d8
-  Reveal-SDK: 7869ddf1f902cabbb07a1f0dd06bd25861a126f7
   SDWebImage: 098e97e6176540799c27e804c96653ee0833d13c
   SGQRCode: 989df341fb231fc7bf7e82316de2fc8de2961e10
   Texture: a5526314780eab35f642d956627f09316b9514e8
@@ -127,6 +124,6 @@ SPEC CHECKSUMS:
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   WMPageController: e9af37a2c7f259582578b35f2b67530b061e3862
 
-PODFILE CHECKSUM: c7aacb5d301cbc8572d9c81175486d8cfb908417
+PODFILE CHECKSUM: de5699e87754dcb7a7d2b03491cfc983a4e35264
 
 COCOAPODS: 1.3.1

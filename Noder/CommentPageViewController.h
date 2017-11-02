@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "ThumbsUpAPI.h"
 #import "MMJDIYHeader.h"
+#import "CommentTableViewCell.h"
 
-@interface CommentPageViewController : UITableViewController
+@interface CommentPageViewController : UITableViewController  
 
 @property (nonatomic, strong) NSMutableArray *array;
 

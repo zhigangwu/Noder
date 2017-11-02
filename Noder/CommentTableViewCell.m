@@ -10,6 +10,8 @@
 #import "Masonry.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSDate+TimeAgo.h"
+#import "ControllerManager.h"
+#import "ThumbsUpAPI.h"
 
 #define kScreenWidth  [UIScreen mainScreen].bounds.size.width
 
@@ -21,7 +23,8 @@
     if (self) {
         
         [self initCell];
-        
+//        CommentTableViewCell *cell = [[CommentTableViewCell alloc] init];
+//        cell.delegate = self;
     }
     
     return self;
@@ -85,7 +88,6 @@
         make.right.equalTo(self.contentView).with.offset(-16);
         make.bottom.mas_equalTo(_ZGupButton.mas_bottom);
     }];
-    
 }
 
 - (void)configWithItem:(NSDictionary *)dictionary
@@ -109,13 +111,48 @@
 
     [_ZGupButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_ZGupButton setTitle:@"赞" forState:UIControlStateNormal];
+    [self.ZGupButton addTarget:self action:@selector(ZGupButtonaction:) forControlEvents:UIControlEventTouchUpInside];
 
     [_ZGevaButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_ZGevaButton setTitle:@"评" forState:UIControlStateNormal];
+    
+//    NSDictionary *dic = [ControllerManager shareManager].dictionary;
+//    NSString *success = dic[@"success"];
+//    self.ZG_evaButton.hidden = success.boolValue;
+//
+//    if (success.boolValue == true) {
+//        self.ZG_evaButton = s.ZGevaButton;
+//        [_ZG_evaButton addTarget:self action:@selector(evaluation:) forControlEvents:UIControlEventTouchUpInside];
+//        self.ZG_upButton = cell.ZGupButton;
+//        [_ZG_upButton addTarget:self action:@selector(praise:) forControlEvents:UIControlEventTouchUpInside];
+//    } else {
+//        [self.rightButton setHidden:YES];
+//        self.ZG_evaButton = cell.ZGevaButton;
+//        [_ZG_evaButton setHidden:YES];
+//        self.ZG_upButton = cell.ZGupButton;
+//        [_ZG_upButton setHidden:YES];
+//    }
 }
 
 
 
+//- (void)ZGupButtonaction:(id)sender{
+//
+//    if (self.delegate  && [self.delegate respondsToSelector:@selector(pushToNewPage)]) {
+//        [self.delegate pushToNewPage:sender];
+//    }
+//
+//    ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
+////    thumAPI.reply_id = self.string_id;
+//
+//    NSString *access = [ControllerManager shareManager].string;
+//    thumAPI.requestArgument = @{@"accesstoken" : access};
+//    [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+//        NSDictionary *dic = request.responseJSONObject;
+//        NSLog(@"dic = %@",dic);
+//    } failure:NULL];
+//
+//}
 
 
 

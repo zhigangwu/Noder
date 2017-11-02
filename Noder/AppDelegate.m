@@ -15,9 +15,9 @@
 #import "RecentTopicsViewController.h"
 #import "NewPageTableViewController.h"
 
-#import "ZHTabBarController.h"
+#import "TabBarController.h"
 
-@interface AppDelegate ()
+@interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end
 
@@ -29,26 +29,36 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    ZHTabBarController *tabBar = [[ZHTabBarController alloc] init];
-    self.window.rootViewController = tabBar;
+//    TabBarController *tabBar = [[TabBarController alloc] init];
+//    self.window.rootViewController = tabBar.tabBarController;
     
-//    UITabBarController *tabBarController = [[UITabBarController alloc] init];
-//    self.window.rootViewController = tabBarController;
+    UITabBarController *tabBarController = [[UITabBarController alloc] init];
+    
 
-//    PersonalCenterViewController *personalCenterVC = [[PersonalCenterViewController alloc] init];
-//    UINavigationController *navpersonal = [[UINavigationController alloc] initWithRootViewController:personalCenterVC];
-//    navpersonal.tabBarItem.title = @"我的";
-//    [navpersonal.tabBarItem setTag:2];
-//    navpersonal.tabBarItem.image = [UIImage imageNamed:@"Rectangle 4"];
-//
-//    HomePageController *homePageController = [[HomePageController alloc] init];
-//    UINavigationController *homeNavigation = [[UINavigationController alloc] initWithRootViewController:homePageController];
-//    homeNavigation.tabBarItem.title = @"主页";
-//    [homeNavigation.tabBarItem setTag:0];
-//    homeNavigation.tabBarItem.image = [UIImage imageNamed:@"Group Copy"];
-//
-//
-//    tabBarController.viewControllers = @[homeNavigation,navpersonal];
+    PersonalCenterViewController *personalCenterVC = [[PersonalCenterViewController alloc] init];
+    UINavigationController *navpersonal = [[UINavigationController alloc] initWithRootViewController:personalCenterVC];
+    navpersonal.tabBarItem.title = @"我的";
+    [navpersonal.tabBarItem setTag:2];
+    navpersonal.tabBarItem.image = [UIImage imageNamed:@"Rectangle 4"];
+    
+    UIImage *oringimage = [[UIImage imageNamed:@"Group-2"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    UIViewController *newPageTableViewController = [[UIViewController alloc] init];
+    newPageTableViewController.tabBarItem.title = @"";
+    newPageTableViewController.tabBarItem.image = oringimage;
+    newPageTableViewController.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+    
+
+    HomePageController *homePageController = [[HomePageController alloc] init];
+    UINavigationController *homeNavigation = [[UINavigationController alloc] initWithRootViewController:homePageController];
+    homeNavigation.tabBarItem.title = @"主页";
+    [homeNavigation.tabBarItem setTag:0];
+    homeNavigation.tabBarItem.image = [UIImage imageNamed:@"Group Copy"];
+
+
+    tabBarController.viewControllers = @[homeNavigation, newPageTableViewController, navpersonal];
+    self.window.rootViewController = tabBarController;
+    tabBarController.delegate = self;
+    
     [self.window makeKeyAndVisible];
 
     
@@ -85,5 +95,15 @@
 }
 
 
-
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewControlle{
+    
+    NSInteger index = [tabBarController.viewControllers indexOfObject:viewControlle];
+    if (index == 1) {
+        NewPageTableViewController *newPageTableViewController = [[NewPageTableViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:newPageTableViewController];
+        [tabBarController presentViewController:nav animated:YES completion:NULL];
+        return NO;
+    }
+    return YES;
+}
 @end

@@ -18,8 +18,6 @@
 		040A18981F6660680094D4C9 /* CommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A18971F6660680094D4C9 /* CommentTableViewCell.m */; };
 		042A274E1F666DC5003CE246 /* CommentPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 040A18941F6626E20094D4C9 /* CommentPageViewController.m */; };
 		043991271F72393300882344 /* PersonalComViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043991261F72393300882344 /* PersonalComViewController.m */; };
-		043991331F725DBF00882344 /* AddTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 043991321F725DBF00882344 /* AddTabBar.m */; };
-		043991361F725EB100882344 /* ZHTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043991351F725EB100882344 /* ZHTabBarController.m */; };
 		043A43EB1F75F4FE009F022E /* UnreadMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 043A43EA1F75F4FE009F022E /* UnreadMessageTableViewController.m */; };
 		043A43EE1F75F51C009F022E /* UnreadMessageAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 043A43ED1F75F51C009F022E /* UnreadMessageAPI.m */; };
 		043A43F11F75F539009F022E /* UnreadMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 043A43F01F75F539009F022E /* UnreadMessageCell.m */; };
@@ -73,6 +71,7 @@
 		3395BFF81EE6D68A007E27F2 /* RecruitmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3395BFF71EE6D68A007E27F2 /* RecruitmentTableViewCell.m */; };
 		33C2CFBD1E7967370030257B /* HDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C2CFBC1E7967370030257B /* HDTableViewCell.m */; };
 		33EE434B1EBC9B01009DC2D4 /* PersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EE434A1EBC9B01009DC2D4 /* PersonalCenterViewController.m */; };
+		919F07E41FA21C68008215AC /* TabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 919F07E31FA21C68008215AC /* TabBarController.m */; };
 		DF03208B1EF2A7BF0088F8EE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF03208A1EF2A7BF0088F8EE /* DetailViewController.m */; };
 		DF8429B11EF93D0600B8D011 /* DetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429B01EF93D0600B8D011 /* DetailApi.m */; };
 		DF8429DC1EF941AC00B8D011 /* LCCodeDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429C11EF941AC00B8D011 /* LCCodeDisplayNode.m */; };
@@ -132,10 +131,6 @@
 		040A18971F6660680094D4C9 /* CommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentTableViewCell.m; sourceTree = "<group>"; };
 		043991251F72393300882344 /* PersonalComViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalComViewController.h; sourceTree = "<group>"; };
 		043991261F72393300882344 /* PersonalComViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalComViewController.m; sourceTree = "<group>"; };
-		043991311F725DBF00882344 /* AddTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTabBar.h; sourceTree = "<group>"; };
-		043991321F725DBF00882344 /* AddTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTabBar.m; sourceTree = "<group>"; };
-		043991341F725EB100882344 /* ZHTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHTabBarController.h; sourceTree = "<group>"; };
-		043991351F725EB100882344 /* ZHTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHTabBarController.m; sourceTree = "<group>"; };
 		043A43E91F75F4FE009F022E /* UnreadMessageTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnreadMessageTableViewController.h; sourceTree = "<group>"; };
 		043A43EA1F75F4FE009F022E /* UnreadMessageTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UnreadMessageTableViewController.m; sourceTree = "<group>"; };
 		043A43EC1F75F51C009F022E /* UnreadMessageAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnreadMessageAPI.h; sourceTree = "<group>"; };
@@ -246,6 +241,8 @@
 		51525A18090113D9FD3D4CEC /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		620CE6E91962684584B108B6 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		83A3208438729A6BE0BC90C9 /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
+		919F07E21FA21C68008215AC /* TabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabBarController.h; sourceTree = "<group>"; };
+		919F07E31FA21C68008215AC /* TabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabBarController.m; sourceTree = "<group>"; };
 		AFD657F7862CA63028DDAE4C /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
 		C24D1EF0AB88F669658C4A45 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		D89959808109ABB127508691 /* libPods-Noder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Noder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -335,10 +332,8 @@
 			children = (
 				04E98CAD1F73AFCA00D4BD8D /* MenuViewController.h */,
 				04E98CAE1F73AFCA00D4BD8D /* MenuViewController.m */,
-				043991311F725DBF00882344 /* AddTabBar.h */,
-				043991321F725DBF00882344 /* AddTabBar.m */,
-				043991341F725EB100882344 /* ZHTabBarController.h */,
-				043991351F725EB100882344 /* ZHTabBarController.m */,
+				919F07E21FA21C68008215AC /* TabBarController.h */,
+				919F07E31FA21C68008215AC /* TabBarController.m */,
 				337F221D1F0D184500C8488A /* AssesstokenAPI.h */,
 				337F221E1F0D184500C8488A /* AssesstokenAPI.m */,
 				047FA47B1F91AC7700B485B9 /* MessageCountAPI.h */,
@@ -818,7 +813,6 @@
 				DF8429DD1EF941AC00B8D011 /* LCCodeTextNode.m in Sources */,
 				3355B8E61ECB248900FEC669 /* ScanLoginCell.m in Sources */,
 				DF8429E71EF941AC00B8D011 /* NSMutableAttributedString+LCLineSpace.m in Sources */,
-				043991331F725DBF00882344 /* AddTabBar.m in Sources */,
 				3395BFE31EE57AD9007E27F2 /* QandAViewController.m in Sources */,
 				3395BFEC1EE582E3007E27F2 /* AllTableViewCell.m in Sources */,
 				DF8429DF1EF941AC00B8D011 /* LCHtmlNode.m in Sources */,
@@ -828,13 +822,13 @@
 				040471321F5FE9BA00BBDA14 /* CollectionTableViewController.m in Sources */,
 				337F22251F13B6D100C8488A /* NETWorkConnection.m in Sources */,
 				3335F02C1ED46E8800FBB58D /* RecentReplyCell.m in Sources */,
+				919F07E41FA21C68008215AC /* TabBarController.m in Sources */,
 				33542A9D1F504D77005576F7 /* JobAPI.m in Sources */,
 				04E98CAF1F73AFCA00D4BD8D /* MenuViewController.m in Sources */,
 				047FA47D1F91AC7700B485B9 /* MessageCountAPI.m in Sources */,
 				3395BFDD1EE57A9C007E27F2 /* EssenceViewController.m in Sources */,
 				3335F0321ED470DC00FBB58D /* RecentTopicsCell.m in Sources */,
 				DF8429E61EF941AC00B8D011 /* LCULDisplayNode.m in Sources */,
-				043991361F725EB100882344 /* ZHTabBarController.m in Sources */,
 				040354721F622FA800257D90 /* DevTableViewController.m in Sources */,
 				3395BFF21EE6D66B007E27F2 /* ShareTableViewCell.m in Sources */,
 				3395BFEF1EE58856007E27F2 /* EssenceTableViewCell.m in Sources */,
@@ -958,7 +952,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1000,7 +994,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1014,6 +1008,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4RD8B54HAP;
 				INFOPLIST_FILE = Noder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apress.Noder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1027,6 +1022,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4RD8B54HAP;
 				INFOPLIST_FILE = Noder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.apress.Noder;
 				PRODUCT_NAME = "$(TARGET_NAME)";

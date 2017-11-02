@@ -6,9 +6,20 @@
 //  Copyright © 2017年 Apress. All rights reserved.
 //
 
+//Protocol CommentTableViewCell
+
+
 #import <UIKit/UIKit.h>
 
+//@protocol CommentCellDelegate <NSObject>
+//
+//- (void)pushToNewPage:(UIButton *)sender;
+//
+//@end
+
 @interface CommentTableViewCell : UITableViewCell <UIWebViewDelegate>
+
+//@property (nonatomic, assign) id<CommentCellDelegate> delegate;
 
 @property (nonatomic, strong) UIImageView *ZGimageView;
 @property (nonatomic, strong) UILabel *ZGloginname;

@@ -10,7 +10,7 @@
 
 #import "PersonalCenterViewController.h"
 #import "AppDelegate.h"
-#import "ZHTabBarController.h"
+#import "TabBarController.h"
 
 
 @interface SetPageViewController ()

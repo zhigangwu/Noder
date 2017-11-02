@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Initializes a new HTML element with the given tag name.
  
- @param tagName The tag name.
+ @param tagname The tag name.
  @return A new HTML element.
  */
 - (instancetype)initWithTagName:(NSString *)tagName;
@@ -71,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Initializes a new HTML element with the given tag name and attributes.
 
- @param tagName The tag name.
+ @param tagname The tag name.
  @param attributes The attributes.
  @return A new HTML element.
  */
@@ -80,8 +80,8 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  Initializes a new HTML element with the given tag name, namespace, and attributes.
 
- @param tagName The tag name.
- @param htmlNamespace The namespace.
+ @param tagname The tag name.
+ @param namespace The namespace.
  @param attributes The attributes.
  @return A new HTML element.
  */
@@ -107,7 +107,7 @@ NS_ASSUME_NONNULL_BEGIN
  Set the value of the attribute with the given name.
 
  @param value The value to set.
- @param attribute The attribute's name.
+ @param name The attribute's name.
  */
 - (void)setObject:(NSString *)value forKeyedSubscript:(NSString *)attribute;
 

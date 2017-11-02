@@ -24,7 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.view.backgroundColor = [UIColor whiteColor];
     _pickLabel = [[UILabel alloc] init];
     
     UIButton *rightButton = [[UIButton alloc] init];

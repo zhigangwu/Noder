@@ -99,7 +99,6 @@
     if (self.reply_count.integerValue == 0) {
         ComContentViewContrnt *com = [[ComContentViewContrnt alloc] init];
         [self.navigationController pushViewController:com animated:YES];
-        
     }else {
         CommentPageViewController *comment = [[CommentPageViewController alloc] init];
         comment.dictionary = self.dic;

@@ -7,7 +7,6 @@
 //
 
 #import "CommentPageViewController.h"
-#import "CommentTableViewCell.h"
 #import "Masonry.h"
 #import "ComContentViewContrnt.h"
 #import "ControllerManager.h"
@@ -31,9 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self AccessNetworkForDateMethod];
-    
+
     self.rightButton = [[UIButton alloc] init];
     [self.view addSubview:_rightButton];
     _rightButton.frame = CGRectMake(0, 0, 40, 40);
@@ -45,11 +42,19 @@
     self.tableView.delegate = self;
     self.tableView.dataSource =self;
     
-    self.tableView.fd_debugLogEnabled = YES;
-    static NSString *string = @"CommentTableViewCell";
+//    self.tableView.fd_debugLogEnabled = YES;
+    NSString *string = @"CommentTableViewCell";
+    
     [self.tableView registerClass:[CommentTableViewCell class] forCellReuseIdentifier:string];
     
+//    NSDictionary *dic = [ControllerManager shareManager].dictionary;
+//    NSString *success = dic[@"success"];
+
+    [_rightButton addTarget:self action:@selector(appraise) forControlEvents:UIControlEventTouchUpInside];
+    
     [self setupRefresh];
+    
+    [self AccessNetworkForDateMethod];
 }
 
 
@@ -86,63 +91,66 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.listArry.count;
+//    return self.listAarry.count;
+    return self.array.count;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *string = @"CommentTableViewCell";
-    CommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:string];
     
-    if (!cell) {
-        cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:string];
-    }
+    NSString *string = @"CommentTableViewCell";
+    CommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:string forIndexPath:indexPath];
+    
+//    if (!cell) {
+//        cell = [[CommentTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:string];
+//    }
     
     NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
     [cell configWithItem:dictionary];
     
+//    cell.delegate = self;
     
-    NSDictionary *dic = [ControllerManager shareManager].dictionary;
-    NSString *success = dic[@"success"];
-    if (success.boolValue == true) {
-        [_rightButton addTarget:self action:@selector(appraise) forControlEvents:UIControlEventTouchUpInside];
-        self.ZG_evaButton = cell.ZGevaButton;
-        [_ZG_evaButton addTarget:self action:@selector(evaluation:) forControlEvents:UIControlEventTouchUpInside];
-        self.ZG_upButton = cell.ZGupButton;
-        [_ZG_upButton addTarget:self action:@selector(praise:) forControlEvents:UIControlEventTouchUpInside];
-    } else {
-        [self.rightButton setHidden:YES];
-        self.ZG_evaButton = cell.ZGevaButton;
-        [_ZG_evaButton setHidden:YES];
-        self.ZG_upButton = cell.ZGupButton;
-        [_ZG_upButton setHidden:YES];
-    }
+//    NSDictionary *dic = [ControllerManager shareManager].dictionary;
+//    NSString *success = dic[@"success"];
+//    if (success.boolValue == true) {
+    
+//        self.ZG_evaButton = cell.ZGevaButton;
+//        [_ZG_evaButton addTarget:self action:@selector(evaluation:) forControlEvents:UIControlEventTouchUpInside];
+//        self.ZG_upButton = cell.ZGupButton;
+//        [_ZG_upButton addTarget:self action:@selector(praise:) forControlEvents:UIControlEventTouchUpInside];
+//    } else {
+//        [self.rightButton setHidden:YES];
+//        self.ZG_evaButton = cell.ZGevaButton;
+//        [_ZG_evaButton setHidden:YES];
+//        self.ZG_upButton = cell.ZGupButton;
+//        [_ZG_upButton setHidden:YES];
+//    }
 
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 200;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 200;
+//}
 
 - (void)AccessNetworkForDateMethod
 {
-    NSArray *array = self.dictionary[@"data"];
+    NSDictionary *array = self.dictionary[@"data"];
 //    NSLog(@"%@",array);
-    _array = [array valueForKey:@"replies"];
+    self.array = [array valueForKey:@"replies"];
     _reply_id = [self.array valueForKey:@"id"];
     _topic_id = [array valueForKey:@"id"];
+//
+//    comContentAPI *comAPI = [[comContentAPI alloc] init];
+//    comAPI.topic_id = _topic_id;
+//
+//    if (!_listArry){
+//        _listArry = [NSMutableArray array];
+//    }
+//    self.listArry = self.array;
     
-    comContentAPI *comAPI = [[comContentAPI alloc] init];
-    comAPI.topic_id = _topic_id;
-    
-    if (!_listArry){
-        _listArry = [NSMutableArray array];
-    }
-    _listArry = _array;
-    
-    [self.tableView reloadData];
+//    [self.tableView reloadData];
 }
 
 - (void)appraise
@@ -168,24 +176,25 @@
     
 }
 
-- (void)praise:(UIButton *)sender
-{
-    CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
-    self.string_id = dictionary[@"id"];
-//    NSLog(@"^^^^^^%@",dictionary);
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"replyid" object:self.string_id];
-
-    ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
-    thumAPI.reply_id = self.string_id;
-    NSString *access = [ControllerManager shareManager].string;
-    thumAPI.requestArgument = @{@"accesstoken" : access};
-    [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-        NSDictionary *dic = request.responseJSONObject;
-        NSLog(@"dic = %@",dic);
-    } failure:NULL];
-}
+//- (void)pushToNewPage:(UIButton *)sender
+//{
+//    CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
+//    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+//    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+//    self.string_id = dictionary[@"id"];
+//    //    NSLog(@"^^^^^^%@",dictionary);
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"replyid" object:self.string_id];
+//
+//    ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
+//    thumAPI.reply_id = self.string_id;
+//    NSString *access = [ControllerManager shareManager].string;
+//    thumAPI.requestArgument = @{@"accesstoken" : access};
+//    [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+//        NSDictionary *dic = request.responseJSONObject;
+//        NSLog(@"dic = %@",dic);
+//    } failure:NULL];
+//
+//}
 
 
 

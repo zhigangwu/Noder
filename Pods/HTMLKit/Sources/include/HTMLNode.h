@@ -232,7 +232,7 @@ typedef NS_OPTIONS(unsigned short, HTMLDocumentPosition)
 /**
  Returns the index of the given child element in the set of child nodes.
 
- @param element The element.
+ @param node The element.
  @return The index of the given element in the children set.
  */
 - (NSUInteger)indexOfChildElement:(HTMLElement *)element;
@@ -248,7 +248,7 @@ typedef NS_OPTIONS(unsigned short, HTMLDocumentPosition)
 /**
  Prepends the given array of nodes to the set of child nodes.
 
- @param nodes The nodes to prepend.
+ @param node The nodes to prepend.
  */
 - (void)prependNodes:(NSArray<HTMLNode *> *)nodes;
 
