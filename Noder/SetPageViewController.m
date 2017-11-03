@@ -10,7 +10,6 @@
 
 #import "PersonalCenterViewController.h"
 #import "AppDelegate.h"
-#import "TabBarController.h"
 
 
 @interface SetPageViewController ()
@@ -21,6 +20,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
     
     UITableView *table = [[UITableView alloc] init];
     [self.view addSubview:table];

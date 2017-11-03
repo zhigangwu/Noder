@@ -11,7 +11,7 @@
 #import "MMJDIYHeader.h"
 #import "CommentTableViewCell.h"
 
-@interface CommentPageViewController : UITableViewController  
+@interface CommentPageViewController : UITableViewController <CommentCellDelegate>
 
 @property (nonatomic, strong) NSMutableArray *array;
 

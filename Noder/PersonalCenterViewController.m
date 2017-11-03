@@ -109,8 +109,6 @@
     arr = @[@"最近回复",@"最近发布",@"我的收藏",@"未读消息",@"已读消息"];
     self.array = arr;
     
-    [self.navigationController.tabBarController setSelectedIndex:1];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(addnotification:)
                                                  name:@"zongzi"
@@ -182,12 +180,14 @@
 
 - (void)buttonaction{
     QRCodeViewController *QRCode = [[QRCodeViewController alloc] init];
+    QRCode.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:QRCode animated:YES];
 }
 
 - (void)logout
 {
     SetPageViewController *setPage = [[SetPageViewController alloc] init];
+    setPage.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:setPage animated:YES];
 }
 
@@ -230,25 +230,30 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             RecentReplyViewController *RRViewController = [[RecentReplyViewController alloc] init];
+            RRViewController.hidesBottomBarWhenPushed = YES;
             RRViewController.recenrLoginname = self.loginname;
             [self.navigationController pushViewController:RRViewController animated:YES];
         }
         if (indexPath.row == 1) {
             RecentTopicsViewController *RTViewController = [[RecentTopicsViewController alloc] init];
+            RTViewController.hidesBottomBarWhenPushed = YES;
             RTViewController.TopicsLoginname = self.loginname;
             [self.navigationController pushViewController:RTViewController animated:YES];
         }
         if (indexPath.row == 2) {
             CollectionTableViewController *collect = [[CollectionTableViewController alloc] init];
+            collect.hidesBottomBarWhenPushed = YES;
             collect.collectionLoginname = self.loginname;
             [self.navigationController pushViewController:collect animated:YES];
         }
         if (indexPath.row == 3) {
             UnreadMessageTableViewController *UNMessage = [[UnreadMessageTableViewController alloc] init];
+            UNMessage.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:UNMessage animated:YES];
         }
         if (indexPath.row == 4) {
             ReadMessageTableViewController *readMes = [[ReadMessageTableViewController alloc] init];
+            readMes.hidesBottomBarWhenPushed = YES;
             [self.navigationController pushViewController:readMes animated:YES];
         }
     }

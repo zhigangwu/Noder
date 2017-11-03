@@ -15,8 +15,6 @@
 #import "RecentTopicsViewController.h"
 #import "NewPageTableViewController.h"
 
-#import "TabBarController.h"
-
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
 @end

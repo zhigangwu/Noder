@@ -11,23 +11,23 @@
 
 #import <UIKit/UIKit.h>
 
-//@protocol CommentCellDelegate <NSObject>
-//
-//- (void)pushToNewPage:(UIButton *)sender;
-//
-//@end
+@protocol CommentCellDelegate <NSObject>
+
+- (void)pushToNewPage:(UIButton *)sender;
+
+@end
 
 @interface CommentTableViewCell : UITableViewCell <UIWebViewDelegate>
 
-//@property (nonatomic, assign) id<CommentCellDelegate> delegate;
+@property (nonatomic, assign) id<CommentCellDelegate> delegate;
 
 @property (nonatomic, strong) UIImageView *ZGimageView;
 @property (nonatomic, strong) UILabel *ZGloginname;
 @property (nonatomic, strong) UIWebView *ZGwebView;
 @property (nonatomic, strong) UILabel *ZGdurationLabel;
 
-@property (nonatomic, strong) UIButton *ZGupButton;
-@property (nonatomic, strong) UIButton *ZGevaButton;
+@property (nonatomic, strong) UIButton *ZGupButton; //点赞
+@property (nonatomic, strong) UIButton *ZGevaButton; // 个人评价
 
 - (void)configWithItem:(NSDictionary *)dictionary;
 @end
