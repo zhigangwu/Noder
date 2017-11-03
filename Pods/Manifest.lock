@@ -14,7 +14,6 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
-  - CYLTabBarController (1.14.1)
   - HTMLKit (2.1.1)
   - LCNetwork (1.5.0):
     - AFNetworking
@@ -55,7 +54,7 @@ PODS:
   - libextobjc/UmbrellaHeader (0.4.1)
   - Masonry (1.1.0)
   - MJExtension (3.0.13)
-  - MJRefresh (3.1.14.1)
+  - MJRefresh (3.1.15)
   - NSDate+TimeAgo (1.0.6)
   - PINCache (3.0.1-beta.5):
     - PINCache/Arc-exception-safe (= 3.0.1-beta.5)
@@ -89,7 +88,6 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - CYLTabBarController (~> 1.14.1)
   - HTMLKit
   - LCNetwork
   - libextobjc
@@ -106,13 +104,12 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
-  CYLTabBarController: ec44b6e44166d9869fa649ce22bc728d107ecafc
   HTMLKit: 05e54c503c39606402cd84498955bfad3a08dd5d
   LCNetwork: 746a151ffc946ed75aac0029019fab6516cc228e
   libextobjc: a650fc1bf489a3d3a9bc2e621efa3e1006fc5471
   Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
   MJExtension: 5932755f451458eefa24239358817f8d291240c7
-  MJRefresh: 238e6a37e2dba12160ee3b79f6d2a2b26abcab42
+  MJRefresh: 9af70f5f9327a2cf87f0fb5929f35fcc2fa638ea
   NSDate+TimeAgo: 35601c619b2d59290055e4fe76e61d97677a2360
   PINCache: 98e7b1ef782824ad231ade51987c218b758c30d8
   PINOperation: ac23db44796d4a564ecf9b5ea7163510f579b71d
@@ -124,6 +121,6 @@ SPEC CHECKSUMS:
   UITableView+FDTemplateLayoutCell: 5c949b4a5059c404b442926c0e80f81d10a2d66f
   WMPageController: e9af37a2c7f259582578b35f2b67530b061e3862
 
-PODFILE CHECKSUM: de5699e87754dcb7a7d2b03491cfc983a4e35264
+PODFILE CHECKSUM: 20e9f819661cf2d27f07239bb93b9c26ebcf5e91
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.2.1
