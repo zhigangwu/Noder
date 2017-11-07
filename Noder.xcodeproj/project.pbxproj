@@ -32,7 +32,6 @@
 		047FA47D1F91AC7700B485B9 /* MessageCountAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 047FA47C1F91AC7700B485B9 /* MessageCountAPI.m */; };
 		04B15AF21EFA54AE00C01CA4 /* QRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04B15AF11EFA54AE00C01CA4 /* QRCodeViewController.m */; };
 		04C4B88E1F57A14100FA139F /* NewPageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04C4B88D1F57A14100FA139F /* NewPageTableViewController.m */; };
-		04E98CAF1F73AFCA00D4BD8D /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E98CAE1F73AFCA00D4BD8D /* MenuViewController.m */; };
 		04ED0E221F7B752A003AF5E9 /* PlateSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED0E211F7B752A003AF5E9 /* PlateSelectionViewController.m */; };
 		04ED0E251F7B7FAD003AF5E9 /* PlateSelectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 04ED0E241F7B7FAD003AF5E9 /* PlateSelectionCell.m */; };
 		3335F0261ED31F3B00FBB58D /* RecentReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3335F0251ED31F3B00FBB58D /* RecentReplyViewController.m */; };
@@ -158,8 +157,6 @@
 		04B15AF11EFA54AE00C01CA4 /* QRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCodeViewController.m; sourceTree = "<group>"; };
 		04C4B88C1F57A14100FA139F /* NewPageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPageTableViewController.h; sourceTree = "<group>"; };
 		04C4B88D1F57A14100FA139F /* NewPageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPageTableViewController.m; sourceTree = "<group>"; };
-		04E98CAD1F73AFCA00D4BD8D /* MenuViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
-		04E98CAE1F73AFCA00D4BD8D /* MenuViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		04ED0E201F7B752A003AF5E9 /* PlateSelectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateSelectionViewController.h; sourceTree = "<group>"; };
 		04ED0E211F7B752A003AF5E9 /* PlateSelectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateSelectionViewController.m; sourceTree = "<group>"; };
 		04ED0E231F7B7FAD003AF5E9 /* PlateSelectionCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateSelectionCell.h; sourceTree = "<group>"; };
@@ -327,8 +324,6 @@
 		04005A7F1F6CC492007D8603 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				04E98CAD1F73AFCA00D4BD8D /* MenuViewController.h */,
-				04E98CAE1F73AFCA00D4BD8D /* MenuViewController.m */,
 				337F221D1F0D184500C8488A /* AssesstokenAPI.h */,
 				337F221E1F0D184500C8488A /* AssesstokenAPI.m */,
 				047FA47B1F91AC7700B485B9 /* MessageCountAPI.h */,
@@ -818,7 +813,6 @@
 				337F22251F13B6D100C8488A /* NETWorkConnection.m in Sources */,
 				3335F02C1ED46E8800FBB58D /* RecentReplyCell.m in Sources */,
 				33542A9D1F504D77005576F7 /* JobAPI.m in Sources */,
-				04E98CAF1F73AFCA00D4BD8D /* MenuViewController.m in Sources */,
 				047FA47D1F91AC7700B485B9 /* MessageCountAPI.m in Sources */,
 				3395BFDD1EE57A9C007E27F2 /* EssenceViewController.m in Sources */,
 				3335F0321ED470DC00FBB58D /* RecentTopicsCell.m in Sources */,

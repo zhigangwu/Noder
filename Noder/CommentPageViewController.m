@@ -109,24 +109,6 @@
     
     NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
     [cell configWithItem:dictionary];
-    
-//    cell.delegate = self;
-    
-//    NSDictionary *dic = [ControllerManager shareManager].dictionary;
-//    NSString *success = dic[@"success"];
-//    if (success.boolValue == true) {
-    
-//        self.ZG_evaButton = cell.ZGevaButton;
-//        [_ZG_evaButton addTarget:self action:@selector(evaluation:) forControlEvents:UIControlEventTouchUpInside];
-//        self.ZG_upButton = cell.ZGupButton;
-//        [_ZG_upButton addTarget:self action:@selector(praise:) forControlEvents:UIControlEventTouchUpInside];
-//    } else {
-//        [self.rightButton setHidden:YES];
-//        self.ZG_evaButton = cell.ZGevaButton;
-//        [_ZG_evaButton setHidden:YES];
-//        self.ZG_upButton = cell.ZGupButton;
-//        [_ZG_upButton setHidden:YES];
-//    }
 
     return cell;
 }
@@ -139,20 +121,9 @@
 - (void)AccessNetworkForDateMethod
 {
     NSDictionary *array = self.dictionary[@"data"];
-//    NSLog(@"%@",array);
     self.array = [array valueForKey:@"replies"];
     _reply_id = [self.array valueForKey:@"id"];
     _topic_id = [array valueForKey:@"id"];
-//
-//    comContentAPI *comAPI = [[comContentAPI alloc] init];
-//    comAPI.topic_id = _topic_id;
-//
-//    if (!_listArry){
-//        _listArry = [NSMutableArray array];
-//    }
-//    self.listArry = self.array;
-    
-//    [self.tableView reloadData];
 }
 
 - (void)appraise
