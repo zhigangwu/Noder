@@ -12,7 +12,6 @@
 
 @property (nonatomic, weak) UILabel *TitleLabel;
 @property (nonatomic, weak) UILabel *durationLabel;
-
 @property (nonatomic, retain) UIImageView *ImageView;
 
 - (void)configWithItem:(NSDictionary *)dic;

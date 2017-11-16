@@ -20,8 +20,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    NSString *access = [ControllerManager shareManager].string;
-    
     ReadMessageAPI *readMesAPi = [[ReadMessageAPI alloc] init];
 //    readMesAPi.requestArgument = @{@"accesstoken" : access,@"mdrender":};
     [readMesAPi startWithBlockSuccess:^(__kindof LCBaseRequest *request){

@@ -51,7 +51,6 @@
 		33542A971F504B14005576F7 /* ShareAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 33542A961F504B14005576F7 /* ShareAPI.m */; };
 		33542A9A1F504CA9005576F7 /* AskAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 33542A991F504CA9005576F7 /* AskAPI.m */; };
 		33542A9D1F504D77005576F7 /* JobAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 33542A9C1F504D77005576F7 /* JobAPI.m */; };
-		3355B8E61ECB248900FEC669 /* ScanLoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3355B8E51ECB248800FEC669 /* ScanLoginCell.m */; };
 		337B87081F19ACC700558A4D /* Loginapi.m in Sources */ = {isa = PBXBuildFile; fileRef = 337B87071F19ACC700558A4D /* Loginapi.m */; };
 		337B870B1F19AEC000558A4D /* headerview.m in Sources */ = {isa = PBXBuildFile; fileRef = 337B870A1F19AEC000558A4D /* headerview.m */; };
 		337F221F1F0D184500C8488A /* AssesstokenAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 337F221E1F0D184500C8488A /* AssesstokenAPI.m */; };
@@ -70,6 +69,7 @@
 		3395BFF81EE6D68A007E27F2 /* RecruitmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3395BFF71EE6D68A007E27F2 /* RecruitmentTableViewCell.m */; };
 		33C2CFBD1E7967370030257B /* HDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C2CFBC1E7967370030257B /* HDTableViewCell.m */; };
 		33EE434B1EBC9B01009DC2D4 /* PersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EE434A1EBC9B01009DC2D4 /* PersonalCenterViewController.m */; };
+		9188B7311FBDC7540082C1D1 /* ScanLoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */; };
 		DF03208B1EF2A7BF0088F8EE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF03208A1EF2A7BF0088F8EE /* DetailViewController.m */; };
 		DF8429B11EF93D0600B8D011 /* DetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429B01EF93D0600B8D011 /* DetailApi.m */; };
 		DF8429DC1EF941AC00B8D011 /* LCCodeDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429C11EF941AC00B8D011 /* LCCodeDisplayNode.m */; };
@@ -196,8 +196,6 @@
 		33542A991F504CA9005576F7 /* AskAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskAPI.m; sourceTree = "<group>"; };
 		33542A9B1F504D77005576F7 /* JobAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobAPI.h; sourceTree = "<group>"; };
 		33542A9C1F504D77005576F7 /* JobAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobAPI.m; sourceTree = "<group>"; };
-		3355B8E41ECB248800FEC669 /* ScanLoginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanLoginCell.h; sourceTree = "<group>"; };
-		3355B8E51ECB248800FEC669 /* ScanLoginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanLoginCell.m; sourceTree = "<group>"; };
 		337B87061F19ACC700558A4D /* Loginapi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loginapi.h; sourceTree = "<group>"; };
 		337B87071F19ACC700558A4D /* Loginapi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Loginapi.m; sourceTree = "<group>"; };
 		337B87091F19AEC000558A4D /* headerview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = headerview.h; sourceTree = "<group>"; };
@@ -237,6 +235,8 @@
 		51525A18090113D9FD3D4CEC /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		620CE6E91962684584B108B6 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		83A3208438729A6BE0BC90C9 /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
+		9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanLoginCell.m; sourceTree = "<group>"; };
+		9188B7301FBDC7540082C1D1 /* ScanLoginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanLoginCell.h; sourceTree = "<group>"; };
 		AFD657F7862CA63028DDAE4C /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
 		C24D1EF0AB88F669658C4A45 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		D89959808109ABB127508691 /* libPods-Noder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Noder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,8 +330,8 @@
 				047FA47C1F91AC7700B485B9 /* MessageCountAPI.m */,
 				33EE43491EBC9B01009DC2D4 /* PersonalCenterViewController.h */,
 				33EE434A1EBC9B01009DC2D4 /* PersonalCenterViewController.m */,
-				3355B8E41ECB248800FEC669 /* ScanLoginCell.h */,
-				3355B8E51ECB248800FEC669 /* ScanLoginCell.m */,
+				9188B7301FBDC7540082C1D1 /* ScanLoginCell.h */,
+				9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */,
 				337B87091F19AEC000558A4D /* headerview.h */,
 				337B870A1F19AEC000558A4D /* headerview.m */,
 				040354791F627A7200257D90 /* NewpageAPI.h */,
@@ -640,7 +640,7 @@
 		334012221E4DF2CC00E92B48 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = Apress;
 				TargetAttributes = {
 					334012291E4DF2CD00E92B48 = {
@@ -801,7 +801,6 @@
 				043A43F11F75F539009F022E /* UnreadMessageCell.m in Sources */,
 				DF8429E31EF941AC00B8D011 /* LCPDisplayNode.m in Sources */,
 				DF8429DD1EF941AC00B8D011 /* LCCodeTextNode.m in Sources */,
-				3355B8E61ECB248900FEC669 /* ScanLoginCell.m in Sources */,
 				DF8429E71EF941AC00B8D011 /* NSMutableAttributedString+LCLineSpace.m in Sources */,
 				3395BFE31EE57AD9007E27F2 /* QandAViewController.m in Sources */,
 				3395BFEC1EE582E3007E27F2 /* AllTableViewCell.m in Sources */,
@@ -842,6 +841,7 @@
 				3395BFF51EE6D67B007E27F2 /* QandATableViewCell.m in Sources */,
 				33542A971F504B14005576F7 /* ShareAPI.m in Sources */,
 				DF8429DC1EF941AC00B8D011 /* LCCodeDisplayNode.m in Sources */,
+				9188B7311FBDC7540082C1D1 /* ScanLoginCell.m in Sources */,
 				DF8429E51EF941AC00B8D011 /* LCQuoteDisplayNode.m in Sources */,
 				3395BFDA1EE57A7B007E27F2 /* AllViewController.m in Sources */,
 				043A43F41F75F971009F022E /* ReadMessageCell.m in Sources */,
@@ -908,7 +908,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -916,7 +918,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -956,7 +962,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -964,7 +972,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;

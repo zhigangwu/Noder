@@ -27,23 +27,35 @@
     self.view.backgroundColor = [UIColor whiteColor];
     _pickLabel = [[UILabel alloc] init];
     
-    UIButton *rightButton = [[UIButton alloc] init];
-    rightButton.frame = CGRectMake(16, 32, 30, 20);
-    rightButton.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
-    [rightButton setTitle:@"发布" forState:UIControlStateNormal];
-    [rightButton setTitleColor:[UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0] forState:UIControlStateNormal];
-    [rightButton addTarget:self action:@selector(reless:) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
-    self.navigationItem.rightBarButtonItem = rightItem;
+//    UIButton *rightButton = [[UIButton alloc] init];
+//    rightButton.frame = CGRectMake(16, 32, 30, 20);
+//    rightButton.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
+//    [rightButton setTitle:@"发布" forState:UIControlStateNormal];
+//    [rightButton setTitleColor:[UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0] forState:UIControlStateNormal];
+//    [rightButton addTarget:self action:@selector(reless:) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+//    self.navigationItem.rightBarButtonItem = rightItem;
     
-    UIButton *leftButton = [[UIButton alloc] init];
-    leftButton.frame = CGRectMake(16, 32, 30, 21);
-    leftButton.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
-    [leftButton setTitle:@"取消" forState:UIControlStateNormal];
-    [leftButton setTitleColor:[UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0] forState:UIControlStateNormal];
-    [leftButton addTarget:self action:@selector(cancelandback) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
-    self.navigationItem.leftBarButtonItem = leftItem;
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"发布"
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:nil
+                                                                   action:@selector(reless:)];
+    self.navigationItem.rightBarButtonItem = rightButton;
+    
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"取消"
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:nil
+                                                                   action:@selector(cancelandback)];
+    self.navigationItem.leftBarButtonItem = leftButton;
+    
+//    UIButton *leftButton = [[UIButton alloc] init];
+//    leftButton.frame = CGRectMake(16, 32, 30, 21);
+//    leftButton.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:15];
+//    [leftButton setTitle:@"取消" forState:UIControlStateNormal];
+//    [leftButton setTitleColor:[UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0] forState:UIControlStateNormal];
+//    [leftButton addTarget:self action:@selector(cancelandback) forControlEvents:UIControlEventTouchUpInside];
+//    UIBarButtonItem *leftItem = [[UIBarButtonItem alloc] initWithCustomView:leftButton];
+//    self.navigationItem.leftBarButtonItem = leftItem;
     
     
     self.navigationController.navigationBar.translucent = NO;
@@ -256,7 +268,7 @@
 
 - (void)reless:(id)sender
 {
-    NSLog(@"%@",_pickLabel.text);
+    NSLog(@"%@",sender);
     NSString *accessToken = [ControllerManager shareManager].string;
     NewpageAPI *newAPI = [[NewpageAPI alloc] init];
     
@@ -276,7 +288,8 @@
 //                [self.navigationController popViewControllerAnimated:YES];
                 [self dismissViewControllerAnimated:YES completion:nil];
             } failure:NULL];
-        }
+        } else
+            NSLog(@"请登入！");
     }
     
 }

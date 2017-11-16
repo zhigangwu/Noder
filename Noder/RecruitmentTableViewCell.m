@@ -107,8 +107,7 @@
 }
 
 - (void)configWithItem:(NSDictionary *)dictionary{
-    
-    
+
     self.titleLabel.text = [dictionary objectForKey:@"title"];
     self.titleLabel.numberOfLines = 1;
     self.lineBreakMode = NSLineBreakByTruncatingTail;

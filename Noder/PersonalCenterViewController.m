@@ -91,7 +91,6 @@
     }];
 
     [logoImageView mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.top.equalTo(bottomview.mas_top).with.offset(77);
         make.centerX.mas_equalTo(bottomview);
         make.centerY.mas_equalTo(bottomview);
         make.size.mas_equalTo(CGSizeMake(60, 67));
@@ -122,7 +121,6 @@
     
     AssesstokenAPI *assAPI = [[AssesstokenAPI alloc] init];
 
-    
 //     必须传入为非空值
     if (self.QRCodeString != nil) {
         assAPI.requestArgument = @{@"accesstoken" : self.QRCodeString};
@@ -192,16 +190,15 @@
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
     return self.array.count;
-//    return _listArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    ScanLoginCell *scanlogincell = [tableView dequeueReusableCellWithIdentifier:@"ScanloginCell"];
+    ScanLoginCell *scanlogincell = [tableView dequeueReusableCellWithIdentifier:@"ScanloginCell" forIndexPath:indexPath];
     scanlogincell.textLabel.text = self.array[indexPath.row];
     scanlogincell.imageView.image = [UIImage imageNamed:@"Rectangle 4"];
     scanlogincell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -211,7 +208,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     return 56;
 }
 
