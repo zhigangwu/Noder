@@ -50,4 +50,11 @@
     [self.ImageView sd_setImageWithURL:dicationary[@"author"][@"avatar_url"]];
 }
 
+- (void)setFrame:(CGRect)frame
+{
+    frame.size.height -= 1;
+    [super setFrame:frame];
+}
+
+
 @end

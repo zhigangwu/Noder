@@ -16,21 +16,14 @@
 #import "MJExtension.h"
 #import "comContentAPI.h"
 
-
-
-
-@interface CommentPageViewController ()
-
-
-@property (nonatomic, strong) NSMutableArray *listArry;
-
-@end
-
 @implementation CommentPageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//取消系统自带的分割线
+    self.tableView.backgroundColor = [UIColor colorWithWhite:215 / 255.0 alpha:0.3];
+    
     self.rightButton = [[UIButton alloc] init];
     [self.view addSubview:_rightButton];
     _rightButton.frame = CGRectMake(0, 0, 40, 40);

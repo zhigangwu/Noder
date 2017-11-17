@@ -62,6 +62,10 @@
         make.right.equalTo(self.view);
         make.height.mas_equalTo(280);
     }];
+    
+    tableview.separatorStyle = UITableViewCellSeparatorStyleNone;//取消系统自带的分割线
+    tableview.backgroundColor = [UIColor colorWithWhite:215 / 255.0 alpha:0.3];
+    
     tableview.bounces = NO;
     tableview.delegate = self;
     tableview.dataSource = self;

@@ -112,7 +112,7 @@
     if (titleString.boolValue == true) {
         self.titleLabel.text = [dictionary objectForKey:@"title"];
         self.titleLabel.numberOfLines = 1;
-        self.lineBreakMode = NSLineBreakByTruncatingTail;
+//        self.lineBreakMode = NSLineBreakByTruncatingTail;
         CGSize max = CGSizeMake(200, 20);
         CGSize expect = [self.titleLabel sizeThatFits:max];
         self.titleLabel.frame = CGRectMake(79, 12, expect.width, expect.height);
@@ -140,6 +140,12 @@
     self.watchLabel.adjustsFontSizeToFitWidth = YES;
     self.watchLabel.text = [NSString stringWithFormat:@"%@",visit_count];
     self.messageLabel.text = [NSString stringWithFormat:@"%@",reply_count];
+}
+
+- (void)setFrame:(CGRect)frame
+{
+    frame.size.height -= 1;
+    [super setFrame:frame];
 }
 
 @end

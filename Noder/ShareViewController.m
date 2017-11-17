@@ -21,6 +21,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = [UIColor colorWithWhite:215 / 255.0 alpha:0.3];
+    
     ShareAPI *shareAPI = [[ShareAPI alloc] init];
     [shareAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
         NSDictionary *dicationary = request.responseJSONObject;

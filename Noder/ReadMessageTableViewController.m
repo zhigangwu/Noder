@@ -20,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//取消系统自带的分割线
+    self.tableView.backgroundColor = [UIColor colorWithWhite:215 / 255.0 alpha:0.3];
+    
     ReadMessageAPI *readMesAPi = [[ReadMessageAPI alloc] init];
 //    readMesAPi.requestArgument = @{@"accesstoken" : access,@"mdrender":};
     [readMesAPi startWithBlockSuccess:^(__kindof LCBaseRequest *request){

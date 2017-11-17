@@ -20,6 +20,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//取消系统自带的分割线
+    self.tableView.backgroundColor = [UIColor colorWithWhite:215 / 255.0 alpha:0.3];
+    
     NSString *access = [ControllerManager shareManager].string;
     
     UnreadMessageAPI *UnreadMesAPI = [[UnreadMessageAPI alloc] init];

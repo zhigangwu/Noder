@@ -10,9 +10,9 @@
 
 @interface RecentReplyCell : UITableViewCell
 
-@property (nonatomic, weak) UILabel *TitleLabel;
-@property (nonatomic, weak) UILabel *durationLabel;
-@property (nonatomic, retain) UIImageView *ImageView;
+@property (nonatomic, strong) UILabel *TitleLabel;
+@property (nonatomic, strong) UILabel *durationLabel;
+@property (nonatomic, strong) UIImageView *ImageView;
 
 - (void)configWithItem:(NSDictionary *)dic;
 
