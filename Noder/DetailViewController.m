@@ -29,14 +29,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIButton *commentButton = [[UIButton alloc] init];
-    commentButton.frame = CGRectMake(0, 0, 40, 40);
-    [self.view addSubview:commentButton];
-    [commentButton setTitle:@"评论" forState:UIControlStateNormal];
-    [commentButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [commentButton addTarget:self action:@selector(comment) forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:commentButton];
-    self.navigationItem.rightBarButtonItem = rightItem;
+    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply
+                                                                                   target:self
+                                                                                   action:@selector(reply)];
+    self.navigationItem.leftBarButtonItem = leftBarButton;
+    
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCompose
+                                                                                    target:self
+                                                                                    action:@selector(comment)];
+    self.navigationItem.rightBarButtonItem = rightBarButton;
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -88,6 +89,11 @@
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)reply
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

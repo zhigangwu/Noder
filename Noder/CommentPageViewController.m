@@ -42,10 +42,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource =self;
     
-//    self.tableView.fd_debugLogEnabled = YES;
-    NSString *string = @"CommentTableViewCell";
-    
-    [self.tableView registerClass:[CommentTableViewCell class] forCellReuseIdentifier:string];
+    [self.tableView registerClass:[CommentTableViewCell class] forCellReuseIdentifier:@"CommentTableViewCell"];
     
     NSDictionary *dic = [ControllerManager shareManager].dictionary;
     NSString *success = dic[@"success"];
@@ -102,8 +99,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    NSString *string = @"CommentTableViewCell";
-    CommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:string forIndexPath:indexPath];
+    CommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentTableViewCell" forIndexPath:indexPath];
     
     cell.delegate = self;
     
