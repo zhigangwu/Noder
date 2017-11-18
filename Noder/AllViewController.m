@@ -12,6 +12,7 @@
 #import "DetailViewController.h"
 #import "AssesstokenAPI.h"
 #import "TopicsApi.h"
+#import "Topic.h"
 
 @interface AllViewController ()
 
@@ -27,9 +28,9 @@
     
     TopicsApi *topApi = [[TopicsApi alloc] init];
     [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-        NSDictionary *dicationary = request.responseJSONObject;
+//        NSDictionary *dicationary = request.responseJSONObject;
         
-        self.array = dicationary[@"data"];
+        self.array = request.responseJSONObject;
         
         [self.tableView reloadData];
     }
@@ -57,12 +58,24 @@
 - (void)loadNewData{
 
     
-    __weak typeof(self) weakSelf = self;
+//    __weak typeof(self) weakSelf = self;
+//
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [weakSelf.tableView reloadData];
+//        [weakSelf.tableView.mj_header endRefreshing];
+//    });
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.tableView reloadData];
-        [weakSelf.tableView.mj_header endRefreshing];
-    });
+    TopicsApi *topApi = [[TopicsApi alloc] init];
+    [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        NSDictionary *dicationary = request.responseJSONObject;
+        
+        self.array = dicationary[@"data"];
+        
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+    }
+                          failure:NULL];
+    
 }
 
 - (void)loadNoreData{
@@ -89,9 +102,9 @@
 {
     AllTableViewCell *allTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"allTableViewCell" forIndexPath:indexPath];
     
-    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+    Topic *topic = [self.array objectAtIndex:indexPath.row];
     
-    [allTableViewCell configWithItem:dictionary];
+    [allTableViewCell configWithItem:topic];
     
     return allTableViewCell;
     

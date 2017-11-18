@@ -26,6 +26,7 @@
 #import "MessageCountAPI.h"
 #import "CollectionAPI.h"
 #import "Loginapi.h"
+#import "UIViewController+add.h"
 
 
 
@@ -183,7 +184,8 @@
 - (void)buttonaction{
     QRCodeViewController *QRCode = [[QRCodeViewController alloc] init];
     QRCode.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:QRCode animated:YES];
+//    [self.navigationController pushViewController:QRCode animated:YES];
+    [self wzgpush:QRCode];
 }
 
 - (void)logout

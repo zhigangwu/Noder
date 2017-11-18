@@ -123,7 +123,8 @@
 
 
 
-- (void)ZGupButtonaction:(id)sender{
+- (void)ZGupButtonaction:(id)sender
+{
 
     if (self.delegate && [self.delegate respondsToSelector:@selector(pushToNewPage:)]) {
         [self.delegate pushToNewPage:sender];

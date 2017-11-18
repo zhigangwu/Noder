@@ -94,6 +94,7 @@
         durationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
         durationLabel.textColor = [UIColor colorWithRed:120/255.0 green:120/255.0 blue:120/255.0 alpha:1/1.0];
         
+        
         watchLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
         watchLabel.textColor = [UIColor colorWithRed:120/255.0 green:120/255.0 blue:120/255.0 alpha:1/1.0];
 

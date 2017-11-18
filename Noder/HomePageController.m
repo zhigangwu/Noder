@@ -25,7 +25,7 @@
 - (NSArray *)titleData{
     
     if (!_titleData) {
-        _titleData = @[@"全部",@"精华",@"分享",@"问答",@"招聘",@"客户端测试"];
+        _titleData = @[@"全部",@"精华",@"分享",@"问答",@"招聘",@"测试"];
     }
     return _titleData;
 }

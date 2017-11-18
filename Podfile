@@ -14,9 +14,10 @@ pod 'SDWebImage', '~>3.8'
 pod 'AFNetworking'
 pod 'LCNetwork'
 pod 'TMCache'
-pod 'Texture', 
+pod 'Texture', '2.4'
 pod 'HTMLKit'                  #https://github.com/iabudiab/HTMLKit
 pod 'libextobjc'                            #https://github.com/jspahrsummers/libextobjc
+pod 'Mantle'
 #pod 'Reveal-SDK', :configurations => ['Debug']
 end
 

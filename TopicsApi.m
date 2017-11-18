@@ -7,6 +7,7 @@
 //
 
 #import "TopicsApi.h"
+#import "Topic.h"
 
 @implementation TopicsApi
 
@@ -22,6 +23,10 @@
     return LCRequestMethodGet;
 }
 
-
+- (id)responseProcess:(id)responseObject{
+//    return responseObject[@"data"];
+    NSArray *array = responseObject[@"data"];
+    return [MTLJSONAdapter modelsOfClass:[Topic class] fromJSONArray:array error:nil];
+}
 
 @end

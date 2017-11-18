@@ -19,7 +19,7 @@
 
 @interface CommentTableViewCell : UITableViewCell <UIWebViewDelegate>
 
-@property (nonatomic, assign) id<CommentCellDelegate> delegate;
+@property (nonatomic, weak) id<CommentCellDelegate> delegate;
 
 @property (nonatomic, strong) UIImageView *ZGimageView;
 @property (nonatomic, strong) UILabel *ZGloginname;

@@ -69,6 +69,9 @@
 		3395BFF81EE6D68A007E27F2 /* RecruitmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3395BFF71EE6D68A007E27F2 /* RecruitmentTableViewCell.m */; };
 		33C2CFBD1E7967370030257B /* HDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C2CFBC1E7967370030257B /* HDTableViewCell.m */; };
 		33EE434B1EBC9B01009DC2D4 /* PersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EE434A1EBC9B01009DC2D4 /* PersonalCenterViewController.m */; };
+		9107EDB81FC026B50008CA33 /* UIColor+add.m in Sources */ = {isa = PBXBuildFile; fileRef = 9107EDB71FC026B50008CA33 /* UIColor+add.m */; };
+		9107EDBB1FC027690008CA33 /* UIViewController+add.m in Sources */ = {isa = PBXBuildFile; fileRef = 9107EDBA1FC027690008CA33 /* UIViewController+add.m */; };
+		9107EDBE1FC02B030008CA33 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 9107EDBD1FC02B030008CA33 /* Topic.m */; };
 		9188B7311FBDC7540082C1D1 /* ScanLoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */; };
 		DF03208B1EF2A7BF0088F8EE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF03208A1EF2A7BF0088F8EE /* DetailViewController.m */; };
 		DF8429B11EF93D0600B8D011 /* DetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429B01EF93D0600B8D011 /* DetailApi.m */; };
@@ -235,6 +238,12 @@
 		51525A18090113D9FD3D4CEC /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		620CE6E91962684584B108B6 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		83A3208438729A6BE0BC90C9 /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
+		9107EDB61FC026B50008CA33 /* UIColor+add.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+add.h"; sourceTree = "<group>"; };
+		9107EDB71FC026B50008CA33 /* UIColor+add.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+add.m"; sourceTree = "<group>"; };
+		9107EDB91FC027690008CA33 /* UIViewController+add.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+add.h"; sourceTree = "<group>"; };
+		9107EDBA1FC027690008CA33 /* UIViewController+add.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+add.m"; sourceTree = "<group>"; };
+		9107EDBC1FC02B030008CA33 /* Topic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
+		9107EDBD1FC02B030008CA33 /* Topic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
 		9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanLoginCell.m; sourceTree = "<group>"; };
 		9188B7301FBDC7540082C1D1 /* ScanLoginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanLoginCell.h; sourceTree = "<group>"; };
 		AFD657F7862CA63028DDAE4C /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
@@ -350,6 +359,10 @@
 				337F22241F13B6D100C8488A /* NETWorkConnection.m */,
 				04B15AF01EFA54AE00C01CA4 /* QRCodeViewController.h */,
 				04B15AF11EFA54AE00C01CA4 /* QRCodeViewController.m */,
+				9107EDB61FC026B50008CA33 /* UIColor+add.h */,
+				9107EDB71FC026B50008CA33 /* UIColor+add.m */,
+				9107EDB91FC027690008CA33 /* UIViewController+add.h */,
+				9107EDBA1FC027690008CA33 /* UIViewController+add.m */,
 				04599F0B1F95DF9600F4883C /* New Group */,
 				045DE86C1F99BF6600CA6A4A /* SetPage */,
 			);
@@ -479,6 +492,8 @@
 		3395BFCE1EE57988007E27F2 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				9107EDBC1FC02B030008CA33 /* Topic.h */,
+				9107EDBD1FC02B030008CA33 /* Topic.m */,
 				3395BFCB1EE443A9007E27F2 /* HomePageController.h */,
 				3395BFCC1EE443A9007E27F2 /* HomePageController.m */,
 				3395BFD81EE57A7B007E27F2 /* AllViewController.h */,
@@ -761,7 +776,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -778,6 +793,7 @@
 				DF8429E41EF941AC00B8D011 /* LCPTextNode.m in Sources */,
 				040A18981F6660680094D4C9 /* CommentTableViewCell.m in Sources */,
 				334012351E4DF2D100E92B48 /* ViewController.m in Sources */,
+				9107EDB81FC026B50008CA33 /* UIColor+add.m in Sources */,
 				3395BFCD1EE443A9007E27F2 /* HomePageController.m in Sources */,
 				040471381F5FEBAD00BBDA14 /* CollectionCell.m in Sources */,
 				0403547B1F627A7200257D90 /* NewpageAPI.m in Sources */,
@@ -803,7 +819,9 @@
 				DF8429DD1EF941AC00B8D011 /* LCCodeTextNode.m in Sources */,
 				DF8429E71EF941AC00B8D011 /* NSMutableAttributedString+LCLineSpace.m in Sources */,
 				3395BFE31EE57AD9007E27F2 /* QandAViewController.m in Sources */,
+				9107EDBE1FC02B030008CA33 /* Topic.m in Sources */,
 				3395BFEC1EE582E3007E27F2 /* AllTableViewCell.m in Sources */,
+				9107EDBB1FC027690008CA33 /* UIViewController+add.m in Sources */,
 				DF8429DF1EF941AC00B8D011 /* LCHtmlNode.m in Sources */,
 				04C4B88E1F57A14100FA139F /* NewPageTableViewController.m in Sources */,
 				DF8429E01EF941AC00B8D011 /* LCLIDisplayNode.m in Sources */,

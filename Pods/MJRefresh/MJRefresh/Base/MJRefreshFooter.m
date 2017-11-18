@@ -59,9 +59,7 @@
 #pragma mark - 公共方法
 - (void)endRefreshingWithNoMoreData
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.state = MJRefreshStateNoMoreData;
-    });
+    self.state = MJRefreshStateNoMoreData;
 }
 
 - (void)noticeNoMoreData
@@ -71,8 +69,6 @@
 
 - (void)resetNoMoreData
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        self.state = MJRefreshStateIdle;
-    });
+    self.state = MJRefreshStateIdle;
 }
 @end
