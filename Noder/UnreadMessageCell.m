@@ -9,6 +9,7 @@
 #import "UnreadMessageCell.h"
 #import "Masonry.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIColor+textColor.h"
 
 
 @implementation UnreadMessageCell
@@ -24,8 +25,8 @@
         [self.contentView addSubview:_imageview];
 
         
-        _TitleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
-        _TitleLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
+        self.TitleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
+        self.TitleLabel.textColor = [UIColor textColor];
         
         [_imageview.layer setCornerRadius:25.85];
         [_imageview.layer setMasksToBounds:YES];

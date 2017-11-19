@@ -26,7 +26,8 @@
 #import "MessageCountAPI.h"
 #import "CollectionAPI.h"
 #import "Loginapi.h"
-#import "UIViewController+add.h"
+#import "UIColor+background.h"
+#import "UIColor+tableBackground.h"
 
 
 
@@ -45,7 +46,7 @@
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.title = @"个人中心";
     
-    self.view.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1/1.0];
+    self.view.backgroundColor = [UIColor backgroundcolor];
     
     _Header = [[headerview alloc] init];
     [self.view addSubview:_Header];
@@ -65,7 +66,7 @@
     }];
     
     tableview.separatorStyle = UITableViewCellSeparatorStyleNone;//取消系统自带的分割线
-    tableview.backgroundColor = [UIColor colorWithWhite:215 / 255.0 alpha:0.3];
+    tableview.backgroundColor = [UIColor tableBackground];
     
     tableview.bounces = NO;
     tableview.delegate = self;
@@ -87,7 +88,7 @@
     versionlabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:13];
     versionlabel.textColor = [UIColor colorWithRed:171/255.0 green:171/255.0 blue:171/255.0 alpha:1/1.0];
     logoImageView.image = [UIImage imageNamed:@"N"];
-    bottomview.backgroundColor = [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1/1.0];
+    bottomview.backgroundColor = [UIColor backgroundcolor];
     
     [bottomview mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(tableview.mas_bottom);
@@ -184,8 +185,7 @@
 - (void)buttonaction{
     QRCodeViewController *QRCode = [[QRCodeViewController alloc] init];
     QRCode.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:QRCode animated:YES];
-    [self wzgpush:QRCode];
+    [self.navigationController pushViewController:QRCode animated:YES];
 }
 
 - (void)logout

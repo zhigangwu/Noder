@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSDate+TimeAgo.h"
+#import "UIColor+textColor.h"
 
 @implementation HDTableViewCell
 
@@ -89,17 +90,16 @@
         titleLabel.numberOfLines = 0;
         titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
-        titleLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
+        titleLabel.textColor = [UIColor textColor];
 
         durationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
-        durationLabel.textColor = [UIColor colorWithRed:120/255.0 green:120/255.0 blue:120/255.0 alpha:1/1.0];
-        
+        durationLabel.textColor = [UIColor textColor];
         
         watchLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
-        watchLabel.textColor = [UIColor colorWithRed:120/255.0 green:120/255.0 blue:120/255.0 alpha:1/1.0];
+        watchLabel.textColor = [UIColor textColor];
 
         messageLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
-        messageLabel.textColor = [UIColor colorWithRed:120/255.0 green:120/255.0 blue:120/255.0 alpha:1/1.0];
+        messageLabel.textColor = [UIColor textColor];
 
         
 
@@ -113,7 +113,7 @@
     
     self.titleLabel.text = [dictionary objectForKey:@"title"];
     self.titleLabel.numberOfLines = 1;
-    self.lineBreakMode = NSLineBreakByTruncatingTail;
+//    self.lineBreakMode = NSLineBreakByTruncatingTail;
     CGSize max = CGSizeMake(200, 20);
     CGSize expect = [self.titleLabel sizeThatFits:max];
     self.titleLabel.frame = CGRectMake(79, 12, expect.width, expect.height);

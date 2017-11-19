@@ -11,6 +11,7 @@
 #import "JobAPI.h"
 #import "DetailViewController.h"
 #import "MJRefresh.h"
+#import "UIColor+tableBackground.h"
 
 @interface RecruitmentViewController ()
 
@@ -22,7 +23,7 @@
     [super viewDidLoad];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor colorWithWhite:215 / 255.0 alpha:0.3];
+    self.tableView.backgroundColor = [UIColor tableBackground];
     
     JobAPI *jobAPI = [[JobAPI alloc] init];
     [jobAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){

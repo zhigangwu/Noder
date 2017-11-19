@@ -8,6 +8,8 @@
 
 #import "RecentReplyCell.h"
 #import "Masonry.h"
+#import "UIColor+textColor.h"
+#import "UIColor+textColorB.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -41,14 +43,14 @@
         }];
         
         self.TitleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
-        self.TitleLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
+        self.TitleLabel.textColor = [UIColor textColor];
         
         [self.ImageView.layer setCornerRadius:25.85];
         [self.ImageView.layer setMasksToBounds:YES];
         
         self.durationLabel.text = @"4小时";
         self.durationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
-        self.durationLabel.textColor = [UIColor colorWithRed:120/255.0 green:120/255.0 blue:120/255.0 alpha:1/1.0];
+        self.durationLabel.textColor = [UIColor textColorB];
 
     }
     return self;

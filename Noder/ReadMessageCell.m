@@ -9,6 +9,7 @@
 #import "ReadMessageCell.h"
 #import "Masonry.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "UIColor+textColor.h"
 
 @implementation ReadMessageCell
 
@@ -22,7 +23,7 @@
         [self.contentView addSubview:imageview];
         
         title.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
-        title.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
+        title.textColor = [UIColor textColor];
         
         [imageview.layer setCornerRadius:25.85];
         [imageview.layer setMasksToBounds:YES];

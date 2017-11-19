@@ -15,6 +15,7 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "MJExtension.h"
 #import "comContentAPI.h"
+#import "UIColor+tableBackground.h"
 
 @implementation CommentPageViewController
 
@@ -22,7 +23,7 @@
     [super viewDidLoad];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//取消系统自带的分割线
-    self.tableView.backgroundColor = [UIColor colorWithWhite:215 / 255.0 alpha:0.3];
+    self.tableView.backgroundColor = [UIColor tableBackground];
     
     self.rightButton = [[UIButton alloc] init];
     [self.view addSubview:_rightButton];

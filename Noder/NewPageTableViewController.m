@@ -12,6 +12,8 @@
 #import "AssesstokenAPI.h"
 #import "NewpageAPI.h"
 #import "PlateSelectionViewController.h"
+#import "UIColor+TitleColor.h"
+#import "UIColor+textColor.h"
 
 #import "ControllerManager.h"
 
@@ -119,7 +121,7 @@
     self.TitleView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     _TitleView.delegate = self;
     self.TitleView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:20];
-    self.TitleView.textColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1/1.0];
+    self.TitleView.textColor = [UIColor titleColor];
     self.TitleView.text = @"输入标题";
 
     imageViewA.image = [UIImage imageNamed:@"Line"];
@@ -127,7 +129,7 @@
     
     self.choseLabel.text = @"选择板块";
     self.choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-    self.choseLabel.textColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1/1.0];
+    self.choseLabel.textColor = [UIColor titleColor];
     [self.choseButton addTarget:self action:@selector(plateSelection:) forControlEvents:UIControlEventTouchUpInside];
     
     self.imageview.image = [UIImage imageNamed:@"Rectangle 2"];
@@ -135,7 +137,7 @@
     self.ContentView.delegate = self;
     self.TitleView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
     _ContentView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
-    self.ContentView.textColor = [UIColor colorWithRed:200/255.0 green:200/255.0 blue:200/255.0 alpha:1/1.0];
+    self.ContentView.textColor = [UIColor titleColor];
     self.ContentView.text = @"输入内容";
     
     UIToolbar * topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
@@ -171,34 +173,34 @@
 
 - (void)share:(NSNotification *)notification
 {
-    _choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-    _choseLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
+    self.choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
+    self.choseLabel.textColor = [UIColor textColor];
     self.choseLabel.text = notification.object;
-    _pickLabel.text = @"share";
+    self.pickLabel.text = @"share";
 }
 
 - (void)ask:(NSNotification *)notification
 {
-    _choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-    _choseLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
+    self.choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
+    self.choseLabel.textColor = [UIColor textColor];
     self.choseLabel.text = notification.object;
-    _pickLabel.text = @"ask";
+    self.pickLabel.text = @"ask";
 }
 
 - (void)job:(NSNotification *)notification
 {
-    _choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-    _choseLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
+    self.choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
+    self.choseLabel.textColor = [UIColor textColor];
     self.choseLabel.text = notification.object;
-    _pickLabel.text = @"job";
+    self.pickLabel.text = @"job";
 }
 
 - (void)dev:(NSNotification *)notification
 {
-    _choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-    _choseLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
+    self.choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
+    self.choseLabel.textColor = [UIColor textColor];
     self.choseLabel.text = notification.object;
-    _pickLabel.text = @"dev";
+    self.pickLabel.text = @"dev";
 }
 
 - (void)dealloc{
@@ -215,7 +217,6 @@
 {
     PlateSelectionViewController *plateSelection = [[PlateSelectionViewController alloc] init];
     self.definesPresentationContext = YES;
-//    plateSelection.view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.4];
     plateSelection.view.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.4];
     plateSelection.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     [self presentViewController:plateSelection animated:YES completion:nil];
@@ -233,14 +234,14 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    if ([_TitleView.text isEqualToString:@"输入标题"] ) {
-        _TitleView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:20];
-        _TitleView.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
-        _TitleView.text = @"";
-    } else if ([_ContentView.text isEqualToString:@"输入内容"]){
-        _ContentView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
-        _ContentView.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
-        _ContentView.text = @"";
+    if ([self.TitleView.text isEqualToString:@"输入标题"] ) {
+        self.TitleView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:20];
+        self.TitleView.textColor = [UIColor textColor];
+        self.TitleView.text = @"";
+    } else if ([self.ContentView.text isEqualToString:@"输入内容"]){
+        self.ContentView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
+        self.ContentView.textColor = [UIColor textColor];
+        self.ContentView.text = @"";
     }
 }
 

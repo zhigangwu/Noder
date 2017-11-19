@@ -13,19 +13,17 @@
 @interface Topic : MTLModel<MTLJSONSerializing>
 
 @property (nonatomic, strong) NSString *title;
-@property (nonatomic, strong) Author *author;
-@property (nonatomic, strong) NSString *
+@property (nonatomic, strong) NSString *id;
+//@property (nonatomic, strong) Author *author;
 
 
 @end
 
 
 
-@interface Author : MTLModel<MTLJSONSerializing>
-
-@property (nonatomic, strong) NSURL *avatar_url;
-
-
-
-@end
+//@interface Author : MTLModel<MTLJSONSerializing>
+//
+//@property (nonatomic, strong) NSURL *avatar_url;
+//
+//@end
 

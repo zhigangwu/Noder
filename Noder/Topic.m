@@ -17,14 +17,15 @@
 @end
 
 
-@implementation Author
+//@implementation Author
+//
+//+ (NSDictionary *)JSONKeyPathsByPropertyKey{
+//    return [NSDictionary mtl_identityPropertyMapWithModel:self];
+//}
+//
+//
+//+ (NSValueTransformer *)avatar_urlJSONTransformer{
+//    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+//}
+//@end
 
-+ (NSDictionary *)JSONKeyPathsByPropertyKey{
-    return [NSDictionary mtl_identityPropertyMapWithModel:self];
-}
-
-
-+ (NSValueTransformer *)avatar_urlJSONTransformer{
-    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
-}
-@end

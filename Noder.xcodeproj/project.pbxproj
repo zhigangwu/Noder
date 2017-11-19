@@ -69,10 +69,13 @@
 		3395BFF81EE6D68A007E27F2 /* RecruitmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3395BFF71EE6D68A007E27F2 /* RecruitmentTableViewCell.m */; };
 		33C2CFBD1E7967370030257B /* HDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C2CFBC1E7967370030257B /* HDTableViewCell.m */; };
 		33EE434B1EBC9B01009DC2D4 /* PersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EE434A1EBC9B01009DC2D4 /* PersonalCenterViewController.m */; };
-		9107EDB81FC026B50008CA33 /* UIColor+add.m in Sources */ = {isa = PBXBuildFile; fileRef = 9107EDB71FC026B50008CA33 /* UIColor+add.m */; };
-		9107EDBB1FC027690008CA33 /* UIViewController+add.m in Sources */ = {isa = PBXBuildFile; fileRef = 9107EDBA1FC027690008CA33 /* UIViewController+add.m */; };
 		9107EDBE1FC02B030008CA33 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 9107EDBD1FC02B030008CA33 /* Topic.m */; };
 		9188B7311FBDC7540082C1D1 /* ScanLoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */; };
+		9199C99F1FC114D4008FDA37 /* UIColor+background.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C99E1FC114D4008FDA37 /* UIColor+background.m */; };
+		9199C9A21FC1171F008FDA37 /* UIColor+TitleColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9A11FC1171F008FDA37 /* UIColor+TitleColor.m */; };
+		9199C9A51FC11BE6008FDA37 /* UIColor+textColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9A41FC11BE6008FDA37 /* UIColor+textColor.m */; };
+		9199C9A81FC11FDB008FDA37 /* UIColor+textColorB.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9A71FC11FDB008FDA37 /* UIColor+textColorB.m */; };
+		9199C9AB1FC12297008FDA37 /* UIColor+tableBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9AA1FC12297008FDA37 /* UIColor+tableBackground.m */; };
 		DF03208B1EF2A7BF0088F8EE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF03208A1EF2A7BF0088F8EE /* DetailViewController.m */; };
 		DF8429B11EF93D0600B8D011 /* DetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429B01EF93D0600B8D011 /* DetailApi.m */; };
 		DF8429DC1EF941AC00B8D011 /* LCCodeDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429C11EF941AC00B8D011 /* LCCodeDisplayNode.m */; };
@@ -238,14 +241,20 @@
 		51525A18090113D9FD3D4CEC /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		620CE6E91962684584B108B6 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		83A3208438729A6BE0BC90C9 /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
-		9107EDB61FC026B50008CA33 /* UIColor+add.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+add.h"; sourceTree = "<group>"; };
-		9107EDB71FC026B50008CA33 /* UIColor+add.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+add.m"; sourceTree = "<group>"; };
-		9107EDB91FC027690008CA33 /* UIViewController+add.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+add.h"; sourceTree = "<group>"; };
-		9107EDBA1FC027690008CA33 /* UIViewController+add.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+add.m"; sourceTree = "<group>"; };
 		9107EDBC1FC02B030008CA33 /* Topic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
 		9107EDBD1FC02B030008CA33 /* Topic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
 		9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanLoginCell.m; sourceTree = "<group>"; };
 		9188B7301FBDC7540082C1D1 /* ScanLoginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanLoginCell.h; sourceTree = "<group>"; };
+		9199C99D1FC114D4008FDA37 /* UIColor+background.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+background.h"; sourceTree = "<group>"; };
+		9199C99E1FC114D4008FDA37 /* UIColor+background.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+background.m"; sourceTree = "<group>"; };
+		9199C9A01FC1171F008FDA37 /* UIColor+TitleColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+TitleColor.h"; sourceTree = "<group>"; };
+		9199C9A11FC1171F008FDA37 /* UIColor+TitleColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TitleColor.m"; sourceTree = "<group>"; };
+		9199C9A31FC11BE6008FDA37 /* UIColor+textColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+textColor.h"; sourceTree = "<group>"; };
+		9199C9A41FC11BE6008FDA37 /* UIColor+textColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+textColor.m"; sourceTree = "<group>"; };
+		9199C9A61FC11FDB008FDA37 /* UIColor+textColorB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+textColorB.h"; sourceTree = "<group>"; };
+		9199C9A71FC11FDB008FDA37 /* UIColor+textColorB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+textColorB.m"; sourceTree = "<group>"; };
+		9199C9A91FC12297008FDA37 /* UIColor+tableBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+tableBackground.h"; sourceTree = "<group>"; };
+		9199C9AA1FC12297008FDA37 /* UIColor+tableBackground.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+tableBackground.m"; sourceTree = "<group>"; };
 		AFD657F7862CA63028DDAE4C /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
 		C24D1EF0AB88F669658C4A45 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		D89959808109ABB127508691 /* libPods-Noder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Noder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -359,10 +368,6 @@
 				337F22241F13B6D100C8488A /* NETWorkConnection.m */,
 				04B15AF01EFA54AE00C01CA4 /* QRCodeViewController.h */,
 				04B15AF11EFA54AE00C01CA4 /* QRCodeViewController.m */,
-				9107EDB61FC026B50008CA33 /* UIColor+add.h */,
-				9107EDB71FC026B50008CA33 /* UIColor+add.m */,
-				9107EDB91FC027690008CA33 /* UIViewController+add.h */,
-				9107EDBA1FC027690008CA33 /* UIViewController+add.m */,
 				04599F0B1F95DF9600F4883C /* New Group */,
 				045DE86C1F99BF6600CA6A4A /* SetPage */,
 			);
@@ -448,6 +453,16 @@
 				04005A811F6CC506007D8603 /* ControllerManager.m */,
 				045912821F949F4900112A8F /* MMJDIYHeader.h */,
 				045912831F949F4900112A8F /* MMJDIYHeader.m */,
+				9199C99D1FC114D4008FDA37 /* UIColor+background.h */,
+				9199C99E1FC114D4008FDA37 /* UIColor+background.m */,
+				9199C9A01FC1171F008FDA37 /* UIColor+TitleColor.h */,
+				9199C9A11FC1171F008FDA37 /* UIColor+TitleColor.m */,
+				9199C9A31FC11BE6008FDA37 /* UIColor+textColor.h */,
+				9199C9A41FC11BE6008FDA37 /* UIColor+textColor.m */,
+				9199C9A61FC11FDB008FDA37 /* UIColor+textColorB.h */,
+				9199C9A71FC11FDB008FDA37 /* UIColor+textColorB.m */,
+				9199C9A91FC12297008FDA37 /* UIColor+tableBackground.h */,
+				9199C9AA1FC12297008FDA37 /* UIColor+tableBackground.m */,
 				334012361E4DF2D100E92B48 /* Main.storyboard */,
 				04005A7F1F6CC492007D8603 /* Main */,
 				DF8429BF1EF941AC00B8D011 /* HTMLNode */,
@@ -793,7 +808,6 @@
 				DF8429E41EF941AC00B8D011 /* LCPTextNode.m in Sources */,
 				040A18981F6660680094D4C9 /* CommentTableViewCell.m in Sources */,
 				334012351E4DF2D100E92B48 /* ViewController.m in Sources */,
-				9107EDB81FC026B50008CA33 /* UIColor+add.m in Sources */,
 				3395BFCD1EE443A9007E27F2 /* HomePageController.m in Sources */,
 				040471381F5FEBAD00BBDA14 /* CollectionCell.m in Sources */,
 				0403547B1F627A7200257D90 /* NewpageAPI.m in Sources */,
@@ -805,6 +819,7 @@
 				043991271F72393300882344 /* PersonalComViewController.m in Sources */,
 				0477218D1F6BA13A00C31B6F /* comContentAPI.m in Sources */,
 				04005A821F6CC506007D8603 /* ControllerManager.m in Sources */,
+				9199C99F1FC114D4008FDA37 /* UIColor+background.m in Sources */,
 				DF8429E91EF941AC00B8D011 /* UIColor+LCColor.m in Sources */,
 				DF8429E11EF941AC00B8D011 /* LCLiTextNode.m in Sources */,
 				337F221F1F0D184500C8488A /* AssesstokenAPI.m in Sources */,
@@ -821,7 +836,6 @@
 				3395BFE31EE57AD9007E27F2 /* QandAViewController.m in Sources */,
 				9107EDBE1FC02B030008CA33 /* Topic.m in Sources */,
 				3395BFEC1EE582E3007E27F2 /* AllTableViewCell.m in Sources */,
-				9107EDBB1FC027690008CA33 /* UIViewController+add.m in Sources */,
 				DF8429DF1EF941AC00B8D011 /* LCHtmlNode.m in Sources */,
 				04C4B88E1F57A14100FA139F /* NewPageTableViewController.m in Sources */,
 				DF8429E01EF941AC00B8D011 /* LCLIDisplayNode.m in Sources */,
@@ -831,6 +845,7 @@
 				3335F02C1ED46E8800FBB58D /* RecentReplyCell.m in Sources */,
 				33542A9D1F504D77005576F7 /* JobAPI.m in Sources */,
 				047FA47D1F91AC7700B485B9 /* MessageCountAPI.m in Sources */,
+				9199C9AB1FC12297008FDA37 /* UIColor+tableBackground.m in Sources */,
 				3395BFDD1EE57A9C007E27F2 /* EssenceViewController.m in Sources */,
 				3335F0321ED470DC00FBB58D /* RecentTopicsCell.m in Sources */,
 				DF8429E61EF941AC00B8D011 /* LCULDisplayNode.m in Sources */,
@@ -838,11 +853,14 @@
 				3395BFF21EE6D66B007E27F2 /* ShareTableViewCell.m in Sources */,
 				3395BFEF1EE58856007E27F2 /* EssenceTableViewCell.m in Sources */,
 				045912841F949F4900112A8F /* MMJDIYHeader.m in Sources */,
+				9199C9A21FC1171F008FDA37 /* UIColor+TitleColor.m in Sources */,
 				3335F0261ED31F3B00FBB58D /* RecentReplyViewController.m in Sources */,
 				334012321E4DF2D000E92B48 /* AppDelegate.m in Sources */,
 				334F3D2E1E509D12000D0EBF /* TopicsApi.m in Sources */,
 				040354781F62317E00257D90 /* DevTableViewCell.m in Sources */,
+				9199C9A51FC11BE6008FDA37 /* UIColor+textColor.m in Sources */,
 				DF8429E21EF941AC00B8D011 /* LCNetworkImageNode.m in Sources */,
+				9199C9A81FC11FDB008FDA37 /* UIColor+textColorB.m in Sources */,
 				043A43FA1F75F99B009F022E /* ReadMessageAPI.m in Sources */,
 				3340122F1E4DF2D000E92B48 /* main.m in Sources */,
 				DF03208B1EF2A7BF0088F8EE /* DetailViewController.m in Sources */,

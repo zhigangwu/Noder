@@ -13,6 +13,7 @@
 #import "AssesstokenAPI.h"
 #import "TopicsApi.h"
 #import "Topic.h"
+#import "UIColor+tableBackground.h"
 
 @interface AllViewController ()
 
@@ -24,7 +25,7 @@
     [super viewDidLoad];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//取消系统自带的分割线
-    self.tableView.backgroundColor = [UIColor colorWithWhite:215 / 255.0 alpha:0.3];
+    self.tableView.backgroundColor = [UIColor tableBackground];
     
     TopicsApi *topApi = [[TopicsApi alloc] init];
     [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
@@ -56,14 +57,6 @@
 }
     
 - (void)loadNewData{
-
-    
-//    __weak typeof(self) weakSelf = self;
-//
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [weakSelf.tableView reloadData];
-//        [weakSelf.tableView.mj_header endRefreshing];
-//    });
     
     TopicsApi *topApi = [[TopicsApi alloc] init];
     [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
@@ -118,7 +111,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailViewController *vc = [[DetailViewController alloc] init];
-    vc.detailId = [self.array[indexPath.row] objectForKey:@"id"];
+    Topic *topic = [[Topic alloc] init];
+    vc.detailId = [self.array[indexPath.row] objectForKey:topic.id];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

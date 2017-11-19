@@ -10,6 +10,7 @@
 #import "CollectionAPI.h"
 #import "CollectionCell.h"
 #import "DetailViewController.h"
+#import "UIColor+tableBackground.h"
 
 @interface CollectionTableViewController ()
 
@@ -21,7 +22,7 @@
     [super viewDidLoad];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//取消系统自带的分割线
-    self.tableView.backgroundColor = [UIColor colorWithWhite:215 / 255.0 alpha:0.3];
+    self.tableView.backgroundColor = [UIColor tableBackground];
     
     CollectionAPI *collectionAPI = [[CollectionAPI alloc] init];
     collectionAPI.loginname = self.collectionLoginname;

@@ -11,6 +11,7 @@
 #import "AskAPI.h"
 #import "DetailViewController.h"
 #import "MJRefresh.h"
+#import "UIColor+tableBackground.h"
 
 @interface QandAViewController ()
 
@@ -22,7 +23,7 @@
     [super viewDidLoad];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor colorWithWhite:215 / 255.0 alpha:0.3];
+    self.tableView.backgroundColor = [UIColor tableBackground];
     
     AskAPI *askAPi = [[AskAPI alloc] init];
     [askAPi startWithBlockSuccess:^(__kindof LCBaseRequest *request){

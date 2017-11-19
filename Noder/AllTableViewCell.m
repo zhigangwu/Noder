@@ -11,6 +11,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSDate+TimeAgo.h"
 #import "Topic.h"
+#import "UIColor+textColor.h"
+#import "UIColor+textColorB.h"
 
 @implementation AllTableViewCell
 
@@ -100,16 +102,16 @@
         titleLabel.numberOfLines = 0;
         titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
-        titleLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
+        titleLabel.textColor = [UIColor textColor];
         
         durationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
-        durationLabel.textColor = [UIColor colorWithRed:120/255.0 green:120/255.0 blue:120/255.0 alpha:1/1.0];
+        durationLabel.textColor = [UIColor textColorB];
         
         watchLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
-        watchLabel.textColor = [UIColor colorWithRed:120/255.0 green:120/255.0 blue:120/255.0 alpha:1/1.0];
+        watchLabel.textColor = [UIColor textColorB];
         
         messageLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
-        messageLabel.textColor = [UIColor colorWithRed:120/255.0 green:120/255.0 blue:120/255.0 alpha:1/1.0];
+        messageLabel.textColor = [UIColor textColorB];
         
     }
     
@@ -125,7 +127,7 @@
     CGSize expect = [self.titleLabel sizeThatFits:max];
     self.titleLabel.frame = CGRectMake(79, 12, expect.width, expect.height);
     
-    [self.imageVIew sd_setImageWithURL:topci.author.avatar_url];
+//    [self.imageVIew sd_setImageWithURL:topci.author.avatar_url];
 //
 //    NSString *topstring = dictionary[@"top"];
 //
