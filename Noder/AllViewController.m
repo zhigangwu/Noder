@@ -12,8 +12,9 @@
 #import "DetailViewController.h"
 #import "AssesstokenAPI.h"
 #import "TopicsApi.h"
-#import "Topic.h"
 #import "UIColor+tableBackground.h"
+
+
 
 @interface AllViewController ()
 
@@ -30,9 +31,13 @@
     TopicsApi *topApi = [[TopicsApi alloc] init];
     [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
 //        NSDictionary *dicationary = request.responseJSONObject;
-        
+//        NSLog(@"%@",dicationary);
+//        self.array = dicationary[@"data"];
+
         self.array = request.responseJSONObject;
+        NSLog(@"self.array = %@",self.array);
         
+
         [self.tableView reloadData];
     }
                           failure:NULL];
@@ -95,9 +100,11 @@
 {
     AllTableViewCell *allTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"allTableViewCell" forIndexPath:indexPath];
     
-    Topic *topic = [self.array objectAtIndex:indexPath.row];
+//    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+    AllViewDataModel *allModel = [self.array objectAtIndex:indexPath.row];
     
-    [allTableViewCell configWithItem:topic];
+//    [allTableViewCell configWithItem:dictionary];
+    [allTableViewCell configWithItem:allModel];
     
     return allTableViewCell;
     
@@ -111,8 +118,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailViewController *vc = [[DetailViewController alloc] init];
-    Topic *topic = [[Topic alloc] init];
-    vc.detailId = [self.array[indexPath.row] objectForKey:topic.id];
+//    Topic *topic = [[Topic alloc] init];
+    vc.detailId = [self.array[indexPath.row] objectForKey:@"id"];
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

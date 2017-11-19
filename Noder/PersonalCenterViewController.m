@@ -133,6 +133,8 @@
         
         [assAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
             NSDictionary *dic = request.responseJSONObject;
+//            Topic *topic = request.responseJSONObject;
+//            NSLog(@"topic = %d",topic.id);
             [ControllerManager shareManager].dic = dic;
             
             self.dictionary = dic;

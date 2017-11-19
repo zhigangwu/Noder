@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AllViewDataModel.h"
 
 @interface AllTableViewCell : UITableViewCell
 
@@ -24,7 +25,7 @@
 
 @property (nonatomic, weak) UILabel *durationLabel;//时长
 
-- (void)configWithItem:(NSDictionary *)dictionary;
+- (void)configWithItem:(AllViewDataModel *)allModel;
 
 
 @end

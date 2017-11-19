@@ -10,9 +10,10 @@
 #import "Masonry.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSDate+TimeAgo.h"
-#import "Topic.h"
 #import "UIColor+textColor.h"
 #import "UIColor+textColorB.h"
+
+#import "AllViewDataModel.h"
 
 @implementation AllTableViewCell
 
@@ -118,45 +119,33 @@
     return self;
 }
 
-- (void)configWithItem:(Topic *)topci{
+- (void)configWithItem:(AllViewDataModel *)allModel{
     
-    self.titleLabel.text = topci.title;
+//    self.titleLabel.text = [dictionary objectForKey:@"title"];
+    self.titleLabel.text = allModel.title;
     self.titleLabel.numberOfLines = 1;
 //    self.lineBreakMode = NSLineBreakByTruncatingTail;
     CGSize max = CGSizeMake(200, 20);
     CGSize expect = [self.titleLabel sizeThatFits:max];
     self.titleLabel.frame = CGRectMake(79, 12, expect.width, expect.height);
     
-//    [self.imageVIew sd_setImageWithURL:topci.author.avatar_url];
-//
-//    NSString *topstring = dictionary[@"top"];
-//
-//    if ( topstring.boolValue == true) {
-//        self.topImage.image = [UIImage imageNamed:@"Group"];
-//    }
-//
-//
-//    NSString *dateStr = dictionary[@"last_reply_at"];
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
-//    NSDate *date = [dateFormatter dateFromString:dateStr];
-//    self.durationLabel.text = [date timeAgo];
-//
-//
-//
-//    // eye message 图标
-//    self.eyeImageView.image = [UIImage imageNamed:@"Group-1.png"];
-//    self.messageIamgeView.image = [UIImage imageNamed:@"message.png"];
-//
-//    // watchLabel
-//    NSNumber *visit_count = [dictionary objectForKey:@"visit_count"];
-//    NSNumber *reply_count = [dictionary objectForKey:@"reply_count"];
-//
-//
-//
-//    self.watchLabel.adjustsFontSizeToFitWidth = YES;
-//    self.watchLabel.text = [NSString stringWithFormat:@"%@",visit_count];
-//    self.messageLabel.text = [NSString stringWithFormat:@"%@",reply_count];
+    [self.imageVIew sd_setImageWithURL:allModel.author.avatar_url];
+
+    if (allModel.top == true) {
+        self.topImage.image = [UIImage imageNamed:@"Group"];
+    }
+
+    NSString *dateStr = allModel.last_reply_at;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    NSDate *date = [dateFormatter dateFromString:dateStr];
+    self.durationLabel.text = [date timeAgo];
+
+    self.eyeImageView.image = [UIImage imageNamed:@"Group-1.png"];
+    self.messageIamgeView.image = [UIImage imageNamed:@"message.png"];
+
+    self.watchLabel.text = [NSString stringWithFormat:@"%@",allModel.visit_count];
+    self.messageLabel.text = [NSString stringWithFormat:@"%@",allModel.reply_count];
 }
 
 - (void)setFrame:(CGRect)frame {

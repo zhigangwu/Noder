@@ -69,8 +69,8 @@
 		3395BFF81EE6D68A007E27F2 /* RecruitmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3395BFF71EE6D68A007E27F2 /* RecruitmentTableViewCell.m */; };
 		33C2CFBD1E7967370030257B /* HDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C2CFBC1E7967370030257B /* HDTableViewCell.m */; };
 		33EE434B1EBC9B01009DC2D4 /* PersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EE434A1EBC9B01009DC2D4 /* PersonalCenterViewController.m */; };
-		9107EDBE1FC02B030008CA33 /* Topic.m in Sources */ = {isa = PBXBuildFile; fileRef = 9107EDBD1FC02B030008CA33 /* Topic.m */; };
 		9188B7311FBDC7540082C1D1 /* ScanLoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */; };
+		918C18CE1FC1B21500D22246 /* AllViewDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918C18CD1FC1B21500D22246 /* AllViewDataModel.m */; };
 		9199C99F1FC114D4008FDA37 /* UIColor+background.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C99E1FC114D4008FDA37 /* UIColor+background.m */; };
 		9199C9A21FC1171F008FDA37 /* UIColor+TitleColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9A11FC1171F008FDA37 /* UIColor+TitleColor.m */; };
 		9199C9A51FC11BE6008FDA37 /* UIColor+textColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9A41FC11BE6008FDA37 /* UIColor+textColor.m */; };
@@ -241,10 +241,10 @@
 		51525A18090113D9FD3D4CEC /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		620CE6E91962684584B108B6 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		83A3208438729A6BE0BC90C9 /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
-		9107EDBC1FC02B030008CA33 /* Topic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Topic.h; sourceTree = "<group>"; };
-		9107EDBD1FC02B030008CA33 /* Topic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Topic.m; sourceTree = "<group>"; };
 		9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanLoginCell.m; sourceTree = "<group>"; };
 		9188B7301FBDC7540082C1D1 /* ScanLoginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanLoginCell.h; sourceTree = "<group>"; };
+		918C18CC1FC1B21500D22246 /* AllViewDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllViewDataModel.h; sourceTree = "<group>"; };
+		918C18CD1FC1B21500D22246 /* AllViewDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllViewDataModel.m; sourceTree = "<group>"; };
 		9199C99D1FC114D4008FDA37 /* UIColor+background.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+background.h"; sourceTree = "<group>"; };
 		9199C99E1FC114D4008FDA37 /* UIColor+background.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+background.m"; sourceTree = "<group>"; };
 		9199C9A01FC1171F008FDA37 /* UIColor+TitleColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+TitleColor.h"; sourceTree = "<group>"; };
@@ -507,10 +507,10 @@
 		3395BFCE1EE57988007E27F2 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				9107EDBC1FC02B030008CA33 /* Topic.h */,
-				9107EDBD1FC02B030008CA33 /* Topic.m */,
 				3395BFCB1EE443A9007E27F2 /* HomePageController.h */,
 				3395BFCC1EE443A9007E27F2 /* HomePageController.m */,
+				918C18CC1FC1B21500D22246 /* AllViewDataModel.h */,
+				918C18CD1FC1B21500D22246 /* AllViewDataModel.m */,
 				3395BFD81EE57A7B007E27F2 /* AllViewController.h */,
 				3395BFD91EE57A7B007E27F2 /* AllViewController.m */,
 				3395BFEA1EE582E3007E27F2 /* AllTableViewCell.h */,
@@ -829,12 +829,12 @@
 				DF8429DE1EF941AC00B8D011 /* LCHTextNode.m in Sources */,
 				043A43EE1F75F51C009F022E /* UnreadMessageAPI.m in Sources */,
 				043A43F71F75F980009F022E /* ReadMessageTableViewController.m in Sources */,
+				918C18CE1FC1B21500D22246 /* AllViewDataModel.m in Sources */,
 				043A43F11F75F539009F022E /* UnreadMessageCell.m in Sources */,
 				DF8429E31EF941AC00B8D011 /* LCPDisplayNode.m in Sources */,
 				DF8429DD1EF941AC00B8D011 /* LCCodeTextNode.m in Sources */,
 				DF8429E71EF941AC00B8D011 /* NSMutableAttributedString+LCLineSpace.m in Sources */,
 				3395BFE31EE57AD9007E27F2 /* QandAViewController.m in Sources */,
-				9107EDBE1FC02B030008CA33 /* Topic.m in Sources */,
 				3395BFEC1EE582E3007E27F2 /* AllTableViewCell.m in Sources */,
 				DF8429DF1EF941AC00B8D011 /* LCHtmlNode.m in Sources */,
 				04C4B88E1F57A14100FA139F /* NewPageTableViewController.m in Sources */,

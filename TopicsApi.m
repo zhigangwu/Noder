@@ -7,7 +7,7 @@
 //
 
 #import "TopicsApi.h"
-#import "Topic.h"
+#import "AllViewDataModel.h"
 
 @implementation TopicsApi
 
@@ -26,7 +26,7 @@
 - (id)responseProcess:(id)responseObject{
 //    return responseObject[@"data"];
     NSArray *array = responseObject[@"data"];
-    return [MTLJSONAdapter modelsOfClass:[Topic class] fromJSONArray:array error:nil];
+    return [MTLJSONAdapter modelsOfClass:[AllViewDataModel class] fromJSONArray:array error:nil];
 }
 
 @end
