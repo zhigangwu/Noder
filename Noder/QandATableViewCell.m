@@ -108,20 +108,19 @@
     return self;
 }
 
-- (void)configWithItem:(NSDictionary *)dictionary{
+- (void)configWithItem:(AskDataModel *)askModel{
     
     
-    self.titleLabel.text = [dictionary objectForKey:@"title"];
+    self.titleLabel.text = askModel.title;
     self.titleLabel.numberOfLines = 1;
 //    self.lineBreakMode = NSLineBreakByTruncatingTail;
     CGSize max = CGSizeMake(200, 20);
     CGSize expect = [self.titleLabel sizeThatFits:max];
     self.titleLabel.frame = CGRectMake(79, 12, expect.width, expect.height);
     
-    [self.imageVIew sd_setImageWithURL:dictionary[@"author"][@"avatar_url"]];
+    [self.imageVIew sd_setImageWithURL:askModel.author.avatar_url];
     
-    
-    NSString *dateStr = dictionary[@"last_reply_at"];
+    NSString *dateStr = askModel.last_reply_at;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *date = [dateFormatter dateFromString:dateStr];
@@ -131,15 +130,9 @@
     self.eyeImageView.image = [UIImage imageNamed:@"Group-1.png"];
     self.messageIamgeView.image = [UIImage imageNamed:@"message.png"];
     
-    // watchLabel
-    NSNumber *visit_count = [dictionary objectForKey:@"visit_count"];
-    NSNumber *reply_count = [dictionary objectForKey:@"reply_count"];
-    
-    //    NSLog(@"%%%%%%%%@,********%@",visit_count,reply_count);
-    
     self.watchLabel.adjustsFontSizeToFitWidth = YES;
-    self.watchLabel.text = [NSString stringWithFormat:@"%@",visit_count];
-    self.messageLabel.text = [NSString stringWithFormat:@"%@",reply_count];
+    self.watchLabel.text = [NSString stringWithFormat:@"%@",askModel.visit_count];
+    self.messageLabel.text = [NSString stringWithFormat:@"%@",askModel.reply_count];
 }
 
 - (void)setFrame:(CGRect)frame

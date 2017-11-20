@@ -76,6 +76,11 @@
 		9199C9A51FC11BE6008FDA37 /* UIColor+textColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9A41FC11BE6008FDA37 /* UIColor+textColor.m */; };
 		9199C9A81FC11FDB008FDA37 /* UIColor+textColorB.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9A71FC11FDB008FDA37 /* UIColor+textColorB.m */; };
 		9199C9AB1FC12297008FDA37 /* UIColor+tableBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9AA1FC12297008FDA37 /* UIColor+tableBackground.m */; };
+		91AC1E821FC2688A00196DE0 /* EssenceDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AC1E811FC2688A00196DE0 /* EssenceDataModel.m */; };
+		91AC1E851FC2789900196DE0 /* ShareDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AC1E841FC2789900196DE0 /* ShareDataModel.m */; };
+		91AC1E881FC27C4D00196DE0 /* AskDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AC1E871FC27C4D00196DE0 /* AskDataModel.m */; };
+		91AC1E8B1FC27E7300196DE0 /* JobDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AC1E8A1FC27E7300196DE0 /* JobDataModel.m */; };
+		91AC1E8E1FC2809500196DE0 /* DevDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AC1E8D1FC2809500196DE0 /* DevDataModel.m */; };
 		DF03208B1EF2A7BF0088F8EE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF03208A1EF2A7BF0088F8EE /* DetailViewController.m */; };
 		DF8429B11EF93D0600B8D011 /* DetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429B01EF93D0600B8D011 /* DetailApi.m */; };
 		DF8429DC1EF941AC00B8D011 /* LCCodeDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429C11EF941AC00B8D011 /* LCCodeDisplayNode.m */; };
@@ -255,6 +260,16 @@
 		9199C9A71FC11FDB008FDA37 /* UIColor+textColorB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+textColorB.m"; sourceTree = "<group>"; };
 		9199C9A91FC12297008FDA37 /* UIColor+tableBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+tableBackground.h"; sourceTree = "<group>"; };
 		9199C9AA1FC12297008FDA37 /* UIColor+tableBackground.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+tableBackground.m"; sourceTree = "<group>"; };
+		91AC1E801FC2688A00196DE0 /* EssenceDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EssenceDataModel.h; sourceTree = "<group>"; };
+		91AC1E811FC2688A00196DE0 /* EssenceDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EssenceDataModel.m; sourceTree = "<group>"; };
+		91AC1E831FC2789900196DE0 /* ShareDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareDataModel.h; sourceTree = "<group>"; };
+		91AC1E841FC2789900196DE0 /* ShareDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShareDataModel.m; sourceTree = "<group>"; };
+		91AC1E861FC27C4D00196DE0 /* AskDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AskDataModel.h; sourceTree = "<group>"; };
+		91AC1E871FC27C4D00196DE0 /* AskDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AskDataModel.m; sourceTree = "<group>"; };
+		91AC1E891FC27E7300196DE0 /* JobDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobDataModel.h; sourceTree = "<group>"; };
+		91AC1E8A1FC27E7300196DE0 /* JobDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobDataModel.m; sourceTree = "<group>"; };
+		91AC1E8C1FC2809500196DE0 /* DevDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DevDataModel.h; sourceTree = "<group>"; };
+		91AC1E8D1FC2809500196DE0 /* DevDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevDataModel.m; sourceTree = "<group>"; };
 		AFD657F7862CA63028DDAE4C /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
 		C24D1EF0AB88F669658C4A45 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		D89959808109ABB127508691 /* libPods-Noder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Noder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -517,30 +532,40 @@
 				3395BFEB1EE582E3007E27F2 /* AllTableViewCell.m */,
 				33542A921F4EF8E5005576F7 /* EssenceAPI.h */,
 				33542A931F4EF8E6005576F7 /* EssenceAPI.m */,
+				91AC1E801FC2688A00196DE0 /* EssenceDataModel.h */,
+				91AC1E811FC2688A00196DE0 /* EssenceDataModel.m */,
 				3395BFDB1EE57A9C007E27F2 /* EssenceViewController.h */,
 				3395BFDC1EE57A9C007E27F2 /* EssenceViewController.m */,
 				3395BFED1EE58856007E27F2 /* EssenceTableViewCell.h */,
 				3395BFEE1EE58856007E27F2 /* EssenceTableViewCell.m */,
 				33542A951F504B13005576F7 /* ShareAPI.h */,
 				33542A961F504B14005576F7 /* ShareAPI.m */,
+				91AC1E831FC2789900196DE0 /* ShareDataModel.h */,
+				91AC1E841FC2789900196DE0 /* ShareDataModel.m */,
 				3395BFDE1EE57AC5007E27F2 /* ShareViewController.h */,
 				3395BFDF1EE57AC5007E27F2 /* ShareViewController.m */,
 				3395BFF01EE6D66B007E27F2 /* ShareTableViewCell.h */,
 				3395BFF11EE6D66B007E27F2 /* ShareTableViewCell.m */,
 				33542A981F504CA9005576F7 /* AskAPI.h */,
 				33542A991F504CA9005576F7 /* AskAPI.m */,
+				91AC1E861FC27C4D00196DE0 /* AskDataModel.h */,
+				91AC1E871FC27C4D00196DE0 /* AskDataModel.m */,
 				3395BFE11EE57AD9007E27F2 /* QandAViewController.h */,
 				3395BFE21EE57AD9007E27F2 /* QandAViewController.m */,
 				3395BFF31EE6D67B007E27F2 /* QandATableViewCell.h */,
 				3395BFF41EE6D67B007E27F2 /* QandATableViewCell.m */,
 				33542A9B1F504D77005576F7 /* JobAPI.h */,
 				33542A9C1F504D77005576F7 /* JobAPI.m */,
+				91AC1E891FC27E7300196DE0 /* JobDataModel.h */,
+				91AC1E8A1FC27E7300196DE0 /* JobDataModel.m */,
 				3395BFE71EE57B12007E27F2 /* RecruitmentViewController.h */,
 				3395BFE81EE57B12007E27F2 /* RecruitmentViewController.m */,
 				3395BFF61EE6D68A007E27F2 /* RecruitmentTableViewCell.h */,
 				3395BFF71EE6D68A007E27F2 /* RecruitmentTableViewCell.m */,
 				040354731F622FBE00257D90 /* DevAPI.h */,
 				040354741F622FBE00257D90 /* DevAPI.m */,
+				91AC1E8C1FC2809500196DE0 /* DevDataModel.h */,
+				91AC1E8D1FC2809500196DE0 /* DevDataModel.m */,
 				040354701F622FA800257D90 /* DevTableViewController.h */,
 				040354711F622FA800257D90 /* DevTableViewController.m */,
 				040354761F62317E00257D90 /* DevTableViewCell.h */,
@@ -820,6 +845,7 @@
 				0477218D1F6BA13A00C31B6F /* comContentAPI.m in Sources */,
 				04005A821F6CC506007D8603 /* ControllerManager.m in Sources */,
 				9199C99F1FC114D4008FDA37 /* UIColor+background.m in Sources */,
+				91AC1E851FC2789900196DE0 /* ShareDataModel.m in Sources */,
 				DF8429E91EF941AC00B8D011 /* UIColor+LCColor.m in Sources */,
 				DF8429E11EF941AC00B8D011 /* LCLiTextNode.m in Sources */,
 				337F221F1F0D184500C8488A /* AssesstokenAPI.m in Sources */,
@@ -843,6 +869,7 @@
 				040471321F5FE9BA00BBDA14 /* CollectionTableViewController.m in Sources */,
 				337F22251F13B6D100C8488A /* NETWorkConnection.m in Sources */,
 				3335F02C1ED46E8800FBB58D /* RecentReplyCell.m in Sources */,
+				91AC1E8B1FC27E7300196DE0 /* JobDataModel.m in Sources */,
 				33542A9D1F504D77005576F7 /* JobAPI.m in Sources */,
 				047FA47D1F91AC7700B485B9 /* MessageCountAPI.m in Sources */,
 				9199C9AB1FC12297008FDA37 /* UIColor+tableBackground.m in Sources */,
@@ -863,12 +890,15 @@
 				9199C9A81FC11FDB008FDA37 /* UIColor+textColorB.m in Sources */,
 				043A43FA1F75F99B009F022E /* ReadMessageAPI.m in Sources */,
 				3340122F1E4DF2D000E92B48 /* main.m in Sources */,
+				91AC1E821FC2688A00196DE0 /* EssenceDataModel.m in Sources */,
 				DF03208B1EF2A7BF0088F8EE /* DetailViewController.m in Sources */,
 				DF8429B11EF93D0600B8D011 /* DetailApi.m in Sources */,
 				33542A9A1F504CA9005576F7 /* AskAPI.m in Sources */,
 				337B870B1F19AEC000558A4D /* headerview.m in Sources */,
 				040354751F622FBE00257D90 /* DevAPI.m in Sources */,
+				91AC1E8E1FC2809500196DE0 /* DevDataModel.m in Sources */,
 				04ED0E251F7B7FAD003AF5E9 /* PlateSelectionCell.m in Sources */,
+				91AC1E881FC27C4D00196DE0 /* AskDataModel.m in Sources */,
 				33C2CFBD1E7967370030257B /* HDTableViewCell.m in Sources */,
 				33EE434B1EBC9B01009DC2D4 /* PersonalCenterViewController.m in Sources */,
 				3395BFE01EE57AC5007E27F2 /* ShareViewController.m in Sources */,

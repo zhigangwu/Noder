@@ -106,23 +106,19 @@
     return self;
 }
 
-- (void)configWithItem:(NSDictionary *)dictionary{
+- (void)configWithItem:(EssenceDataModel *)essenceModel{
     
-    NSString *titleString = dictionary[@"good"];
-    if (titleString.boolValue == true) {
-        self.titleLabel.text = [dictionary objectForKey:@"title"];
+    if (essenceModel.good == true) {
+        self.titleLabel.text = essenceModel.title;
         self.titleLabel.numberOfLines = 1;
-//        self.lineBreakMode = NSLineBreakByTruncatingTail;
         CGSize max = CGSizeMake(200, 20);
         CGSize expect = [self.titleLabel sizeThatFits:max];
         self.titleLabel.frame = CGRectMake(79, 12, expect.width, expect.height);
     }
 
+    [self.imageVIew sd_setImageWithURL:essenceModel.author.avatar_url];
     
-    [self.imageVIew sd_setImageWithURL:dictionary[@"author"][@"avatar_url"]];
-    
-    
-    NSString *dateStr = dictionary[@"last_reply_at"];
+    NSString *dateStr = essenceModel.last_reply_at;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *date = [dateFormatter dateFromString:dateStr];
@@ -131,15 +127,10 @@
     // eye message 图标
     self.eyeImageView.image = [UIImage imageNamed:@"Group-1.png"];
     self.messageIamgeView.image = [UIImage imageNamed:@"message.png"];
-    
-    // watchLabel
-    NSNumber *visit_count = [dictionary objectForKey:@"visit_count"];
-    NSNumber *reply_count = [dictionary objectForKey:@"reply_count"];
-    
-    
+
     self.watchLabel.adjustsFontSizeToFitWidth = YES;
-    self.watchLabel.text = [NSString stringWithFormat:@"%@",visit_count];
-    self.messageLabel.text = [NSString stringWithFormat:@"%@",reply_count];
+    self.watchLabel.text = [NSString stringWithFormat:@"%@",essenceModel.visit_count];
+    self.messageLabel.text = [NSString stringWithFormat:@"%@",essenceModel.reply_count];
 }
 
 - (void)setFrame:(CGRect)frame

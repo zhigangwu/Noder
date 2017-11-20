@@ -12,6 +12,7 @@
 #import "DetailViewController.h"
 #import "MJRefresh.h"
 #import "UIColor+tableBackground.h"
+#import "ShareDataModel.h"
 
 @interface ShareViewController ()
 
@@ -27,11 +28,7 @@
     
     ShareAPI *shareAPI = [[ShareAPI alloc] init];
     [shareAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-        NSDictionary *dicationary = request.responseJSONObject;
-//        NSLog(@"dicationary = %@",dicationary);
-    
-        self.array = dicationary[@"data"];
-        
+        self.array = request.responseJSONObject;        
         [self.tableView reloadData];
     } failure:NULL];
     
@@ -49,24 +46,24 @@
     }];
 }
 
-- (void)loadNewData{
-    
-    
-    __weak typeof(self) weakSelf = self;
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.tableView reloadData];
-        [weakSelf.tableView.mj_header endRefreshing];
-    });
+- (void)loadNewData
+{
+    ShareAPI *shareAPI = [[ShareAPI alloc] init];
+    [shareAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+    } failure:NULL];
 }
 
-- (void)loadNoreData{
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.tableView reloadData];
-        [weakSelf.tableView.mj_footer endRefreshing];
-    });
-    
+- (void)loadNoreData
+{
+    ShareAPI *shareAPI = [[ShareAPI alloc] init];
+    [shareAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        [self.tableView reloadData];
+        [self.tableView.mj_footer endRefreshing];
+    } failure:NULL];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -88,9 +85,9 @@
 {
     ShareTableViewCell *shareTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"shareTableViewCell" forIndexPath:indexPath];
     
-    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
-    
-    [shareTableViewCell configWithItem:dictionary];
+    ShareDataModel *shareModel = [self.array objectAtIndex:indexPath.row];
+
+    [shareTableViewCell configWithItem:shareModel];
     
     return shareTableViewCell;
     
@@ -103,7 +100,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailViewController *vc = [[DetailViewController alloc] init];
-    vc.detailId = [self.array[indexPath.row] objectForKey:@"id"];
+    ShareDataModel *shareModel = [self.array objectAtIndex:indexPath.row];
+    vc.detailId = shareModel.id;
     [self.navigationController pushViewController:vc animated:YES];
 }
 

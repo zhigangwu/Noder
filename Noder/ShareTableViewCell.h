@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShareDataModel.h"
 
 @interface ShareTableViewCell : UITableViewCell
 
@@ -23,7 +24,7 @@
 
 @property (nonatomic, weak) UILabel *durationLabel;//时长
 
-- (void)configWithItem:(NSDictionary *)dictionary;
+- (void)configWithItem:(ShareDataModel *)shareModel;
 
 
 @end

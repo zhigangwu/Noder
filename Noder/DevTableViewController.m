@@ -12,6 +12,7 @@
 #import "DetailViewController.h"
 #import "MJRefresh.h"
 #import "UIColor+tableBackground.h"
+#import "DevDataModel.h"
 
 @interface DevTableViewController ()
 
@@ -27,9 +28,7 @@
     
     DevAPI *devAPI = [[DevAPI alloc] init];
     [devAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-        NSDictionary *dictionary = request.responseJSONObject;
-        
-        self.array = dictionary[@"data"];
+        self.array = request.responseJSONObject;
         
         [self.tableView reloadData];
     } failure:NULL];
@@ -47,22 +46,26 @@
     }];
 }
 
-- (void)loadNewData{
-    
-    __weak typeof(self) weakSelf = self;
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.tableView reloadData];
-        [weakSelf.tableView.mj_header endRefreshing];
-    });
+- (void)loadNewData
+{
+    DevAPI *devAPI = [[DevAPI alloc] init];
+    [devAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+    } failure:NULL];
 }
 
-- (void)loadNoreData{
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.tableView reloadData];
-        [weakSelf.tableView.mj_footer endRefreshing];
-    });
+- (void)loadNoreData
+{
+    DevAPI *devAPI = [[DevAPI alloc] init];
+    [devAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        
+        [self.tableView reloadData];
+        [self.tableView.mj_footer endRefreshing];
+    } failure:NULL];
     
 }
 
@@ -81,9 +84,9 @@
     DevTableViewCell *devtableviewcell = [tableView dequeueReusableCellWithIdentifier:@"DevTableViewCell"
                                                                          forIndexPath:indexPath];
     
-    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+    DevDataModel *devModel = [self.array objectAtIndex:indexPath.row];
     
-    [devtableviewcell configWithItem:dictionary];
+    [devtableviewcell configWithItem:devModel];
     
     return devtableviewcell;
 }
@@ -96,7 +99,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailViewController *detail = [[DetailViewController alloc] init];
-    detail.detailId = [self.array[indexPath.row] objectForKey:@"id"];
+    DevDataModel *devModel = [self.array objectAtIndex:indexPath.row];
+    detail.detailId = devModel.id;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

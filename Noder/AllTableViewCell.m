@@ -13,8 +13,6 @@
 #import "UIColor+textColor.h"
 #import "UIColor+textColorB.h"
 
-#import "AllViewDataModel.h"
-
 @implementation AllTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier

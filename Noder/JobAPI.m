@@ -7,6 +7,7 @@
 //
 
 #import "JobAPI.h"
+#import "JobDataModel.h"
 
 @implementation JobAPI
 
@@ -18,6 +19,12 @@
 - (LCRequestMethod)requestMethod
 {
     return LCRequestMethodGet;
+}
+
+- (id)responseProcess:(id)responseObject
+{
+    NSArray *array = responseObject[@"data"];
+    return [MTLJSONAdapter modelOfClass:[JobDataModel class] fromJSONDictionary:array error:nil];
 }
 
 @end

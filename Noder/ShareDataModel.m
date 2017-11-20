@@ -1,14 +1,14 @@
 //
-//  AllViewDataModel.m
+//  ShareDataModel.m
 //  Noder
 //
-//  Created by 吴志刚 on 2017/11/19.
+//  Created by 吴志刚 on 2017/11/20.
 //  Copyright © 2017年 Apress. All rights reserved.
 //
 
-#import "AllViewDataModel.h"
+#import "ShareDataModel.h"
 
-@implementation AllViewDataModel
+@implementation ShareDataModel
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
@@ -17,16 +17,17 @@
 
 @end
 
-@implementation ALLAuthor
+@implementation ShareAuthor
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     return [NSDictionary mtl_identityPropertyMapWithModel:self];
 }
 
-+ (NSValueTransformer *)avatar_urlJSONTransformer
++ (NSValueTransformer *)avatar_urlValueTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
 @end
+

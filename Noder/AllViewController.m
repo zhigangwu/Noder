@@ -35,7 +35,7 @@
 //        self.array = dicationary[@"data"];
 
         self.array = request.responseJSONObject;
-        NSLog(@"self.array = %@",self.array);
+//        NSLog(@"self.array = %@",self.array);
         
 
         [self.tableView reloadData];
@@ -65,10 +65,7 @@
     
     TopicsApi *topApi = [[TopicsApi alloc] init];
     [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-        NSDictionary *dicationary = request.responseJSONObject;
-        
-        self.array = dicationary[@"data"];
-        
+        self.array = request.responseJSONObject;
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     }
@@ -77,12 +74,13 @@
 }
 
 - (void)loadNoreData{
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.tableView reloadData];
-        [weakSelf.tableView.mj_footer endRefreshing];
-    });
-
+    TopicsApi *topApi = [[TopicsApi alloc] init];
+    [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        [self.tableView reloadData];
+        [self.tableView.mj_footer endRefreshing];
+    }
+                          failure:NULL];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -102,7 +100,7 @@
     
 //    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
     AllViewDataModel *allModel = [self.array objectAtIndex:indexPath.row];
-    
+//    NSLog(@"allModel = %@",allModel.id);
 //    [allTableViewCell configWithItem:dictionary];
     [allTableViewCell configWithItem:allModel];
     
@@ -118,8 +116,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailViewController *vc = [[DetailViewController alloc] init];
-//    Topic *topic = [[Topic alloc] init];
-    vc.detailId = [self.array[indexPath.row] objectForKey:@"id"];
+//    vc.detailId = [self.array[indexPath.row] objectForKey:@"id"];
+    AllViewDataModel *allModel = [self.array objectAtIndex:indexPath.row];
+    vc.detailId = allModel.id;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

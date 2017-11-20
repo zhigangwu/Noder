@@ -7,6 +7,7 @@
 //
 
 #import "ShareAPI.h"
+#import "ShareDataModel.h"
 
 @implementation ShareAPI
 
@@ -18,6 +19,12 @@
 - (LCRequestMethod)requestMethod
 {
     return LCRequestMethodGet;
+}
+
+- (id)responseProcess:(id)responseObject
+{
+    NSArray *array = responseObject[@"data"];
+    return [MTLJSONAdapter modelsOfClass:[ShareDataModel class] fromJSONArray:array error:nil];
 }
 
 @end

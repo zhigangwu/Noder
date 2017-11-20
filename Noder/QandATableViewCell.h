@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AskDataModel.h"
 
 @interface QandATableViewCell : UITableViewCell
 
@@ -23,7 +24,7 @@
 
 @property (nonatomic, weak) UILabel *durationLabel;//时长
 
-- (void)configWithItem:(NSDictionary *)dictionary;
+- (void)configWithItem:(AskDataModel *)askModel;
 
 
 @end

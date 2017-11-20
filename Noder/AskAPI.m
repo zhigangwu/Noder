@@ -7,6 +7,7 @@
 //
 
 #import "AskAPI.h"
+#import "AskDataModel.h"
 
 @implementation AskAPI
 
@@ -18,6 +19,12 @@
 - (LCRequestMethod)requestMethod
 {
     return LCRequestMethodGet;
+}
+
+- (id)responseProcess:(id)responseObject
+{
+    NSArray *array = responseObject[@"data"];
+    return [MTLJSONAdapter modelsOfClass:[AskDataModel class] fromJSONArray:array error:nil];
 }
 
 @end

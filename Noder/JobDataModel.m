@@ -1,14 +1,14 @@
 //
-//  AllViewDataModel.m
+//  JobDataModel.m
 //  Noder
 //
-//  Created by 吴志刚 on 2017/11/19.
+//  Created by 吴志刚 on 2017/11/20.
 //  Copyright © 2017年 Apress. All rights reserved.
 //
 
-#import "AllViewDataModel.h"
+#import "JobDataModel.h"
 
-@implementation AllViewDataModel
+@implementation JobDataModel
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
@@ -17,14 +17,14 @@
 
 @end
 
-@implementation ALLAuthor
+@implementation JobAuthor
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     return [NSDictionary mtl_identityPropertyMapWithModel:self];
 }
 
-+ (NSValueTransformer *)avatar_urlJSONTransformer
++ (NSValueTransformer *)avatar_urlValueTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }

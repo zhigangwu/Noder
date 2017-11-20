@@ -108,20 +108,23 @@
     return self;
 }
 
-- (void)configWithItem:(NSDictionary *)dictionary{
+- (void)configWithItem:(ShareDataModel *)shareModel{
     
     
-    self.titleLabel.text = [dictionary objectForKey:@"title"];
+//    self.titleLabel.text = [dictionary objectForKey:@"title"];
+    self.titleLabel.text =shareModel.title;
     self.titleLabel.numberOfLines = 1;
 //    self.lineBreakMode = NSLineBreakByTruncatingTail;
     CGSize max = CGSizeMake(200, 20);
     CGSize expect = [self.titleLabel sizeThatFits:max];
     self.titleLabel.frame = CGRectMake(79, 12, expect.width, expect.height);
     
-    [self.imageVIew sd_setImageWithURL:dictionary[@"author"][@"avatar_url"]];
+//    [self.imageVIew sd_setImageWithURL:dictionary[@"author"][@"avatar_url"]];
+    [self.imageVIew sd_setImageWithURL:shareModel.author.avatar_url];
     
     
-    NSString *dateStr = dictionary[@"last_reply_at"];
+//    NSString *dateStr = dictionary[@"last_reply_at"];
+    NSString *dateStr = shareModel.last_reply_at;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *date = [dateFormatter dateFromString:dateStr];
@@ -132,14 +135,14 @@
     self.messageIamgeView.image = [UIImage imageNamed:@"message.png"];
     
     // watchLabel
-    NSNumber *visit_count = [dictionary objectForKey:@"visit_count"];
-    NSNumber *reply_count = [dictionary objectForKey:@"reply_count"];
-    
-    //    NSLog(@"%%%%%%%%@,********%@",visit_count,reply_count);
+//    NSNumber *visit_count = [dictionary objectForKey:@"visit_count"];
+//    NSNumber *reply_count = [dictionary objectForKey:@"reply_count"];
     
     self.watchLabel.adjustsFontSizeToFitWidth = YES;
-    self.watchLabel.text = [NSString stringWithFormat:@"%@",visit_count];
-    self.messageLabel.text = [NSString stringWithFormat:@"%@",reply_count];
+//    self.watchLabel.text = [NSString stringWithFormat:@"%@",visit_count];
+//    self.messageLabel.text = [NSString stringWithFormat:@"%@",reply_count];
+    self.watchLabel.text = [NSString stringWithFormat:@"%@",shareModel.visit_count];
+    self.messageLabel.text = [NSString stringWithFormat:@"%@",shareModel.reply_count];
 }
 
 - (void)setFrame:(CGRect)frame

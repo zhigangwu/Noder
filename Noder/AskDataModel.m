@@ -1,14 +1,14 @@
 //
-//  AllViewDataModel.m
+//  AskDataModel.m
 //  Noder
 //
-//  Created by 吴志刚 on 2017/11/19.
+//  Created by 吴志刚 on 2017/11/20.
 //  Copyright © 2017年 Apress. All rights reserved.
 //
 
-#import "AllViewDataModel.h"
+#import "AskDataModel.h"
 
-@implementation AllViewDataModel
+@implementation AskDataModel
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
@@ -17,16 +17,17 @@
 
 @end
 
-@implementation ALLAuthor
+@implementation AskAuthor
 
 + (NSDictionary *)JSONKeyPathsByPropertyKey
 {
     return [NSDictionary mtl_identityPropertyMapWithModel:self];
 }
 
-+ (NSValueTransformer *)avatar_urlJSONTransformer
++ (NSValueTransformer *)avatar_urlValueTransformer
 {
     return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
 }
 
 @end
+

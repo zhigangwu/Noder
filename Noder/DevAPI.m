@@ -7,6 +7,7 @@
 //
 
 #import "DevAPI.h"
+#import "DevDataModel.h"
 
 @implementation DevAPI
 
@@ -18,6 +19,12 @@
 - (LCRequestMethod)requestMethod
 {
     return LCRequestMethodGet;
+}
+
+- (id)responseProcess:(id)responseObject
+{
+    NSArray *array = responseObject[@"data"];
+    return [MTLJSONAdapter modelOfClass:[DevDataModel class] fromJSONDictionary:array error:nil];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "EssenceAPI.h"
+#import "EssenceDataModel.h"
 
 @implementation EssenceAPI
 
@@ -16,6 +17,12 @@
 
 - (LCRequestMethod)requestMethod{
     return LCRequestMethodGet;
+}
+
+- (id)responseProcess:(id)responseObject
+{
+    NSArray *array = responseObject[@"data"];
+    return [MTLJSONAdapter modelsOfClass:[EssenceDataModel class] fromJSONArray:array error:nil];
 }
 
 @end

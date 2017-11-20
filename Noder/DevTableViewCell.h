@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DevDataModel.h"
 
 @interface DevTableViewCell : UITableViewCell
 
@@ -23,6 +24,6 @@
 
 @property (nonatomic, weak) UILabel *durationLabel;//时长
 
-- (void)configWithItem:(NSDictionary *)dictionary;
+- (void)configWithItem:(DevDataModel *)devModel;
 
 @end

@@ -12,6 +12,7 @@
 #import "DetailViewController.h"
 #import "MJRefresh.h"
 #import "UIColor+tableBackground.h"
+#import "AskDataModel.h"
 
 @interface QandAViewController ()
 
@@ -27,9 +28,7 @@
     
     AskAPI *askAPi = [[AskAPI alloc] init];
     [askAPi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-        NSDictionary *dictionary = request.responseJSONObject;
-//        NSLog(@"dictionary = %@",dictionary);
-        self.array = dictionary[@"data"];
+        self.array = request.responseJSONObject;
         
         [self.tableView reloadData];
     } failure:NULL];
@@ -48,24 +47,29 @@
     }];
 }
 
-- (void)loadNewData{
-    
-    
-    __weak typeof(self) weakSelf = self;
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.tableView reloadData];
-        [weakSelf.tableView.mj_header endRefreshing];
-    });
+- (void)loadNewData
+{
+    AskAPI *askAPi = [[AskAPI alloc] init];
+    [askAPi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        
+        [self.tableView reloadData];
+        [self.tableView.mj_header endRefreshing];
+    } failure:NULL];
+
 }
 
-- (void)loadNoreData{
-    __weak typeof(self) weakSelf = self;
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [weakSelf.tableView reloadData];
-        [weakSelf.tableView.mj_footer endRefreshing];
-    });
-    
+- (void)loadNoreData
+{
+    AskAPI *askAPi = [[AskAPI alloc] init];
+    [askAPi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        
+        [self.tableView reloadData];
+        [self.tableView.mj_footer endRefreshing];
+    } failure:NULL];
+
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -88,9 +92,9 @@
 {
     QandATableViewCell *QandATableViewCell = [tableView dequeueReusableCellWithIdentifier:@"QandATableViewCell" forIndexPath:indexPath];
     
-    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+    AskDataModel *askModel = [self.array objectAtIndex:indexPath.row];
     
-    [QandATableViewCell configWithItem:dictionary];
+    [QandATableViewCell configWithItem:askModel];
     
     return QandATableViewCell;
     
@@ -103,7 +107,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailViewController *vc = [[DetailViewController alloc] init];
-    vc.detailId = [self.array[indexPath.row] objectForKey:@"id"];
+    AskDataModel *askModel = [self.array objectAtIndex:indexPath.row];
+    vc.detailId = askModel.id;
     [self.navigationController pushViewController:vc animated:YES];
 }
 
