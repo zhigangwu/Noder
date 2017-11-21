@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginDataModel.h"
 
 @interface RecentTopicsViewController : UITableViewController
 
+@property (nonatomic, strong) LoginDataModel *loginModel;
+@property (nonatomic, strong) LoginRecent_topics *recent_topics;
 @property (nonatomic, strong) NSArray *array;
 @property (nonatomic, strong) NSString *TopicsLoginname;
 

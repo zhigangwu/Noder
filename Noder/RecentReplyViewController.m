@@ -32,11 +32,9 @@
     Loginapi *recentAPI = [[Loginapi alloc] init];
     recentAPI.loginname = self.recenrLoginname;
     [recentAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-        NSDictionary *dictionary = request.responseJSONObject;
-
-        NSArray *array = dictionary[@"data"];
-        		
-        self.array = [array valueForKey:@"recent_replies"];
+        
+        self.loginModel = request.responseJSONObject;
+        self.array = self.loginModel.recent_replies;
         
         [self.tableView reloadData];
     } failure:NULL];
@@ -57,9 +55,10 @@
     RecentReplyCell *recentreplyCell = [tableView dequeueReusableCellWithIdentifier:@"RecentReplyCell"
                                                                      forIndexPath:indexPath];
 
-    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+//    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+     self.recent_replies = [self.array objectAtIndex:indexPath.row];
     
-    [recentreplyCell configWithItem:dictionary];
+    [recentreplyCell configWithItem:self.recent_replies];
     
     return recentreplyCell;
 }
@@ -72,7 +71,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailViewController *detail = [[DetailViewController alloc] init];
-    detail.detailId = [self.array[indexPath.row] objectForKey:@"id"];
+    self.recent_replies = [self.array objectAtIndex:indexPath.row];
+    detail.detailId = self.recent_replies.id;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

@@ -7,8 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginDataModel.h"
 
 @interface RecentReplyViewController : UITableViewController
+
+@property (nonatomic, strong) LoginDataModel *loginModel;
+@property (nonatomic, strong) LoginRecent_replies *recent_replies;
 @property (nonatomic, strong) NSArray *array;
 @property (nonatomic, strong) NSString *recenrLoginname;
+
 @end

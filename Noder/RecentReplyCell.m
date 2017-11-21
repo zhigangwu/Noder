@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "UIColor+textColor.h"
 #import "UIColor+textColorB.h"
+#import "NSDate+TimeAgo.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -48,7 +49,7 @@
         [self.ImageView.layer setCornerRadius:25.85];
         [self.ImageView.layer setMasksToBounds:YES];
         
-        self.durationLabel.text = @"4小时";
+//        self.durationLabel.text = @"4小时";
         self.durationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
         self.durationLabel.textColor = [UIColor textColorB];
 
@@ -56,12 +57,16 @@
     return self;
 }
 
-- (void)configWithItem:(NSDictionary *)dicationary
+- (void)configWithItem:(LoginRecent_replies *)recent_replies
 {
-    self.TitleLabel.text = [dicationary objectForKey:@"title"];
+    self.TitleLabel.text = recent_replies.title;
+    [self.ImageView sd_setImageWithURL:recent_replies.author.avatar_url];
     
-    NSURL *url = [NSURL URLWithString:dicationary[@"author"][@"avatar_url"]];
-    [self.ImageView sd_setImageWithURL:url];
+    NSString *dateStr = recent_replies.last_reply_at;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    NSDate *date = [dateFormatter dateFromString:dateStr];
+    self.durationLabel.text = [date timeAgo];
     
 }
 

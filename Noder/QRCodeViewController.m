@@ -93,6 +93,7 @@
         [self.session stopRunning];
         AVMetadataMachineReadableCodeObject *metadataObject = [metadataObjects objectAtIndex:0];
         self.stringValue = [metadataObject stringValue];
+        NSLog(@"stringValue = %@",self.stringValue);
         
         [ControllerManager shareManager].string = self.stringValue;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"zongzi" object:self.stringValue];

@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginDataModel.h"
 
 @interface RecentTopicsCell : UITableViewCell
 
+@property (nonatomic, strong) LoginRecent_topics *recent_topics;
 @property (nonatomic, weak) UILabel *TitleLable;
 @property (nonatomic, retain) UIImageView *ImageView;
 
-- (void)configWithItem:(NSDictionary *)dic;
+- (void)configWithItem:(LoginRecent_topics *)recent_topics;
 
 
 @end

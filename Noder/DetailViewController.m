@@ -51,11 +51,10 @@
     [api startWithBlockSuccess:^(__kindof LCBaseRequest *request) {
         self.dic = request.responseJSONObject;
         NSArray *arrayData = self.dic[@"data"];
-        
         _reply_count = [arrayData valueForKey:@"reply_count"];
-        
         NSArray *arrayReply = [arrayData valueForKey:@"replies"];
         _ZGreply_id = [arrayReply valueForKey:@"reply_id"];
+//        NSLog(@"_ZGreply_id = %@",self.ZGreply_id);
         ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
         thumAPI.reply_id = _ZGreply_id;
         

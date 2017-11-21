@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UIColor+textColor.h"
+#import "NSDate+TimeAgo.h"
 
 @implementation RecentTopicsCell
 
@@ -44,11 +45,11 @@
     return self;
 }
 
-- (void)configWithItem:(NSDictionary *)dicationary
+- (void)configWithItem:(LoginRecent_topics *)recent_topics
 {
-    self.TitleLable.text = [dicationary objectForKey:@"title"];
-    
-    [self.ImageView sd_setImageWithURL:dicationary[@"author"][@"avatar_url"]];
+
+    self.TitleLable.text = recent_topics.title;
+    [self.ImageView sd_setImageWithURL:recent_topics.author.avatar_url];
 }
 
 - (void)setFrame:(CGRect)frame

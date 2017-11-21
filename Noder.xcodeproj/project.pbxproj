@@ -81,6 +81,8 @@
 		91AC1E881FC27C4D00196DE0 /* AskDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AC1E871FC27C4D00196DE0 /* AskDataModel.m */; };
 		91AC1E8B1FC27E7300196DE0 /* JobDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AC1E8A1FC27E7300196DE0 /* JobDataModel.m */; };
 		91AC1E8E1FC2809500196DE0 /* DevDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AC1E8D1FC2809500196DE0 /* DevDataModel.m */; };
+		91AC1E971FC2B4DA00196DE0 /* PersonalDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AC1E961FC2B4DA00196DE0 /* PersonalDataModel.m */; };
+		91CD1A081FC30AF8006D8478 /* LoginDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91CD1A071FC30AF8006D8478 /* LoginDataModel.m */; };
 		DF03208B1EF2A7BF0088F8EE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF03208A1EF2A7BF0088F8EE /* DetailViewController.m */; };
 		DF8429B11EF93D0600B8D011 /* DetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429B01EF93D0600B8D011 /* DetailApi.m */; };
 		DF8429DC1EF941AC00B8D011 /* LCCodeDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429C11EF941AC00B8D011 /* LCCodeDisplayNode.m */; };
@@ -270,6 +272,10 @@
 		91AC1E8A1FC27E7300196DE0 /* JobDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobDataModel.m; sourceTree = "<group>"; };
 		91AC1E8C1FC2809500196DE0 /* DevDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DevDataModel.h; sourceTree = "<group>"; };
 		91AC1E8D1FC2809500196DE0 /* DevDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DevDataModel.m; sourceTree = "<group>"; };
+		91AC1E951FC2B4DA00196DE0 /* PersonalDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalDataModel.h; sourceTree = "<group>"; };
+		91AC1E961FC2B4DA00196DE0 /* PersonalDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalDataModel.m; sourceTree = "<group>"; };
+		91CD1A061FC30AF8006D8478 /* LoginDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginDataModel.h; sourceTree = "<group>"; };
+		91CD1A071FC30AF8006D8478 /* LoginDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginDataModel.m; sourceTree = "<group>"; };
 		AFD657F7862CA63028DDAE4C /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
 		C24D1EF0AB88F669658C4A45 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		D89959808109ABB127508691 /* libPods-Noder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Noder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -336,6 +342,8 @@
 		04005A7E1F6CC3FC007D8603 /* Content */ = {
 			isa = PBXGroup;
 			children = (
+				DF8429AF1EF93D0600B8D011 /* DetailApi.h */,
+				DF8429B01EF93D0600B8D011 /* DetailApi.m */,
 				DF0320891EF2A7BF0088F8EE /* DetailViewController.h */,
 				DF03208A1EF2A7BF0088F8EE /* DetailViewController.m */,
 				046EAA841F6F6CC500C23F5A /* ThumbsUpAPI.h */,
@@ -361,6 +369,8 @@
 				337F221E1F0D184500C8488A /* AssesstokenAPI.m */,
 				047FA47B1F91AC7700B485B9 /* MessageCountAPI.h */,
 				047FA47C1F91AC7700B485B9 /* MessageCountAPI.m */,
+				91AC1E951FC2B4DA00196DE0 /* PersonalDataModel.h */,
+				91AC1E961FC2B4DA00196DE0 /* PersonalDataModel.m */,
 				33EE43491EBC9B01009DC2D4 /* PersonalCenterViewController.h */,
 				33EE434A1EBC9B01009DC2D4 /* PersonalCenterViewController.m */,
 				9188B7301FBDC7540082C1D1 /* ScanLoginCell.h */,
@@ -375,8 +385,6 @@
 				04ED0E211F7B752A003AF5E9 /* PlateSelectionViewController.m */,
 				04ED0E231F7B7FAD003AF5E9 /* PlateSelectionCell.h */,
 				04ED0E241F7B7FAD003AF5E9 /* PlateSelectionCell.m */,
-				337B87061F19ACC700558A4D /* Loginapi.h */,
-				337B87071F19ACC700558A4D /* Loginapi.m */,
 				337F22201F13B61400C8488A /* NETWorkRequest.h */,
 				337F22211F13B61400C8488A /* NETWorkRequest.m */,
 				337F22231F13B6D100C8488A /* NETWorkConnection.h */,
@@ -392,6 +400,10 @@
 		04599F0B1F95DF9600F4883C /* New Group */ = {
 			isa = PBXGroup;
 			children = (
+				337B87061F19ACC700558A4D /* Loginapi.h */,
+				337B87071F19ACC700558A4D /* Loginapi.m */,
+				91CD1A061FC30AF8006D8478 /* LoginDataModel.h */,
+				91CD1A071FC30AF8006D8478 /* LoginDataModel.m */,
 				3335F0241ED31F3B00FBB58D /* RecentReplyViewController.h */,
 				3335F0251ED31F3B00FBB58D /* RecentReplyViewController.m */,
 				3335F02A1ED46E8800FBB58D /* RecentReplyCell.h */,
@@ -487,8 +499,6 @@
 				3340123B1E4DF2D100E92B48 /* LaunchScreen.storyboard */,
 				3340123E1E4DF2D100E92B48 /* Info.plist */,
 				3340122D1E4DF2D000E92B48 /* Supporting Files */,
-				DF8429AF1EF93D0600B8D011 /* DetailApi.h */,
-				DF8429B01EF93D0600B8D011 /* DetailApi.m */,
 			);
 			path = Noder;
 			sourceTree = "<group>";
@@ -861,10 +871,12 @@
 				DF8429DD1EF941AC00B8D011 /* LCCodeTextNode.m in Sources */,
 				DF8429E71EF941AC00B8D011 /* NSMutableAttributedString+LCLineSpace.m in Sources */,
 				3395BFE31EE57AD9007E27F2 /* QandAViewController.m in Sources */,
+				91CD1A081FC30AF8006D8478 /* LoginDataModel.m in Sources */,
 				3395BFEC1EE582E3007E27F2 /* AllTableViewCell.m in Sources */,
 				DF8429DF1EF941AC00B8D011 /* LCHtmlNode.m in Sources */,
 				04C4B88E1F57A14100FA139F /* NewPageTableViewController.m in Sources */,
 				DF8429E01EF941AC00B8D011 /* LCLIDisplayNode.m in Sources */,
+				91AC1E971FC2B4DA00196DE0 /* PersonalDataModel.m in Sources */,
 				040471351F5FEAC900BBDA14 /* CollectionAPI.m in Sources */,
 				040471321F5FE9BA00BBDA14 /* CollectionTableViewController.m in Sources */,
 				337F22251F13B6D100C8488A /* NETWorkConnection.m in Sources */,

@@ -78,48 +78,50 @@
         self.button = button;
         [self setBackgroundColor:[UIColor whiteColor]];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(addnotification:)
-                                                     name:@"tongzi"
-                                                   object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self
+//                                                 selector:@selector(addnotification:)
+//                                                     name:@"tongzi"
+//                                                   object:nil];
         
     }
     return self;
 }
 
-- (void)addnotification:(NSNotification *)notification
-{
-    NSDictionary *dictionary = notification.object;
-    NSString *dataString = dictionary[@"success"];
-//    NSLog(@"dataString = %@", dataString);
-    if (dataString.boolValue == true) {
-        self.titleLabel.hidden = YES;
-        self.imageview.hidden = YES;
-    } else {
-        self.titleLabel.hidden = NO;
-    }
-}
+//- (void)addnotification:(NSNotification *)notification
+//{
+////    NSDictionary *dictionary = notification.object;
+////    NSString *dataString = dictionary[@"success"];
+////    NSLog(@"dataString = %@", dataString);
+//    if (dataString.boolValue == true) {
+//        self.titleLabel.hidden = YES;
+//        self.imageview.hidden = YES;
+//    } else {
+//        self.titleLabel.hidden = NO;
+//    }
+//}
 
 - (void)dealloc{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
-
-- (void)configWithData:(NSDictionary *)dic{	
-    NSDictionary *data = dic[@"data"];
-    NSString *avarat_url = data[@"avatar_url"];
-    NSURL *url = [NSURL URLWithString:avarat_url];
-    [self.avatarImageView sd_setImageWithURL:url];
+- (void)configWithData:(PersonalDataModel *)personalModel{
     
-    NSString *loginname = data[@"loginname"];
-    self.nameLabel.text = loginname;
+    [self.avatarImageView sd_setImageWithURL:personalModel.avatar_url];
+    self.nameLabel.text = personalModel.loginname;
     
     self.button.hidden = YES;
     self.avatarImageView.hidden = NO;
     
+    if (personalModel.success == true) {
+        self.titleLabel.hidden = YES;
+        self.imageview.hidden = YES;
+    } else {
+        self.titleLabel.hidden = NO;
+    }
 
 }
+
 
 
 @end

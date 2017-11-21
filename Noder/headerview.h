@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PersonalDataModel.h"
 
 @interface headerview : UIView
 
-- (void)configWithData:(NSDictionary *)dic;
+//- (void)configWithData:(NSDictionary *)dic;
+- (void)configWithData:(PersonalDataModel *)personalModel;
 @property (nonatomic, strong) UIButton *button;
 @property (nonatomic, weak) UILabel *nameLabel;
 @property (nonatomic, strong) UIView *headerView;

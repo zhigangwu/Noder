@@ -29,9 +29,12 @@
     Loginapi *recentTopics = [[Loginapi alloc] init];
     recentTopics.loginname = self.TopicsLoginname;
     [recentTopics startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-        NSDictionary *dictionary = request.responseJSONObject;
-        NSArray *array = dictionary[@"data"];
-        self.array = [array valueForKey:@"recent_topics"];
+//        NSDictionary *dictionary = request.responseJSONObject;
+//        NSArray *array = dictionary[@"data"];
+//        self.array = [array valueForKey:@"recent_topics"];
+        
+        self.loginModel = request.responseJSONObject;
+        self.array = self.loginModel.recent_topics;
         
         [self.tableView reloadData];        
     } failure:NULL];
@@ -54,9 +57,9 @@
                                                  reuseIdentifier:@"RecentTopicsCell"];
     }
     
-    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+    self.recent_topics = [self.array objectAtIndex:indexPath.row];
 //    recenttopicsCell.textLabel.text = [dictionary objectForKey:@"title"];
-    [recenttopicsCell configWithItem:dictionary];
+    [recenttopicsCell configWithItem:self.recent_topics];
     
     return recenttopicsCell;
 }
@@ -69,7 +72,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailViewController *detail = [[DetailViewController alloc] init];
-    detail.detailId = [self.array[indexPath.row] objectForKey:@"id"];
+    self.recent_topics = [self.array objectAtIndex:indexPath.row];
+//    detail.detailId = [self.array[indexPath.row] objectForKey:@"id"];
+    detail.detailId = self.recent_topics.id;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

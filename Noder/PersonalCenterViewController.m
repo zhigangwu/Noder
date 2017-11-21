@@ -121,70 +121,118 @@
 
 }
 
-
-- (void)addnotification:(NSNotification *)notification{
-    self.QRCodeString = notification.object;
+- (void)addnotification:(NSNotification *)notification
+{
+    NSString *QRCodeString = [ControllerManager shareManager].string;
+//    NSLog(@"QRCodeString = %@",QRCodeString);
     
-    AssesstokenAPI *assAPI = [[AssesstokenAPI alloc] init];
-
-//     必须传入为非空值
-    if (self.QRCodeString != nil) {
-        assAPI.requestArgument = @{@"accesstoken" : self.QRCodeString};
-        
+    if (QRCodeString != nil) {
+        AssesstokenAPI *assAPI = [[AssesstokenAPI alloc] init];
+        assAPI.requestArgument = @{@"accesstoken" : QRCodeString};
         [assAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-            NSDictionary *dic = request.responseJSONObject;
-//            Topic *topic = request.responseJSONObject;
-//            NSLog(@"topic = %d",topic.id);
-            [ControllerManager shareManager].dic = dic;
+            self.personalModel = request.responseJSONObject;
             
-            self.dictionary = dic;
-
-            NSString *string = [self.dictionary valueForKey:@"success"];
-            if (string.boolValue == 1) {
-                NSString *loginname = [self.dictionary valueForKey:@"loginname"];
-                self.loginname = loginname;
-                
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"loginname"
-                                                                    object:loginname];
+            if (self.personalModel.success == 1) {
+                self.loginname = self.personalModel.loginname;
                 
                 CollectionAPI *collAPI = [[CollectionAPI alloc] init];
-                collAPI.loginname = loginname;
+                collAPI.loginname = self.personalModel.loginname;
                 
-                Loginapi *api = [[Loginapi alloc] init];
-                api.loginname = loginname;
-                
-                [api startWithBlockSuccess:^(__kindof LCBaseRequest *request) {
-                    NSDictionary *dic = request.responseJSONObject;
-                    
-                    [ControllerManager shareManager].dictionary = dic;
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"tongzi" object:dic];
-                    
-                    NSString *success = dic[@"success"];
-                    if (success.boolValue == true) {
+                [self.Header configWithData:self.personalModel];
 
-                        UIButton *rightButton = [[UIButton alloc] init];
-                        rightButton.frame = CGRectMake(0, 0, 20, 20);
-                        [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-                        [rightButton setBackgroundImage:[UIImage imageNamed:@"set"] forState:UIControlStateNormal];
-                        [rightButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
-                        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
-                        self.navigationItem.rightBarButtonItem = rightItem;
-                    }
-                    [self.Header configWithData:dic];
-                    
-                } failure:NULL];
+                if (self.personalModel.success == 1) {
+                    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"set"]
+                                                                                       style:UIBarButtonItemStyleDone
+                                                                                      target:self
+                                                                                      action:@selector(logout)];
+                    self.navigationItem.rightBarButtonItem = rightBarButton;
                 }
             
-        } failure:NULL];
+                Loginapi *api = [[Loginapi alloc] init];
+                api.loginname = self.personalModel.loginname;
+            }
+        } failure:nil];
     }
-
 }
 
-- (void)dealloc{
+
+//- (void)addnotification:(NSNotification *)notification
+//{
+//    self.QRCodeString = notification.object;
+//
+////     必须传入为非空值
+//    if (self.QRCodeString != nil) {
+//        AssesstokenAPI *assAPI = [[AssesstokenAPI alloc] init];
+//        assAPI.requestArgument = @{@"accesstoken" : self.QRCodeString};
+////        NSLog(@"assAPI.requestArgument = %@",assAPI.requestArgument);
+//        [assAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+////            PersonalDataModel *personalModel = request.responseJSONObject;
+////            NSLog(@"personalModel.loginname = %@",personalModel.loginname);
+//
+//            NSArray *array = request.responseJSONObject;
+//            NSLog(@"array = %@",array);
+//
+////            NSDictionary *dic = request.responseJSONObject;
+////            NSLog(@"dic = %@",dic);
+////            [ControllerManager shareManager].dic = dic;
+//
+////            self.dictionary = dic;
+//
+////            NSString *string = [self.dictionary valueForKey:@"success"];
+////            if (string.boolValue == 1) {
+//            NSLog(@"self.personal = %@",self.personalModel);
+//            if (self.personalModel.success == 1) {
+////                NSString *loginname = [self.dictionary valueForKey:@"loginname"];
+////                self.loginname = loginname;
+//                self.loginname = self.personalModel.loginname;
+//
+////                [[NSNotificationCenter defaultCenter] postNotificationName:@"loginname"
+////                                                                    object:loginname];
+//
+//                CollectionAPI *collAPI = [[CollectionAPI alloc] init];
+////                collAPI.loginname = loginname;
+//                collAPI.loginname = self.personalModel.loginname;
+//
+//                Loginapi *api = [[Loginapi alloc] init];
+////                api.loginname = loginname;
+//                api.loginname = self.personalModel.loginname;
+//
+//                [api startWithBlockSuccess:^(__kindof LCBaseRequest *request) {
+////                    NSDictionary *dic = request.responseJSONObject;
+//                    NSArray *arr = request.responseJSONObject;
+//                    NSLog(@"arr = %@",arr);
+////                    [ControllerManager shareManager].dictionary = dic;
+////                    [[NSNotificationCenter defaultCenter] postNotificationName:@"tongzi" object:dic];
+////                    [[NSNotificationCenter defaultCenter] postNotificationName:@"tongzi" object:self.personalModel.success];
+//
+//                    NSString *success = dic[@"success"];
+//                    if (success.boolValue == true) {
+//
+//                        UIButton *rightButton = [[UIButton alloc] init];
+//                        rightButton.frame = CGRectMake(0, 0, 20, 20);
+//                        [rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+//                        [rightButton setBackgroundImage:[UIImage imageNamed:@"set"] forState:UIControlStateNormal];
+//                        [rightButton addTarget:self action:@selector(logout) forControlEvents:UIControlEventTouchUpInside];
+//                        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
+//                        self.navigationItem.rightBarButtonItem = rightItem;
+////                    }
+////                    [self.Header configWithData:dic];
+//                    [self.Header configWithData:self.personalModel];
+//                } failure:NULL];
+//                }
+//
+//        } failure:NULL];
+//    }
+//
+//}
+
+- (void)dealloc
+{
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)buttonaction{
+- (void)buttonaction
+{
     QRCodeViewController *QRCode = [[QRCodeViewController alloc] init];
     QRCode.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:QRCode animated:YES];
@@ -205,12 +253,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
+
     ScanLoginCell *scanlogincell = [tableView dequeueReusableCellWithIdentifier:@"ScanloginCell" forIndexPath:indexPath];
     scanlogincell.textLabel.text = self.array[indexPath.row];
     scanlogincell.imageView.image = [UIImage imageNamed:@"Rectangle 4"];
     scanlogincell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
+
     return scanlogincell;
 }
 
@@ -230,7 +278,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{    
+{
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             RecentReplyViewController *RRViewController = [[RecentReplyViewController alloc] init];

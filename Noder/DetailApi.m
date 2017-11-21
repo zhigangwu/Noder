@@ -22,5 +22,4 @@
     return LCRequestMethodGet;
 }
 
-
 @end

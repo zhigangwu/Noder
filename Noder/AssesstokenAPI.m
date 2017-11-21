@@ -7,6 +7,7 @@
 //
 
 #import "AssesstokenAPI.h"
+#import "PersonalDataModel.h"
 
 @implementation AssesstokenAPI
 
@@ -23,8 +24,15 @@
 }
 
 
-- (LCRequestSerializerType)requestSerializerType{
+- (LCRequestSerializerType)requestSerializerType
+{
     return LCRequestSerializerTypeJSON;
+}
+
+- (id)responseProcess:(id)responseObject
+{
+//    return responseObject;
+    return [MTLJSONAdapter modelOfClass:[PersonalDataModel class] fromJSONDictionary:responseObject error:nil];
 }
 
 
