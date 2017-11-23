@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MessageDataModel.h"
 
 @interface ReadMessageTableViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *array;
+@property (nonatomic, strong) MessageDataModel *messageModel;
 
 @end

@@ -1,10 +1,9 @@
-
 //
 //  MessageCountAPI.m
 //  Noder
 //
-//  Created by Mac on 2017/10/14.
-//  Copyright © 2017年 Apress. All rights reserved.
+//  Created by 吴志刚 on 23/11/2017.
+//  Copyright © 2017 Apress. All rights reserved.
 //
 
 #import "MessageCountAPI.h"

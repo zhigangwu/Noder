@@ -16,7 +16,6 @@
 @property (nonatomic, strong) NSArray *array;
 @property (nonatomic, strong) NSDictionary *dictionary;
 @property (nonatomic, strong) NSString *loginname;
-//@property (nonatomic, strong) NSString *QRCodeString;
 @property (nonatomic, strong) UIButton *button;
 @property (nonatomic, strong) NSString *messageString;
 

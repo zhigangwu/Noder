@@ -29,9 +29,6 @@
     Loginapi *recentTopics = [[Loginapi alloc] init];
     recentTopics.loginname = self.TopicsLoginname;
     [recentTopics startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-//        NSDictionary *dictionary = request.responseJSONObject;
-//        NSArray *array = dictionary[@"data"];
-//        self.array = [array valueForKey:@"recent_topics"];
         
         self.loginModel = request.responseJSONObject;
         self.array = self.loginModel.recent_topics;
@@ -58,7 +55,6 @@
     }
     
     self.recent_topics = [self.array objectAtIndex:indexPath.row];
-//    recenttopicsCell.textLabel.text = [dictionary objectForKey:@"title"];
     [recenttopicsCell configWithItem:self.recent_topics];
     
     return recenttopicsCell;
@@ -73,7 +69,6 @@
 {
     DetailViewController *detail = [[DetailViewController alloc] init];
     self.recent_topics = [self.array objectAtIndex:indexPath.row];
-//    detail.detailId = [self.array[indexPath.row] objectForKey:@"id"];
     detail.detailId = self.recent_topics.id;
     [self.navigationController pushViewController:detail animated:YES];
 }

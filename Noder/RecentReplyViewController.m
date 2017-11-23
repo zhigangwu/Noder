@@ -34,8 +34,9 @@
     [recentAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
         
         self.loginModel = request.responseJSONObject;
+
         self.array = self.loginModel.recent_replies;
-        
+
         [self.tableView reloadData];
     } failure:NULL];
     
@@ -55,7 +56,6 @@
     RecentReplyCell *recentreplyCell = [tableView dequeueReusableCellWithIdentifier:@"RecentReplyCell"
                                                                      forIndexPath:indexPath];
 
-//    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
      self.recent_replies = [self.array objectAtIndex:indexPath.row];
     
     [recentreplyCell configWithItem:self.recent_replies];

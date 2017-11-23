@@ -12,6 +12,8 @@
 #import "DetailViewController.h"
 #import "UIColor+tableBackground.h"
 
+#import "CollectionDataModel.h"
+
 @interface CollectionTableViewController ()
 
 @end
@@ -27,9 +29,8 @@
     CollectionAPI *collectionAPI = [[CollectionAPI alloc] init];
     collectionAPI.loginname = self.collectionLoginname;
     [collectionAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-        NSDictionary *dicationary = request.responseJSONObject;
-        
-        self.array = dicationary[@"data"];
+
+        self.array = request.responseJSONObject;
         [self.tableView reloadData];
         
     }failure:NULL];
@@ -47,13 +48,8 @@
     CollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CollectionCell"
                                                            forIndexPath:indexPath];
     
-    if (!cell) {
-        cell = [[CollectionCell alloc] initWithStyle:UITableViewCellStyleValue1
-                                     reuseIdentifier:@"CollectionCell"];
-    }
-    
-    NSDictionary *dicationary = [self.array objectAtIndex:indexPath.row];
-    [cell configWithItem:dicationary];
+    CollectionDataModel *collectionModel = [self.array objectAtIndex:indexPath.row];
+    [cell configWithItem:collectionModel];
     
     return cell;
 }
@@ -66,7 +62,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailViewController *detail = [[DetailViewController alloc] init];
-    detail.detailId = [self.array[indexPath.row] objectForKey:@"id"];
+    CollectionDataModel *collectionModel = [self.array objectAtIndex:indexPath.row];
+    detail.detailId = collectionModel.id;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

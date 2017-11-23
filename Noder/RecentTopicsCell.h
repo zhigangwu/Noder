@@ -11,9 +11,9 @@
 
 @interface RecentTopicsCell : UITableViewCell
 
-@property (nonatomic, strong) LoginRecent_topics *recent_topics;
-@property (nonatomic, weak) UILabel *TitleLable;
-@property (nonatomic, retain) UIImageView *ImageView;
+@property (nonatomic, strong) UILabel *TitleLabel;
+@property (nonatomic, strong) UILabel *durationLabel;
+@property (nonatomic, strong) UIImageView *ImageView;
 
 - (void)configWithItem:(LoginRecent_topics *)recent_topics;
 

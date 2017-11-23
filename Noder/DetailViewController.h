@@ -7,14 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DetailDataModel.h"
 
 @interface DetailViewController : UIViewController
 
 @property (nonatomic, strong) NSString *detailId;
 @property (nonatomic, strong) UIWindow *window;
-@property (nonatomic, strong) NSDictionary *dic;
 
 @property (nonatomic, strong) NSString *ZGreply_id;
 @property (nonatomic, strong) NSNumber *reply_count;
+
+@property (nonatomic, strong) DetailDataModel *detailModel;
+@property (nonatomic, strong) DetailReplies *replies;
 
 @end

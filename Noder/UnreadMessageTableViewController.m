@@ -7,10 +7,10 @@
 //
 
 #import "UnreadMessageTableViewController.h"
-#import "UnreadMessageAPI.h"
 #import "UnreadMessageCell.h"
 #import "ControllerManager.h"
 #import "UIColor+tableBackground.h"
+#import "MessageAPI.h"
 
 @interface UnreadMessageTableViewController ()
 
@@ -24,15 +24,13 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;//取消系统自带的分割线
     self.tableView.backgroundColor = [UIColor tableBackground];
     
-    NSString *access = [ControllerManager shareManager].string;
-    
-    UnreadMessageAPI *UnreadMesAPI = [[UnreadMessageAPI alloc] init];
-    if (access != nil) {
-        UnreadMesAPI.requestArgument = @{@"accesstoken" : access};
-        [UnreadMesAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-            NSDictionary *dictionary = request.responseJSONObject;
-            NSLog(@"dictionary = %@",dictionary);
-            self.array = dictionary[@"data"];
+    NSString *accesstoken = [ControllerManager shareManager].string;
+    MessageAPI *messageAPI = [[MessageAPI alloc] init];
+    if (accesstoken != nil) {
+        messageAPI.requestArgument = @{@"accesstoken" : accesstoken};
+        [messageAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+            self.messageModel = request.responseJSONObject;
+            self.array = self.messageModel.hasnot_read_messages;
             
             [self.tableView reloadData];
         } failure:NULL];
@@ -58,9 +56,9 @@
     UnreadMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UnreadMessageCell"
                                                               forIndexPath:indexPath];
     
-    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
+    Hasnot_read_messages *hasnot_read = [self.array objectAtIndex:indexPath.row];
     
-    [cell configWithItem:dictionary];
+    [cell configWithItem:hasnot_read];
     
     return cell;
 }

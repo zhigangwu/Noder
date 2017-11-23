@@ -11,7 +11,6 @@
 
 @interface RecentReplyCell : UITableViewCell
 
-//@property (nonatomic, strong) LoginRecent_replies *recent_replies;
 @property (nonatomic, strong) UILabel *TitleLabel;
 @property (nonatomic, strong) UILabel *durationLabel;
 @property (nonatomic, strong) UIImageView *ImageView;

@@ -10,6 +10,7 @@
 
 
 #import <UIKit/UIKit.h>
+#import "DetailDataModel.h"
 
 @protocol CommentCellDelegate <NSObject>
 
@@ -29,5 +30,5 @@
 @property (nonatomic, strong) UIButton *ZGupButton; //点赞
 @property (nonatomic, strong) UIButton *ZGevaButton; // 个人评价
 
-- (void)configWithItem:(NSDictionary *)dictionary;
+- (void)configWithItem:(DetailReplies *)replies;
 @end

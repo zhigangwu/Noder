@@ -16,6 +16,8 @@
 #import "MJExtension.h"
 #import "comContentAPI.h"
 #import "UIColor+tableBackground.h"
+#import "DetailApi.h"
+
 
 @implementation CommentPageViewController
 
@@ -48,10 +50,16 @@
     
     [self setupRefresh];
     
-    [self AccessNetworkForDateMethod];
+    DetailApi *detailAPI = [[DetailApi alloc] init];
+    detailAPI._id = self.topic_id;
+    [detailAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.detailModel = request.responseJSONObject;
+        self.array = self.detailModel.replies;
+        NSLog(@"array = %@",self.array);
+        
+    } failure:nil];
+    
 }
-
-
 
 - (void)setupRefresh
 {
@@ -86,7 +94,6 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-//    return self.listAarry.count;
     return self.array.count;
 }
 
@@ -97,8 +104,8 @@
     
     cell.delegate = self;
     
-    NSDictionary *dictionary = [self.array objectAtIndex:indexPath.row];
-    [cell configWithItem:dictionary];
+    DetailReplies *replies = [self.array objectAtIndex:indexPath.row];
+    [cell configWithItem:replies];
 
     return cell;
 }
@@ -106,14 +113,6 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 200;
-}
-
-- (void)AccessNetworkForDateMethod
-{
-    NSDictionary *array = self.dictionary[@"data"];
-    self.array = [array valueForKey:@"replies"];
-    _reply_id = [self.array valueForKey:@"id"];
-    _topic_id = [array valueForKey:@"id"];
 }
 
 - (void)appraise

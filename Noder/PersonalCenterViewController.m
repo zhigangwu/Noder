@@ -33,8 +33,6 @@
 
 @interface PersonalCenterViewController ()
 
-@property (nonatomic, strong) NSDictionary *success;
-
 @end
 
 @implementation PersonalCenterViewController
@@ -124,16 +122,15 @@
 - (void)addnotification:(NSNotification *)notification
 {
     NSString *QRCodeString = [ControllerManager shareManager].string;
-//    NSLog(@"QRCodeString = %@",QRCodeString);
     
     if (QRCodeString != nil) {
         AssesstokenAPI *assAPI = [[AssesstokenAPI alloc] init];
         assAPI.requestArgument = @{@"accesstoken" : QRCodeString};
         [assAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
             self.personalModel = request.responseJSONObject;
+        
             
             if (self.personalModel.success == 1) {
-                self.loginname = self.personalModel.loginname;
                 
                 CollectionAPI *collAPI = [[CollectionAPI alloc] init];
                 collAPI.loginname = self.personalModel.loginname;
@@ -146,8 +143,8 @@
                                                                                       target:self
                                                                                       action:@selector(logout)];
                     self.navigationItem.rightBarButtonItem = rightBarButton;
+                    
                 }
-            
                 Loginapi *api = [[Loginapi alloc] init];
                 api.loginname = self.personalModel.loginname;
             }
@@ -257,6 +254,12 @@
     ScanLoginCell *scanlogincell = [tableView dequeueReusableCellWithIdentifier:@"ScanloginCell" forIndexPath:indexPath];
     scanlogincell.textLabel.text = self.array[indexPath.row];
     scanlogincell.imageView.image = [UIImage imageNamed:@"Rectangle 4"];
+    
+    if (indexPath.row > 2) {
+        
+        scanlogincell.messageLabel.text = @"4";
+    }
+
     scanlogincell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     return scanlogincell;
@@ -279,34 +282,36 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            RecentReplyViewController *RRViewController = [[RecentReplyViewController alloc] init];
-            RRViewController.hidesBottomBarWhenPushed = YES;
-            RRViewController.recenrLoginname = self.loginname;
-            [self.navigationController pushViewController:RRViewController animated:YES];
-        }
-        if (indexPath.row == 1) {
-            RecentTopicsViewController *RTViewController = [[RecentTopicsViewController alloc] init];
-            RTViewController.hidesBottomBarWhenPushed = YES;
-            RTViewController.TopicsLoginname = self.loginname;
-            [self.navigationController pushViewController:RTViewController animated:YES];
-        }
-        if (indexPath.row == 2) {
-            CollectionTableViewController *collect = [[CollectionTableViewController alloc] init];
-            collect.hidesBottomBarWhenPushed = YES;
-            collect.collectionLoginname = self.loginname;
-            [self.navigationController pushViewController:collect animated:YES];
-        }
-        if (indexPath.row == 3) {
-            UnreadMessageTableViewController *UNMessage = [[UnreadMessageTableViewController alloc] init];
-            UNMessage.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:UNMessage animated:YES];
-        }
-        if (indexPath.row == 4) {
-            ReadMessageTableViewController *readMes = [[ReadMessageTableViewController alloc] init];
-            readMes.hidesBottomBarWhenPushed = YES;
-            [self.navigationController pushViewController:readMes animated:YES];
+    if (self.personalModel.success == 1) {
+        if (indexPath.section == 0) {
+            if (indexPath.row == 0) {
+                RecentReplyViewController *RRViewController = [[RecentReplyViewController alloc] init];
+                RRViewController.hidesBottomBarWhenPushed = YES;
+                RRViewController.recenrLoginname = self.personalModel.loginname;
+                [self.navigationController pushViewController:RRViewController animated:YES];
+            }
+            if (indexPath.row == 1) {
+                RecentTopicsViewController *RTViewController = [[RecentTopicsViewController alloc] init];
+                RTViewController.hidesBottomBarWhenPushed = YES;
+                RTViewController.TopicsLoginname = self.personalModel.loginname;
+                [self.navigationController pushViewController:RTViewController animated:YES];
+            }
+            if (indexPath.row == 2) {
+                CollectionTableViewController *collect = [[CollectionTableViewController alloc] init];
+                collect.hidesBottomBarWhenPushed = YES;
+                collect.collectionLoginname = self.personalModel.loginname;
+                [self.navigationController pushViewController:collect animated:YES];
+            }
+            if (indexPath.row == 3) {
+                UnreadMessageTableViewController *UNMessage = [[UnreadMessageTableViewController alloc] init];
+                UNMessage.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:UNMessage animated:YES];
+            }
+            if (indexPath.row == 4) {
+                ReadMessageTableViewController *readMes = [[ReadMessageTableViewController alloc] init];
+                readMes.hidesBottomBarWhenPushed = YES;
+                [self.navigationController pushViewController:readMes animated:YES];
+            }
         }
     }
 }

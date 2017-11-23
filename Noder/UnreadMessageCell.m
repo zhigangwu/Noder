@@ -10,7 +10,8 @@
 #import "Masonry.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UIColor+textColor.h"
-
+#import "UIColor+textColorB.h"
+#import "NSDate+TimeAgo.h"
 
 @implementation UnreadMessageCell
 
@@ -18,52 +19,53 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        _TitleLabel = [[UILabel alloc] init];
-        _imageview = [[UIImageView alloc] init];
-
-        [self.contentView addSubview:_TitleLabel];
-        [self.contentView addSubview:_imageview];
-
+        self.TitleLabel = [[UILabel alloc] init];
+        self.durationLabel = [[UILabel alloc] init];
+        self.ImageView = [[UIImageView alloc] init];
+        [self.contentView addSubview:self.ImageView];
+        [self.contentView addSubview:self.TitleLabel];
+        [self.contentView addSubview:self.durationLabel];
         
-        self.TitleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
-        self.TitleLabel.textColor = [UIColor textColor];
-        
-        [_imageview.layer setCornerRadius:25.85];
-        [_imageview.layer setMasksToBounds:YES];
-        
-        [_imageview mas_makeConstraints:^(MASConstraintMaker *make){
+        [self.ImageView mas_makeConstraints:^(MASConstraintMaker *make){
             make.centerY.equalTo(self.contentView);
             make.left.equalTo(self.contentView).with.offset(15.9);
             make.size.mas_equalTo(CGSizeMake(52, 51.7));
         }];
         
-        [_TitleLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        [self.TitleLabel mas_makeConstraints:^(MASConstraintMaker *make){
             make.top.equalTo(self.contentView).with.offset(11.6);
-            make.left.equalTo(_imageview.mas_right).with.offset(11);
+            make.left.equalTo(self.ImageView.mas_right).with.offset(11);
         }];
         
+        [self.durationLabel mas_makeConstraints:^(MASConstraintMaker *make){
+            make.bottom.equalTo(self.contentView).with.offset(-9.6);
+            make.left.equalTo(self.ImageView.mas_right).with.offset(14);
+        }];
+        
+        self.TitleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
+        self.TitleLabel.textColor = [UIColor textColor];
+        
+        [self.ImageView.layer setCornerRadius:25.85];
+        [self.ImageView.layer setMasksToBounds:YES];
+        
+        self.durationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
+        self.durationLabel.textColor = [UIColor textColorB];
 
-        
-        
     }
     return self;
 }
 
-- (void)configWithItem:(NSDictionary *)dicationary
+- (void)configWithItem:(Hasnot_read_messages *)hasnot_read
 {
-    self.TitleLabel.text = [dicationary objectForKey:@"title"];
+    self.TitleLabel.text = hasnot_read.author.loginname;
+    [self.imageView sd_setImageWithURL:hasnot_read.author.avatar_url];
     
-    [_imageview sd_setImageWithURL:dicationary[@"author"][@"avatar_url"]];
-    
+    NSString *dateStr = hasnot_read.topic.last_reply_at;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    NSDate *date = [dateFormatter dateFromString:dateStr];
+    self.durationLabel.text = [date timeAgo];
 
-//    MessageCountAPI *messAPI = [[MessageCountAPI alloc] init];
-//    NSString *access = [ControllerManager shareManager].string;
-//    messAPI.requestArgument = @{@"accesstoken" : access};
-//    [messAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-//        NSDictionary *dic = request.responseJSONObject;
-//        NSLog(@"dic = %@",dic);
-//        _messageCount.text = dic[@"data"];
-//    } failure:NULL];
 }
 
 - (void)setFrame:(CGRect)frame

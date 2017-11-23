@@ -93,24 +93,26 @@
     }
 }
 
-- (void)configWithItem:(NSDictionary *)dictionary
+- (void)configWithItem:(DetailReplies *)replies
 {
-    self.ZGloginname.text = dictionary[@"author"][@"loginname"];
+//    self.ZGloginname.text = dictionary[@"author"][@"loginname"];
 
-    NSString *string = [dictionary valueForKey:@"content"];
-    [_ZGwebView loadHTMLString:string baseURL:nil];
+    
+//    NSString *string = [dictionary valueForKey:@"content"];
+//    [_ZGwebView loadHTMLString:string baseURL:nil];
+//    [self.ZGimageView sd_setImageWithURL:dictionary[@"author"][@"avatar_url"]];
 
-    [self.ZGimageView sd_setImageWithURL:dictionary[@"author"][@"avatar_url"]];
-
-    NSString *dateStr = dictionary[@"create_at"];
+//    NSString *dateStr = dictionary[@"create_at"];
+    
+    self.ZGloginname.text = replies.author.loginname;
+    [_ZGwebView loadHTMLString:replies.content baseURL:nil];
+    [self.ZGimageView sd_setImageWithURL:replies.author.avatar_url];
+    
+    NSString *dateStr = replies.create_at;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *date = [dateFormatter dateFromString:dateStr];
     self.ZGdurationLabel.text = [date timeAgo];
-
-//    self.floorLabel.text = @"555";
-
-//    self.thupID = dictionary[@"id"];
 
     [_ZGupButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_ZGupButton setTitle:@"赞" forState:UIControlStateNormal];

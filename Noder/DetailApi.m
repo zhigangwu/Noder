@@ -7,6 +7,7 @@
 //
 
 #import "DetailApi.h"
+#import "DetailDataModel.h"
 
 @implementation DetailApi
 
@@ -20,6 +21,12 @@
 - (LCRequestMethod)requestMethod
 {
     return LCRequestMethodGet;
+}
+
+- (id)responseProcess:(id)responseObject
+{
+    NSDictionary *dictionary = responseObject[@"data"];
+    return [MTLJSONAdapter modelOfClass:[DetailDataModel class] fromJSONDictionary:dictionary error:nil];
 }
 
 @end

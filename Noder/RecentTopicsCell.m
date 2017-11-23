@@ -11,6 +11,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "UIColor+textColor.h"
 #import "NSDate+TimeAgo.h"
+#import "UIColor+textColorB.h"
 
 @implementation RecentTopicsCell
 
@@ -18,38 +19,51 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         
-        UILabel *title = [UILabel new];
-        UIImageView *imageview = [UIImageView new];
-        [self.contentView addSubview:title];
-        [self.contentView addSubview:imageview];
+        self.TitleLabel = [[UILabel alloc] init];
+        self.durationLabel = [[UILabel alloc] init];
+        self.ImageView = [[UIImageView alloc] init];
+        [self.contentView addSubview:self.ImageView];
+        [self.contentView addSubview:self.TitleLabel];
+        [self.contentView addSubview:self.durationLabel];
         
-        title.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
-        title.textColor = [UIColor textColor];
-        
-        [imageview.layer setCornerRadius:25.85];
-        [imageview.layer setMasksToBounds:YES];
-
-        [imageview mas_makeConstraints:^(MASConstraintMaker *make){
+        [self.ImageView mas_makeConstraints:^(MASConstraintMaker *make){
             make.centerY.equalTo(self.contentView);
             make.left.equalTo(self.contentView).with.offset(15.9);
             make.size.mas_equalTo(CGSizeMake(52, 51.7));
         }];
-        self.ImageView = imageview;
         
-        [title mas_makeConstraints:^(MASConstraintMaker *make){
+        [self.TitleLabel mas_makeConstraints:^(MASConstraintMaker *make){
             make.top.equalTo(self.contentView).with.offset(11.6);
-            make.left.equalTo(imageview.mas_right).with.offset(11);
+            make.left.equalTo(self.ImageView.mas_right).with.offset(11);
         }];
-        self.TitleLable = title;
+        
+        [self.durationLabel mas_makeConstraints:^(MASConstraintMaker *make){
+            make.bottom.equalTo(self.contentView).with.offset(-9.6);
+            make.left.equalTo(self.ImageView.mas_right).with.offset(14);
+        }];
+        
+        self.TitleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
+        self.TitleLabel.textColor = [UIColor textColor];
+        
+        [self.ImageView.layer setCornerRadius:25.85];
+        [self.ImageView.layer setMasksToBounds:YES];
+        
+        self.durationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
+        self.durationLabel.textColor = [UIColor textColorB];
     }
     return self;
 }
 
 - (void)configWithItem:(LoginRecent_topics *)recent_topics
 {
-
-    self.TitleLable.text = recent_topics.title;
+    self.TitleLabel.text = recent_topics.title;
     [self.ImageView sd_setImageWithURL:recent_topics.author.avatar_url];
+    
+    NSString *dateStr = recent_topics.last_reply_at;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
+    NSDate *date = [dateFormatter dateFromString:dateStr];
+    self.durationLabel.text = [date timeAgo];
 }
 
 - (void)setFrame:(CGRect)frame

@@ -49,7 +49,6 @@
         [self.ImageView.layer setCornerRadius:25.85];
         [self.ImageView.layer setMasksToBounds:YES];
         
-//        self.durationLabel.text = @"4小时";
         self.durationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
         self.durationLabel.textColor = [UIColor textColorB];
 

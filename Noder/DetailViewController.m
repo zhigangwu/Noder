@@ -41,24 +41,20 @@
     
     self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    comContentAPI *contentAPI = [[comContentAPI alloc] init];
+    contentAPI.topic_id = self.detailId;
+    
     self.view.backgroundColor = [UIColor whiteColor];
     DetailApi *api = [[DetailApi alloc] init];
     api._id = self.detailId;
     
-    comContentAPI *contentAPI = [[comContentAPI alloc] init];
-    contentAPI.topic_id = self.detailId;
-    
     [api startWithBlockSuccess:^(__kindof LCBaseRequest *request) {
-        self.dic = request.responseJSONObject;
-        NSArray *arrayData = self.dic[@"data"];
-        _reply_count = [arrayData valueForKey:@"reply_count"];
-        NSArray *arrayReply = [arrayData valueForKey:@"replies"];
-        _ZGreply_id = [arrayReply valueForKey:@"reply_id"];
-//        NSLog(@"_ZGreply_id = %@",self.ZGreply_id);
-        ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
-        thumAPI.reply_id = _ZGreply_id;
+        self.detailModel = request.responseJSONObject;
         
-        NSString *content = [[request.responseJSONObject objectForKey:@"data"] objectForKey:@"content"];
+        ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
+        thumAPI.reply_id = self.replies.reply_id;
+        
+        NSString *content = self.detailModel.content;
         HTMLDocument *document = [HTMLDocument documentWithString:content];
         HTMLElement *body = document.body;
         HTMLElement *div = (HTMLElement *)body.firstChild;
@@ -80,7 +76,6 @@
 {
     ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
     thumAPI.reply_id = notification.object;
-    NSLog(@"thumAPI.reply_id = %@",thumAPI.reply_id);
     
     PersonalComViewController *personalCom = [[PersonalComViewController alloc] init];
     personalCom.reply_id = notification.object;
@@ -101,13 +96,14 @@
 }
 - (void)comment
 {
-    if (self.reply_count.integerValue == 0) {
+    if (self.detailModel.reply_count == 0) {
         ComContentViewContrnt *com = [[ComContentViewContrnt alloc] init];
         [self.navigationController pushViewController:com animated:YES];
     }else {
         CommentPageViewController *comment = [[CommentPageViewController alloc] init];
-        comment.dictionary = self.dic;
-        comment.topic_id = self.detailId;
+//        comment.array = self.detailModel.replies;
+        comment.reply_id = self.replies.id;
+        comment.topic_id = self.detailModel.id;
         [self.navigationController pushViewController:comment animated:YES];
     }
 

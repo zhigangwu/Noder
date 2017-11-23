@@ -7,16 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MessageDataModel.h"
 
 @interface UnreadMessageCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *TitleLabel;
 @property (nonatomic, strong) UILabel *durationLabel;
+@property (nonatomic, strong) UIImageView *ImageView;
 
-@property (nonatomic, strong) UIImageView *imageview;
 
-
-- (void)configWithItem:(NSDictionary *)dic;
+- (void)configWithItem:(Hasnot_read_messages *)hasnot_read;
 
 
 @end

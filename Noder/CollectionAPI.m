@@ -7,6 +7,7 @@
 //
 
 #import "CollectionAPI.h"
+#import "CollectionDataModel.h"
 
 @implementation CollectionAPI
 
@@ -18,6 +19,12 @@
 - (LCRequestMethod)requestMethod
 {
     return LCRequestMethodGet;
+}
+
+- (id)responseProcess:(id)responseObject
+{
+    NSArray *array = responseObject[@"data"];
+    return [MTLJSONAdapter modelsOfClass:[CollectionDataModel class] fromJSONArray:array error:nil];
 }
 
 @end

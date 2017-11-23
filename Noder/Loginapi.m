@@ -28,7 +28,6 @@
 - (id)responseProcess:(id)responseObject
 {
     NSDictionary *dictionary= responseObject[@"data"];
-//    return [MTLJSONAdapter modelsOfClass:[LoginDataModel class] fromJSONArray:array error:nil];
     return [MTLJSONAdapter modelOfClass:[LoginDataModel class] fromJSONDictionary:dictionary error:nil];
 }
 

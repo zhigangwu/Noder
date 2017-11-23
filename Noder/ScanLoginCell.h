@@ -10,7 +10,7 @@
 
 @interface ScanLoginCell : UITableViewCell
 
-
+@property (nonatomic, strong) UILabel *messageLabel;
 
 
 @end

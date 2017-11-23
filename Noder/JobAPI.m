@@ -24,7 +24,7 @@
 - (id)responseProcess:(id)responseObject
 {
     NSArray *array = responseObject[@"data"];
-    return [MTLJSONAdapter modelOfClass:[JobDataModel class] fromJSONDictionary:array error:nil];
+    return [MTLJSONAdapter modelsOfClass:[JobDataModel class] fromJSONArray:array error:nil];
 }
 
 @end

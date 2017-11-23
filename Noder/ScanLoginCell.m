@@ -17,8 +17,24 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-    
 
+        
+        [self.imageView mas_makeConstraints:^(MASConstraintMaker *make){
+            make.left.equalTo(self.contentView).with.offset(10);
+            make.centerY.equalTo(self.contentView);
+            make.size.mas_equalTo(CGSizeMake(40, 40));
+        }];
+        
+        [self.textLabel mas_makeConstraints:^(MASConstraintMaker *make){
+            
+        }];
+        
+        self.messageLabel = [[UILabel alloc] init];
+        [self.contentView addSubview:self.messageLabel];
+        [self.messageLabel mas_makeConstraints:^(MASConstraintMaker *make){
+            make.right.equalTo(self.contentView).with.offset(-20);
+            make.size.mas_equalTo(CGSizeMake(20, 20));
+        }];
     }
     return self;
 }

@@ -10,10 +10,11 @@
 #import "ThumbsUpAPI.h"
 #import "MMJDIYHeader.h"
 #import "CommentTableViewCell.h"
+#import "DetailDataModel.h"
 
 @interface CommentPageViewController : UITableViewController <CommentCellDelegate>
 
-@property (nonatomic, strong) NSMutableArray *array;
+@property (nonatomic, strong) NSArray *array;
 
 @property (nonatomic, strong) NSString *comAuthor_id;
 @property (nonatomic, strong) NSDictionary *dictionary;
@@ -25,6 +26,8 @@
 @property (nonatomic, strong) UIButton *ZG_evaButton;
 
 @property (nonatomic, strong) NSString *string_id;
+
+@property (nonatomic, strong) DetailDataModel *detailModel;
 
 
 
