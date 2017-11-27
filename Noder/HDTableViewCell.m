@@ -101,8 +101,6 @@
         messageLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
         messageLabel.textColor = [UIColor textColor];
 
-        
-
     }
     
     return self;

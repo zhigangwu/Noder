@@ -32,9 +32,6 @@
         NSDictionary *dic = request.responseJSONObject;
         self.array = dic[@"data"];
         self.imageArray = [dic valueForKeyPath:@"data.author"];
-//        self.timeArray = [dic valueForKey:@"data.create_at"];
-//        NSLog(@"*******%@",self.array);
-//        NSLog(@"^^^^^^%@",self.timeArray);
 
         [self.tableView reloadData];
 
