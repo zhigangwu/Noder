@@ -23,8 +23,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor tableBackground];
+    //    cell分割线全屏
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        self.tableView.separatorInset = UIEdgeInsetsZero;
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        self.tableView.layoutMargins = UIEdgeInsetsZero;
+    }
+    
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableView.backgroundColor = [UIColor tableBackground];
     
     DevAPI *devAPI = [[DevAPI alloc] init];
     [devAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
@@ -85,8 +94,11 @@
                                                                          forIndexPath:indexPath];
     
     DevDataModel *devModel = [self.array objectAtIndex:indexPath.row];
-    
     [devtableviewcell configWithItem:devModel];
+    
+    if ([devtableviewcell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [devtableviewcell setLayoutMargins:UIEdgeInsetsZero];
+    }
     
     return devtableviewcell;
 }

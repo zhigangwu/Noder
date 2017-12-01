@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ComContentView.h"
 
 
-@interface ComContentViewContrnt : UIViewController <UITextViewDelegate>
+@interface ComContentViewContrnt : UIViewController <backButtonDelegate,submitButtonDelegate>
 
 @property (nonatomic, strong) UIImageView *imageview;
 @property (nonatomic, strong) UITextView *contentView;
@@ -18,5 +19,7 @@
 
 @property (nonatomic, strong) NSString *topic_id;
 @property (nonatomic, strong) NSString *reply_id;
+
+@property (nonatomic, strong) ComContentView *comContentView;
 
 @end

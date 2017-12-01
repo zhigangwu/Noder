@@ -23,8 +23,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor tableBackground];
+    //    cell分割线全屏
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        self.tableView.separatorInset = UIEdgeInsetsZero;
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        self.tableView.layoutMargins = UIEdgeInsetsZero;
+    }
+    
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableView.backgroundColor = [UIColor tableBackground];
     
     JobAPI *jobAPI = [[JobAPI alloc] init];
     [jobAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
@@ -88,8 +97,11 @@
     RecruitmentTableViewCell *recruitmentTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"recruitmentTableViewCell" forIndexPath:indexPath];
     
     JobDataModel *jobModel = [self.array objectAtIndex:indexPath.row];
-    
     [recruitmentTableViewCell configWithItem:jobModel];
+    
+    if ([recruitmentTableViewCell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [recruitmentTableViewCell setLayoutMargins:UIEdgeInsetsZero];
+    }
     
     return recruitmentTableViewCell;
     

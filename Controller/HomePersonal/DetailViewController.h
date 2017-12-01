@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "DetailDataModel.h"
+#import "DetailBottomView.h"
+#import "AllViewController.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController <BackViewDelegate,commentDelegate,comCenterDelegate>
 
 @property (nonatomic, strong) NSString *detailId;
 @property (nonatomic, strong) UIWindow *window;
@@ -19,5 +21,7 @@
 
 @property (nonatomic, strong) DetailDataModel *detailModel;
 @property (nonatomic, strong) DetailReplies *replies;
+
+@property (nonatomic, strong) DetailBottomView *bottomView;
 
 @end

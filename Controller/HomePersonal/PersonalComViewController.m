@@ -30,8 +30,6 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:rightButton];
     self.navigationItem.rightBarButtonItem = rightItem;
     
-    
-    
     UIView *topview = [[UIView alloc] init];
     self.imageview = [[UIImageView alloc] init];
     self.contentView = [[UITextView alloc] init];

@@ -23,8 +23,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor tableBackground];
+    //    cell分割线全屏
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        self.tableView.separatorInset = UIEdgeInsetsZero;
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        self.tableView.layoutMargins = UIEdgeInsetsZero;
+    }
+
+    
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableView.backgroundColor = [UIColor tableBackground];
     
     ShareAPI *shareAPI = [[ShareAPI alloc] init];
     [shareAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
@@ -86,8 +96,11 @@
     ShareTableViewCell *shareTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"shareTableViewCell" forIndexPath:indexPath];
     
     ShareDataModel *shareModel = [self.array objectAtIndex:indexPath.row];
-
     [shareTableViewCell configWithItem:shareModel];
+    
+    if ([shareTableViewCell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [shareTableViewCell setLayoutMargins:UIEdgeInsetsZero];
+    }
     
     return shareTableViewCell;
     

@@ -23,8 +23,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor tableBackground];
+    //    cell分割线全屏
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        self.tableView.separatorInset = UIEdgeInsetsZero;
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        self.tableView.layoutMargins = UIEdgeInsetsZero;
+    }
+    
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableView.backgroundColor = [UIColor tableBackground];
     
     EssenceAPI *essenceAPI = [[EssenceAPI alloc] init];
     [essenceAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
@@ -90,8 +99,11 @@
     EssenceTableViewCell *essenceTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"essenceTableViewCell" forIndexPath:indexPath];
 
     EssenceDataModel *essenceModel = [self.array objectAtIndex:indexPath.row];
-
     [essenceTableViewCell configWithItem:essenceModel];
+    
+    if ([essenceTableViewCell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [essenceTableViewCell setLayoutMargins:UIEdgeInsetsZero];
+    }
     
     return essenceTableViewCell;
     

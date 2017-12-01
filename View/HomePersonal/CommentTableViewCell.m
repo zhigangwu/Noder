@@ -13,6 +13,8 @@
 #import "ControllerManager.h"
 #import "ThumbsUpAPI.h"
 
+#import "UILabel+LabelHeight.h"
+
 #define kScreenWidth  [UIScreen mainScreen].bounds.size.width
 
 @implementation CommentTableViewCell
@@ -21,6 +23,7 @@
 {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self initCell];
+        
     }
     
     return self;
@@ -30,76 +33,96 @@
 {
     self.ZGimageView = [[UIImageView alloc] init];
     self.ZGloginname = [[UILabel alloc] init];
-    self.ZGwebView = [[UIWebView alloc] init];
+    self.ZGLabel = [[UILabel alloc] init];
     self.ZGdurationLabel = [[UILabel alloc] init];
     self.ZGupButton = [[UIButton alloc] init];
     self.ZGevaButton = [[UIButton alloc] init];
     
-    [self.contentView addSubview:_ZGimageView];
-    [self.contentView addSubview:_ZGloginname];
-    [self.contentView addSubview:_ZGwebView];
-    [self.contentView addSubview:_ZGdurationLabel];
-    [self.contentView addSubview:_ZGupButton];
-    [self.contentView addSubview:_ZGevaButton];
+    [self.contentView addSubview:self.ZGimageView];
+    [self.contentView addSubview:self.ZGloginname];
+    [self.contentView addSubview:self.ZGLabel];
+    [self.contentView addSubview:self.ZGdurationLabel];
+    [self.contentView addSubview:self.ZGupButton];
+    [self.contentView addSubview:self.ZGevaButton];
     
-    [_ZGimageView mas_makeConstraints:^(MASConstraintMaker *make){
+    [self.ZGimageView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(self.contentView).with.offset(16);
         make.left.equalTo(self.contentView).with.offset(16);
         make.right.equalTo(_ZGloginname.mas_left).with.offset(-16);
-        make.size.mas_equalTo(CGSizeMake(40, 40));
+        make.size.mas_equalTo(CGSizeMake(30, 30));
     }];
     
-    [_ZGloginname mas_makeConstraints:^(MASConstraintMaker *make){
+    [self.ZGloginname mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(self.contentView).with.offset(16);
         make.left.equalTo(_ZGimageView.mas_right).with.offset(16);
-        make.right.equalTo(self.contentView).with.offset(-200);
-        make.bottom.equalTo(_ZGwebView.mas_top).with.offset(-8);
-        make.height.mas_equalTo(17);
+//        make.right.equalTo(self.contentView).with.offset(-200);
+        make.bottom.equalTo(self.ZGLabel.mas_top).with.offset(-8);
+        make.height.mas_equalTo(18);
     }];
-    
-    [_ZGwebView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(_ZGloginname.mas_bottom).with.offset(8);
+
+    [self.ZGLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(_ZGloginname.mas_bottom).with.offset(20);
         make.left.equalTo(_ZGimageView.mas_right).with.offset(16);
         make.right.equalTo(self.contentView).with.offset(-16);
         make.bottom.equalTo(_ZGdurationLabel.mas_top).with.offset(-8);
     }];
     
-    [_ZGdurationLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(_ZGwebView.mas_bottom).with.offset(8);
+    [self.ZGdurationLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(self.ZGLabel.mas_bottom).with.offset(8);
         make.left.equalTo(_ZGimageView.mas_right).with.offset(16);
         make.right.equalTo(self.contentView).with.offset(-150);
         make.bottom.equalTo(_ZGupButton.mas_top).with.offset(-8);
-        make.height.mas_equalTo(14);
+        make.height.mas_equalTo(18);
     }];
     
-    [_ZGupButton mas_makeConstraints:^(MASConstraintMaker *make){
+    [self.ZGupButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(_ZGdurationLabel.mas_bottom).with.offset(8);
         make.left.equalTo(_ZGimageView.mas_right).with.offset(16);
         make.right.equalTo(_ZGevaButton.mas_left).with.offset(-200);
-        make.bottom.equalTo(self.contentView).with.offset(-20);
+        make.bottom.equalTo(self.contentView).with.offset(-8);
+        make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
     
-    [_ZGevaButton mas_makeConstraints:^(MASConstraintMaker *make){
+    [self.ZGevaButton mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.mas_equalTo(_ZGupButton.mas_top);
         make.right.equalTo(self.contentView).with.offset(-16);
         make.bottom.mas_equalTo(_ZGupButton.mas_bottom);
     }];
     
-    NSDictionary *dic = [ControllerManager shareManager].dictionary;
-    NSString *success = dic[@"success"];
-    if (success.boolValue == false) {
+    if ([ControllerManager shareManager].success == false) {
         self.ZGupButton.hidden = YES;
         self.ZGevaButton.hidden = YES;
     }
     
-    [self.ZGimageView.layer setCornerRadius:20];
+    [self.ZGimageView.layer setCornerRadius:15];
     [self.ZGimageView.layer setMasksToBounds:YES];
+    
+    self.ZGLabel.numberOfLines = 0;
+    [self.ZGLabel sizeToFit];
+    
+    self.ZGloginname.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
+    self.ZGloginname.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
+    [self.ZGloginname.layer setCornerRadius:3];
+    [self.ZGloginname.layer setMasksToBounds:YES];
+    
+    self.ZGdurationLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
+    self.ZGdurationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
 }
 
 - (void)configWithItem:(DetailReplies *)replies
 {
     self.ZGloginname.text = replies.author.loginname;
-    [_ZGwebView loadHTMLString:replies.content baseURL:nil];
+    
+    self.ZGLabel.text = replies.content;
+//    UILabel 加载HTML
+    NSAttributedString *attString = [[NSAttributedString alloc] initWithData:[replies.content dataUsingEncoding:NSUnicodeStringEncoding]
+                                                                     options:@{
+                                                                               NSDocumentTypeDocumentAttribute:NSHTMLTextDocumentType
+                                                                               }
+                                                          documentAttributes:nil
+                                                                       error:nil];
+    self.ZGLabel.attributedText = attString;
+    
     [self.ZGimageView sd_setImageWithURL:replies.author.avatar_url];
     
     NSString *dateStr = replies.create_at;
@@ -107,9 +130,8 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *date = [dateFormatter dateFromString:dateStr];
     self.ZGdurationLabel.text = [date timeAgo];
-
-    [_ZGupButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_ZGupButton setTitle:@"赞" forState:UIControlStateNormal];
+    
+    [self.ZGupButton setImage:[UIImage imageNamed:@"iconSmallNormalStar"] forState:UIControlStateNormal];
     [self.ZGupButton addTarget:self action:@selector(ZGupButtonaction:) forControlEvents:UIControlEventTouchUpInside];
 
     [_ZGevaButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];

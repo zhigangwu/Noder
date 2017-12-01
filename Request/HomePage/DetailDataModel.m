@@ -42,6 +42,13 @@
     return [NSDictionary mtl_identityPropertyMapWithModel:self];
 }
 
+//+ (NSValueTransformer *)upsJSONTransformer
+//{
+//    return [MTLValueTransformer transformerUsingForwardBlock:^id(id value, BOOL *success, NSError *__autoreleasing *error ){
+//        return [MTLJSONAdapter modelsOfClass:[DetailReplies class] fromJSONArray:value error:nil];
+//    }];
+//}
+
 @end
 
 @implementation RepliesAuthor

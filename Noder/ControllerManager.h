@@ -16,6 +16,8 @@
 @property (nonatomic, copy) NSDictionary *dic;
 @property (nonatomic, copy) NSString *reply_ID;
 @property (nonatomic, copy) NSArray *array;
+@property (nonatomic, assign) BOOL success;
+@property (nonatomic, strong) NSURL *URLImage;
 
 + (ControllerManager *)shareManager;
 

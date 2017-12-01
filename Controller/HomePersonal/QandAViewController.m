@@ -23,8 +23,18 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.backgroundColor = [UIColor tableBackground];
+    //    cell分割线全屏
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        self.tableView.separatorInset = UIEdgeInsetsZero;
+    }
+    
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        self.tableView.layoutMargins = UIEdgeInsetsZero;
+    }
+
+    
+//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+//    self.tableView.backgroundColor = [UIColor tableBackground];
     
     AskAPI *askAPi = [[AskAPI alloc] init];
     [askAPi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
@@ -93,9 +103,12 @@
     QandATableViewCell *QandATableViewCell = [tableView dequeueReusableCellWithIdentifier:@"QandATableViewCell" forIndexPath:indexPath];
     
     AskDataModel *askModel = [self.array objectAtIndex:indexPath.row];
-    
     [QandATableViewCell configWithItem:askModel];
     
+    if ([QandATableViewCell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [QandATableViewCell setLayoutMargins:UIEdgeInsetsZero];
+    }
+
     return QandATableViewCell;
     
 }

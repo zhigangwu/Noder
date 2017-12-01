@@ -11,6 +11,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DetailDataModel.h"
+#import "ThumbsDataModel.h"
 
 @protocol CommentCellDelegate <NSObject>
 
@@ -24,11 +25,13 @@
 
 @property (nonatomic, strong) UIImageView *ZGimageView;
 @property (nonatomic, strong) UILabel *ZGloginname;
-@property (nonatomic, strong) UIWebView *ZGwebView;
+@property (nonatomic, strong) UILabel *ZGLabel;
 @property (nonatomic, strong) UILabel *ZGdurationLabel;
 
 @property (nonatomic, strong) UIButton *ZGupButton; //点赞
 @property (nonatomic, strong) UIButton *ZGevaButton; //个人评价
+
+@property (nonatomic, strong) ThumbsDataModel *thumbsModel;
 
 - (void)configWithItem:(DetailReplies *)replies;
 @end

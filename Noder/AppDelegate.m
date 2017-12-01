@@ -27,9 +27,6 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
     
-//    TabBarController *tabBar = [[TabBarController alloc] init];
-//    self.window.rootViewController = tabBar.tabBarController;
-    
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     
 

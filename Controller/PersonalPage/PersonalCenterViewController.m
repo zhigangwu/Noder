@@ -131,6 +131,8 @@
         [assAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
             self.personalModel = request.responseJSONObject;
         
+            [ControllerManager shareManager].success = self.personalModel.success;
+            [ControllerManager shareManager].URLImage = self.personalModel.avatar_url;
             
             if (self.personalModel.success == 1) {
                 
@@ -156,9 +158,7 @@
         [messAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
                 
             self.messageModel  = request.responseJSONObject;
-//            NSLog(@"self.messageModel = %@",self.messageModel);
             self.messageArray = self.messageModel.has_read_messages;
-//            NSLog(@"messageArray = %@",self.messageModel.has_read_messages);
 
             [self.tableView reloadData];
         } failure:NULL];
@@ -174,7 +174,7 @@
 - (void)buttonaction
 {
     QRCodeViewController *QRCode = [[QRCodeViewController alloc] init];
-    QRCode.hidesBottomBarWhenPushed = YES;
+    QRCode.hidesBottomBarWhenPushed = YES;// 隐藏tabbar
     [self.navigationController pushViewController:QRCode animated:YES];
 }
 

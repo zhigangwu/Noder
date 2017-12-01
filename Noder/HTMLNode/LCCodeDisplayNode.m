@@ -27,7 +27,7 @@
     self = [super init];
     if (self) {
         ASScrollNode *scrollNode = [[ASScrollNode alloc] init];
-        scrollNode.backgroundColor = [UIColor lcCodeGrayColor];
+        scrollNode.backgroundColor = [UIColor redColor];
         scrollNode.automaticallyManagesContentSize = YES;
         scrollNode.scrollableDirections = ASScrollDirectionHorizontalDirections;
         self.scrollNode = scrollNode;

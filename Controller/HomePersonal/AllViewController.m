@@ -53,14 +53,13 @@
     }];
     
     [self.tableView registerClass:[AllTableViewCell class] forCellReuseIdentifier:@"allTableViewCell"];
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.tableView reloadData];
 }
-    
+
 - (void)loadNewData{
     
     TopicsApi *topApi = [[TopicsApi alloc] init];
@@ -100,6 +99,10 @@
     
     AllViewDataModel *allModel = [self.array objectAtIndex:indexPath.row];
     [allTableViewCell configWithItem:allModel];
+    
+    if ([allTableViewCell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [allTableViewCell setLayoutMargins:UIEdgeInsetsZero];
+    }
     
     return allTableViewCell;
     

@@ -36,9 +36,9 @@
         self.titleSizeSelected = 14;
         self.menuViewStyle = WMMenuViewStyleLine;
         self.menuItemWidth = [UIScreen mainScreen].bounds.size.width / self.titleData.count;
-        
+            
         self.navigationItem.title = @"主页";
-    }
+     }
     
     
     return self;

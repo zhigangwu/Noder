@@ -66,6 +66,10 @@
 		33C2CFBD1E7967370030257B /* HDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C2CFBC1E7967370030257B /* HDTableViewCell.m */; };
 		33EE434B1EBC9B01009DC2D4 /* PersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EE434A1EBC9B01009DC2D4 /* PersonalCenterViewController.m */; };
 		9131339C1FC707F800003585 /* MessageCountAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9131339B1FC707F800003585 /* MessageCountAPI.m */; };
+		915638501FD0335F00B81BB1 /* ComContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9156384F1FD0335F00B81BB1 /* ComContentView.m */; };
+		91679D731FCD075600476B13 /* UILabel+LabelHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 91679D721FCD075600476B13 /* UILabel+LabelHeight.m */; };
+		916DB2701FCD465200C0008C /* ThumbsDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 916DB26F1FCD465200C0008C /* ThumbsDataModel.m */; };
+		916DB2731FCD9C7500C0008C /* DetailBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 916DB2721FCD9C7500C0008C /* DetailBottomView.m */; };
 		9188B7311FBDC7540082C1D1 /* ScanLoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */; };
 		918C18CE1FC1B21500D22246 /* AllViewDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918C18CD1FC1B21500D22246 /* AllViewDataModel.m */; };
 		919394281FC949B100EB89A5 /* PersonalTableModle.m in Sources */ = {isa = PBXBuildFile; fileRef = 919394271FC949B100EB89A5 /* PersonalTableModle.m */; };
@@ -244,6 +248,14 @@
 		83A3208438729A6BE0BC90C9 /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
 		9131339A1FC707F800003585 /* MessageCountAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageCountAPI.h; path = ../Noder/MessageCountAPI.h; sourceTree = "<group>"; };
 		9131339B1FC707F800003585 /* MessageCountAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MessageCountAPI.m; path = ../Noder/MessageCountAPI.m; sourceTree = "<group>"; };
+		9156384E1FD0335F00B81BB1 /* ComContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComContentView.h; sourceTree = "<group>"; };
+		9156384F1FD0335F00B81BB1 /* ComContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComContentView.m; sourceTree = "<group>"; };
+		91679D711FCD075600476B13 /* UILabel+LabelHeight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+LabelHeight.h"; sourceTree = "<group>"; };
+		91679D721FCD075600476B13 /* UILabel+LabelHeight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LabelHeight.m"; sourceTree = "<group>"; };
+		916DB26E1FCD465200C0008C /* ThumbsDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThumbsDataModel.h; sourceTree = "<group>"; };
+		916DB26F1FCD465200C0008C /* ThumbsDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThumbsDataModel.m; sourceTree = "<group>"; };
+		916DB2711FCD9C7500C0008C /* DetailBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailBottomView.h; sourceTree = "<group>"; };
+		916DB2721FCD9C7500C0008C /* DetailBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailBottomView.m; sourceTree = "<group>"; };
 		9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanLoginCell.m; sourceTree = "<group>"; };
 		9188B7301FBDC7540082C1D1 /* ScanLoginCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanLoginCell.h; sourceTree = "<group>"; };
 		918C18CC1FC1B21500D22246 /* AllViewDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AllViewDataModel.h; sourceTree = "<group>"; };
@@ -359,11 +371,11 @@
 		334012211E4DF2CC00E92B48 = {
 			isa = PBXGroup;
 			children = (
+				3340122C1E4DF2D000E92B48 /* Noder */,
 				919394231FC9437F00EB89A5 /* View */,
 				919394201FC942CD00EB89A5 /* Controller */,
 				9193941D1FC9421000EB89A5 /* Model */,
 				919394151FC93FF900EB89A5 /* Request */,
-				3340122C1E4DF2D000E92B48 /* Noder */,
 				334012461E4DF2D200E92B48 /* NoderTests */,
 				334012511E4DF2D300E92B48 /* NoderUITests */,
 				3340122B1E4DF2D000E92B48 /* Products */,
@@ -403,6 +415,8 @@
 				9199C9A71FC11FDB008FDA37 /* UIColor+textColorB.m */,
 				9199C9A91FC12297008FDA37 /* UIColor+tableBackground.h */,
 				9199C9AA1FC12297008FDA37 /* UIColor+tableBackground.m */,
+				91679D711FCD075600476B13 /* UILabel+LabelHeight.h */,
+				91679D721FCD075600476B13 /* UILabel+LabelHeight.m */,
 				334012361E4DF2D100E92B48 /* Main.storyboard */,
 				04005A7F1F6CC492007D8603 /* Main */,
 				DF8429BF1EF941AC00B8D011 /* HTMLNode */,
@@ -467,8 +481,8 @@
 			isa = PBXGroup;
 			children = (
 				9193941B1FC9413900EB89A5 /* Category */,
-				919394191FC940E100EB89A5 /* Comment */,
 				919394181FC940BA00EB89A5 /* Detail */,
+				919394191FC940E100EB89A5 /* Comment */,
 			);
 			name = HomePage;
 			sourceTree = "<group>";
@@ -565,6 +579,8 @@
 				91AC1E8D1FC2809500196DE0 /* DevDataModel.m */,
 				91E655CB1FC56B9A00E985F8 /* DetailDataModel.h */,
 				91E655CC1FC56B9A00E985F8 /* DetailDataModel.m */,
+				916DB26E1FCD465200C0008C /* ThumbsDataModel.h */,
+				916DB26F1FCD465200C0008C /* ThumbsDataModel.m */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -675,8 +691,12 @@
 				3395BFF71EE6D68A007E27F2 /* RecruitmentTableViewCell.m */,
 				040354761F62317E00257D90 /* DevTableViewCell.h */,
 				040354771F62317E00257D90 /* DevTableViewCell.m */,
+				916DB2711FCD9C7500C0008C /* DetailBottomView.h */,
+				916DB2721FCD9C7500C0008C /* DetailBottomView.m */,
 				040A18961F6660680094D4C9 /* CommentTableViewCell.h */,
 				040A18971F6660680094D4C9 /* CommentTableViewCell.m */,
+				9156384E1FD0335F00B81BB1 /* ComContentView.h */,
+				9156384F1FD0335F00B81BB1 /* ComContentView.m */,
 			);
 			path = HomePersonal;
 			sourceTree = "<group>";
@@ -943,6 +963,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91679D731FCD075600476B13 /* UILabel+LabelHeight.m in Sources */,
 				042A274E1F666DC5003CE246 /* CommentPageViewController.m in Sources */,
 				3395BFF81EE6D68A007E27F2 /* RecruitmentTableViewCell.m in Sources */,
 				DF8429E81EF941AC00B8D011 /* NSString+LCAdditional.m in Sources */,
@@ -969,6 +990,7 @@
 				DF8429E11EF941AC00B8D011 /* LCLiTextNode.m in Sources */,
 				337F221F1F0D184500C8488A /* AssesstokenAPI.m in Sources */,
 				046EAA861F6F6CC500C23F5A /* ThumbsUpAPI.m in Sources */,
+				916DB2701FCD465200C0008C /* ThumbsDataModel.m in Sources */,
 				33542A941F4EF8E6005576F7 /* EssenceAPI.m in Sources */,
 				04B15AF21EFA54AE00C01CA4 /* QRCodeViewController.m in Sources */,
 				DF8429DE1EF941AC00B8D011 /* LCHTextNode.m in Sources */,
@@ -993,6 +1015,7 @@
 				91AC1E8B1FC27E7300196DE0 /* JobDataModel.m in Sources */,
 				33542A9D1F504D77005576F7 /* JobAPI.m in Sources */,
 				9199C9AB1FC12297008FDA37 /* UIColor+tableBackground.m in Sources */,
+				915638501FD0335F00B81BB1 /* ComContentView.m in Sources */,
 				3395BFDD1EE57A9C007E27F2 /* EssenceViewController.m in Sources */,
 				3335F0321ED470DC00FBB58D /* RecentTopicsCell.m in Sources */,
 				919394281FC949B100EB89A5 /* PersonalTableModle.m in Sources */,
@@ -1011,6 +1034,7 @@
 				9199C9A81FC11FDB008FDA37 /* UIColor+textColorB.m in Sources */,
 				3340122F1E4DF2D000E92B48 /* main.m in Sources */,
 				91AC1E821FC2688A00196DE0 /* EssenceDataModel.m in Sources */,
+				916DB2731FCD9C7500C0008C /* DetailBottomView.m in Sources */,
 				DF03208B1EF2A7BF0088F8EE /* DetailViewController.m in Sources */,
 				91E655C71FC5513400E985F8 /* MessageAPI.m in Sources */,
 				DF8429B11EF93D0600B8D011 /* DetailApi.m in Sources */,

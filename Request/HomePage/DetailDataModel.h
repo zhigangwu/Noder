@@ -34,6 +34,7 @@
 @property (nonatomic, strong) NSString *reply_id;
 @property (nonatomic, strong) NSString *create_at;
 @property (nonatomic, strong) NSString *content;
+//@property (nonatomic, strong) id ups;
 @property (nonatomic, strong) RepliesAuthor *author;
 
 @end

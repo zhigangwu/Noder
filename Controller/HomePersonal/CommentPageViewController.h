@@ -10,6 +10,8 @@
 #import "ThumbsUpAPI.h"
 #import "CommentTableViewCell.h"
 #import "DetailDataModel.h"
+#import "ThumbsDataModel.h"
+#import "DetailBottomView.h"
 
 @interface CommentPageViewController : UITableViewController <CommentCellDelegate>
 
@@ -24,9 +26,13 @@
 @property (nonatomic, strong) UIButton *ZG_upButton;
 @property (nonatomic, strong) UIButton *ZG_evaButton;
 
-@property (nonatomic, strong) NSString *string_id;
+//@property (nonatomic, strong) NSString *string_id;
 
 @property (nonatomic, strong) DetailDataModel *detailModel;
+//@property (nonatomic, strong) DetailReplies *replies;
+@property (nonatomic, strong) ThumbsDataModel *thumbsModel;
+
+@property (nonatomic, strong) DetailBottomView *bottomViem;
 
 
 
