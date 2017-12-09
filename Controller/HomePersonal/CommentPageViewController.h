@@ -13,9 +13,10 @@
 #import "ThumbsDataModel.h"
 #import "DetailBottomView.h"
 
-@interface CommentPageViewController : UITableViewController <CommentCellDelegate>
+@interface CommentPageViewController : UIViewController <CommentCellDelegate,UITableViewDelegate,UITableViewDataSource,PersonalCommentDelegate>
 
 @property (nonatomic, strong) NSArray *array;
+@property (nonatomic, strong) UITableView *tableview;
 
 @property (nonatomic, strong) NSString *comAuthor_id;
 @property (nonatomic, strong) NSDictionary *dictionary;
@@ -23,16 +24,13 @@
 @property (nonatomic, strong) NSString *topic_id;
 @property (nonatomic, strong) NSString *reply_id;
 
-@property (nonatomic, strong) UIButton *ZG_upButton;
-@property (nonatomic, strong) UIButton *ZG_evaButton;
-
-//@property (nonatomic, strong) NSString *string_id;
+@property (nonatomic, strong) UIButton *ZG_upButton;//点赞
+@property (nonatomic, strong) UIButton *ZG_evaButton;// 个人评价
 
 @property (nonatomic, strong) DetailDataModel *detailModel;
-//@property (nonatomic, strong) DetailReplies *replies;
+@property (nonatomic, strong) DetailReplies *reply;
 @property (nonatomic, strong) ThumbsDataModel *thumbsModel;
 
-@property (nonatomic, strong) DetailBottomView *bottomViem;
 
 
 

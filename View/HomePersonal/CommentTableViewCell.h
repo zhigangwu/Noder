@@ -15,23 +15,33 @@
 
 @protocol CommentCellDelegate <NSObject>
 
-- (void)pushToNewPage:(UIButton *)sender;
+- (void)upButton:(UIButton *)sender;
+
+@end
+
+@protocol PersonalCommentDelegate <NSObject>
+
+- (void)personalComButton:(UIButton *)sender;
 
 @end
 
 @interface CommentTableViewCell : UITableViewCell <UIWebViewDelegate>
 
-@property (nonatomic, weak) id<CommentCellDelegate> delegate;
+@property (nonatomic, weak) id<CommentCellDelegate> CommentCellDelegate;
+@property (nonatomic, weak) id<PersonalCommentDelegate> PersonalCommentDelegate;
 
 @property (nonatomic, strong) UIImageView *ZGimageView;
 @property (nonatomic, strong) UILabel *ZGloginname;
 @property (nonatomic, strong) UILabel *ZGLabel;
 @property (nonatomic, strong) UILabel *ZGdurationLabel;
+@property (nonatomic, strong) UILabel *floorLabel;
 
 @property (nonatomic, strong) UIButton *ZGupButton; //点赞
 @property (nonatomic, strong) UIButton *ZGevaButton; //个人评价
 
 @property (nonatomic, strong) ThumbsDataModel *thumbsModel;
+@property (nonatomic, strong) DetailDataModel *detailModel;
 
 - (void)configWithItem:(DetailReplies *)replies;
+
 @end

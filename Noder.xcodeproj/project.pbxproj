@@ -65,8 +65,11 @@
 		3395BFF81EE6D68A007E27F2 /* RecruitmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3395BFF71EE6D68A007E27F2 /* RecruitmentTableViewCell.m */; };
 		33C2CFBD1E7967370030257B /* HDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 33C2CFBC1E7967370030257B /* HDTableViewCell.m */; };
 		33EE434B1EBC9B01009DC2D4 /* PersonalCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33EE434A1EBC9B01009DC2D4 /* PersonalCenterViewController.m */; };
+		910936A81FD6D50400AFF4E9 /* NullView.m in Sources */ = {isa = PBXBuildFile; fileRef = 910936A71FD6D50400AFF4E9 /* NullView.m */; };
+		911791571FD8E5920065FE0F /* UIFont+SetFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 911791561FD8E5920065FE0F /* UIFont+SetFont.m */; };
 		9131339C1FC707F800003585 /* MessageCountAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9131339B1FC707F800003585 /* MessageCountAPI.m */; };
 		915638501FD0335F00B81BB1 /* ComContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9156384F1FD0335F00B81BB1 /* ComContentView.m */; };
+		915638561FD3D5C800B81BB1 /* DetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 915638551FD3D5C800B81BB1 /* DetailTopView.m */; };
 		91679D731FCD075600476B13 /* UILabel+LabelHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 91679D721FCD075600476B13 /* UILabel+LabelHeight.m */; };
 		916DB2701FCD465200C0008C /* ThumbsDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 916DB26F1FCD465200C0008C /* ThumbsDataModel.m */; };
 		916DB2731FCD9C7500C0008C /* DetailBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 916DB2721FCD9C7500C0008C /* DetailBottomView.m */; };
@@ -89,6 +92,8 @@
 		91E655C41FC5151C00E985F8 /* MessageDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E655C31FC5151C00E985F8 /* MessageDataModel.m */; };
 		91E655C71FC5513400E985F8 /* MessageAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E655C61FC5513400E985F8 /* MessageAPI.m */; };
 		91E655CD1FC56B9A00E985F8 /* DetailDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E655CC1FC56B9A00E985F8 /* DetailDataModel.m */; };
+		91E9DF2D1FDB7BBD001E0A03 /* NewPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E9DF2C1FDB7BBD001E0A03 /* NewPageView.m */; };
+		91E9DF301FDBBFF8001E0A03 /* PlateSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E9DF2F1FDBBFF8001E0A03 /* PlateSelectionView.m */; };
 		DF03208B1EF2A7BF0088F8EE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF03208A1EF2A7BF0088F8EE /* DetailViewController.m */; };
 		DF8429B11EF93D0600B8D011 /* DetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429B01EF93D0600B8D011 /* DetailApi.m */; };
 		DF8429DC1EF941AC00B8D011 /* LCCodeDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429C11EF941AC00B8D011 /* LCCodeDisplayNode.m */; };
@@ -246,10 +251,16 @@
 		51525A18090113D9FD3D4CEC /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		620CE6E91962684584B108B6 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		83A3208438729A6BE0BC90C9 /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "../../../../Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
+		910936A61FD6D50400AFF4E9 /* NullView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NullView.h; sourceTree = "<group>"; };
+		910936A71FD6D50400AFF4E9 /* NullView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NullView.m; sourceTree = "<group>"; };
+		911791551FD8E5920065FE0F /* UIFont+SetFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIFont+SetFont.h"; sourceTree = "<group>"; };
+		911791561FD8E5920065FE0F /* UIFont+SetFont.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+SetFont.m"; sourceTree = "<group>"; };
 		9131339A1FC707F800003585 /* MessageCountAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageCountAPI.h; path = ../Noder/MessageCountAPI.h; sourceTree = "<group>"; };
 		9131339B1FC707F800003585 /* MessageCountAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MessageCountAPI.m; path = ../Noder/MessageCountAPI.m; sourceTree = "<group>"; };
 		9156384E1FD0335F00B81BB1 /* ComContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComContentView.h; sourceTree = "<group>"; };
 		9156384F1FD0335F00B81BB1 /* ComContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComContentView.m; sourceTree = "<group>"; };
+		915638541FD3D5C800B81BB1 /* DetailTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailTopView.h; sourceTree = "<group>"; };
+		915638551FD3D5C800B81BB1 /* DetailTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailTopView.m; sourceTree = "<group>"; };
 		91679D711FCD075600476B13 /* UILabel+LabelHeight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+LabelHeight.h"; sourceTree = "<group>"; };
 		91679D721FCD075600476B13 /* UILabel+LabelHeight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LabelHeight.m"; sourceTree = "<group>"; };
 		916DB26E1FCD465200C0008C /* ThumbsDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThumbsDataModel.h; sourceTree = "<group>"; };
@@ -294,6 +305,10 @@
 		91E655C61FC5513400E985F8 /* MessageAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MessageAPI.m; path = ../Noder/MessageAPI.m; sourceTree = "<group>"; };
 		91E655CB1FC56B9A00E985F8 /* DetailDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailDataModel.h; sourceTree = "<group>"; };
 		91E655CC1FC56B9A00E985F8 /* DetailDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailDataModel.m; sourceTree = "<group>"; };
+		91E9DF2B1FDB7BBD001E0A03 /* NewPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewPageView.h; sourceTree = "<group>"; };
+		91E9DF2C1FDB7BBD001E0A03 /* NewPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPageView.m; sourceTree = "<group>"; };
+		91E9DF2E1FDBBFF8001E0A03 /* PlateSelectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateSelectionView.h; sourceTree = "<group>"; };
+		91E9DF2F1FDBBFF8001E0A03 /* PlateSelectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateSelectionView.m; sourceTree = "<group>"; };
 		AFD657F7862CA63028DDAE4C /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
 		C24D1EF0AB88F669658C4A45 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		D89959808109ABB127508691 /* libPods-Noder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Noder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -415,6 +430,8 @@
 				9199C9A71FC11FDB008FDA37 /* UIColor+textColorB.m */,
 				9199C9A91FC12297008FDA37 /* UIColor+tableBackground.h */,
 				9199C9AA1FC12297008FDA37 /* UIColor+tableBackground.m */,
+				911791551FD8E5920065FE0F /* UIFont+SetFont.h */,
+				911791561FD8E5920065FE0F /* UIFont+SetFont.m */,
 				91679D711FCD075600476B13 /* UILabel+LabelHeight.h */,
 				91679D721FCD075600476B13 /* UILabel+LabelHeight.m */,
 				334012361E4DF2D100E92B48 /* Main.storyboard */,
@@ -691,6 +708,8 @@
 				3395BFF71EE6D68A007E27F2 /* RecruitmentTableViewCell.m */,
 				040354761F62317E00257D90 /* DevTableViewCell.h */,
 				040354771F62317E00257D90 /* DevTableViewCell.m */,
+				915638541FD3D5C800B81BB1 /* DetailTopView.h */,
+				915638551FD3D5C800B81BB1 /* DetailTopView.m */,
 				916DB2711FCD9C7500C0008C /* DetailBottomView.h */,
 				916DB2721FCD9C7500C0008C /* DetailBottomView.m */,
 				040A18961F6660680094D4C9 /* CommentTableViewCell.h */,
@@ -710,6 +729,8 @@
 				337B870A1F19AEC000558A4D /* headerview.m */,
 				04ED0E231F7B7FAD003AF5E9 /* PlateSelectionCell.h */,
 				04ED0E241F7B7FAD003AF5E9 /* PlateSelectionCell.m */,
+				910936A61FD6D50400AFF4E9 /* NullView.h */,
+				910936A71FD6D50400AFF4E9 /* NullView.m */,
 				3335F02A1ED46E8800FBB58D /* RecentReplyCell.h */,
 				3335F02B1ED46E8800FBB58D /* RecentReplyCell.m */,
 				3335F0301ED470DC00FBB58D /* RecentTopicsCell.h */,
@@ -720,6 +741,10 @@
 				043A43F31F75F971009F022E /* ReadMessageCell.m */,
 				043A43EF1F75F539009F022E /* UnreadMessageCell.h */,
 				043A43F01F75F539009F022E /* UnreadMessageCell.m */,
+				91E9DF2B1FDB7BBD001E0A03 /* NewPageView.h */,
+				91E9DF2C1FDB7BBD001E0A03 /* NewPageView.m */,
+				91E9DF2E1FDBBFF8001E0A03 /* PlateSelectionView.h */,
+				91E9DF2F1FDBBFF8001E0A03 /* PlateSelectionView.m */,
 			);
 			path = PersonalPage;
 			sourceTree = "<group>";
@@ -968,6 +993,7 @@
 				3395BFF81EE6D68A007E27F2 /* RecruitmentTableViewCell.m in Sources */,
 				DF8429E81EF941AC00B8D011 /* NSString+LCAdditional.m in Sources */,
 				047721871F6B790F00C31B6F /* ComContentViewContrnt.m in Sources */,
+				91E9DF2D1FDB7BBD001E0A03 /* NewPageView.m in Sources */,
 				DF8429E41EF941AC00B8D011 /* LCPTextNode.m in Sources */,
 				040A18981F6660680094D4C9 /* CommentTableViewCell.m in Sources */,
 				334012351E4DF2D100E92B48 /* ViewController.m in Sources */,
@@ -985,6 +1011,7 @@
 				04005A821F6CC506007D8603 /* ControllerManager.m in Sources */,
 				9199C99F1FC114D4008FDA37 /* UIColor+background.m in Sources */,
 				91AC1E851FC2789900196DE0 /* ShareDataModel.m in Sources */,
+				910936A81FD6D50400AFF4E9 /* NullView.m in Sources */,
 				91E655C41FC5151C00E985F8 /* MessageDataModel.m in Sources */,
 				DF8429E91EF941AC00B8D011 /* UIColor+LCColor.m in Sources */,
 				DF8429E11EF941AC00B8D011 /* LCLiTextNode.m in Sources */,
@@ -1008,6 +1035,7 @@
 				DF8429E01EF941AC00B8D011 /* LCLIDisplayNode.m in Sources */,
 				91AC1E971FC2B4DA00196DE0 /* PersonalDataModel.m in Sources */,
 				040471351F5FEAC900BBDA14 /* CollectionAPI.m in Sources */,
+				911791571FD8E5920065FE0F /* UIFont+SetFont.m in Sources */,
 				040471321F5FE9BA00BBDA14 /* CollectionTableViewController.m in Sources */,
 				337F22251F13B6D100C8488A /* NETWorkConnection.m in Sources */,
 				9131339C1FC707F800003585 /* MessageCountAPI.m in Sources */,
@@ -1034,6 +1062,7 @@
 				9199C9A81FC11FDB008FDA37 /* UIColor+textColorB.m in Sources */,
 				3340122F1E4DF2D000E92B48 /* main.m in Sources */,
 				91AC1E821FC2688A00196DE0 /* EssenceDataModel.m in Sources */,
+				91E9DF301FDBBFF8001E0A03 /* PlateSelectionView.m in Sources */,
 				916DB2731FCD9C7500C0008C /* DetailBottomView.m in Sources */,
 				DF03208B1EF2A7BF0088F8EE /* DetailViewController.m in Sources */,
 				91E655C71FC5513400E985F8 /* MessageAPI.m in Sources */,
@@ -1041,6 +1070,7 @@
 				33542A9A1F504CA9005576F7 /* AskAPI.m in Sources */,
 				337B870B1F19AEC000558A4D /* headerview.m in Sources */,
 				040354751F622FBE00257D90 /* DevAPI.m in Sources */,
+				915638561FD3D5C800B81BB1 /* DetailTopView.m in Sources */,
 				91AC1E8E1FC2809500196DE0 /* DevDataModel.m in Sources */,
 				04ED0E251F7B7FAD003AF5E9 /* PlateSelectionCell.m in Sources */,
 				91AC1E881FC27C4D00196DE0 /* AskDataModel.m in Sources */,

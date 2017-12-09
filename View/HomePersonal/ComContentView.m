@@ -73,9 +73,8 @@
         label.font = [UIFont fontWithName:@"AmericanTypewriter-Bold" size:25];
         
         [imageview sd_setImageWithURL:[ControllerManager shareManager].URLImage];
-        imageview.backgroundColor = [UIColor greenColor];
         
-        self.submitView.backgroundColor = [UIColor redColor];
+        self.submitView.backgroundColor = [UIColor colorWithRed:178/255.0 green:34/255.0 blue:34/255.0 alpha:1];
         
         self.textView.delegate = self;
         [self.textView becomeFirstResponder];// 键盘直接开启

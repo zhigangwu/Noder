@@ -12,6 +12,7 @@
 #import "NSDate+TimeAgo.h"
 #import "UIColor+textColor.h"
 #import "UIColor+textColorB.h"
+#import "UIFont+SetFont.h"
 
 
 @implementation DevTableViewCell
@@ -41,7 +42,7 @@
         [self.image_view mas_makeConstraints:^(MASConstraintMaker *make){
             make.left.equalTo(self.contentView).with.offset(15.9);
             make.top.equalTo(self.contentView).with.offset(11.4);
-            make.size.mas_equalTo(CGSizeMake(40, 40));
+            make.size.mas_equalTo(CGSizeMake(52, 52));
         }];
         
         [self.topImage mas_makeConstraints:^(MASConstraintMaker *make){
@@ -84,27 +85,28 @@
             //            make.size.mas_equalTo(CGSizeMake(18, 14));
         }];
         
-        [self.image_view.layer setCornerRadius:20];
-        [self.image_view.layer setMasksToBounds:YES];
-        
+        CALayer *layer = [self.image_view layer];
+        [layer setMasksToBounds:YES];
+        [layer setShadowOpacity:0];
+        [layer setCornerRadius:26];
+        [layer setBorderWidth:0.5];
+        [layer setBorderColor:[[UIColor grayColor] CGColor]];
         
         [self.titleLabel setNumberOfLines:0];
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
         self.titleLabel.numberOfLines = 0;
         self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-        self.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
+        self.titleLabel.font = [UIFont ZGFontB];
         self.titleLabel.textColor = [UIColor textColor];
         
-        self.durationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
+        self.durationLabel.font = [UIFont ZGFontC];
         self.durationLabel.textColor = [UIColor textColorB];
         
-        self.watchLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
+        self.watchLabel.font = [UIFont ZGFontC];
         self.watchLabel.textColor = [UIColor textColorB];
         
-        self.messageLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
+        self.messageLabel.font = [UIFont ZGFontC];
         self.messageLabel.textColor = [UIColor textColorB];
-
-        
     }
     
     return self;

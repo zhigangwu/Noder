@@ -12,7 +12,8 @@
 #import "UIColor+tableBackground.h"
 #import "MessageAPI.h"
 #import "MessageCountAPI.h"
-
+#import "UIFont+SetFont.h"
+#import "UIColor+background.h"
 
 @interface ReadMessageTableViewController ()
 
@@ -23,14 +24,36 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //    cell分割线全屏
-    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        self.tableView.separatorInset = UIEdgeInsetsZero;
-    }
+    self.navigationItem.title = @"已读消息";
+    UIFont *font = [UIFont ZGFontA];
+    NSDictionary *dictionary = @{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor colorWithRed:3/255.0 green:3/255.0 blue:3/255.0 alpha:1/1.0]};
+    self.navigationController.navigationBar.titleTextAttributes = dictionary;
+
+    self.view.backgroundColor = [UIColor backgroundcolor];
     
-    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        self.tableView.layoutMargins = UIEdgeInsetsZero;
-    }
+    //  cell自适应高度 注:需要把cell上的控件自上而下加好约束
+    self.tableView.rowHeight = UITableViewAutomaticDimension;
+    self.tableView.estimatedRowHeight = 100;
+    
+    //去掉返回按钮中的back
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+    
+    //不显示空白cell
+    UIView *footview = [[UIView alloc] init];
+    footview.backgroundColor = [UIColor backgroundcolor];
+    self.tableView.tableFooterView = footview;
+    
+    // 去掉分割线
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+//    //    cell分割线全屏
+//    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+//        self.tableView.separatorInset = UIEdgeInsetsZero;
+//    }
+//
+//    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+//        self.tableView.layoutMargins = UIEdgeInsetsZero;
+//    }
 
     NSString *accesstoken = [ControllerManager shareManager].string;
     MessageAPI *messAPI = [[MessageAPI alloc] init];
@@ -70,19 +93,19 @@
      Has_read_messages *has_read = [self.array objectAtIndex:indexPath.row];
     [cell configWithItem:has_read];
     
-    //    分割线全屏
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
+//    //    分割线全屏
+//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+//        [cell setLayoutMargins:UIEdgeInsetsZero];
+//    }
     
     return cell;
     
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return 72.4;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    return 200;
+//}
 
 
 @end

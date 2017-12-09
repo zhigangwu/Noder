@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "MessageDataModel.h"
 
-@interface UnreadMessageTableViewController : UITableViewController
+@interface UnreadMessageTableViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) MessageDataModel *messageModel;
 @property (nonatomic, strong) NSArray *array;
+@property (nonatomic, strong) UITableView *tableview;
 
 @end

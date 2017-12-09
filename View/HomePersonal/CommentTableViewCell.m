@@ -12,6 +12,8 @@
 #import "NSDate+TimeAgo.h"
 #import "ControllerManager.h"
 #import "ThumbsUpAPI.h"
+#import "UIColor+textColor.h"
+#import "UIColor+textColorB.h"
 
 #import "UILabel+LabelHeight.h"
 
@@ -37,6 +39,7 @@
     self.ZGdurationLabel = [[UILabel alloc] init];
     self.ZGupButton = [[UIButton alloc] init];
     self.ZGevaButton = [[UIButton alloc] init];
+    self.floorLabel = [[UILabel alloc] init];
     
     [self.contentView addSubview:self.ZGimageView];
     [self.contentView addSubview:self.ZGloginname];
@@ -44,24 +47,25 @@
     [self.contentView addSubview:self.ZGdurationLabel];
     [self.contentView addSubview:self.ZGupButton];
     [self.contentView addSubview:self.ZGevaButton];
+    [self.contentView addSubview:self.floorLabel];
     
     [self.ZGimageView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(self.contentView).with.offset(16);
         make.left.equalTo(self.contentView).with.offset(16);
-        make.right.equalTo(_ZGloginname.mas_left).with.offset(-16);
-        make.size.mas_equalTo(CGSizeMake(30, 30));
+//        make.right.equalTo(_ZGloginname.mas_left).with.offset(-16);
+        make.size.mas_equalTo(CGSizeMake(40, 40));
     }];
     
     [self.ZGloginname mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.contentView).with.offset(16);
-        make.left.equalTo(_ZGimageView.mas_right).with.offset(16);
+        make.top.equalTo(self.contentView).with.offset(15);
+        make.left.equalTo(self.ZGimageView.mas_right).with.offset(16);
 //        make.right.equalTo(self.contentView).with.offset(-200);
         make.bottom.equalTo(self.ZGLabel.mas_top).with.offset(-8);
-        make.height.mas_equalTo(18);
+        make.height.mas_equalTo(17);
     }];
 
     [self.ZGLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(_ZGloginname.mas_bottom).with.offset(20);
+        make.top.equalTo(_ZGloginname.mas_bottom).with.offset(8);
         make.left.equalTo(_ZGimageView.mas_right).with.offset(16);
         make.right.equalTo(self.contentView).with.offset(-16);
         make.bottom.equalTo(_ZGdurationLabel.mas_top).with.offset(-8);
@@ -70,7 +74,7 @@
     [self.ZGdurationLabel mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(self.ZGLabel.mas_bottom).with.offset(8);
         make.left.equalTo(_ZGimageView.mas_right).with.offset(16);
-        make.right.equalTo(self.contentView).with.offset(-150);
+//        make.right.equalTo(self.contentView).with.offset(-150);
         make.bottom.equalTo(_ZGupButton.mas_top).with.offset(-8);
         make.height.mas_equalTo(18);
     }];
@@ -89,24 +93,40 @@
         make.bottom.mas_equalTo(_ZGupButton.mas_bottom);
     }];
     
-    if ([ControllerManager shareManager].success == false) {
-        self.ZGupButton.hidden = YES;
-        self.ZGevaButton.hidden = YES;
-    }
+    [self.floorLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(self.contentView).with.offset(12);
+        make.right.equalTo(self.contentView).with.offset(-13);
+        make.height.mas_equalTo(17);
+    }];
     
-    [self.ZGimageView.layer setCornerRadius:15];
-    [self.ZGimageView.layer setMasksToBounds:YES];
+    CALayer *layer = [self.ZGimageView layer];
+    [layer setMasksToBounds:YES];
+    [layer setShadowOpacity:0];
+    [layer setCornerRadius:20];
+    [layer setBorderWidth:0.5];
+    [layer setBorderColor:[[UIColor grayColor] CGColor]];
     
     self.ZGLabel.numberOfLines = 0;
     [self.ZGLabel sizeToFit];
     
-    self.ZGloginname.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
-    self.ZGloginname.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
-    [self.ZGloginname.layer setCornerRadius:3];
-    [self.ZGloginname.layer setMasksToBounds:YES];
+    self.ZGloginname.textColor =  [UIColor textColorB];
+    self.ZGloginname.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
     
-    self.ZGdurationLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
-    self.ZGdurationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
+    self.ZGLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
+    self.ZGLabel.textColor = [UIColor textColor];
+    
+    self.ZGdurationLabel.textColor = [UIColor colorWithRed:171/255.0 green:171/255.0 blue:171/255.0 alpha:1/1.0];
+    self.ZGdurationLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:10];
+    
+    [self.ZGupButton addTarget:self action:@selector(ZGupButtonaction:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.ZGevaButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.ZGevaButton setImage:[UIImage imageNamed:@"iconGrayComment"] forState:UIControlStateNormal];
+    [self.ZGevaButton addTarget:self action:@selector(personalComment:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.floorLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+    self.floorLabel.textColor = [UIColor textColorB];
+ 
 }
 
 - (void)configWithItem:(DetailReplies *)replies
@@ -130,12 +150,12 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *date = [dateFormatter dateFromString:dateStr];
     self.ZGdurationLabel.text = [date timeAgo];
-    
-    [self.ZGupButton setImage:[UIImage imageNamed:@"iconSmallNormalStar"] forState:UIControlStateNormal];
-    [self.ZGupButton addTarget:self action:@selector(ZGupButtonaction:) forControlEvents:UIControlEventTouchUpInside];
 
-    [_ZGevaButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [_ZGevaButton setTitle:@"评" forState:UIControlStateNormal];
+//    if ([replies.ups containsObject:[ControllerManager shareManager].id]) {
+//        [self.ZGupButton setImage:[UIImage imageNamed:@"Shape Copy"] forState:UIControlStateNormal];
+//    } else {
+//        [self.ZGupButton setImage:[UIImage imageNamed:@"Shape"] forState:UIControlStateNormal];
+//    }
 
 }
 
@@ -143,12 +163,19 @@
 
 - (void)ZGupButtonaction:(id)sender
 {
-
-    if (self.delegate && [self.delegate respondsToSelector:@selector(pushToNewPage:)]) {
-        [self.delegate pushToNewPage:sender];
+    if (self.CommentCellDelegate && [self.CommentCellDelegate respondsToSelector:@selector(upButton:)]) {
+        [self.CommentCellDelegate upButton:sender];
     }
-
 }
+
+- (void)personalComment:(id)sender
+{
+    if (self.PersonalCommentDelegate && [self.PersonalCommentDelegate respondsToSelector:@selector(personalComButton:)]) {
+        [self.PersonalCommentDelegate personalComButton:sender];
+    }
+}
+
+
 
 
 

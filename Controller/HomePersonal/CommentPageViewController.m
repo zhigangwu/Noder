@@ -17,6 +17,7 @@
 #import "comContentAPI.h"
 #import "UIColor+tableBackground.h"
 #import "DetailApi.h"
+#import "UIFont+SetFont.h"
 
 
 @implementation CommentPageViewController
@@ -24,39 +25,47 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    cell分割线全屏
-    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        self.tableView.separatorInset = UIEdgeInsetsZero;
-    }
+    self.navigationItem.title = @"评论";
+    UIFont *font = [UIFont ZGFontA];
+    NSDictionary *dictionary = @{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor colorWithRed:3/255.0 green:3/255.0 blue:3/255.0 alpha:1/1.0]};
+    self.navigationController.navigationBar.titleTextAttributes = dictionary;
     
-    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        self.tableView.layoutMargins = UIEdgeInsetsZero;
-    }
+    //去掉返回按钮中的back
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
     
-    UIBarButtonItem *leftBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"navIconBackDefault"]
-                                                                      style:UIBarButtonItemStyleDone
-                                                                     target:self
-                                                                     action:@selector(backView)];
+    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconGrayComment"]
+                                                                       style:UIBarButtonItemStyleDone
+                                                                      target:self
+                                                                      action:@selector(comCenterButton:)];
+    self.navigationItem.rightBarButtonItem = rightBarButton;
     
-    self.navigationItem.leftBarButtonItem = leftBarButton;
+    self.tableview = [[UITableView alloc] init];
+    [self.view addSubview:self.tableview];
     
-    self.rightButton = [[UIButton alloc] init];
-    [self.view addSubview:_rightButton];
-    _rightButton.frame = CGRectMake(0, 0, 40, 40);
-    [_rightButton setTitle:@"评价" forState:UIControlStateNormal];
-    [_rightButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:_rightButton];
-    self.navigationItem.rightBarButtonItem = rightItem;
-    [_rightButton addTarget:self action:@selector(appraise) forControlEvents:UIControlEventTouchUpInside];
-
-    self.tableView.delegate = self;
-    self.tableView.dataSource =self;
+    [self.tableview mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.bottom.equalTo(self.view);
+    }];
     
-    [self.tableView registerClass:[CommentTableViewCell class] forCellReuseIdentifier:@"CommentTableViewCell"];
+    self.tableview.delegate = self;
+    self.tableview.dataSource =self;
+    
+    [self.tableview registerClass:[CommentTableViewCell class] forCellReuseIdentifier:@"CommentTableViewCell"];
     
     //  cell自适应高度 注:需要把cell上的控件自上而下加好约束
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = 200;
+    self.tableview.rowHeight = UITableViewAutomaticDimension;
+    self.tableview.estimatedRowHeight = 200;
+    
+    //    cell分割线全屏
+    if ([self.tableview respondsToSelector:@selector(setSeparatorInset:)]) {
+        self.tableview.separatorInset = UIEdgeInsetsZero;
+    }
+    
+    if ([self.tableview respondsToSelector:@selector(setLayoutMargins:)]) {
+        self.tableview.layoutMargins = UIEdgeInsetsZero;
+    }
     
     if ([ControllerManager shareManager].success == false) {
         self.rightButton.hidden = YES;
@@ -69,16 +78,15 @@
     [detailAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
         self.detailModel = request.responseJSONObject;
         self.array = self.detailModel.replies;
-        [self.tableView reloadData];
+        [self.tableview reloadData];
     } failure:nil];
-    
 }
 
 - (void)setupRefresh
 {
     UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:refresh];
+    [self.tableview addSubview:refresh];
     
     [refresh beginRefreshing];
     
@@ -87,27 +95,34 @@
 
 - (void)refreshStateChange:(UIRefreshControl *)refresh
 {
-    [self.tableView reloadData];
+    [self.tableview reloadData];
     [refresh endRefreshing];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    [self.tableView reloadData];
+    [self.tableview reloadData];
 }
 
-- (void)appraise
+- (void)comCenterButton:(UIButton *)sender
 {
-    ComContentViewContrnt *comConent = [[ComContentViewContrnt alloc] init];
-    comConent.topic_id = self.topic_id;
-    comConent.reply_id = _reply_id;
-    [self.navigationController pushViewController:comConent animated:YES];
+    if ([ControllerManager shareManager].success == 1) {
+        ComContentViewContrnt *comContentVC = [[ComContentViewContrnt alloc] init];
+        [self.navigationController pushViewController:comContentVC animated:YES];
+    } else {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                        message:@"请登入"
+                                                       delegate:self
+                                              cancelButtonTitle:@"取消"
+                                              otherButtonTitles:nil, nil];
+        [alert show];
+    }
+    
 }
 
-- (void)backView
+- (void)comcontent
 {
-    self.bottomViem = [[DetailBottomView alloc] init];
-    [self.navigationController popViewControllerAnimated:YES];
+    
 }
 
 
@@ -129,10 +144,18 @@
     
     CommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CommentTableViewCell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.delegate = self;
+    cell.CommentCellDelegate = self;
+    cell.PersonalCommentDelegate = self;
+    cell.floorLabel.text = [NSString stringWithFormat:@"%ld楼",indexPath.row + 1];
     
-    DetailReplies *replies = [self.array objectAtIndex:indexPath.row];
-    [cell configWithItem:replies];
+//    for (int i = 1; i < self.array.count ; i++) {
+//        cell.floorLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+//        NSLog(@"******%ld",indexPath.row);
+//    }
+    
+    self.reply = [self.array objectAtIndex:indexPath.row];
+//    NSLog(@"reply = %@",self.reply.id);
+    [cell configWithItem:self.reply];
     
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
         [cell setLayoutMargins:UIEdgeInsetsZero];
@@ -141,11 +164,6 @@
     return cell;
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 400;
-//}
-
 - (void)evaluation:(id)sender
 {
     PersonalComViewController *personal = [[PersonalComViewController alloc] init];
@@ -153,23 +171,49 @@
     [self.navigationController pushViewController:personal animated:YES];
 }
 
-- (void)pushToNewPage:(UIButton *)sender
+- (void)upButton:(UIButton *)sender
 {
-    CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    self.detailModel = [self.array objectAtIndex:indexPath.row];
+    if ([ControllerManager shareManager].success == true) {
+        CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
+        NSIndexPath *indexPath = [self.tableview indexPathForCell:cell];
+        self.reply = [self.array objectAtIndex:indexPath.row];
 
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"replyid" object:self.detailModel.id];
-
-    ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
-    thumAPI.reply_id = self.detailModel.id;
-    NSString *access = [ControllerManager shareManager].string;
-    thumAPI.requestArgument = @{@"accesstoken" : access};
-    [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-        self.thumbsModel = request.responseJSONObject;
-    } failure:NULL];
-
+        ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
+        thumAPI.reply_id = self.reply.id;
+        NSString *access = [ControllerManager shareManager].string;
+        if (access != nil) {
+            thumAPI.requestArgument = @{@"accesstoken" : access};
+            [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+                self.thumbsModel = request.responseJSONObject;
+                NSLog(@"self.thumbsModel = %@",self.thumbsModel);
+                [self.tableview reloadData];
+            } failure:NULL];
+        }
+    } else {
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:@"请登入"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:nil, nil];
+        [alertview show];
+    }
 }
+
+- (void)personalComButton:(UIButton *)sender
+{
+    if ([ControllerManager shareManager].success == true) {
+        ComContentViewContrnt *comContentVC = [[ComContentViewContrnt alloc] init];
+        [self.navigationController pushViewController:comContentVC animated:YES];
+    } else {
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:@"请登入"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:nil, nil];
+        [alertview show];
+    }
+}
+
 
 
 

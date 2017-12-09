@@ -10,6 +10,7 @@
 #import "Masonry.h"
 #import "MessageCountAPI.h"
 #import "ControllerManager.h"
+#import "UIColor+textColor.h"
 
 
 @implementation ScanLoginCell
@@ -47,6 +48,9 @@
         self.messageLabel.backgroundColor = [UIColor redColor];
         
         self.imageView.image = [UIImage imageNamed:@"Rectangle 4"];
+        self.textLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
+        self.textLabel.textColor = [UIColor textColor];
+        
     }
     return self;
 }

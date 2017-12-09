@@ -7,20 +7,41 @@
 //
 
 #import "HomePageController.h"
+
 #import "AllViewController.h"
 #import "EssenceViewController.h"
 #import "ShareViewController.h"
 #import "QandAViewController.h"
 #import "RecruitmentViewController.h"
 #import "DevTableViewController.h"
+#import "UIColor+textColor.h"
+
+#import "Masonry.h"
+#import "UIFont+SetFont.h"
 
 @interface HomePageController ()
 
 @property (nonatomic ,strong) NSArray *titleData;
+@property (nonatomic, strong) UIView *backgroundView;
 
 @end
 
 @implementation HomePageController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.navigationItem.title = @"首页";
+    UIFont *font = [UIFont ZGFontA];
+    NSDictionary *dictionary = @{NSFontAttributeName:font,NSForegroundColorAttributeName: [UIColor colorWithRed:3/255.0 green:3/255.0 blue:3/255.0 alpha:1/1.0]};
+    self.navigationController.navigationBar.titleTextAttributes = dictionary;
+
+    CALayer *layer = [self.menuView layer];
+    [layer setShadowOpacity:0];
+    [layer setBorderWidth:0.5];
+    [layer setBorderColor:[[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1/1.0] CGColor]];
+}
 
 - (NSArray *)titleData{
     
@@ -34,13 +55,15 @@
     if (self = [super init]) {
         self.titleSizeNormal = 14;
         self.titleSizeSelected = 14;
+        self.titleFontName = @"PingFangSC-Medium";
+        self.titleColorNormal = [UIColor colorWithRed:171/255.0 green:171/255.0 blue:171/255.0 alpha:1/1.0];;
+        self.titleColorSelected = [UIColor textColor];
+        self.progressColor = [UIColor textColor];
+        self.progressWidth = 28;
         self.menuViewStyle = WMMenuViewStyleLine;
         self.menuItemWidth = [UIScreen mainScreen].bounds.size.width / self.titleData.count;
-            
-        self.navigationItem.title = @"主页";
      }
-    
-    
+
     return self;
 }
 
@@ -109,8 +132,10 @@
     
 }
 
-
-
+- (CGRect)pageController:(WMPageController *)pageController preferredFrameForMenuView:(WMMenuView *)menuView
+{
+    return CGRectMake(0, 64, self.view.frame.size.width, 44);
+}
 
 
 

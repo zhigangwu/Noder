@@ -24,7 +24,6 @@
 }
 
 - (id)responseProcess:(id)responseObject{
-//    return responseObject[@"data"];
     NSArray *array = responseObject[@"data"];
     return [MTLJSONAdapter modelsOfClass:[AllViewDataModel class] fromJSONArray:array error:nil];
 }

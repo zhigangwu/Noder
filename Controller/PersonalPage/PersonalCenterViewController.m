@@ -28,6 +28,7 @@
 #import "Loginapi.h"
 #import "UIColor+background.h"
 #import "UIColor+tableBackground.h"
+#import "UIFont+SetFont.h"
 
 
 @implementation PersonalCenterViewController
@@ -38,6 +39,9 @@
     
     self.navigationController.navigationBar.translucent = NO;
     self.navigationItem.title = @"个人中心";
+    UIFont *font = [UIFont ZGFontA];
+    NSDictionary *dictionary = @{NSFontAttributeName:font,NSForegroundColorAttributeName: [UIColor colorWithRed:3/255.0 green:3/255.0 blue:3/255.0 alpha:1/1.0]};
+    self.navigationController.navigationBar.titleTextAttributes = dictionary;
     
     self.view.backgroundColor = [UIColor backgroundcolor];
     
@@ -48,14 +52,13 @@
         make.height.equalTo(@110);
     }];
     
-    
     self.tableView = [[UITableView alloc] init];
     [self.view addSubview:self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(self.Header.mas_bottom).with.offset(4);
         make.left.equalTo(self.view);
         make.right.equalTo(self.view);
-        make.height.mas_equalTo(280);
+        make.height.mas_equalTo(292);
     }];
     
     //    cell分割线全屏
@@ -73,39 +76,39 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.tableView registerClass:[ScanLoginCell class] forCellReuseIdentifier:@"ScanloginCell"];
     
-    UIView *bottomview = [UIView new];
-    UIImageView *logoImageView = [UIImageView new];
-    UILabel *versionlabel = [UILabel new];
-    UIView *barView = [UIView new];
-
-    [self.view addSubview:bottomview];
-    [bottomview addSubview:logoImageView];
-    [bottomview addSubview:versionlabel];
-    [self.view addSubview:barView];
-
-    versionlabel.text = @"V 1.0.0";
-    versionlabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:13];
-    versionlabel.textColor = [UIColor colorWithRed:171/255.0 green:171/255.0 blue:171/255.0 alpha:1/1.0];
-    logoImageView.image = [UIImage imageNamed:@"N"];
-    bottomview.backgroundColor = [UIColor backgroundcolor];
-    
-    [bottomview mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.tableView.mas_bottom);
-        make.left.and.right.equalTo(self.view);
-        make.height.mas_equalTo(146);
-    }];
-
-    [logoImageView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.centerX.mas_equalTo(bottomview);
-        make.centerY.mas_equalTo(bottomview);
-        make.size.mas_equalTo(CGSizeMake(60, 67));
-    }];
-    
-    [versionlabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.bottom.equalTo(bottomview.mas_bottom).with.offset(-15.7);
-        make.centerX.mas_equalTo(bottomview.mas_centerX);
-        make.size.mas_equalTo(CGSizeMake(40, 18));
-    }];
+//    UIView *bottomview = [UIView new];
+//    UIImageView *logoImageView = [UIImageView new];
+//    UILabel *versionlabel = [UILabel new];
+//    UIView *barView = [UIView new];
+//
+//    [self.view addSubview:bottomview];
+//    [bottomview addSubview:logoImageView];
+//    [bottomview addSubview:versionlabel];
+//    [self.view addSubview:barView];
+//
+//    versionlabel.text = @"V 1.0.0";
+//    versionlabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:13];
+//    versionlabel.textColor = [UIColor colorWithRed:171/255.0 green:171/255.0 blue:171/255.0 alpha:1/1.0];
+//    logoImageView.image = [UIImage imageNamed:@"N"];
+//    bottomview.backgroundColor = [UIColor backgroundcolor];
+//
+//    [bottomview mas_makeConstraints:^(MASConstraintMaker *make){
+//        make.top.equalTo(self.tableView.mas_bottom);
+//        make.left.and.right.equalTo(self.view);
+//        make.height.mas_equalTo(146);
+//    }];
+//
+//    [logoImageView mas_makeConstraints:^(MASConstraintMaker *make){
+//        make.centerX.mas_equalTo(bottomview);
+//        make.centerY.mas_equalTo(bottomview);
+//        make.size.mas_equalTo(CGSizeMake(60, 67));
+//    }];
+//
+//    [versionlabel mas_makeConstraints:^(MASConstraintMaker *make){
+//        make.bottom.equalTo(bottomview.mas_bottom).with.offset(-15.7);
+//        make.centerX.mas_equalTo(bottomview.mas_centerX);
+//        make.size.mas_equalTo(CGSizeMake(40, 18));
+//    }];
     
     [_Header.button addTarget:self action:@selector(buttonaction) forControlEvents:UIControlEventTouchUpInside];
     
@@ -130,7 +133,8 @@
         assAPI.requestArgument = @{@"accesstoken" : QRCodeString};
         [assAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
             self.personalModel = request.responseJSONObject;
-        
+            
+            [ControllerManager shareManager].id = self.personalModel.id;
             [ControllerManager shareManager].success = self.personalModel.success;
             [ControllerManager shareManager].URLImage = self.personalModel.avatar_url;
             
@@ -231,7 +235,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
-    return 0.1;
+    return 12;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

@@ -105,7 +105,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 72.7;
+    return 74.3;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -113,6 +113,7 @@
     DetailViewController *detail = [[DetailViewController alloc] init];
     DevDataModel *devModel = [self.array objectAtIndex:indexPath.row];
     detail.detailId = devModel.id;
+    detail.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

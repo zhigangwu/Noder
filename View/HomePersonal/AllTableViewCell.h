@@ -12,7 +12,8 @@
 @interface AllTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong)UIImageView *topImage;
+@property (nonatomic, strong) UIImageView *topImage;
+@property (nonatomic, strong) UIImageView *goodimage;
 
 @property (nonatomic, strong) UIImageView *image_view;
 @property (nonatomic, strong) UIWebView *webView;

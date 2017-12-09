@@ -13,6 +13,7 @@
 #import "AssesstokenAPI.h"
 #import "TopicsApi.h"
 #import "UIColor+tableBackground.h"
+#import "DetailTopView.h"
 
 
 
@@ -37,10 +38,9 @@
     TopicsApi *topApi = [[TopicsApi alloc] init];
     [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
         self.array = request.responseJSONObject;
-        
+        self.allModel = request.responseJSONObject;
         [self.tableView reloadData];
-    }
-                          failure:NULL];
+    }failure:NULL];
     
     __weak typeof(self) weakSelf = self;
 
@@ -61,10 +61,10 @@
 }
 
 - (void)loadNewData{
-    
     TopicsApi *topApi = [[TopicsApi alloc] init];
     [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-        self.array = request.responseJSONObject;
+        self.allModel = request.responseJSONObject;
+        
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
     }
@@ -75,7 +75,8 @@
 - (void)loadNoreData{
     TopicsApi *topApi = [[TopicsApi alloc] init];
     [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-        self.array = request.responseJSONObject;
+        self.allModel = request.responseJSONObject;
+        
         [self.tableView reloadData];
         [self.tableView.mj_footer endRefreshing];
     }
@@ -91,14 +92,15 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.array.count;
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     AllTableViewCell *allTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"allTableViewCell" forIndexPath:indexPath];
     
-    AllViewDataModel *allModel = [self.array objectAtIndex:indexPath.row];
-    [allTableViewCell configWithItem:allModel];
+    self.allModel = [self.array objectAtIndex:indexPath.row];
+    [allTableViewCell configWithItem:self.allModel];
     
     if ([allTableViewCell respondsToSelector:@selector(setLayoutMargins:)]) {
         [allTableViewCell setLayoutMargins:UIEdgeInsetsZero];
@@ -110,14 +112,14 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 72.7;
+    return 74.3;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DetailViewController *vc = [[DetailViewController alloc] init];
-    AllViewDataModel *allModel = [self.array objectAtIndex:indexPath.row];
-    vc.detailId = allModel.id;
+    self.allModel = [self.array objectAtIndex:indexPath.row];
+    vc.detailId = self.allModel.id;
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }

@@ -11,6 +11,7 @@
 #import "UIColor+textColor.h"
 #import "UIColor+textColorB.h"
 #import "NSDate+TimeAgo.h"
+#import "UIFont+SetFont.h"
 
 #import <SDWebImage/UIImageView+WebCache.h>
 
@@ -30,12 +31,13 @@
         [self.ImageView mas_makeConstraints:^(MASConstraintMaker *make){
             make.centerY.equalTo(self.contentView);
             make.left.equalTo(self.contentView).with.offset(15.9);
-            make.size.mas_equalTo(CGSizeMake(52, 51.7));
+            make.size.mas_equalTo(CGSizeMake(52, 52));
         }];
         
         [self.TitleLabel mas_makeConstraints:^(MASConstraintMaker *make){
             make.top.equalTo(self.contentView).with.offset(11.6);
             make.left.equalTo(self.ImageView.mas_right).with.offset(11);
+            make.right.equalTo(self.contentView);
         }];
         
         [self.durationLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -43,13 +45,13 @@
             make.left.equalTo(self.ImageView.mas_right).with.offset(14);
         }];
         
-        self.TitleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
+        self.TitleLabel.font = [UIFont ZGFontB];
         self.TitleLabel.textColor = [UIColor textColor];
         
-        [self.ImageView.layer setCornerRadius:25.85];
+        [self.ImageView.layer setCornerRadius:26];
         [self.ImageView.layer setMasksToBounds:YES];
         
-        self.durationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
+        self.durationLabel.font = [UIFont ZGFontC];
         self.durationLabel.textColor = [UIColor textColorB];
 
     }

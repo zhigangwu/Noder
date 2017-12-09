@@ -33,6 +33,12 @@
     return [NSDictionary mtl_identityPropertyMapWithModel:self];
 }
 
++ (NSValueTransformer *)avatar_urlValueTransformer
+{
+    return [NSValueTransformer valueTransformerForName:MTLURLValueTransformerName];
+}
+
+
 @end
 
 @implementation DetailReplies

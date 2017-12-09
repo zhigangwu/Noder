@@ -17,56 +17,55 @@
         
         self.backgroundColor = [UIColor whiteColor];
         
-        UIButton *backButton = [[UIButton alloc] init];// 返回
-        UIButton *commentButton = [[UIButton alloc] init];// 评价详情
-        UILabel *commentLabel = [[UILabel alloc] init];// 评价数量
-        UIButton *comBotton = [[UIButton alloc] init];// 写评价
+        CALayer *viewlayer = [self layer];
+        [viewlayer setShadowOpacity:0];
+        [viewlayer setBorderWidth:0.5];
+        [viewlayer setBorderColor:[ [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1/1.0] CGColor]];
         
-        [self addSubview:backButton];
+        UIButton *grayButton = [[UIButton alloc] init];
+        UIButton *brightButton = [[UIButton alloc] init];
+        UIButton *commentButton = [[UIButton alloc] init];
+        UIButton *refreshButton = [[UIButton alloc] init];
+        
+        [self addSubview:grayButton];
+        [self addSubview:brightButton];
         [self addSubview:commentButton];
-        [self addSubview:commentLabel];
-        [self addSubview:comBotton];
+        [self addSubview:refreshButton];
+
+        [grayButton mas_makeConstraints:^(MASConstraintMaker *make){
+            make.left.equalTo(self).with.offset(16);
+            make.top.equalTo(self).with.offset(18);
+            make.size.mas_offset(CGSizeMake(20, 20));
+        }];
         
-        [backButton mas_makeConstraints:^(MASConstraintMaker *make){
-            make.left.equalTo(self).with.offset(15);
-            make.size.mas_offset(CGSizeMake(40, 40));
-            make.centerY.equalTo(self);
+        [brightButton mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(self).with.offset(18);
+            make.left.equalTo(grayButton.mas_right).with.offset(16.9);
+            make.size.mas_equalTo(CGSizeMake(20, 20));
         }];
         
         [commentButton mas_makeConstraints:^(MASConstraintMaker *make){
-            make.right.equalTo(commentLabel.mas_left).with.offset(2);
-            make.centerY.equalTo(self);
-            make.size.mas_equalTo(CGSizeMake(40, 40));
+            make.top.equalTo(self).with.offset(9);
+            make.left.equalTo(brightButton.mas_right).with.offset(81.9);
+            make.size.mas_equalTo(CGSizeMake(61, 37));
         }];
     
-        [commentLabel mas_makeConstraints:^(MASConstraintMaker *make){
-            make.centerX.equalTo(self);
-            make.centerY.equalTo(self);
-            make.size.mas_equalTo(CGSizeMake(30, 30));
+        [refreshButton mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(self).with.offset(18.7);
+            make.right.equalTo(self).with.offset(-16);
+            make.size.mas_equalTo(CGSizeMake(20, 18));
         }];
         
-        [comBotton mas_makeConstraints:^(MASConstraintMaker *make){
-            make.centerY.equalTo(self);
-            make.left.equalTo(commentLabel.mas_right).with.offset(10);
-            make.right.equalTo(self).with.offset(-15);
-            make.height.mas_equalTo(40);
-        }];
+        [grayButton setImage:[UIImage imageNamed:@"Shape"] forState:UIControlStateNormal];
+        [grayButton addTarget:self action:@selector(backButton:) forControlEvents:UIControlEventTouchUpInside];
         
-        [backButton setImage:[UIImage imageNamed:@"iconBottomBack"] forState:UIControlStateNormal];
-        [backButton addTarget:self action:@selector(backButton:) forControlEvents:UIControlEventTouchUpInside];
+        [brightButton setImage:[UIImage imageNamed:@"Shape Copy"] forState:UIControlStateNormal];
         
-        [commentButton setImage:[UIImage imageNamed:@"iconGrayComment"] forState:UIControlStateNormal];
+        [commentButton setImage:[UIImage imageNamed:@"Group 2"] forState:UIControlStateNormal];
         [commentButton addTarget:self action:@selector(comment:) forControlEvents:UIControlEventTouchUpInside];
         
-        commentLabel.text = @"11";
-        commentLabel.textColor = [UIColor colorWithRed:66/255.0 green:66/255.0 blue:66/255.0 alpha:1/1.0];
-        commentLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:16];
-        
-        [comBotton.layer setCornerRadius:5];
-        [comBotton.layer setMasksToBounds:YES];
-        comBotton.backgroundColor = [UIColor redColor];
-        [comBotton setTitle:@"说点什么!" forState:UIControlStateNormal];
-        [comBotton addTarget:self action:@selector(comconent:) forControlEvents:UIControlEventTouchUpInside];
+        [refreshButton setImage:[UIImage imageNamed:@"Group-3"] forState:UIControlStateNormal];
+        [commentButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
@@ -85,10 +84,10 @@
     }
 }
 
-- (void)comconent:(UIButton *)sender
+- (void)refresh:(UIButton *)sender
 {
-    if (self.comCenterDelegate && [self.comCenterDelegate respondsToSelector:@selector(comCenterButton:)]) {
-        [self.comCenterDelegate comCenterButton:sender];
+    if (self.RefreshDelegate && [self.RefreshDelegate respondsToSelector:@selector(refreshButton:)]) {
+        [self.RefreshDelegate refreshButton:sender];
     }
 }
 

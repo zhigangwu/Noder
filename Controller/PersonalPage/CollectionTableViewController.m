@@ -13,6 +13,8 @@
 #import "UIColor+tableBackground.h"
 
 #import "CollectionDataModel.h"
+#import "UIFont+SetFont.h"
+#import "UIColor+background.h"
 
 @interface CollectionTableViewController ()
 
@@ -22,6 +24,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.title = @"我的收藏";
+    UIFont *font = [UIFont ZGFontA];
+    NSDictionary *dictionary = @{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor colorWithRed:3/255.0 green:3/255.0 blue:3/255.0 alpha:1/1.0]};
+    self.navigationController.navigationBar.titleTextAttributes = dictionary;
+
+    //去掉返回按钮中的back
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+    
+    //不显示空白cell
+    UIView *footview = [[UIView alloc] init];
+    footview.backgroundColor = [UIColor backgroundcolor];
+    self.tableView.tableFooterView = footview;
     
     //    cell分割线全屏
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {

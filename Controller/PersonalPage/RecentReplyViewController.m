@@ -13,6 +13,8 @@
 #import "Loginapi.h"
 #import "DetailViewController.h"
 #import "UIColor+tableBackground.h"
+#import "UIFont+SetFont.h"
+#import "UIColor+background.h"
 
 @interface RecentReplyViewController ()
 
@@ -24,7 +26,20 @@
 {
     [super viewDidLoad];
     
-    self.tableView.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.title = @"最近回复";
+    UIFont *font = [UIFont ZGFontA];
+    NSDictionary *dictionary = @{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor colorWithRed:3/255.0 green:3/255.0 blue:3/255.0 alpha:1/1.0]};
+    self.navigationController.navigationBar.titleTextAttributes = dictionary;
+    
+    //去掉返回按钮中的back
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+    
+//    self.tableView.backgroundColor = [UIColor whiteColor];
+    
+    //不显示空白cell
+    UIView *footview = [[UIView alloc] init];
+    footview.backgroundColor = [UIColor backgroundcolor];
+    self.tableView.tableFooterView = footview;
     
     //    cell分割线全屏
     if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
@@ -35,6 +50,7 @@
         self.tableView.layoutMargins = UIEdgeInsetsZero;
     }
 
+    
     
     Loginapi *recentAPI = [[Loginapi alloc] init];
     recentAPI.loginname = self.recenrLoginname;

@@ -10,8 +10,10 @@
 #import "DetailDataModel.h"
 #import "DetailBottomView.h"
 #import "AllViewController.h"
+#import "DetailTopView.h"
+#import "ThumbsDataModel.h"
 
-@interface DetailViewController : UIViewController <BackViewDelegate,commentDelegate,comCenterDelegate>
+@interface DetailViewController : UIViewController <BackViewDelegate,commentDelegate,RefreshDelegate>
 
 @property (nonatomic, strong) NSString *detailId;
 @property (nonatomic, strong) UIWindow *window;
@@ -22,6 +24,9 @@
 @property (nonatomic, strong) DetailDataModel *detailModel;
 @property (nonatomic, strong) DetailReplies *replies;
 
+@property (nonatomic, strong) DetailTopView *topView;
 @property (nonatomic, strong) DetailBottomView *bottomView;
+
+@property (nonatomic, strong) ThumbsDataModel *thumbsModel;
 
 @end

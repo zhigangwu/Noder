@@ -85,8 +85,6 @@
     [self instanceDevice];
 }
 
-
-
 - (void)captureOutput:(AVCaptureOutput *)output didOutputMetadataObjects:(NSArray<__kindof AVMetadataObject *> *)metadataObjects fromConnection:(AVCaptureConnection *)connection
 {
     if ([metadataObjects count] > 0) {

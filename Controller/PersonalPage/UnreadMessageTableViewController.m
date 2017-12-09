@@ -11,8 +11,14 @@
 #import "ControllerManager.h"
 #import "UIColor+tableBackground.h"
 #import "MessageAPI.h"
+#import "NullView.h"
+#import "Masonry.h"
+#import "UIFont+SetFont.h"
+#import "UIColor+background.h"
 
 @interface UnreadMessageTableViewController ()
+
+@property (nonatomic, strong) NullView *nullview;
 
 @end
 
@@ -21,13 +27,41 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.title = @"未读消息";
+    UIFont *font = [UIFont ZGFontA];
+    NSDictionary *dictionary = @{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor colorWithRed:3/255.0 green:3/255.0 blue:3/255.0 alpha:1/1.0]};
+    self.navigationController.navigationBar.titleTextAttributes = dictionary;
+
+    //去掉返回按钮中的back
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+    
+    self.tableview = [[UITableView alloc] init];
+    self.nullview = [[NullView alloc] init];
+    
+    [self.view addSubview:self.tableview];
+    [self.view addSubview:self.nullview];
+    
+    [self.tableview mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.bottom.equalTo(self.view);
+    }];
+    
+    [self.nullview mas_makeConstraints:^(MASConstraintMaker *make){
+        make.top.equalTo(self.view);
+        make.left.equalTo(self.view);
+        make.right.equalTo(self.view);
+        make.bottom.equalTo(self.view);
+    }];
+    
     //    cell分割线全屏
-    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-        self.tableView.separatorInset = UIEdgeInsetsZero;
+    if ([self.tableview respondsToSelector:@selector(setSeparatorInset:)]) {
+        self.tableview.separatorInset = UIEdgeInsetsZero;
     }
     
-    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-        self.tableView.layoutMargins = UIEdgeInsetsZero;
+    if ([self.tableview respondsToSelector:@selector(setLayoutMargins:)]) {
+        self.tableview.layoutMargins = UIEdgeInsetsZero;
     }
 
     NSString *accesstoken = [ControllerManager shareManager].string;
@@ -38,11 +72,16 @@
             self.messageModel = request.responseJSONObject;
             self.array = self.messageModel.hasnot_read_messages;
             
-            [self.tableView reloadData];
+            [self.tableview reloadData];
         } failure:NULL];
     }
-
-    [self.tableView registerClass:[UnreadMessageCell class] forCellReuseIdentifier:@"UnreadMessageCell"];
+    
+    [self.tableview registerClass:[UnreadMessageCell class] forCellReuseIdentifier:@"UnreadMessageCell"];
+    
+    //不显示空白cell
+    UIView *footview = [[UIView alloc] init];
+    footview.backgroundColor = [UIColor backgroundcolor];
+    self.tableview.tableFooterView = footview;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,7 +93,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.array.count;
+    if (self.array == nil) {
+        
+        self.tableview.hidden = YES;
+    }
+        return self.array.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

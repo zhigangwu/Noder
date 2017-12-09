@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSNumber *visit_count;
 @property (nonatomic, strong) NSNumber *reply_count;
 @property (nonatomic, strong) NSString *id;
+@property (nonatomic, assign) BOOL good;
 @property (nonatomic, assign) BOOL top;
 @property (nonatomic, strong) NSString *last_reply_at;
 @property (nonatomic, strong) ALLAuthor *author;
@@ -25,6 +26,7 @@
 @interface ALLAuthor : MTLModel <MTLJSONSerializing>
 
 @property (nonatomic, strong) NSURL *avatar_url;
+@property (nonatomic, strong) NSString *loginname;
 
 @end
 

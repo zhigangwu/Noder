@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString *last_reply_at;
 @property (nonatomic, strong) NSNumber *visit_count;
 @property (nonatomic, strong) NSNumber *reply_count;
+@property (nonatomic, strong) NSString *create_at;
 @property (nonatomic, strong) DevAuthor *author;
 @property (nonatomic, strong) NSString *id;
 

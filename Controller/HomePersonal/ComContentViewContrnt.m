@@ -24,6 +24,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    
     self.comContentView = [[ComContentView alloc] init];
     [self.view addSubview:self.comContentView];
     [self.comContentView mas_makeConstraints:^(MASConstraintMaker *make){
@@ -42,6 +43,12 @@
     [self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:animated];
+}
+
+
 - (void)backButton:(UIButton *)sender
 {
     [self.navigationController popViewControllerAnimated:YES];
@@ -52,9 +59,10 @@
     self.QRCodeString = [ControllerManager shareManager].string;
 
     comContentAPI *comconAPI = [[comContentAPI alloc] init];
-    comconAPI.topic_id = self.topic_id;
+    comconAPI.topic_id = [ControllerManager shareManager].reply_ID;
     comconAPI.requestArgument = @{@"accesstoken" : self.QRCodeString,
                                       @"content" : self.comContentView.textView.text,
+                                  @"reply_id" : [ControllerManager shareManager].reply_ID,
                                       };
     [comconAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
         NSDictionary *dictionary = request.responseJSONObject;

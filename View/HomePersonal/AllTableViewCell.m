@@ -12,6 +12,7 @@
 #import "NSDate+TimeAgo.h"
 #import "UIColor+textColor.h"
 #import "UIColor+textColorB.h"
+#import "UIFont+SetFont.h"
 
 @implementation AllTableViewCell
 
@@ -21,6 +22,7 @@
         
         self.image_view = [[UIImageView alloc] init];
         self.topImage = [[UIImageView alloc] init];
+        self.goodimage = [[UIImageView alloc] init];
         self.titleLabel = [[UILabel alloc] init];
         self.durationLabel = [[UILabel alloc] init];
         self.eyeImageView = [[UIImageView alloc] init];
@@ -30,6 +32,7 @@
 
         [self.contentView addSubview:self.image_view];
         [self.contentView addSubview:self.topImage];
+        [self.contentView addSubview:self.goodimage];
         [self.contentView addSubview:self.titleLabel];
         [self.contentView addSubview:self.durationLabel];
         [self.contentView addSubview:self.eyeImageView];
@@ -40,7 +43,7 @@
         [self.image_view mas_makeConstraints:^(MASConstraintMaker *make){
             make.left.equalTo(self.contentView).with.offset(15.9);
             make.top.equalTo(self.contentView).with.offset(11.4);
-            make.size.mas_equalTo(CGSizeMake(40, 40));
+            make.size.mas_equalTo(CGSizeMake(52, 52));
         }];
 
         [self.topImage mas_makeConstraints:^(MASConstraintMaker *make){
@@ -48,11 +51,17 @@
             make.top.equalTo(self.contentView).with.offset(15.3);
             make.size.mas_equalTo(CGSizeMake(12, 13));
         }];
+        
+        [self.goodimage mas_makeConstraints:^(MASConstraintMaker *make){
+            make.top.equalTo(self.contentView).with.offset(15.3);
+            make.right.equalTo(self.topImage.mas_left).with.offset(-5);
+            make.size.mas_equalTo(CGSizeMake(12, 12));
+        }];
 
         [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make){
             make.left.equalTo(self.image_view.mas_right).with.offset(11);
             make.top.equalTo(self.contentView).with.offset(11.4);
-            make.right.equalTo(self.topImage.mas_right).with.offset(-20);
+            make.right.equalTo(self.goodimage.mas_right).with.offset(-20);
         }];
 
         [self.durationLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -80,27 +89,30 @@
         [self.messageLabel mas_makeConstraints:^(MASConstraintMaker *make){
             make.bottom.equalTo(self.contentView).with.offset(-10.1);
             make.right.equalTo(self.contentView).with.offset(-16);
-            //            make.size.mas_equalTo(CGSizeMake(18, 14));
+
         }];
-
-        [self.image_view.layer setCornerRadius:20];
-        [self.image_view.layer setMasksToBounds:YES];
-
+        
+        CALayer *layer = [self.image_view layer];
+        [layer setMasksToBounds:YES];
+        [layer setShadowOpacity:0];
+        [layer setCornerRadius:26];
+        [layer setBorderWidth:0.5];
+        [layer setBorderColor:[[UIColor grayColor] CGColor]];
 
         [self.titleLabel setNumberOfLines:0];
         self.titleLabel.textAlignment = NSTextAlignmentLeft;
         self.titleLabel.numberOfLines = 0;
         self.titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-        self.titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
+        self.titleLabel.font = [UIFont ZGFontB];
         self.titleLabel.textColor = [UIColor textColor];
 
-        self.durationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
+        self.durationLabel.font = [UIFont ZGFontC];
         self.durationLabel.textColor = [UIColor textColorB];
 
-        self.watchLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
+        self.watchLabel.font = [UIFont ZGFontC];
         self.watchLabel.textColor = [UIColor textColorB];
 
-        self.messageLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
+        self.messageLabel.font = [UIFont ZGFontC];
         self.messageLabel.textColor = [UIColor textColorB];
         
     }
@@ -122,6 +134,9 @@
     if (allModel.top == true) {
         self.topImage.image = [UIImage imageNamed:@"Group"];
     }
+    if (allModel.good == true) {
+        self.goodimage.image = [UIImage imageNamed:@"iconStar"];
+    }
 
     NSString *dateStr = allModel.last_reply_at;
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -134,13 +149,6 @@
 
     self.watchLabel.text = [NSString stringWithFormat:@"%@",allModel.visit_count];
     self.messageLabel.text = [NSString stringWithFormat:@"%@",allModel.reply_count];
-}
-
-- (void)setFrame:(CGRect)frame {
-    // 设置分隔线的高度
-    frame.size.height -= 1;
-    // 调用系统的方法
-    [super setFrame:frame];
 }
 
 

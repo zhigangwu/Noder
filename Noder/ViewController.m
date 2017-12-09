@@ -11,6 +11,7 @@
 #import "Masonry.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "AssesstokenAPI.h"
+#import "UIFont+SetFont.h"
 
 
 @interface ViewController () <NSURLConnectionDelegate>
@@ -42,7 +43,7 @@
     self.title = @"主页";
 
     self.navigationItem.title = @"我的收藏";
-    UIFont *font = [UIFont fontWithName:@".AppleSystemUIFont" size:17];
+    UIFont *font = [UIFont ZGFontA];
     UIColor *color = [UIColor colorWithRed:3/255.0 green:3/255.0 blue:3/255.0 alpha:1/1.0];
     NSDictionary *dic = @{NSFontAttributeName:font,NSForegroundColorAttributeName:color};
     self.navigationController.navigationBar.titleTextAttributes =dic;

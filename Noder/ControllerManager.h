@@ -18,6 +18,7 @@
 @property (nonatomic, copy) NSArray *array;
 @property (nonatomic, assign) BOOL success;
 @property (nonatomic, strong) NSURL *URLImage;
+@property (nonatomic, copy) NSString *id;
 
 + (ControllerManager *)shareManager;
 

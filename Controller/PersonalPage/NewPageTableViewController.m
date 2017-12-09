@@ -14,11 +14,15 @@
 #import "PlateSelectionViewController.h"
 #import "UIColor+TitleColor.h"
 #import "UIColor+textColor.h"
+#import "UIFont+SetFont.h"
 
 #import "ControllerManager.h"
+#import "NewPageView.h"
 
 
 @interface NewPageTableViewController ()
+
+@property (nonatomic, strong) NewPageView *newview;
 
 @end
 
@@ -27,118 +31,43 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
-    _pickLabel = [[UILabel alloc] init];
     
-    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemReply
-                                                                                target:self
-                                                                                action:@selector(cancelandback)];
+    UIBarButtonItem *leftButton = [[UIBarButtonItem alloc] initWithTitle:@"取消"
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(cancel:)];
+    
     self.navigationItem.leftBarButtonItem = leftButton;
+    [self.navigationItem.leftBarButtonItem setTintColor:[UIColor textColor]];
+    [self.navigationItem.leftBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"PingFangSC-Regular" size:15],NSFontAttributeName, nil] forState:UIControlStateNormal];
     
-    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                                 target:self
-                                                                                 action:@selector(reless:)];
+    UIBarButtonItem *rightButton = [[UIBarButtonItem alloc] initWithTitle:@"发布"
+                                                                   style:UIBarButtonItemStyleDone
+                                                                  target:self
+                                                                  action:@selector(reless:)];
     self.navigationItem.rightBarButtonItem = rightButton;
+    [self.navigationItem.rightBarButtonItem setTintColor:[UIColor textColor]];
+    [self.navigationItem.rightBarButtonItem setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"PingFangSC-Regular" size:15],NSFontAttributeName, nil] forState:UIControlStateNormal];
 
     self.navigationController.navigationBar.translucent = NO; //半透明
     self.navigationItem.title = @"发布帖子";
+    UIFont *font = [UIFont ZGFontA];
+    NSDictionary *dictionary = @{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor colorWithRed:3/255.0 green:3/255.0 blue:3/255.0 alpha:1/1.0]};
+    self.navigationController.navigationBar.titleTextAttributes = dictionary;
     
     self.array = [NSArray arrayWithObjects:@"ask",@"share",@"job",@"dev", nil];
     
-    self.choseView = [[UIView alloc] init];
-    self.choseButton = [[UIButton alloc] init];
-    self.choseLabel = [[UILabel alloc] init];
-    self.imageview = [[UIImageView alloc] init];
-    self.TitleView = [[UITextView alloc] init];
-    self.ContentView = [[UITextView alloc] init];
-    UIImageView *imageViewA = [[UIImageView alloc] init];
-    UIImageView *imageViewB = [[UIImageView alloc] init];
-    [self.view addSubview:imageViewA];
-    [self.view addSubview:imageViewB];
-    [self.view addSubview:self.choseView];
-    [self.choseView addSubview:self.choseButton];
-    [self.choseView addSubview:self.choseLabel];
-    [self.choseView addSubview:self.imageview];
-    [self.view addSubview:self.TitleView];
-    [self.view addSubview:self.ContentView];
-    
-    [self.TitleView mas_makeConstraints:^(MASConstraintMaker *make){
+    self.newview = [[NewPageView alloc] init];
+    [self.view addSubview:self.newview];
+    [self.newview mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(self.view);
-        make.left.equalTo(self.view).with.offset(17.5);
-        make.right.equalTo(self.view).with.offset(-18.5);
-        make.height.mas_equalTo(58);
-    }];
-    
-    [imageViewA mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.TitleView.mas_bottom);
-        make.left.equalTo(self.view).with.offset(17.5);
-        make.right.equalTo(self.view).with.offset(-18.5);
-        make.height.mas_equalTo(3);
-    }];
-    
-    [self.choseView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(imageViewA.mas_bottom);
         make.left.equalTo(self.view);
         make.right.equalTo(self.view);
-        make.height.mas_equalTo(44);
-    }];
-    
-    [self.choseButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.choseView);
-        make.left.equalTo(self.choseView);
-        make.right.equalTo(self.choseView);
-        make.bottom.equalTo(self.choseView);
-    }];
-    
-    [self.choseLabel mas_makeConstraints:^(MASConstraintMaker *make){
-        make.centerY.equalTo(self.choseView);
-        make.left.equalTo(self.choseView).with.offset(17.5);
-        make.right.equalTo(self.imageview.mas_left);
-        make.height.mas_equalTo(22);
-    }];
-    
-    [self.imageview mas_makeConstraints:^(MASConstraintMaker *make){
-        make.centerY.equalTo(self.choseView);
-        make.right.equalTo(self.choseView).with.offset(-20);
-        make.size.mas_equalTo(CGSizeMake(12, 6));
-    }];
-    
-    
-    [imageViewB mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.choseView.mas_bottom);
-        make.left.equalTo(self.view).with.offset(17.5);
-        make.right.equalTo(self.view).with.offset(-18.5);
-        make.height.mas_equalTo(3);
-    }];
-    
-    [self.ContentView mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(imageViewB.mas_bottom);
-        make.left.equalTo(self.view).with.offset(17.5);
-        make.right.equalTo(self.view).with.offset(-18.5);
         make.bottom.equalTo(self.view);
     }];
-    
-    [self.TitleView setTextAlignment:NSTextAlignmentLeft];
-    self.TitleView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    _TitleView.delegate = self;
-    self.TitleView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:20];
-    self.TitleView.textColor = [UIColor titleColor];
-    self.TitleView.text = @"输入标题";
-
-    imageViewA.image = [UIImage imageNamed:@"Line"];
-    imageViewB.image = [UIImage imageNamed:@"Line"];
-    
-    self.choseLabel.text = @"选择板块";
-    self.choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-    self.choseLabel.textColor = [UIColor titleColor];
-    [self.choseButton addTarget:self action:@selector(plateSelection:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.imageview.image = [UIImage imageNamed:@"Rectangle 2"];
-    
-    self.ContentView.delegate = self;
-    self.TitleView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-    _ContentView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
-    self.ContentView.textColor = [UIColor titleColor];
-    self.ContentView.text = @"输入内容";
+    self.newview.TitleView.delegate = self;
+    self.newview.ContentView.delegate = self;
+    [self.newview.choseButton addTarget:self action:@selector(plateSelection:) forControlEvents:UIControlEventTouchUpInside];
     
     UIToolbar * topView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 30)];
     [topView setBarStyle:UIBarStyleDefault];
@@ -147,8 +76,8 @@
     NSArray * buttonsArray = [NSArray arrayWithObjects:btnSpace, doneButton, nil];
     
     [topView setItems:buttonsArray];
-    [self.ContentView setInputAccessoryView:topView];
-    [self.TitleView  setInputAccessoryView:topView];
+    [self.newview.ContentView setInputAccessoryView:topView];
+    [self.newview.TitleView  setInputAccessoryView:topView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(share:)
@@ -173,34 +102,42 @@
 
 - (void)share:(NSNotification *)notification
 {
-    self.choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-    self.choseLabel.textColor = [UIColor textColor];
-    self.choseLabel.text = notification.object;
-    self.pickLabel.text = @"share";
+    self.newview.choseLabel.text = @"share";
+    self.newview.choseLabel.hidden = YES;
+    self.newview.pickLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
+    self.newview.pickLabel.textColor = [UIColor textColor];
+    self.newview.pickLabel.text = notification.object;
+    self.newview.pickLabel.text = @"分享";
 }
 
 - (void)ask:(NSNotification *)notification
 {
-    self.choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-    self.choseLabel.textColor = [UIColor textColor];
-    self.choseLabel.text = notification.object;
-    self.pickLabel.text = @"ask";
+    self.newview.choseLabel.text = @"ask";
+    self.newview.choseLabel.hidden = YES;
+    self.newview.pickLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
+    self.newview.pickLabel.textColor = [UIColor textColor];
+    self.newview.pickLabel.text = notification.object;
+    self.newview.pickLabel.text = @"问答";
 }
 
 - (void)job:(NSNotification *)notification
 {
-    self.choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-    self.choseLabel.textColor = [UIColor textColor];
-    self.choseLabel.text = notification.object;
-    self.pickLabel.text = @"job";
+    self.newview.choseLabel.text = @"job";
+    self.newview.choseLabel.hidden = YES;
+    self.newview.pickLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
+    self.newview.pickLabel.textColor = [UIColor textColor];
+    self.newview.pickLabel.text = notification.object;
+    self.newview.pickLabel.text = @"招聘";
 }
 
 - (void)dev:(NSNotification *)notification
 {
-    self.choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
-    self.choseLabel.textColor = [UIColor textColor];
-    self.choseLabel.text = notification.object;
-    self.pickLabel.text = @"dev";
+    self.newview.choseLabel.text = @"dev";
+    self.newview.choseLabel.hidden = YES;
+    self.newview.pickLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
+    self.newview.pickLabel.textColor = [UIColor textColor];
+    self.newview.pickLabel.text = notification.object;
+    self.newview.pickLabel.text = @"测试";
 }
 
 - (void)dealloc{
@@ -209,24 +146,22 @@
 
 
 -(void) dismissKeyBoard{
-    [self.ContentView resignFirstResponder];
-    [self.TitleView resignFirstResponder];
+    [self.newview.ContentView resignFirstResponder];
+    [self.newview.TitleView resignFirstResponder];
 }
 
 - (void)plateSelection:(UIButton *)sender
 {
     PlateSelectionViewController *plateSelection = [[PlateSelectionViewController alloc] init];
     self.definesPresentationContext = YES;
-    plateSelection.view.backgroundColor = [[UIColor grayColor] colorWithAlphaComponent:0.4];
     plateSelection.modalPresentationStyle = UIModalPresentationOverCurrentContext;
     [self presentViewController:plateSelection animated:YES completion:nil];
 }
 
-- (void)cancelandback
+- (void)cancel:(UIButton *)sender
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
-
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
@@ -234,14 +169,14 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
-    if ([self.TitleView.text isEqualToString:@"输入标题"] ) {
-        self.TitleView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:20];
-        self.TitleView.textColor = [UIColor textColor];
-        self.TitleView.text = @"";
-    } else if ([self.ContentView.text isEqualToString:@"输入内容"]){
-        self.ContentView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
-        self.ContentView.textColor = [UIColor textColor];
-        self.ContentView.text = @"";
+    if ([self.newview.TitleView.text isEqualToString:@"输入标题"] ) {
+        self.newview.TitleView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:20];
+        self.newview.TitleView.textColor = [UIColor textColor];
+        self.newview.TitleView.text = @"";
+    } else if ([self.newview.ContentView.text isEqualToString:@"输入内容"]){
+        self.newview.ContentView.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
+        self.newview.ContentView.textColor = [UIColor textColor];
+        self.newview.ContentView.text = @"";
     }
 }
 
@@ -252,12 +187,11 @@
     NewpageAPI *newAPI = [[NewpageAPI alloc] init];
     
     if (accessToken != nil) {
-        if ((self.TitleView.text.length) && (self.ContentView.text.length) >= 5){
+        if ((self.newview.TitleView.text.length) && (self.newview.ContentView.text.length) >= 5){
             newAPI.requestArgument = @{@"accesstoken": accessToken,
-                                       @"title": self.TitleView.text,
-                                       @"tab": self.pickLabel.text,
-                                       @"content": self.ContentView.text};
-            
+                                       @"title": self.newview.TitleView.text,
+                                       @"tab": self.newview.choseLabel.text,
+                                       @"content": self.newview.ContentView.text};
             
             NSLog(@"newAPI.requestArgument = %@", newAPI.requestArgument);
             

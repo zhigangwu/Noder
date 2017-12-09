@@ -45,7 +45,8 @@
 
     HomePageController *homePageController = [[HomePageController alloc] init];
     UINavigationController *homeNavigation = [[UINavigationController alloc] initWithRootViewController:homePageController];
-    homeNavigation.tabBarItem.title = @"主页";
+    homeNavigation.tabBarItem.title = @"主题";
+    
     [homeNavigation.tabBarItem setTag:0];
     homeNavigation.tabBarItem.image = [UIImage imageNamed:@"Group Copy"];
 

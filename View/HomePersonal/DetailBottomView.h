@@ -20,9 +20,9 @@
 
 @end
 
-@protocol comCenterDelegate <NSObject>
+@protocol RefreshDelegate <NSObject>
 
-- (void)comCenterButton:(UIButton *)sender;
+- (void)refreshButton:(UIButton *)sender;
 
 @end
 
@@ -31,7 +31,7 @@
 
 @property (nonatomic, weak) id<BackViewDelegate> backdelegate;
 @property (nonatomic, weak) id<commentDelegate> commentdelegate;
-@property (nonatomic, weak) id<comCenterDelegate> comCenterDelegate;
+@property (nonatomic, weak) id<RefreshDelegate> RefreshDelegate;
 
 - (instancetype)init;
 

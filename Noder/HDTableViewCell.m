@@ -11,6 +11,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSDate+TimeAgo.h"
 #import "UIColor+textColor.h"
+#import "UIFont+SetFont.h"
 
 @implementation HDTableViewCell
 
@@ -89,18 +90,17 @@
         titleLabel.textAlignment = NSTextAlignmentLeft;
         titleLabel.numberOfLines = 0;
         titleLabel.lineBreakMode = NSLineBreakByTruncatingTail;
-        titleLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:14];
+        titleLabel.font = [UIFont ZGFontB];
         titleLabel.textColor = [UIColor textColor];
 
-        durationLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
+        durationLabel.font = [UIFont ZGFontC];
         durationLabel.textColor = [UIColor textColor];
         
-        watchLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
+        watchLabel.font = [UIFont ZGFontC];
         watchLabel.textColor = [UIColor textColor];
 
-        messageLabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:10];
+        messageLabel.font = [UIFont ZGFontC];
         messageLabel.textColor = [UIColor textColor];
-
     }
     
     return self;
