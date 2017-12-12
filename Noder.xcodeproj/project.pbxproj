@@ -94,6 +94,9 @@
 		91E655CD1FC56B9A00E985F8 /* DetailDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E655CC1FC56B9A00E985F8 /* DetailDataModel.m */; };
 		91E9DF2D1FDB7BBD001E0A03 /* NewPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E9DF2C1FDB7BBD001E0A03 /* NewPageView.m */; };
 		91E9DF301FDBBFF8001E0A03 /* PlateSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E9DF2F1FDBBFF8001E0A03 /* PlateSelectionView.m */; };
+		91E9DF331FDC0368001E0A03 /* CollectAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E9DF321FDC0368001E0A03 /* CollectAPI.m */; };
+		91E9DF361FDD534F001E0A03 /* De_collectAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E9DF351FDD534F001E0A03 /* De_collectAPI.m */; };
+		91E9DF391FDEB64D001E0A03 /* CommentBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91E9DF381FDEB64D001E0A03 /* CommentBottomView.m */; };
 		DF03208B1EF2A7BF0088F8EE /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DF03208A1EF2A7BF0088F8EE /* DetailViewController.m */; };
 		DF8429B11EF93D0600B8D011 /* DetailApi.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429B01EF93D0600B8D011 /* DetailApi.m */; };
 		DF8429DC1EF941AC00B8D011 /* LCCodeDisplayNode.m in Sources */ = {isa = PBXBuildFile; fileRef = DF8429C11EF941AC00B8D011 /* LCCodeDisplayNode.m */; };
@@ -309,6 +312,12 @@
 		91E9DF2C1FDB7BBD001E0A03 /* NewPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewPageView.m; sourceTree = "<group>"; };
 		91E9DF2E1FDBBFF8001E0A03 /* PlateSelectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlateSelectionView.h; sourceTree = "<group>"; };
 		91E9DF2F1FDBBFF8001E0A03 /* PlateSelectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlateSelectionView.m; sourceTree = "<group>"; };
+		91E9DF311FDC0368001E0A03 /* CollectAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectAPI.h; sourceTree = "<group>"; };
+		91E9DF321FDC0368001E0A03 /* CollectAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectAPI.m; sourceTree = "<group>"; };
+		91E9DF341FDD534F001E0A03 /* De_collectAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = De_collectAPI.h; sourceTree = "<group>"; };
+		91E9DF351FDD534F001E0A03 /* De_collectAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = De_collectAPI.m; sourceTree = "<group>"; };
+		91E9DF371FDEB64D001E0A03 /* CommentBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CommentBottomView.h; sourceTree = "<group>"; };
+		91E9DF381FDEB64D001E0A03 /* CommentBottomView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CommentBottomView.m; sourceTree = "<group>"; };
 		AFD657F7862CA63028DDAE4C /* Pods-Noder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.debug.xcconfig"; sourceTree = "<group>"; };
 		C24D1EF0AB88F669658C4A45 /* Pods-Noder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Noder.release.xcconfig"; path = "Pods/Target Support Files/Pods-Noder/Pods-Noder.release.xcconfig"; sourceTree = "<group>"; };
 		D89959808109ABB127508691 /* libPods-Noder.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Noder.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -509,6 +518,10 @@
 			children = (
 				DF8429AF1EF93D0600B8D011 /* DetailApi.h */,
 				DF8429B01EF93D0600B8D011 /* DetailApi.m */,
+				91E9DF311FDC0368001E0A03 /* CollectAPI.h */,
+				91E9DF321FDC0368001E0A03 /* CollectAPI.m */,
+				91E9DF341FDD534F001E0A03 /* De_collectAPI.h */,
+				91E9DF351FDD534F001E0A03 /* De_collectAPI.m */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -714,6 +727,8 @@
 				916DB2721FCD9C7500C0008C /* DetailBottomView.m */,
 				040A18961F6660680094D4C9 /* CommentTableViewCell.h */,
 				040A18971F6660680094D4C9 /* CommentTableViewCell.m */,
+				91E9DF371FDEB64D001E0A03 /* CommentBottomView.h */,
+				91E9DF381FDEB64D001E0A03 /* CommentBottomView.m */,
 				9156384E1FD0335F00B81BB1 /* ComContentView.h */,
 				9156384F1FD0335F00B81BB1 /* ComContentView.m */,
 			);
@@ -1023,6 +1038,7 @@
 				DF8429DE1EF941AC00B8D011 /* LCHTextNode.m in Sources */,
 				043A43F71F75F980009F022E /* ReadMessageTableViewController.m in Sources */,
 				918C18CE1FC1B21500D22246 /* AllViewDataModel.m in Sources */,
+				91E9DF331FDC0368001E0A03 /* CollectAPI.m in Sources */,
 				043A43F11F75F539009F022E /* UnreadMessageCell.m in Sources */,
 				DF8429E31EF941AC00B8D011 /* LCPDisplayNode.m in Sources */,
 				DF8429DD1EF941AC00B8D011 /* LCCodeTextNode.m in Sources */,
@@ -1069,8 +1085,10 @@
 				DF8429B11EF93D0600B8D011 /* DetailApi.m in Sources */,
 				33542A9A1F504CA9005576F7 /* AskAPI.m in Sources */,
 				337B870B1F19AEC000558A4D /* headerview.m in Sources */,
+				91E9DF361FDD534F001E0A03 /* De_collectAPI.m in Sources */,
 				040354751F622FBE00257D90 /* DevAPI.m in Sources */,
 				915638561FD3D5C800B81BB1 /* DetailTopView.m in Sources */,
+				91E9DF391FDEB64D001E0A03 /* CommentBottomView.m in Sources */,
 				91AC1E8E1FC2809500196DE0 /* DevDataModel.m in Sources */,
 				04ED0E251F7B7FAD003AF5E9 /* PlateSelectionCell.m in Sources */,
 				91AC1E881FC27C4D00196DE0 /* AskDataModel.m in Sources */,

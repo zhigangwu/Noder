@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CollectionDataModel.h"
 
 @interface CollectionTableViewController : UITableViewController
 
+@property (nonatomic, strong) CollectionDataModel *collectionModel;
 @property (nonatomic, strong) NSString *collectionLoginname;
 @property (nonatomic, strong) NSArray *array;
 

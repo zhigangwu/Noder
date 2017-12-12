@@ -8,6 +8,7 @@
 
 #import "DetailBottomView.h"
 #import "Masonry.h"
+#import "ControllerManager.h"
 
 @implementation DetailBottomView
 
@@ -22,31 +23,31 @@
         [viewlayer setBorderWidth:0.5];
         [viewlayer setBorderColor:[ [UIColor colorWithRed:244/255.0 green:244/255.0 blue:244/255.0 alpha:1/1.0] CGColor]];
         
-        UIButton *grayButton = [[UIButton alloc] init];
-        UIButton *brightButton = [[UIButton alloc] init];
+        self.grayButton = [[UIButton alloc] init];
+        self.brightButton = [[UIButton alloc] init];
         UIButton *commentButton = [[UIButton alloc] init];
         UIButton *refreshButton = [[UIButton alloc] init];
         
-        [self addSubview:grayButton];
-        [self addSubview:brightButton];
+        [self addSubview:self.grayButton];
+        [self addSubview:self.brightButton];
         [self addSubview:commentButton];
         [self addSubview:refreshButton];
 
-        [grayButton mas_makeConstraints:^(MASConstraintMaker *make){
+        [self.grayButton mas_makeConstraints:^(MASConstraintMaker *make){
             make.left.equalTo(self).with.offset(16);
             make.top.equalTo(self).with.offset(18);
             make.size.mas_offset(CGSizeMake(20, 20));
         }];
         
-        [brightButton mas_makeConstraints:^(MASConstraintMaker *make){
+        [self.brightButton mas_makeConstraints:^(MASConstraintMaker *make){
             make.top.equalTo(self).with.offset(18);
-            make.left.equalTo(grayButton.mas_right).with.offset(16.9);
+            make.left.equalTo(self.grayButton.mas_right).with.offset(16.9);
             make.size.mas_equalTo(CGSizeMake(20, 20));
         }];
         
         [commentButton mas_makeConstraints:^(MASConstraintMaker *make){
             make.top.equalTo(self).with.offset(9);
-            make.left.equalTo(brightButton.mas_right).with.offset(81.9);
+            make.left.equalTo(self.brightButton.mas_right).with.offset(81.9);
             make.size.mas_equalTo(CGSizeMake(61, 37));
         }];
     
@@ -56,10 +57,6 @@
             make.size.mas_equalTo(CGSizeMake(20, 18));
         }];
         
-        [grayButton setImage:[UIImage imageNamed:@"Shape"] forState:UIControlStateNormal];
-        [grayButton addTarget:self action:@selector(backButton:) forControlEvents:UIControlEventTouchUpInside];
-        
-        [brightButton setImage:[UIImage imageNamed:@"Shape Copy"] forState:UIControlStateNormal];
         
         [commentButton setImage:[UIImage imageNamed:@"Group 2"] forState:UIControlStateNormal];
         [commentButton addTarget:self action:@selector(comment:) forControlEvents:UIControlEventTouchUpInside];
@@ -68,13 +65,6 @@
         [commentButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
-}
-
-- (void)backButton:(UIButton *)sender
-{
-    if (self.backdelegate && [self.backdelegate respondsToSelector:@selector(backview:)]) {
-        [self.backdelegate backview:sender];
-    }
 }
 
 - (void)comment:(UIButton *)sender

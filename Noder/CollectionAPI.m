@@ -25,6 +25,8 @@
 {
     NSArray *array = responseObject[@"data"];
     return [MTLJSONAdapter modelsOfClass:[CollectionDataModel class] fromJSONArray:array error:nil];
+//    NSDictionary *dictionary = responseObject[@"data"];
+//    return [MTLJSONAdapter modelOfClass:[CollectionDataModel class] fromJSONDictionary:dictionary error:nil];
 }
 
 @end

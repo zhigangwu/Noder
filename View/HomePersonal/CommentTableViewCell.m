@@ -37,17 +37,21 @@
     self.ZGloginname = [[UILabel alloc] init];
     self.ZGLabel = [[UILabel alloc] init];
     self.ZGdurationLabel = [[UILabel alloc] init];
-    self.ZGupButton = [[UIButton alloc] init];
-    self.ZGevaButton = [[UIButton alloc] init];
+    self.ZGlikeupButton = [[UIButton alloc] init];// 点赞
+    self.ZGlikedupButton = [[UIButton alloc] init]; // 取消点赞
+    self.ZGevaButton = [[UIButton alloc] init];// 个人评价
     self.floorLabel = [[UILabel alloc] init];
+    self.upLabel = [[UILabel alloc] init];
     
     [self.contentView addSubview:self.ZGimageView];
     [self.contentView addSubview:self.ZGloginname];
     [self.contentView addSubview:self.ZGLabel];
     [self.contentView addSubview:self.ZGdurationLabel];
-    [self.contentView addSubview:self.ZGupButton];
+    [self.contentView addSubview:self.ZGlikeupButton];
+    [self.contentView addSubview:self.ZGlikedupButton];
     [self.contentView addSubview:self.ZGevaButton];
     [self.contentView addSubview:self.floorLabel];
+    [self.contentView addSubview:self.upLabel];
     
     [self.ZGimageView mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(self.contentView).with.offset(16);
@@ -75,28 +79,39 @@
         make.top.equalTo(self.ZGLabel.mas_bottom).with.offset(8);
         make.left.equalTo(_ZGimageView.mas_right).with.offset(16);
 //        make.right.equalTo(self.contentView).with.offset(-150);
-        make.bottom.equalTo(_ZGupButton.mas_top).with.offset(-8);
-        make.height.mas_equalTo(18);
+        make.bottom.equalTo(self.contentView).with.offset(-17);
+        make.height.mas_equalTo(14);
     }];
     
-    [self.ZGupButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(_ZGdurationLabel.mas_bottom).with.offset(8);
-        make.left.equalTo(_ZGimageView.mas_right).with.offset(16);
-        make.right.equalTo(_ZGevaButton.mas_left).with.offset(-200);
-        make.bottom.equalTo(self.contentView).with.offset(-8);
-        make.size.mas_equalTo(CGSizeMake(40, 40));
+    [self.ZGlikeupButton mas_makeConstraints:^(MASConstraintMaker *make){
+        make.right.equalTo(self.ZGevaButton.mas_left).with.offset(-19);
+        make.bottom.equalTo(self.contentView).with.offset(-17);
+        make.size.mas_equalTo(CGSizeMake(13, 13));
     }];
+    
+    [self.ZGlikedupButton mas_makeConstraints:^(MASConstraintMaker *make){
+        make.right.equalTo(self.ZGevaButton.mas_left).with.offset(-19);
+        make.bottom.equalTo(self.contentView).with.offset(-17);
+        make.size.mas_equalTo(CGSizeMake(13, 13));
+    }];
+
     
     [self.ZGevaButton mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.mas_equalTo(_ZGupButton.mas_top);
+        make.height.mas_equalTo(CGSizeMake(13, 13));
         make.right.equalTo(self.contentView).with.offset(-16);
-        make.bottom.mas_equalTo(_ZGupButton.mas_bottom);
+        make.bottom.mas_equalTo(self.contentView).with.offset(-17);
     }];
     
     [self.floorLabel mas_makeConstraints:^(MASConstraintMaker *make){
         make.top.equalTo(self.contentView).with.offset(12);
         make.right.equalTo(self.contentView).with.offset(-13);
         make.height.mas_equalTo(17);
+    }];
+    
+    [self.upLabel mas_makeConstraints:^(MASConstraintMaker *make){
+        make.right.equalTo(self.ZGlikeupButton.mas_left).with.offset(-4);
+        make.bottom.equalTo(self.contentView).with.offset(-17);
+        make.size.mas_equalTo(CGSizeMake(8, 17));
     }];
     
     CALayer *layer = [self.ZGimageView layer];
@@ -118,15 +133,15 @@
     self.ZGdurationLabel.textColor = [UIColor colorWithRed:171/255.0 green:171/255.0 blue:171/255.0 alpha:1/1.0];
     self.ZGdurationLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:10];
     
-    [self.ZGupButton addTarget:self action:@selector(ZGupButtonaction:) forControlEvents:UIControlEventTouchUpInside];
-    
     [self.ZGevaButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [self.ZGevaButton setImage:[UIImage imageNamed:@"iconGrayComment"] forState:UIControlStateNormal];
+    [self.ZGevaButton setImage:[UIImage imageNamed:@"message-1"] forState:UIControlStateNormal];
     [self.ZGevaButton addTarget:self action:@selector(personalComment:) forControlEvents:UIControlEventTouchUpInside];
     
     self.floorLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
     self.floorLabel.textColor = [UIColor textColorB];
- 
+    
+    self.upLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:12];
+    self.upLabel.textColor = [UIColor colorWithRed:160/255.0 green:160/255.0 blue:160/255.0 alpha:1/1.0];
 }
 
 - (void)configWithItem:(DetailReplies *)replies
@@ -150,23 +165,36 @@
     [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"];
     NSDate *date = [dateFormatter dateFromString:dateStr];
     self.ZGdurationLabel.text = [date timeAgo];
-
-//    if ([replies.ups containsObject:[ControllerManager shareManager].id]) {
-//        [self.ZGupButton setImage:[UIImage imageNamed:@"Shape Copy"] forState:UIControlStateNormal];
-//    } else {
-//        [self.ZGupButton setImage:[UIImage imageNamed:@"Shape"] forState:UIControlStateNormal];
-//    }
-
-}
-
-
-
-- (void)ZGupButtonaction:(id)sender
-{
-    if (self.CommentCellDelegate && [self.CommentCellDelegate respondsToSelector:@selector(upButton:)]) {
-        [self.CommentCellDelegate upButton:sender];
+    
+    self.upLabel.text = [NSString stringWithFormat:@"%ld",replies.ups.count];
+    
+    if ([replies.ups containsObject:[ControllerManager shareManager].id]) {
+        self.ZGlikeupButton.hidden = YES;
+        [self.ZGlikedupButton setImage:[UIImage imageNamed:@"liked"] forState:UIControlStateNormal];
+        [self.ZGlikedupButton addTarget:self action:@selector(ZGlikedupButton:) forControlEvents:UIControlEventTouchUpInside];
+    } else {
+        self.ZGlikedupButton.hidden = YES;
+        [self.ZGlikeupButton setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
+        [self.ZGlikeupButton addTarget:self action:@selector(ZGlikeupButton:) forControlEvents:UIControlEventTouchUpInside];
     }
 }
+
+
+
+- (void)ZGlikedupButton:(id)sender
+{
+    if (self.LikedupButtonDelegate && [self.LikedupButtonDelegate respondsToSelector:@selector(likedupButton:)]) {
+        [self.LikedupButtonDelegate likedupButton:sender];
+    }
+}
+
+- (void)ZGlikeupButton:(id)sender
+{
+    if (self.LikeupButtonDelegate && [self.LikeupButtonDelegate respondsToSelector:@selector(likeupButton:)]) {
+        [self.LikeupButtonDelegate likeupButton:sender];
+    }
+}
+
 
 - (void)personalComment:(id)sender
 {

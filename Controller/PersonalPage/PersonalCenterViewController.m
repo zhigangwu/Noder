@@ -134,6 +134,8 @@
         [assAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
             self.personalModel = request.responseJSONObject;
             
+            
+            [ControllerManager shareManager].loginname = self.personalModel.loginname;
             [ControllerManager shareManager].id = self.personalModel.id;
             [ControllerManager shareManager].success = self.personalModel.success;
             [ControllerManager shareManager].URLImage = self.personalModel.avatar_url;

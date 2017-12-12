@@ -13,6 +13,7 @@
 #import "UIColor+textColorB.h"
 #import "NSDate+TimeAgo.h"
 #import "UIFont+SetFont.h"
+#import "ControllerManager.h"
 
 @implementation CollectionCell
 
@@ -60,6 +61,7 @@
 {
     self.TitleLabel.text = collectionModel.title;
     [self.ImageView sd_setImageWithURL:collectionModel.author.avatar_url];
+    [ControllerManager shareManager].collect_id = collectionModel.id;
     
 //    NSString *dateStr = collectionModel.last_reply_at;
 //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

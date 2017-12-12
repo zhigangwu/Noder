@@ -8,12 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol BackViewDelegate <NSObject>
-
-- (void)backview:(UIButton *)sender;
-
-@end
-
 @protocol commentDelegate <NSObject>
 
 - (void)commentButton:(UIButton *)sender;
@@ -29,7 +23,9 @@
 
 @interface DetailBottomView : UIView
 
-@property (nonatomic, weak) id<BackViewDelegate> backdelegate;
+@property (nonatomic, strong) UIButton *grayButton;
+@property (nonatomic, strong) UIButton *brightButton;
+
 @property (nonatomic, weak) id<commentDelegate> commentdelegate;
 @property (nonatomic, weak) id<RefreshDelegate> RefreshDelegate;
 

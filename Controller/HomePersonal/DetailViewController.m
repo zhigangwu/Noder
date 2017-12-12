@@ -21,6 +21,8 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSDate+TimeAgo.h"
 #import "UIFont+SetFont.h"
+#import "CollectAPI.h"
+#import "De_collectAPI.h"
 
 @interface DetailViewController ()
 
@@ -59,7 +61,6 @@
         make.height.mas_equalTo(74);
     }];
     
-    self.bottomView.backdelegate = self;
     self.bottomView.commentdelegate = self;
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -73,7 +74,23 @@
     
     [api startWithBlockSuccess:^(__kindof LCBaseRequest *request) {
         self.detailModel = request.responseJSONObject;
-//        NSLog(@"detailModel = %@",self.detailModel.id);
+        
+        CollectionAPI *collectionAPI = [[CollectionAPI alloc] init];
+        collectionAPI.loginname = [ControllerManager shareManager].loginname;
+        [collectionAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+            NSArray *array = request.responseJSONObject;
+            NSArray *arrayID = [array valueForKey:@"id"];
+ 
+            if ([arrayID containsObject:self.detailModel.id]) {
+                [self.bottomView.brightButton setImage:[UIImage imageNamed:@"Shape Copy"] forState:UIControlStateNormal];
+                [self.bottomView.brightButton addTarget:self action:@selector(brightcollectButton:) forControlEvents:UIControlEventTouchUpInside];
+            } else {
+                [self.bottomView.grayButton setImage:[UIImage imageNamed:@"Shape"] forState:UIControlStateNormal];
+                [self.bottomView.grayButton addTarget:self action:@selector(graycollectButton:)
+                                     forControlEvents:UIControlEventTouchUpInside];
+            }
+        }failure:NULL];
+        
         [ControllerManager shareManager].reply_ID = self.detailModel.id;
         
         [self.topView.imageview sd_setImageWithURL:self.detailModel.author.avatar_url];
@@ -108,62 +125,58 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)backview:(UIButton *)sender
+- (void)brightcollectButton:(UIButton *)sender //取消收藏
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    De_collectAPI *de_collectAPI = [[De_collectAPI alloc] init];
+    de_collectAPI.requestArgument = @{@"accesstoken" : [ControllerManager shareManager].string,
+                                   @"topic_id" : self.detailModel.id,
+                                   };
+    if ([ControllerManager shareManager].string != nil) {
+        [de_collectAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+//            NSDictionary *dictionary = request.responseJSONObject;
+            sender.hidden = YES;
+            self.bottomView.grayButton.hidden = NO;
+            [self.bottomView.grayButton setImage:[UIImage imageNamed:@"Shape"] forState:UIControlStateNormal];
+            [self.bottomView.grayButton addTarget:self action:@selector(graycollectButton:)
+                                 forControlEvents:UIControlEventTouchUpInside];
+        } failure:nil];
+    }
+}
+
+- (void)graycollectButton:(UIButton *)sender // 收藏
+{
+    CollectAPI *collectAPI = [[CollectAPI alloc] init];
+    collectAPI.requestArgument = @{@"accesstoken" : [ControllerManager shareManager].string,
+                                   @"topic_id" : self.detailModel.id,
+                                   };
+    if ([ControllerManager shareManager].string != nil) {
+        [collectAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+//            NSDictionary *dictionary = request.responseJSONObject;
+            sender.hidden = YES;
+            self.bottomView.brightButton.hidden = NO;
+            [self.bottomView.brightButton setImage:[UIImage imageNamed:@"Shape Copy"] forState:UIControlStateNormal];
+            [self.bottomView.brightButton addTarget:self action:@selector(brightcollectButton:) forControlEvents:UIControlEventTouchUpInside];
+        } failure:nil];
+    }
 }
 
 - (void)commentButton:(UIButton *)sender
 {
-    if (self.detailModel.reply_count.boolValue == 0) {
-        ComContentViewContrnt *com = [[ComContentViewContrnt alloc] init];
-        [self.navigationController pushViewController:com animated:YES];
-    }else {
+//    if (self.detailModel.reply_count.boolValue == 0) {
+//        ComContentViewContrnt *com = [[ComContentViewContrnt alloc] init];
+//
+//        [self.navigationController pushViewController:com animated:YES];
+//    }else {
         CommentPageViewController *comment = [[CommentPageViewController alloc] init];
         comment.reply_id = self.replies.id;
         comment.topic_id = self.detailModel.id;
-        
         [self.navigationController pushViewController:comment animated:YES];
-    }
+//    }
 }
 
 - (void)refreshButton:(UIButton *)sender
 {
-//    comContentAPI *contentAPI = [[comContentAPI alloc] init];
-//    contentAPI.topic_id = self.detailId;
-//
-//    DetailApi *api = [[DetailApi alloc] init];
-//    api._id = self.detailId;
-//
-//    [api startWithBlockSuccess:^(__kindof LCBaseRequest *request) {
-//        self.detailModel = request.responseJSONObject;
-////
-////        [self.topView.imageview sd_setImageWithURL:self.detailModel.author.avatar_url];
-////        self.topView.loginnameLabel.text = self.detailModel.author.loginname;
-////        self.topView.postedLabel.text = self.detailModel.create_at;
-////        self.topView.watchLabel.text = [NSString stringWithFormat:@"%@",self.detailModel.visit_count];
-////        self.topView.messageLabel.text = [NSString stringWithFormat:@"%@",self.detailModel.reply_count];
-//
-//        ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
-//        thumAPI.reply_id = self.replies.reply_id;
-//
-//        NSString *content = self.detailModel.content;
-//        HTMLDocument *document = [HTMLDocument documentWithString:content];
-//        HTMLElement *body = document.body;
-//        HTMLElement *div = (HTMLElement *)body.firstChild;
-//
-//        self.htmlNode = [[LCHtmlNode alloc] initWithNodes:div.childNodes];
-//        self.htmlNode.view.backgroundColor = [UIColor whiteColor];
-////        [self.view addSubview:self.htmlNode.view];
-////        [self.htmlNode.view mas_makeConstraints:^(MASConstraintMaker *make){
-////            make.top.equalTo(self.view).with.offset(74);
-////            make.left.equalTo(self.view);
-////            make.right.equalTo(self.view);
-////            make.bottom.equalTo(self.view).with.offset(-65);
-////        }];
-//        [self.view addSubnode:self.htmlNode];
-//
-//    } failure:NULL];
+    [self viewDidLoad];
 }
 
 

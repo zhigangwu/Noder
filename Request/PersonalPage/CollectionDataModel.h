@@ -12,6 +12,7 @@
 
 @interface CollectionDataModel : MTLModel <MTLJSONSerializing>
 
+@property (nonatomic, strong) NSString *author_id;
 @property (nonatomic ,strong) NSString *title;
 @property (nonatomic ,strong) NSString *id;
 @property (nonatomic ,strong) CollectionAuthor *author;

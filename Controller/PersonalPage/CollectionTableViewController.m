@@ -11,8 +11,6 @@
 #import "CollectionCell.h"
 #import "DetailViewController.h"
 #import "UIColor+tableBackground.h"
-
-#import "CollectionDataModel.h"
 #import "UIFont+SetFont.h"
 #import "UIColor+background.h"
 
@@ -50,10 +48,9 @@
     CollectionAPI *collectionAPI = [[CollectionAPI alloc] init];
     collectionAPI.loginname = self.collectionLoginname;
     [collectionAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-
+        self.collectionModel = request.responseJSONObject;
         self.array = request.responseJSONObject;
         [self.tableView reloadData];
-        
     }failure:NULL];
 
     [self.tableView registerClass:[CollectionCell class] forCellReuseIdentifier:@"CollectionCell"];
@@ -69,8 +66,8 @@
     CollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CollectionCell"
                                                            forIndexPath:indexPath];
     
-    CollectionDataModel *collectionModel = [self.array objectAtIndex:indexPath.row];
-    [cell configWithItem:collectionModel];
+    self.collectionModel = [self.array objectAtIndex:indexPath.row];
+    [cell configWithItem:self.collectionModel];
     
     //    分割线全屏
     if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
@@ -89,8 +86,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     DetailViewController *detail = [[DetailViewController alloc] init];
-    CollectionDataModel *collectionModel = [self.array objectAtIndex:indexPath.row];
-    detail.detailId = collectionModel.id;
+    self.collectionModel = [self.array objectAtIndex:indexPath.row];
+    detail.detailId = self.collectionModel.id;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

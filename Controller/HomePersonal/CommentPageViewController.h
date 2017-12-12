@@ -12,8 +12,9 @@
 #import "DetailDataModel.h"
 #import "ThumbsDataModel.h"
 #import "DetailBottomView.h"
+#import "CommentBottomView.h"
 
-@interface CommentPageViewController : UIViewController <CommentCellDelegate,UITableViewDelegate,UITableViewDataSource,PersonalCommentDelegate>
+@interface CommentPageViewController : UIViewController <LikedupButtonDelegate,LikeupButtonDelegate,UITableViewDelegate,UITableViewDataSource,PersonalCommentDelegate,UITextViewDelegate>
 
 @property (nonatomic, strong) NSArray *array;
 @property (nonatomic, strong) UITableView *tableview;
@@ -31,7 +32,8 @@
 @property (nonatomic, strong) DetailReplies *reply;
 @property (nonatomic, strong) ThumbsDataModel *thumbsModel;
 
+@property (nonatomic, strong) CommentBottomView *bottomView;
 
-
+- (float) heightForTextView: (UITextView *)textView WithText: (NSString *) strText;
 
 @end

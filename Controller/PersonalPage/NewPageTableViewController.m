@@ -182,13 +182,13 @@
 
 - (void)reless:(id)sender
 {
-    NSLog(@"%@",sender);
-    NSString *accessToken = [ControllerManager shareManager].string;
+//    NSLog(@"%@",sender);
+//    NSString *accessToken = [ControllerManager shareManager].string;
     NewpageAPI *newAPI = [[NewpageAPI alloc] init];
     
-    if (accessToken != nil) {
+    if ([ControllerManager shareManager].string != nil) {
         if ((self.newview.TitleView.text.length) && (self.newview.ContentView.text.length) >= 5){
-            newAPI.requestArgument = @{@"accesstoken": accessToken,
+            newAPI.requestArgument = @{@"accesstoken": [ControllerManager shareManager].string,
                                        @"title": self.newview.TitleView.text,
                                        @"tab": self.newview.choseLabel.text,
                                        @"content": self.newview.ContentView.text};

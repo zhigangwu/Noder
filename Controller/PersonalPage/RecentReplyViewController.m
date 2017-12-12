@@ -57,7 +57,6 @@
     [recentAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
         
         self.loginModel = request.responseJSONObject;
-
         self.array = self.loginModel.recent_replies;
 
         [self.tableView reloadData];
