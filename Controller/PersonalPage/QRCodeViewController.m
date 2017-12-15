@@ -21,6 +21,7 @@
 #import "NETWorkRequest.h"
 #import "NETWorkConnection.h"
 #import "ControllerManager.h"
+#import "UIFont+SetFont.h"
 
 #define DeviceMaxHeight ([UIScreen mainScreen].bounds.size.height)
 #define DeviceMaxWidth ([UIScreen mainScreen].bounds.size.width)
@@ -45,9 +46,15 @@
 
 - (void)viewDidLoad
 {
+    self.navigationItem.title = @"二维码/条码";
+    UIFont *font = [UIFont ZGFontA];
+    NSDictionary *dictionary = @{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor colorWithRed:3/255.0 green:3/255.0 blue:3/255.0 alpha:1/1.0]};
+    self.navigationController.navigationBar.titleTextAttributes = dictionary;
+
     UIBarButtonItem *navRightButton = [[UIBarButtonItem alloc]initWithTitle:@"相册" style:UIBarButtonItemStylePlain target:self action:@selector(choicePhoto)];
     self.navigationItem.rightBarButtonItem = navRightButton;
-    self.navigationItem.title = @"二维码/条码";
+    
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
     
     // Device
     _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];

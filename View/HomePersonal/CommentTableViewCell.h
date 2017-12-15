@@ -45,7 +45,7 @@
 @property (nonatomic, strong) UILabel *upLabel;
 
 @property (nonatomic, strong) UIButton *ZGlikeupButton; // 点赞
-@property (nonatomic, strong) UIButton *ZGlikedupButton; // 取消点赞
+//@property (nonatomic, strong) UIButton *ZGlikedupButton; // 取消点赞
 
 @property (nonatomic, strong) UIButton *ZGevaButton; //个人评价
 

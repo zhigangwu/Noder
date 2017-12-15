@@ -10,7 +10,7 @@
 #import "Masonry.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "NSDate+TimeAgo.h"
-#import "UIColor+textColor.h"
+#import "UIColor+TitleColor.h"
 #import "UIFont+SetFont.h"
 
 @implementation HDTableViewCell

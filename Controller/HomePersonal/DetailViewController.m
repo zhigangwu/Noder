@@ -62,6 +62,7 @@
     }];
     
     self.bottomView.commentdelegate = self;
+    [self.bottomView.refreshButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
     
     self.view.backgroundColor = [UIColor whiteColor];
     self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -162,19 +163,13 @@
 
 - (void)commentButton:(UIButton *)sender
 {
-//    if (self.detailModel.reply_count.boolValue == 0) {
-//        ComContentViewContrnt *com = [[ComContentViewContrnt alloc] init];
-//
-//        [self.navigationController pushViewController:com animated:YES];
-//    }else {
-        CommentPageViewController *comment = [[CommentPageViewController alloc] init];
-        comment.reply_id = self.replies.id;
-        comment.topic_id = self.detailModel.id;
-        [self.navigationController pushViewController:comment animated:YES];
-//    }
+    CommentPageViewController *comment = [[CommentPageViewController alloc] init];
+    comment.reply_id = self.replies.id;
+    comment.topic_id = self.detailModel.id;
+    [self.navigationController pushViewController:comment animated:YES];
 }
 
-- (void)refreshButton:(UIButton *)sender
+- (void)refresh:(UIButton *)sender
 {
     [self viewDidLoad];
 }
@@ -184,8 +179,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 
 @end

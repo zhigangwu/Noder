@@ -12,8 +12,11 @@
 @interface UnreadMessageCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *TitleLabel;
+@property (nonatomic, strong) UILabel *themelabel;
+@property (nonatomic, strong) UILabel *contentLabel;
 @property (nonatomic, strong) UILabel *durationLabel;
 @property (nonatomic, strong) UIImageView *ImageView;
+
 
 
 - (void)configWithItem:(Hasnot_read_messages *)hasnot_read;

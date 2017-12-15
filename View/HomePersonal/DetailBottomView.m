@@ -26,12 +26,12 @@
         self.grayButton = [[UIButton alloc] init];
         self.brightButton = [[UIButton alloc] init];
         UIButton *commentButton = [[UIButton alloc] init];
-        UIButton *refreshButton = [[UIButton alloc] init];
+        self.refreshButton = [[UIButton alloc] init];
         
         [self addSubview:self.grayButton];
         [self addSubview:self.brightButton];
         [self addSubview:commentButton];
-        [self addSubview:refreshButton];
+        [self addSubview:self.refreshButton];
 
         [self.grayButton mas_makeConstraints:^(MASConstraintMaker *make){
             make.left.equalTo(self).with.offset(16);
@@ -51,7 +51,7 @@
             make.size.mas_equalTo(CGSizeMake(61, 37));
         }];
     
-        [refreshButton mas_makeConstraints:^(MASConstraintMaker *make){
+        [self.refreshButton mas_makeConstraints:^(MASConstraintMaker *make){
             make.top.equalTo(self).with.offset(18.7);
             make.right.equalTo(self).with.offset(-16);
             make.size.mas_equalTo(CGSizeMake(20, 18));
@@ -61,8 +61,7 @@
         [commentButton setImage:[UIImage imageNamed:@"Group 2"] forState:UIControlStateNormal];
         [commentButton addTarget:self action:@selector(comment:) forControlEvents:UIControlEventTouchUpInside];
         
-        [refreshButton setImage:[UIImage imageNamed:@"Group-3"] forState:UIControlStateNormal];
-        [commentButton addTarget:self action:@selector(refresh:) forControlEvents:UIControlEventTouchUpInside];
+        [self.refreshButton setImage:[UIImage imageNamed:@"Group-3"] forState:UIControlStateNormal];
     }
     return self;
 }
@@ -74,12 +73,12 @@
     }
 }
 
-- (void)refresh:(UIButton *)sender
-{
-    if (self.RefreshDelegate && [self.RefreshDelegate respondsToSelector:@selector(refreshButton:)]) {
-        [self.RefreshDelegate refreshButton:sender];
-    }
-}
+//- (void)refresh:(UIButton *)sender
+//{
+//    if (self.RefreshDelegate && [self.RefreshDelegate respondsToSelector:@selector(refreshButton:)]) {
+//        [self.RefreshDelegate refreshButton:sender];
+//    }
+//}
 
 
 @end

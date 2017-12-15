@@ -11,7 +11,11 @@
 #import "PersonalCenterViewController.h"
 #import "AppDelegate.h"
 #import "UIFont+SetFont.h"
-#import "UIColor+background.h"
+#import "UIColor+TitleColor.h"
+#import "HomePageController.h"
+#import "RecentReplyViewController.h"
+#import "RecentTopicsViewController.h"
+#import "NewPageTableViewController.h"
 
 
 @interface SetPageViewController ()
@@ -173,9 +177,50 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/zhigangwu"]];
         }
     } else if (indexPath.section == 1){
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+        UITabBarController *tabBarController = [[UITabBarController alloc] init];
+
+        PersonalCenterViewController *personalCenterVC = [[PersonalCenterViewController alloc] init];
+        UINavigationController *navpersonal = [[UINavigationController alloc] initWithRootViewController:personalCenterVC];
+        navpersonal.tabBarItem.title = @"我的";
+        [navpersonal.tabBarItem setTag:2];
+        navpersonal.tabBarItem.image = [UIImage imageNamed:@"Rectangle 4"];
+
+        UIImage *oringimage = [[UIImage imageNamed:@"Group-2"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+//        NewPageTableViewController *newPageTableViewController = [[NewPageTableViewController alloc] init];
+        NewPageTableViewController *newPageTableViewController = [[NewPageTableViewController alloc] init];
+        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:newPageTableViewController];
+        [tabBarController presentViewController:nav animated:YES completion:NULL];
+        newPageTableViewController.tabBarItem.title = @"";
+        newPageTableViewController.tabBarItem.image = oringimage;
+        newPageTableViewController.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
+
+        HomePageController *homePageController = [[HomePageController alloc] init];
+        UINavigationController *homeNavigation = [[UINavigationController alloc] initWithRootViewController:homePageController];
+        homeNavigation.tabBarItem.title = @"主题";
+
+        [homeNavigation.tabBarItem setTag:0];
+        homeNavigation.tabBarItem.image = [UIImage imageNamed:@"Group Copy"];
+
+        tabBarController.viewControllers = @[homeNavigation, nav, navpersonal];
+        tabBarController.delegate = self;
+
+        AppDelegate *mydelegate = [[UIApplication sharedApplication] delegate];
+        mydelegate.window.rootViewController = tabBarController;
     }
-    
 }
+
+//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewControlle{
+//
+//    NSInteger index = [tabBarController.viewControllers indexOfObject:viewControlle];
+//    if (index == 1) {
+//        NewPageTableViewController *newPageTableViewController = [[NewPageTableViewController alloc] init];
+//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:newPageTableViewController];
+//        [tabBarController presentViewController:nav animated:YES completion:NULL];
+//        return NO;
+//    }
+//    return YES;
+//}
+
 
 @end

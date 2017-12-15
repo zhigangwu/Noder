@@ -68,6 +68,7 @@
 {
     PlateSelectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.label.textAlignment = NSTextAlignmentCenter;
     if (indexPath.row == 0) {
         cell.label.font = [UIFont fontWithName:@".AppleSystemUIFont" size:13];
         cell.label.textColor = [UIColor colorWithRed:143/255.0 green:142/255.0 blue:148/255.0 alpha:1/1.0];

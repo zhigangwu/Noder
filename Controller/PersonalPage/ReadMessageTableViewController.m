@@ -9,11 +9,10 @@
 #import "ReadMessageTableViewController.h"
 #import "ControllerManager.h"
 #import "ReadMessageCell.h"
-#import "UIColor+tableBackground.h"
+#import "UIColor+TitleColor.h"
 #import "MessageAPI.h"
 #import "MessageCountAPI.h"
 #import "UIFont+SetFont.h"
-#import "UIColor+background.h"
 
 @interface ReadMessageTableViewController ()
 
@@ -46,15 +45,6 @@
     // 去掉分割线
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
-//    //    cell分割线全屏
-//    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
-//        self.tableView.separatorInset = UIEdgeInsetsZero;
-//    }
-//
-//    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
-//        self.tableView.layoutMargins = UIEdgeInsetsZero;
-//    }
-
     NSString *accesstoken = [ControllerManager shareManager].string;
     MessageAPI *messAPI = [[MessageAPI alloc] init];
     
@@ -93,19 +83,9 @@
      Has_read_messages *has_read = [self.array objectAtIndex:indexPath.row];
     [cell configWithItem:has_read];
     
-//    //    分割线全屏
-//    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-//        [cell setLayoutMargins:UIEdgeInsetsZero];
-//    }
-    
     return cell;
     
 }
-
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return 200;
-//}
 
 
 @end

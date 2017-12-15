@@ -8,7 +8,7 @@
 
 #import "NullView.h"
 #import "Masonry.h"
-#import "UIColor+textColor.h"
+#import "UIColor+TitleColor.h"
 
 @implementation NullView
 

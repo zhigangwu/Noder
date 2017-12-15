@@ -15,4 +15,6 @@
 @property (nonatomic, strong) NSArray *array;
 @property (nonatomic, strong) UITableView *tableview;
 
+@property (nonatomic, strong) Hasnot_read_messages *hasnot_read;
+
 @end

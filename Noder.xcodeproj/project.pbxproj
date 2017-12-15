@@ -68,6 +68,7 @@
 		910936A81FD6D50400AFF4E9 /* NullView.m in Sources */ = {isa = PBXBuildFile; fileRef = 910936A71FD6D50400AFF4E9 /* NullView.m */; };
 		911791571FD8E5920065FE0F /* UIFont+SetFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 911791561FD8E5920065FE0F /* UIFont+SetFont.m */; };
 		9131339C1FC707F800003585 /* MessageCountAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 9131339B1FC707F800003585 /* MessageCountAPI.m */; };
+		915620B91FE00E96003CB91E /* MarkReadAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 915620B81FE00E96003CB91E /* MarkReadAPI.m */; };
 		915638501FD0335F00B81BB1 /* ComContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9156384F1FD0335F00B81BB1 /* ComContentView.m */; };
 		915638561FD3D5C800B81BB1 /* DetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 915638551FD3D5C800B81BB1 /* DetailTopView.m */; };
 		91679D731FCD075600476B13 /* UILabel+LabelHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 91679D721FCD075600476B13 /* UILabel+LabelHeight.m */; };
@@ -76,11 +77,7 @@
 		9188B7311FBDC7540082C1D1 /* ScanLoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */; };
 		918C18CE1FC1B21500D22246 /* AllViewDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 918C18CD1FC1B21500D22246 /* AllViewDataModel.m */; };
 		919394281FC949B100EB89A5 /* PersonalTableModle.m in Sources */ = {isa = PBXBuildFile; fileRef = 919394271FC949B100EB89A5 /* PersonalTableModle.m */; };
-		9199C99F1FC114D4008FDA37 /* UIColor+background.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C99E1FC114D4008FDA37 /* UIColor+background.m */; };
 		9199C9A21FC1171F008FDA37 /* UIColor+TitleColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9A11FC1171F008FDA37 /* UIColor+TitleColor.m */; };
-		9199C9A51FC11BE6008FDA37 /* UIColor+textColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9A41FC11BE6008FDA37 /* UIColor+textColor.m */; };
-		9199C9A81FC11FDB008FDA37 /* UIColor+textColorB.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9A71FC11FDB008FDA37 /* UIColor+textColorB.m */; };
-		9199C9AB1FC12297008FDA37 /* UIColor+tableBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 9199C9AA1FC12297008FDA37 /* UIColor+tableBackground.m */; };
 		91AC1E821FC2688A00196DE0 /* EssenceDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AC1E811FC2688A00196DE0 /* EssenceDataModel.m */; };
 		91AC1E851FC2789900196DE0 /* ShareDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AC1E841FC2789900196DE0 /* ShareDataModel.m */; };
 		91AC1E881FC27C4D00196DE0 /* AskDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 91AC1E871FC27C4D00196DE0 /* AskDataModel.m */; };
@@ -260,6 +257,8 @@
 		911791561FD8E5920065FE0F /* UIFont+SetFont.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIFont+SetFont.m"; sourceTree = "<group>"; };
 		9131339A1FC707F800003585 /* MessageCountAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MessageCountAPI.h; path = ../Noder/MessageCountAPI.h; sourceTree = "<group>"; };
 		9131339B1FC707F800003585 /* MessageCountAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MessageCountAPI.m; path = ../Noder/MessageCountAPI.m; sourceTree = "<group>"; };
+		915620B71FE00E96003CB91E /* MarkReadAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MarkReadAPI.h; sourceTree = "<group>"; };
+		915620B81FE00E96003CB91E /* MarkReadAPI.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MarkReadAPI.m; sourceTree = "<group>"; };
 		9156384E1FD0335F00B81BB1 /* ComContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ComContentView.h; sourceTree = "<group>"; };
 		9156384F1FD0335F00B81BB1 /* ComContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ComContentView.m; sourceTree = "<group>"; };
 		915638541FD3D5C800B81BB1 /* DetailTopView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailTopView.h; sourceTree = "<group>"; };
@@ -276,16 +275,8 @@
 		918C18CD1FC1B21500D22246 /* AllViewDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AllViewDataModel.m; sourceTree = "<group>"; };
 		919394261FC949B100EB89A5 /* PersonalTableModle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalTableModle.h; sourceTree = "<group>"; };
 		919394271FC949B100EB89A5 /* PersonalTableModle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalTableModle.m; sourceTree = "<group>"; };
-		9199C99D1FC114D4008FDA37 /* UIColor+background.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+background.h"; sourceTree = "<group>"; };
-		9199C99E1FC114D4008FDA37 /* UIColor+background.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+background.m"; sourceTree = "<group>"; };
 		9199C9A01FC1171F008FDA37 /* UIColor+TitleColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+TitleColor.h"; sourceTree = "<group>"; };
 		9199C9A11FC1171F008FDA37 /* UIColor+TitleColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+TitleColor.m"; sourceTree = "<group>"; };
-		9199C9A31FC11BE6008FDA37 /* UIColor+textColor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+textColor.h"; sourceTree = "<group>"; };
-		9199C9A41FC11BE6008FDA37 /* UIColor+textColor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+textColor.m"; sourceTree = "<group>"; };
-		9199C9A61FC11FDB008FDA37 /* UIColor+textColorB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+textColorB.h"; sourceTree = "<group>"; };
-		9199C9A71FC11FDB008FDA37 /* UIColor+textColorB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+textColorB.m"; sourceTree = "<group>"; };
-		9199C9A91FC12297008FDA37 /* UIColor+tableBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+tableBackground.h"; sourceTree = "<group>"; };
-		9199C9AA1FC12297008FDA37 /* UIColor+tableBackground.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+tableBackground.m"; sourceTree = "<group>"; };
 		91AC1E801FC2688A00196DE0 /* EssenceDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EssenceDataModel.h; sourceTree = "<group>"; };
 		91AC1E811FC2688A00196DE0 /* EssenceDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EssenceDataModel.m; sourceTree = "<group>"; };
 		91AC1E831FC2789900196DE0 /* ShareDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShareDataModel.h; sourceTree = "<group>"; };
@@ -429,16 +420,8 @@
 				33C2CFBC1E7967370030257B /* HDTableViewCell.m */,
 				04005A801F6CC506007D8603 /* ControllerManager.h */,
 				04005A811F6CC506007D8603 /* ControllerManager.m */,
-				9199C99D1FC114D4008FDA37 /* UIColor+background.h */,
-				9199C99E1FC114D4008FDA37 /* UIColor+background.m */,
 				9199C9A01FC1171F008FDA37 /* UIColor+TitleColor.h */,
 				9199C9A11FC1171F008FDA37 /* UIColor+TitleColor.m */,
-				9199C9A31FC11BE6008FDA37 /* UIColor+textColor.h */,
-				9199C9A41FC11BE6008FDA37 /* UIColor+textColor.m */,
-				9199C9A61FC11FDB008FDA37 /* UIColor+textColorB.h */,
-				9199C9A71FC11FDB008FDA37 /* UIColor+textColorB.m */,
-				9199C9A91FC12297008FDA37 /* UIColor+tableBackground.h */,
-				9199C9AA1FC12297008FDA37 /* UIColor+tableBackground.m */,
 				911791551FD8E5920065FE0F /* UIFont+SetFont.h */,
 				911791561FD8E5920065FE0F /* UIFont+SetFont.m */,
 				91679D711FCD075600476B13 /* UILabel+LabelHeight.h */,
@@ -550,6 +533,8 @@
 				040471341F5FEAC900BBDA14 /* CollectionAPI.m */,
 				91E655C51FC5513400E985F8 /* MessageAPI.h */,
 				91E655C61FC5513400E985F8 /* MessageAPI.m */,
+				915620B71FE00E96003CB91E /* MarkReadAPI.h */,
+				915620B81FE00E96003CB91E /* MarkReadAPI.m */,
 			);
 			name = Personal;
 			sourceTree = "<group>";
@@ -1024,7 +1009,6 @@
 				043991271F72393300882344 /* PersonalComViewController.m in Sources */,
 				0477218D1F6BA13A00C31B6F /* comContentAPI.m in Sources */,
 				04005A821F6CC506007D8603 /* ControllerManager.m in Sources */,
-				9199C99F1FC114D4008FDA37 /* UIColor+background.m in Sources */,
 				91AC1E851FC2789900196DE0 /* ShareDataModel.m in Sources */,
 				910936A81FD6D50400AFF4E9 /* NullView.m in Sources */,
 				91E655C41FC5151C00E985F8 /* MessageDataModel.m in Sources */,
@@ -1058,7 +1042,7 @@
 				3335F02C1ED46E8800FBB58D /* RecentReplyCell.m in Sources */,
 				91AC1E8B1FC27E7300196DE0 /* JobDataModel.m in Sources */,
 				33542A9D1F504D77005576F7 /* JobAPI.m in Sources */,
-				9199C9AB1FC12297008FDA37 /* UIColor+tableBackground.m in Sources */,
+				915620B91FE00E96003CB91E /* MarkReadAPI.m in Sources */,
 				915638501FD0335F00B81BB1 /* ComContentView.m in Sources */,
 				3395BFDD1EE57A9C007E27F2 /* EssenceViewController.m in Sources */,
 				3335F0321ED470DC00FBB58D /* RecentTopicsCell.m in Sources */,
@@ -1073,9 +1057,7 @@
 				334012321E4DF2D000E92B48 /* AppDelegate.m in Sources */,
 				334F3D2E1E509D12000D0EBF /* TopicsApi.m in Sources */,
 				040354781F62317E00257D90 /* DevTableViewCell.m in Sources */,
-				9199C9A51FC11BE6008FDA37 /* UIColor+textColor.m in Sources */,
 				DF8429E21EF941AC00B8D011 /* LCNetworkImageNode.m in Sources */,
-				9199C9A81FC11FDB008FDA37 /* UIColor+textColorB.m in Sources */,
 				3340122F1E4DF2D000E92B48 /* main.m in Sources */,
 				91AC1E821FC2688A00196DE0 /* EssenceDataModel.m in Sources */,
 				91E9DF301FDBBFF8001E0A03 /* PlateSelectionView.m in Sources */,

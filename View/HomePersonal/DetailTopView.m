@@ -8,8 +8,7 @@
 
 #import "DetailTopView.h"
 #import "Masonry.h"
-#import "UIColor+textColor.h"
-#import "UIColor+textColorB.h"
+#import "UIColor+TitleColor.h"
 #import "UIFont+SetFont.h"
 
 @implementation DetailTopView

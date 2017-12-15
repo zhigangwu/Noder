@@ -10,6 +10,7 @@
 #import "DetailBottomView.h"
 #import "AllViewDataModel.h"
 
+
 @interface AllViewController : UITableViewController
 
 @property (nonatomic, strong) NSArray *array;

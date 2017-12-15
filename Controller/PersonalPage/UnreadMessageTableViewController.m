@@ -9,12 +9,12 @@
 #import "UnreadMessageTableViewController.h"
 #import "UnreadMessageCell.h"
 #import "ControllerManager.h"
-#import "UIColor+tableBackground.h"
+#import "UIColor+TitleColor.h"
 #import "MessageAPI.h"
 #import "NullView.h"
 #import "Masonry.h"
 #import "UIFont+SetFont.h"
-#import "UIColor+background.h"
+#import "MarkReadAPI.h"
 
 @interface UnreadMessageTableViewController ()
 
@@ -31,6 +31,7 @@
     UIFont *font = [UIFont ZGFontA];
     NSDictionary *dictionary = @{NSFontAttributeName:font,NSForegroundColorAttributeName:[UIColor colorWithRed:3/255.0 green:3/255.0 blue:3/255.0 alpha:1/1.0]};
     self.navigationController.navigationBar.titleTextAttributes = dictionary;
+    self.view.backgroundColor = [UIColor whiteColor];
 
     //去掉返回按钮中的back
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
@@ -38,31 +39,6 @@
     self.tableview = [[UITableView alloc] init];
     self.nullview = [[NullView alloc] init];
     
-    [self.view addSubview:self.tableview];
-    [self.view addSubview:self.nullview];
-    
-    [self.tableview mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.view);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.bottom.equalTo(self.view);
-    }];
-    
-    [self.nullview mas_makeConstraints:^(MASConstraintMaker *make){
-        make.top.equalTo(self.view);
-        make.left.equalTo(self.view);
-        make.right.equalTo(self.view);
-        make.bottom.equalTo(self.view);
-    }];
-    
-    //    cell分割线全屏
-    if ([self.tableview respondsToSelector:@selector(setSeparatorInset:)]) {
-        self.tableview.separatorInset = UIEdgeInsetsZero;
-    }
-    
-    if ([self.tableview respondsToSelector:@selector(setLayoutMargins:)]) {
-        self.tableview.layoutMargins = UIEdgeInsetsZero;
-    }
 
     NSString *accesstoken = [ControllerManager shareManager].string;
     MessageAPI *messageAPI = [[MessageAPI alloc] init];
@@ -71,8 +47,42 @@
         [messageAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
             self.messageModel = request.responseJSONObject;
             self.array = self.messageModel.hasnot_read_messages;
-            
-            [self.tableview reloadData];
+//            NSLog(@"array= %@",self.array);
+            if (self.array == nil) {
+                self.tableview.hidden = YES;
+                [self.view addSubview:self.nullview];
+                [self.nullview mas_makeConstraints:^(MASConstraintMaker *make){
+                    make.top.equalTo(self.view);
+                    make.left.equalTo(self.view);
+                    make.right.equalTo(self.view);
+                    make.bottom.equalTo(self.view);
+                }];
+            } else {
+                self.nullview.hidden = YES;
+                [self.view addSubview:self.tableview];
+                [self.tableview mas_makeConstraints:^(MASConstraintMaker *make){
+                    make.top.equalTo(self.view);
+                    make.left.equalTo(self.view);
+                    make.right.equalTo(self.view);
+                    make.bottom.equalTo(self.view);
+                }];
+                
+                //    cell分割线全屏
+                if ([self.tableview respondsToSelector:@selector(setSeparatorInset:)]) {
+                    self.tableview.separatorInset = UIEdgeInsetsZero;
+                }
+                
+                if ([self.tableview respondsToSelector:@selector(setLayoutMargins:)]) {
+                    self.tableview.layoutMargins = UIEdgeInsetsZero;
+                }
+                
+                //  cell自适应高度 注:需要把cell上的控件自上而下加好约束
+                self.tableview.rowHeight = UITableViewAutomaticDimension;
+                self.tableview.estimatedRowHeight = 100;
+                self.tableview.delegate = self;
+                self.tableview.dataSource = self;
+            }
+//            [self.tableview reloadData];
         } failure:NULL];
     }
     
@@ -93,10 +103,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (self.array == nil) {
-        
-        self.tableview.hidden = YES;
-    }
         return self.array.count;
 }
 
@@ -105,18 +111,43 @@
     UnreadMessageCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UnreadMessageCell"
                                                               forIndexPath:indexPath];
     
-    Hasnot_read_messages *hasnot_read = [self.array objectAtIndex:indexPath.row];
+    self.hasnot_read = [self.array objectAtIndex:indexPath.row];
     
-    [cell configWithItem:hasnot_read];
-    
-    //    分割线全屏
-    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
-        [cell setLayoutMargins:UIEdgeInsetsZero];
-    }
-
+    [cell configWithItem:self.hasnot_read];
     
     return cell;
 }
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView setEditing:NO animated:YES];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        MarkReadAPI *markAPI = [[MarkReadAPI alloc] init];
+        markAPI.msg_id = self.hasnot_read.id;
+        markAPI.requestArgument = @{@"accesstoken" : [ControllerManager shareManager].string};
+        if ([ControllerManager shareManager].string != nil) {
+            [markAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+//                NSLog(@"****%@",request.responseJSONObject);
+            } failure:nil];
+        }
+        NSMutableArray *mutableArray = [self.array mutableCopy];
+        [mutableArray removeObjectAtIndex:indexPath.row];
+        [self.tableview deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+    }
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"已读";
+}
+
+- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return NO;
+}
+
+
 
 
 @end

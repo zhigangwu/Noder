@@ -14,20 +14,21 @@
 
 @end
 
-@protocol RefreshDelegate <NSObject>
-
-- (void)refreshButton:(UIButton *)sender;
-
-@end
+//@protocol RefreshDelegate <NSObject>
+//
+//- (void)refreshButton:(UIButton *)sender;
+//
+//@end
 
 
 @interface DetailBottomView : UIView
 
 @property (nonatomic, strong) UIButton *grayButton;
 @property (nonatomic, strong) UIButton *brightButton;
+@property (nonatomic, strong) UIButton *refreshButton;
 
 @property (nonatomic, weak) id<commentDelegate> commentdelegate;
-@property (nonatomic, weak) id<RefreshDelegate> RefreshDelegate;
+//@property (nonatomic, weak) id<RefreshDelegate> RefreshDelegate;
 
 - (instancetype)init;
 

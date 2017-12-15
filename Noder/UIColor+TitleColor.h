@@ -12,4 +12,12 @@
 
 + (UIColor *)titleColor;
 
++ (UIColor *)textColor;
+
++ (UIColor *)textColorB;
+
++ (UIColor *)tableBackground;
+
++ (UIColor *)backgroundcolor;
+
 @end

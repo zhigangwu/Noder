@@ -11,7 +11,7 @@
 #import "JobAPI.h"
 #import "DetailViewController.h"
 #import "MJRefresh.h"
-#import "UIColor+tableBackground.h"
+#import "UIColor+TitleColor.h"
 #import "JobDataModel.h"
 
 @interface RecruitmentViewController ()
@@ -73,13 +73,20 @@
         [self.tableView reloadData];
         [self.tableView.mj_footer endRefreshing];
     } failure:NULL];
-
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.tableView reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    JobAPI *jobAPI = [[JobAPI alloc] init];
+    [jobAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        [self.tableView reloadData];
+    } failure:NULL];
 }
 
 - (void)didReceiveMemoryWarning {

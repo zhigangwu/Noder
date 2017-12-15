@@ -11,7 +11,7 @@
 #import "EssenceAPI.h"
 #import "DetailViewController.h"
 #import "MJRefresh.h"
-#import "UIColor+tableBackground.h"
+#import "UIColor+TitleColor.h"
 #import "EssenceDataModel.h"
 
 @interface EssenceViewController ()
@@ -83,6 +83,14 @@
     [self.tableView reloadData];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    EssenceAPI *essenceAPI = [[EssenceAPI alloc] init];
+    [essenceAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        [self.tableView reloadData];
+    }failure:NULL];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

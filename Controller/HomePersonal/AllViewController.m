@@ -9,12 +9,11 @@
 #import "AllViewController.h"
 #import "AllTableViewCell.h"
 #import "MJRefresh.h"
-#import "DetailViewController.h"
 #import "AssesstokenAPI.h"
 #import "TopicsApi.h"
-#import "UIColor+tableBackground.h"
+#import "UIColor+TitleColor.h"
 #import "DetailTopView.h"
-
+#import "DetailViewController.h"
 
 
 @interface AllViewController ()
@@ -55,11 +54,6 @@
     [self.tableView registerClass:[AllTableViewCell class] forCellReuseIdentifier:@"allTableViewCell"];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [self.tableView reloadData];
-}
-
 - (void)loadNewData{
     TopicsApi *topApi = [[TopicsApi alloc] init];
     [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
@@ -67,9 +61,7 @@
         
         [self.tableView reloadData];
         [self.tableView.mj_header endRefreshing];
-    }
-                          failure:NULL];
-    
+    }failure:NULL];
 }
 
 - (void)loadNoreData{
@@ -81,6 +73,16 @@
         [self.tableView.mj_footer endRefreshing];
     }
                           failure:NULL];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    TopicsApi *topApi = [[TopicsApi alloc] init];
+    [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        self.allModel = request.responseJSONObject;
+        [self.tableView reloadData];
+    }failure:NULL];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -123,6 +125,9 @@
     vc.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:vc animated:YES];
 }
+
+
+
 
 
 @end

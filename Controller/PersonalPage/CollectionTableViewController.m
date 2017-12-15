@@ -10,9 +10,8 @@
 #import "CollectionAPI.h"
 #import "CollectionCell.h"
 #import "DetailViewController.h"
-#import "UIColor+tableBackground.h"
+#import "UIColor+TitleColor.h"
 #import "UIFont+SetFont.h"
-#import "UIColor+background.h"
 
 @interface CollectionTableViewController ()
 

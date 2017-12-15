@@ -11,7 +11,7 @@
 #import "ShareAPI.h"
 #import "DetailViewController.h"
 #import "MJRefresh.h"
-#import "UIColor+tableBackground.h"
+#import "UIColor+TitleColor.h"
 #import "ShareDataModel.h"
 
 @interface ShareViewController ()
@@ -79,6 +79,16 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.tableView reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    ShareAPI *shareAPI = [[ShareAPI alloc] init];
+    [shareAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        [self.tableView reloadData];
+    } failure:NULL];
+
 }
 
 - (void)didReceiveMemoryWarning {

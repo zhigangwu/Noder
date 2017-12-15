@@ -8,8 +8,7 @@
 
 #import "RecentReplyCell.h"
 #import "Masonry.h"
-#import "UIColor+textColor.h"
-#import "UIColor+textColorB.h"
+#import "UIColor+TitleColor.h"
 #import "NSDate+TimeAgo.h"
 #import "UIFont+SetFont.h"
 
@@ -47,9 +46,14 @@
         
         self.TitleLabel.font = [UIFont ZGFontB];
         self.TitleLabel.textColor = [UIColor textColor];
-        
-        [self.ImageView.layer setCornerRadius:26];
-        [self.ImageView.layer setMasksToBounds:YES];
+
+        CALayer *layer = [self.ImageView layer];
+        [layer setMasksToBounds:YES];
+        [layer setShadowOpacity:0];
+        [layer setCornerRadius:26];
+        [layer setBorderWidth:0.5];
+        [layer setBorderColor:[[UIColor grayColor] CGColor]];
+
         
         self.durationLabel.font = [UIFont ZGFontC];
         self.durationLabel.textColor = [UIColor textColorB];

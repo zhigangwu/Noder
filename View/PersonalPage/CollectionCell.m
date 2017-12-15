@@ -9,8 +9,7 @@
 #import "CollectionCell.h"
 #import "Masonry.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "UIColor+textColor.h"
-#import "UIColor+textColorB.h"
+#import "UIColor+TitleColor.h"
 #import "NSDate+TimeAgo.h"
 #import "UIFont+SetFont.h"
 #import "ControllerManager.h"
@@ -31,7 +30,7 @@
         [self.ImageView mas_makeConstraints:^(MASConstraintMaker *make){
             make.centerY.equalTo(self.contentView);
             make.left.equalTo(self.contentView).with.offset(15.9);
-            make.size.mas_equalTo(CGSizeMake(52, 51.7));
+            make.size.mas_equalTo(CGSizeMake(52, 52));
         }];
         
         [self.TitleLabel mas_makeConstraints:^(MASConstraintMaker *make){
@@ -48,8 +47,12 @@
         self.TitleLabel.font = [UIFont ZGFontB];
         self.TitleLabel.textColor = [UIColor textColor];
         
-        [self.ImageView.layer setCornerRadius:25.85];
-        [self.ImageView.layer setMasksToBounds:YES];
+        CALayer *layer = [self.ImageView layer];
+        [layer setMasksToBounds:YES];
+        [layer setShadowOpacity:0];
+        [layer setCornerRadius:26];
+        [layer setBorderWidth:0.5];
+        [layer setBorderColor:[[UIColor grayColor] CGColor]];
         
         self.durationLabel.font = [UIFont ZGFontC];
         self.durationLabel.textColor = [UIColor textColorB];

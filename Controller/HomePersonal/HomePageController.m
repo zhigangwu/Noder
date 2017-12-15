@@ -14,7 +14,7 @@
 #import "QandAViewController.h"
 #import "RecruitmentViewController.h"
 #import "DevTableViewController.h"
-#import "UIColor+textColor.h"
+#import "UIColor+TitleColor.h"
 
 #import "Masonry.h"
 #import "UIFont+SetFont.h"

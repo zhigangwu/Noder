@@ -9,12 +9,10 @@
 #import "ReadMessageCell.h"
 #import "Masonry.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "UIColor+textColor.h"
+#import "UIColor+TitleColor.h"
 #import "NSDate+TimeAgo.h"
-#import "UIColor+textColorB.h"
 #import "NSDate+TimeAgo.h"
 #import "UIFont+SetFont.h"
-#import "UIColor+background.h"
 
 @implementation ReadMessageCell
 
@@ -95,8 +93,12 @@
         self.contentLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:14];
         self.contentLabel.textColor = [UIColor textColor];
         
-        [self.ImageView.layer setCornerRadius:26];
-        [self.ImageView.layer setMasksToBounds:YES];
+        CALayer *layer = [self.ImageView layer];
+        [layer setMasksToBounds:YES];
+        [layer setShadowOpacity:0];
+        [layer setCornerRadius:26];
+        [layer setBorderWidth:0.5];
+        [layer setBorderColor:[[UIColor grayColor] CGColor]];
         
         self.durationLabel.font = [UIFont ZGFontC];
         self.durationLabel.textColor = [UIColor textColorB];
@@ -107,24 +109,6 @@
     }
     return self;
 }
-
-//- (void)drawLine
-//{
-//    CGContextRef context = UIGraphicsGetCurrentContext();
-//    CGContextSetLineCap(context, kCGLineCapSquare);
-//    CGContextSetLineWidth(context, 2);
-//    CGContextSetRGBStrokeColor(context, 0.314, 0.486, 0.859, 1.0);
-//    CGContextBeginPath(context);
-//    CGContextMoveToPoint(context, 80, 65);
-//    CGContextMoveToPoint(context, 150, 65);
-//    CGContextMoveToPoint(context, 300, 65);
-////    CGContextAddLineToPoint(context, 300, 65);
-//    CGContextClosePath(context);
-////    [[UIColor redColor]setFill];
-////    CGContextDrawPath(context, kCGPathFillStroke);
-//    NSLog(@"*****%@",context);
-//}
-
 
 - (void)configWithItem:(Has_read_messages *)has_read_messages
 {

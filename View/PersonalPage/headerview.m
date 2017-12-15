@@ -10,7 +10,7 @@
 #import <Masonry.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "ControllerManager.h"
-#import "UIColor+textColor.h"
+#import "UIColor+TitleColor.h"
 
 @interface headerview ()
 
@@ -81,8 +81,13 @@
         
         self.nameLabel.font = [UIFont fontWithName:@"PingFangSC-Medium" size:16];
         self.nameLabel.textColor = [UIColor textColor];
-        [avatarImageView.layer setCornerRadius:39];
-        [avatarImageView.layer setMasksToBounds:YES];
+        
+        CALayer *layer = [avatarImageView layer];
+        [layer setMasksToBounds:YES];
+        [layer setShadowOpacity:0];
+        [layer setCornerRadius:39];
+        [layer setBorderWidth:0.5];
+        [layer setBorderColor:[[UIColor grayColor] CGColor]];
         
 //        [[NSNotificationCenter defaultCenter] addObserver:self
 //                                                 selector:@selector(addnotification:)

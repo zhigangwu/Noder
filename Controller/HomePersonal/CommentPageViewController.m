@@ -15,9 +15,10 @@
 #import "UITableView+FDTemplateLayoutCell.h"
 #import "MJExtension.h"
 #import "comContentAPI.h"
-#import "UIColor+tableBackground.h"
+#import "UIColor+TitleColor.h"
 #import "DetailApi.h"
 #import "UIFont+SetFont.h"
+#import "UIColor+TitleColor.h"
 
 @interface CommentPageViewController ()
 
@@ -38,11 +39,12 @@
     //去掉返回按钮中的back
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
     
-    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconGrayComment"]
-                                                                       style:UIBarButtonItemStyleDone
-                                                                      target:self
-                                                                      action:@selector(comCenterButton:)];
-    self.navigationItem.rightBarButtonItem = rightBarButton;
+//    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconGrayComment"]
+//                                                                       style:UIBarButtonItemStyleDone
+//                                                                      target:self
+//                                                                      action:@selector(comCenterButton:)];
+//    self.navigationItem.rightBarButtonItem = rightBarButton;
+    
 //  点击tableview可以收起键盘
     self.view.userInteractionEnabled = YES;
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
@@ -82,6 +84,10 @@
     if ([self.tableview respondsToSelector:@selector(setLayoutMargins:)]) {
         self.tableview.layoutMargins = UIEdgeInsetsZero;
     }
+    //不显示空白cell
+    UIView *footview = [[UIView alloc] init];
+    footview.backgroundColor = [UIColor colorWithRed:216/255.0 green:216/255.0 blue:216/255.0 alpha:1/1.0];
+    self.tableview.tableFooterView = footview;
     
     self.bottomView.backgroundColor = [UIColor greenColor];
     self.bottomView.contentTextView.delegate = self;
@@ -103,7 +109,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(transformView:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillBeHidden:) name:UIKeyboardWillHideNotification object:nil];
-    
 }
 
 - (void)setupRefresh
@@ -128,28 +133,6 @@
     [self.tableview reloadData];
 }
 
-- (void)comCenterButton:(UIButton *)sender
-{
-    if ([ControllerManager shareManager].success == 1) {
-        ComContentViewContrnt *comContentVC = [[ComContentViewContrnt alloc] init];
-        [self.navigationController pushViewController:comContentVC animated:YES];
-    } else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
-                                                        message:@"请登入"
-                                                       delegate:self
-                                              cancelButtonTitle:@"取消"
-                                              otherButtonTitles:nil, nil];
-        [alert show];
-    }
-    
-}
-
-
-
-- (void)comcontent
-{
-    
-}
 
 -(void)transformView:(NSNotification *)aNSNotification
 {
@@ -192,9 +175,115 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+// 点赞
+- (void)likeupButton:(UIButton *)sender
+{
+    sender.selected = !sender.selected;
+    
+    if ([ControllerManager shareManager].success == true) {
+        CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
+        NSIndexPath *indexPath = [self.tableview indexPathForCell:cell];
+        self.reply = [self.array objectAtIndex:indexPath.row];
+        NSLog(@"self.reply like befor = %@",self.reply);
+        
+        ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
+        thumAPI.reply_id = self.reply.id;
+        NSString *access = [ControllerManager shareManager].string;
+        if (access != nil) {
+            thumAPI.requestArgument = @{@"accesstoken" : access};
+            [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+                self.thumbsModel = request.responseJSONObject;
+                NSLog(@"%@",self.thumbsModel);
+                
+                DetailApi *detailAPI = [[DetailApi alloc] init];
+                detailAPI._id = self.topic_id;
+                [detailAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+                    self.detailModel = request.responseJSONObject;
+                    self.array = self.detailModel.replies;
+                    self.reply = [self.array objectAtIndex:indexPath.row];
+//                    NSLog(@"self.reply like after = %@",self.reply);
+                    cell.upLabel.text = [NSString stringWithFormat:@"%ld",self.reply.ups.count];
+                } failure:nil];
+                
+            } failure:NULL];
+        }
+    } else {
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:@"请登入"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:nil, nil];
+        [alertview show];
+    }
+}
+
+// 取消点赞
+- (void)likedupButton:(UIButton *)sender
+{
+
+    sender.selected = !sender.selected;
+    
+    if ([ControllerManager shareManager].success == true) {
+        CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
+        NSIndexPath *indexPath = [self.tableview indexPathForCell:cell];
+        self.reply = [self.array objectAtIndex:indexPath.row];
+        NSLog(@"self.reply liked befor = %@",self.reply);
+        
+        ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
+        thumAPI.reply_id = self.reply.id;
+        NSString *access = [ControllerManager shareManager].string;
+        if (access != nil) {
+            thumAPI.requestArgument = @{@"accesstoken" : access};
+            [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+                self.thumbsModel = request.responseJSONObject;
+                NSLog(@"%@",self.thumbsModel);
+
+                DetailApi *detailAPI = [[DetailApi alloc] init];
+                detailAPI._id = self.topic_id;
+                [detailAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+                    self.detailModel = request.responseJSONObject;
+                    self.array = self.detailModel.replies;
+                    self.reply = [self.array objectAtIndex:indexPath.row];
+//                    NSLog(@"self.reply liked after = %@",self.reply);
+                    cell.upLabel.text = [NSString stringWithFormat:@"%ld",self.reply.ups.count];
+                } failure:nil];
+
+            } failure:NULL];
+        }
+    } else {
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:@"请登入"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:nil, nil];
+        [alertview show];
+    }
+}
+
+// 评论评价
+- (void)personalComButton:(UIButton *)sender
+{
+    if ([ControllerManager shareManager].success == true) {
+        CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
+        NSIndexPath *indexPath = [self.tableview indexPathForCell:cell];
+        self.reply = [self.array objectAtIndex:indexPath.row];
+        [self.bottomView.contentTextView becomeFirstResponder];
+        [self.bottomView.contentTextView setText:[NSString stringWithFormat:@"@%@:",self.reply.author.loginname]];
+    } else {
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:@"请登入"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:nil, nil];
+        [alertview show];
+    }
+    
+}
+
+
+// 发布
 - (void)reless:(UIButton *)sender
 {
-    
     comContentAPI *comconAPI = [[comContentAPI alloc] init];
     comconAPI.topic_id = [ControllerManager shareManager].reply_ID;
 
@@ -216,9 +305,16 @@
                 self.array = self.detailModel.replies;
                 [self.tableview reloadData];
             } failure:nil];
-
         } failure:NULL];
+    } else {
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:@"请登入"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:nil, nil];
+        [alertview show];
     }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -254,82 +350,6 @@
     return cell;
 }
 
-- (void)evaluation:(id)sender
-{
-    PersonalComViewController *personal = [[PersonalComViewController alloc] init];
-    personal.reply_id = self.detailModel.id;
-    [self.navigationController pushViewController:personal animated:YES];
-}
-
-- (void)likedupButton:(UIButton *)sender
-{
-    if ([ControllerManager shareManager].success == true) {
-        CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
-        NSIndexPath *indexPath = [self.tableview indexPathForCell:cell];
-        self.reply = [self.array objectAtIndex:indexPath.row];
-
-        ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
-        thumAPI.reply_id = self.reply.id;
-        NSString *access = [ControllerManager shareManager].string;
-        if (access != nil) {
-            thumAPI.requestArgument = @{@"accesstoken" : access};
-            [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-                self.thumbsModel = request.responseJSONObject;
-                sender.hidden = YES;
-                cell.ZGlikeupButton.hidden = NO;
-                [cell.ZGlikeupButton setImage:[UIImage imageNamed:@"like"] forState:UIControlStateNormal];
-                [cell.ZGlikeupButton addTarget:self action:@selector(likeupButton:) forControlEvents:UIControlEventTouchUpInside];
-            } failure:NULL];
-        }
-    } else {
-        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil
-                                                            message:@"请登入"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"取消"
-                                                  otherButtonTitles:nil, nil];
-        [alertview show];
-    }
-}
-
-- (void)likeupButton:(UIButton *)sender
-{
-    if ([ControllerManager shareManager].success == true) {
-        CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
-        NSIndexPath *indexPath = [self.tableview indexPathForCell:cell];
-        self.reply = [self.array objectAtIndex:indexPath.row];
-        
-        ThumbsUpAPI *thumAPI = [[ThumbsUpAPI alloc] init];
-        thumAPI.reply_id = self.reply.id;
-        NSString *access = [ControllerManager shareManager].string;
-        if (access != nil) {
-            thumAPI.requestArgument = @{@"accesstoken" : access};
-            [thumAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
-                self.thumbsModel = request.responseJSONObject;
-                sender.hidden = YES;
-                cell.ZGlikedupButton.hidden = NO;
-                [cell.ZGlikedupButton setImage:[UIImage imageNamed:@"liked"] forState:UIControlStateNormal];
-                [cell.ZGlikedupButton addTarget:self action:@selector(likedupButton:) forControlEvents:UIControlEventTouchUpInside];
-            } failure:NULL];
-        }
-    } else {
-        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil
-                                                            message:@"请登入"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"取消"
-                                                  otherButtonTitles:nil, nil];
-        [alertview show];
-    }
-}
-
-
-- (void)personalComButton:(UIButton *)sender
-{
-    CommentTableViewCell *cell = (CommentTableViewCell *)[[sender superview] superview];
-    NSIndexPath *indexPath = [self.tableview indexPathForCell:cell];
-    self.reply = [self.array objectAtIndex:indexPath.row];
-    [self.bottomView.contentTextView becomeFirstResponder];
-    [self.bottomView.contentTextView setText:[NSString stringWithFormat:@"@%@:",self.reply.author.loginname]];
-}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
@@ -341,27 +361,28 @@
     [self.view endEditing:YES];
 }
 
-//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-//{
-//    CGRect frame = textView.frame;
-//    self.height = [self heightForTextView:textView WithText:textView.text];
-//    frame.size.height = self.height;
-//    [UIView animateWithDuration:0.5 animations:^{
-//        textView.frame = frame;
-//    } completion:nil];
-//    return YES;
-//}
-//
-//// 计算输入文字高度的方法,之所以返回的高度值加22是因为UITextView有一个初始的高度值40，但是输入第一行文字的时候文字高度只有18，所以UITextView的高度会发生变化
-//- (float) heightForTextView: (UITextView *)textView WithText: (NSString *) strText{
-//    CGSize constraint = CGSizeMake(textView.contentSize.width , CGFLOAT_MAX);
-//    CGRect size = [strText boundingRectWithSize:constraint
-//                                        options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
-//                                     attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}
-//                                        context:nil];
-//    float textHeight = size.size.height + 22.0;
-//    return textHeight;
-//}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    CGRect frame = textView.frame;
+    self.height = [self heightForTextView:textView WithText:textView.text];
+    frame.size.height = self.height;
+    [UIView animateWithDuration:0.5 animations:^{
+        textView.frame = frame;
+        [self.bottomView layoutIfNeeded];
+    } completion:nil];
+    return YES;
+}
+
+// 计算输入文字高度的方法,之所以返回的高度值加22是因为UITextView有一个初始的高度值40，但是输入第一行文字的时候文字高度只有18，所以UITextView的高度会发生变化
+- (float) heightForTextView: (UITextView *)textView WithText: (NSString *) strText{
+    CGSize constraint = CGSizeMake(textView.contentSize.width , CGFLOAT_MAX);
+    CGRect size = [strText boundingRectWithSize:constraint
+                                        options:(NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading)
+                                     attributes:@{NSFontAttributeName: [UIFont systemFontOfSize:12]}
+                                        context:nil];
+    float textHeight = size.size.height + 22.0;
+    return textHeight;
+}
 
 - (BOOL) textViewShouldBeginEditing:(UITextView *)textView
 {

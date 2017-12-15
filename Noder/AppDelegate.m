@@ -17,6 +17,7 @@
 
 @interface AppDelegate ()<UITabBarControllerDelegate>
 
+
 @end
 
 @implementation AppDelegate
@@ -50,13 +51,11 @@
     [homeNavigation.tabBarItem setTag:0];
     homeNavigation.tabBarItem.image = [UIImage imageNamed:@"Group Copy"];
 
-
     tabBarController.viewControllers = @[homeNavigation, newPageTableViewController, navpersonal];
     self.window.rootViewController = tabBarController;
     tabBarController.delegate = self;
     
     [self.window makeKeyAndVisible];
-
     
     LCNetworkConfig *config = [LCNetworkConfig sharedInstance];
     config.mainBaseUrl = @"https://cnodejs.org/";

@@ -26,8 +26,7 @@
 #import "MessageCountAPI.h"
 #import "CollectionAPI.h"
 #import "Loginapi.h"
-#import "UIColor+background.h"
-#import "UIColor+tableBackground.h"
+#import "UIColor+TitleColor.h"
 #import "UIFont+SetFont.h"
 
 
@@ -76,40 +75,6 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.tableView registerClass:[ScanLoginCell class] forCellReuseIdentifier:@"ScanloginCell"];
     
-//    UIView *bottomview = [UIView new];
-//    UIImageView *logoImageView = [UIImageView new];
-//    UILabel *versionlabel = [UILabel new];
-//    UIView *barView = [UIView new];
-//
-//    [self.view addSubview:bottomview];
-//    [bottomview addSubview:logoImageView];
-//    [bottomview addSubview:versionlabel];
-//    [self.view addSubview:barView];
-//
-//    versionlabel.text = @"V 1.0.0";
-//    versionlabel.font = [UIFont fontWithName:@"PingFangSC-Light" size:13];
-//    versionlabel.textColor = [UIColor colorWithRed:171/255.0 green:171/255.0 blue:171/255.0 alpha:1/1.0];
-//    logoImageView.image = [UIImage imageNamed:@"N"];
-//    bottomview.backgroundColor = [UIColor backgroundcolor];
-//
-//    [bottomview mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.top.equalTo(self.tableView.mas_bottom);
-//        make.left.and.right.equalTo(self.view);
-//        make.height.mas_equalTo(146);
-//    }];
-//
-//    [logoImageView mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.centerX.mas_equalTo(bottomview);
-//        make.centerY.mas_equalTo(bottomview);
-//        make.size.mas_equalTo(CGSizeMake(60, 67));
-//    }];
-//
-//    [versionlabel mas_makeConstraints:^(MASConstraintMaker *make){
-//        make.bottom.equalTo(bottomview.mas_bottom).with.offset(-15.7);
-//        make.centerX.mas_equalTo(bottomview.mas_centerX);
-//        make.size.mas_equalTo(CGSizeMake(40, 18));
-//    }];
-    
     [_Header.button addTarget:self action:@selector(buttonaction) forControlEvents:UIControlEventTouchUpInside];
     
     PersonalTableModle *personal = [[PersonalTableModle alloc] initWithNSArray];
@@ -119,9 +84,6 @@
                                              selector:@selector(addnotification:)
                                                  name:@"zongzi"
                                                object:nil];
-    
-
-    
 }
 
 - (void)addnotification:(NSNotification *)notification
@@ -191,6 +153,22 @@
     [self.navigationController pushViewController:setPage animated:YES];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSString *QRCodeString = [ControllerManager shareManager].string;
+    if (QRCodeString != nil) {
+        MessageAPI *messAPI = [[MessageAPI alloc] init];
+        messAPI.requestArgument = @{@"accesstoken" : QRCodeString};
+        [messAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+            self.messageModel  = request.responseJSONObject;
+            self.messageArray = self.messageModel.has_read_messages;
+            ScanLoginCell *cell = [[ScanLoginCell alloc] init];
+            cell.messageLabel.text = [NSString stringWithFormat:@"%ld",self.messageModel.hasnot_read_messages.count];
+            cell.messageLabel.text = [NSString stringWithFormat:@"%ld",self.messageModel.has_read_messages.count];
+            [self.tableView reloadData];
+        } failure:NULL];
+    }
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -273,7 +251,15 @@
                 [self.navigationController pushViewController:readMes animated:YES];
             }
         }
+    }  else {
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:@"请登入"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:nil, nil];
+        [alertview show];
     }
+
 }
 
 

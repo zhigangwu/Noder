@@ -10,7 +10,7 @@
 #import "Masonry.h"
 #import "MessageCountAPI.h"
 #import "ControllerManager.h"
-#import "UIColor+textColor.h"
+#import "UIColor+TitleColor.h"
 
 
 @implementation ScanLoginCell

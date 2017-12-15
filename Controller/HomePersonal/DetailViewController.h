@@ -15,7 +15,7 @@
 #import "CollectionAPI.h"
 #import "CollectionDataModel.h"
 
-@interface DetailViewController : UIViewController <commentDelegate,RefreshDelegate>
+@interface DetailViewController : UIViewController <commentDelegate>
 
 @property (nonatomic, strong) NSString *detailId;
 @property (nonatomic, strong) UIWindow *window;

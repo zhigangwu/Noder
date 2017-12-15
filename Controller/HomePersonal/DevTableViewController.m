@@ -11,7 +11,7 @@
 #import "DevTableViewCell.h"
 #import "DetailViewController.h"
 #import "MJRefresh.h"
-#import "UIColor+tableBackground.h"
+#import "UIColor+TitleColor.h"
 #import "DevDataModel.h"
 
 @interface DevTableViewController ()
@@ -82,6 +82,17 @@
 {
     [self.tableView reloadData];
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    DevAPI *devAPI = [[DevAPI alloc] init];
+    [devAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        
+        [self.tableView reloadData];
+    } failure:NULL];
+}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {

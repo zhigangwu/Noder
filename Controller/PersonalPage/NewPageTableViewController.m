@@ -13,7 +13,6 @@
 #import "NewpageAPI.h"
 #import "PlateSelectionViewController.h"
 #import "UIColor+TitleColor.h"
-#import "UIColor+textColor.h"
 #import "UIFont+SetFont.h"
 
 #import "ControllerManager.h"
@@ -180,10 +179,9 @@
     }
 }
 
+// 发布
 - (void)reless:(id)sender
 {
-//    NSLog(@"%@",sender);
-//    NSString *accessToken = [ControllerManager shareManager].string;
     NewpageAPI *newAPI = [[NewpageAPI alloc] init];
     
     if ([ControllerManager shareManager].string != nil) {
@@ -198,13 +196,18 @@
             [newAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){
                 NSDictionary *dictionary = request.responseJSONObject;
                 NSLog(@"dictionary = %@", dictionary);
-//                [self.navigationController popViewControllerAnimated:YES];
                 [self dismissViewControllerAnimated:YES completion:nil];
             } failure:NULL];
-        } else
-            NSLog(@"请登入！");
+        }
+    }                 else {
+        UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:@"请登入"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  otherButtonTitles:nil, nil];
+        [alertview show];
     }
-    
+
 }
 
 

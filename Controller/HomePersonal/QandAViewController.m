@@ -11,7 +11,7 @@
 #import "AskAPI.h"
 #import "DetailViewController.h"
 #import "MJRefresh.h"
-#import "UIColor+tableBackground.h"
+#import "UIColor+TitleColor.h"
 #import "AskDataModel.h"
 
 @interface QandAViewController ()
@@ -78,13 +78,21 @@
         [self.tableView reloadData];
         [self.tableView.mj_footer endRefreshing];
     } failure:NULL];
-
-
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [self.tableView reloadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    AskAPI *askAPi = [[AskAPI alloc] init];
+    [askAPi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
+        self.array = request.responseJSONObject;
+        [self.tableView reloadData];
+    } failure:NULL];
+
 }
 
 

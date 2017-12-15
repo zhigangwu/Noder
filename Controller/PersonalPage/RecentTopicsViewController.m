@@ -10,9 +10,9 @@
 #import "RecentTopicsCell.h"
 #import "Loginapi.h"
 #import "DetailViewController.h"
-#import "UIColor+tableBackground.h"
+#import "UIColor+TitleColor.h"
 #import "UIFont+SetFont.h"
-#import "UIColor+background.h"
+#import "UIColor+TitleColor.h"
 
 @interface RecentTopicsViewController ()
 
