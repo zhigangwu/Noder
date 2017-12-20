@@ -154,6 +154,13 @@
     
     for (CIQRCodeFeature *result in feature) {
         self.stringValue = result.messageString;
+        
+        NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+        [userdefault setObject:self.stringValue forKey:@"accesstoken"];
+        [userdefault synchronize];
+                
+        NSLog(@"userdefault = %@",userdefault);
+        
         [ControllerManager shareManager].string = self.stringValue;
         [[NSNotificationCenter defaultCenter] postNotificationName:@"zongzi" object:self.stringValue];
         [self dismissViewControllerAnimated:YES completion:nil];

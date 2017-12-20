@@ -39,12 +39,6 @@
     //去掉返回按钮中的back
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
     
-//    UIBarButtonItem *rightBarButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"iconGrayComment"]
-//                                                                       style:UIBarButtonItemStyleDone
-//                                                                      target:self
-//                                                                      action:@selector(comCenterButton:)];
-//    self.navigationItem.rightBarButtonItem = rightBarButton;
-    
 //  点击tableview可以收起键盘
     self.view.userInteractionEnabled = YES;
     UITapGestureRecognizer *recognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(fingerTapped:)];
@@ -77,6 +71,9 @@
     //  cell自适应高度 注:需要把cell上的控件自上而下加好约束
     self.tableview.rowHeight = UITableViewAutomaticDimension;
     self.tableview.estimatedRowHeight = 200;
+    
+    [self.tableview setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1/1.0]];
+    
     //    cell分割线全屏
     if ([self.tableview respondsToSelector:@selector(setSeparatorInset:)]) {
         self.tableview.separatorInset = UIEdgeInsetsZero;
@@ -89,7 +86,7 @@
     footview.backgroundColor = [UIColor colorWithRed:216/255.0 green:216/255.0 blue:216/255.0 alpha:1/1.0];
     self.tableview.tableFooterView = footview;
     
-    self.bottomView.backgroundColor = [UIColor greenColor];
+    self.bottomView.backgroundColor = [UIColor whiteColor];
     self.bottomView.contentTextView.delegate = self;
     [self.bottomView.releaseButton addTarget:self action:@selector(reless:) forControlEvents:UIControlEventTouchUpInside];
     

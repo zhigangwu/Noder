@@ -73,6 +73,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.automaticallyAdjustsScrollViewInsets = NO;
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1/1.0]];
     [self.tableView registerClass:[ScanLoginCell class] forCellReuseIdentifier:@"ScanloginCell"];
     
     [_Header.button addTarget:self action:@selector(buttonaction) forControlEvents:UIControlEventTouchUpInside];
@@ -89,6 +90,10 @@
 - (void)addnotification:(NSNotification *)notification
 {
     NSString *QRCodeString = [ControllerManager shareManager].string;
+    
+    NSString *token = [[NSString alloc] init];
+    NSUserDefaults *userdefault = [NSUserDefaults standardUserDefaults];
+    token = [userdefault stringForKey:@"accesstoken"];
     
     if (QRCodeString != nil) {
         AssesstokenAPI *assAPI = [[AssesstokenAPI alloc] init];

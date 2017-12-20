@@ -11,9 +11,9 @@
 @interface ControllerManager : NSObject
 
 @property (nonatomic, copy) NSString *string;// accesstoken
-@property (nonatomic, copy) NSDictionary *dictionary;
+@property (nonatomic, strong) NSDictionary *dictionary;
 @property (nonatomic, copy) NSString *IDString;
-@property (nonatomic, copy) NSDictionary *dic;
+@property (nonatomic, strong) NSDictionary *dic;
 @property (nonatomic, copy) NSString *reply_ID;
 @property (nonatomic, copy) NSArray *array;
 @property (nonatomic, assign) BOOL success;

@@ -13,8 +13,9 @@
 #import "UIColor+TitleColor.h"
 #import "UIFont+SetFont.h"
 #import "UIColor+TitleColor.h"
+#import <UIScrollView+EmptyDataSet.h>
 
-@interface RecentTopicsViewController ()
+@interface RecentTopicsViewController () <DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 
 @end
 
@@ -47,7 +48,13 @@
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         self.tableView.layoutMargins = UIEdgeInsetsZero;
     }
-
+    
+    self.tableView.emptyDataSetDelegate = self;
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.tableFooterView = [UIView new];
+    
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1/1.0]];
+    
     Loginapi *recentTopics = [[Loginapi alloc] init];
     recentTopics.loginname = self.TopicsLoginname;
     [recentTopics startWithBlockSuccess:^(__kindof LCBaseRequest *request){
@@ -99,6 +106,16 @@
     self.recent_topics = [self.array objectAtIndex:indexPath.row];
     detail.detailId = self.recent_topics.id;
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *title = @"暂无收藏";
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Regular" size:17],
+                                 NSForegroundColorAttributeName: [UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1/1.0]
+                                 };
+    return [[NSAttributedString alloc] initWithString:title attributes:attributes];
 }
 
 

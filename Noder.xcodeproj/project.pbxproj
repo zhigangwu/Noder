@@ -72,6 +72,8 @@
 		915638501FD0335F00B81BB1 /* ComContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9156384F1FD0335F00B81BB1 /* ComContentView.m */; };
 		915638561FD3D5C800B81BB1 /* DetailTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 915638551FD3D5C800B81BB1 /* DetailTopView.m */; };
 		91679D731FCD075600476B13 /* UILabel+LabelHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = 91679D721FCD075600476B13 /* UILabel+LabelHeight.m */; };
+		9168138A1FE64CA00025EF48 /* Line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 916813891FE64CA00025EF48 /* Line@2x.png */; };
+		916813901FE75CFC0025EF48 /* UserDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 9168138F1FE75CFC0025EF48 /* UserDefault.m */; };
 		916DB2701FCD465200C0008C /* ThumbsDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 916DB26F1FCD465200C0008C /* ThumbsDataModel.m */; };
 		916DB2731FCD9C7500C0008C /* DetailBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 916DB2721FCD9C7500C0008C /* DetailBottomView.m */; };
 		9188B7311FBDC7540082C1D1 /* ScanLoginCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9188B72F1FBDC7540082C1D1 /* ScanLoginCell.m */; };
@@ -265,6 +267,9 @@
 		915638551FD3D5C800B81BB1 /* DetailTopView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailTopView.m; sourceTree = "<group>"; };
 		91679D711FCD075600476B13 /* UILabel+LabelHeight.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+LabelHeight.h"; sourceTree = "<group>"; };
 		91679D721FCD075600476B13 /* UILabel+LabelHeight.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LabelHeight.m"; sourceTree = "<group>"; };
+		916813891FE64CA00025EF48 /* Line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Line@2x.png"; path = "../../../downlond/Line@2x.png"; sourceTree = "<group>"; };
+		9168138E1FE75CFC0025EF48 /* UserDefault.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserDefault.h; sourceTree = "<group>"; };
+		9168138F1FE75CFC0025EF48 /* UserDefault.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserDefault.m; sourceTree = "<group>"; };
 		916DB26E1FCD465200C0008C /* ThumbsDataModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ThumbsDataModel.h; sourceTree = "<group>"; };
 		916DB26F1FCD465200C0008C /* ThumbsDataModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ThumbsDataModel.m; sourceTree = "<group>"; };
 		916DB2711FCD9C7500C0008C /* DetailBottomView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailBottomView.h; sourceTree = "<group>"; };
@@ -420,6 +425,8 @@
 				33C2CFBC1E7967370030257B /* HDTableViewCell.m */,
 				04005A801F6CC506007D8603 /* ControllerManager.h */,
 				04005A811F6CC506007D8603 /* ControllerManager.m */,
+				9168138E1FE75CFC0025EF48 /* UserDefault.h */,
+				9168138F1FE75CFC0025EF48 /* UserDefault.m */,
 				9199C9A01FC1171F008FDA37 /* UIColor+TitleColor.h */,
 				9199C9A11FC1171F008FDA37 /* UIColor+TitleColor.m */,
 				911791551FD8E5920065FE0F /* UIFont+SetFont.h */,
@@ -743,6 +750,7 @@
 				043A43F01F75F539009F022E /* UnreadMessageCell.m */,
 				91E9DF2B1FDB7BBD001E0A03 /* NewPageView.h */,
 				91E9DF2C1FDB7BBD001E0A03 /* NewPageView.m */,
+				916813891FE64CA00025EF48 /* Line@2x.png */,
 				91E9DF2E1FDBBFF8001E0A03 /* PlateSelectionView.h */,
 				91E9DF2F1FDBBFF8001E0A03 /* PlateSelectionView.m */,
 			);
@@ -902,6 +910,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9168138A1FE64CA00025EF48 /* Line@2x.png in Resources */,
 				3340123D1E4DF2D100E92B48 /* LaunchScreen.storyboard in Resources */,
 				3340123A1E4DF2D100E92B48 /* Assets.xcassets in Resources */,
 				334012381E4DF2D100E92B48 /* Main.storyboard in Resources */,
@@ -1042,6 +1051,7 @@
 				3335F02C1ED46E8800FBB58D /* RecentReplyCell.m in Sources */,
 				91AC1E8B1FC27E7300196DE0 /* JobDataModel.m in Sources */,
 				33542A9D1F504D77005576F7 /* JobAPI.m in Sources */,
+				916813901FE75CFC0025EF48 /* UserDefault.m in Sources */,
 				915620B91FE00E96003CB91E /* MarkReadAPI.m in Sources */,
 				915638501FD0335F00B81BB1 /* ComContentView.m in Sources */,
 				3395BFDD1EE57A9C007E27F2 /* EssenceViewController.m in Sources */,

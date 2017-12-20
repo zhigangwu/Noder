@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Masonry.h"
 
-@interface SetPageViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,UITabBarControllerDelegate,UIApplicationDelegate>
+@interface SetPageViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,UIApplicationDelegate,UIActionSheetDelegate>
 
 @property (nonatomic, strong) NSArray *arrayA;
 @property (nonatomic, strong) NSArray *arrayB;

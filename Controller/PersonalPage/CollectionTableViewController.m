@@ -12,8 +12,9 @@
 #import "DetailViewController.h"
 #import "UIColor+TitleColor.h"
 #import "UIFont+SetFont.h"
+#import <UIScrollView+EmptyDataSet.h>
 
-@interface CollectionTableViewController ()
+@interface CollectionTableViewController () <DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 
 @end
 
@@ -43,6 +44,12 @@
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         self.tableView.layoutMargins = UIEdgeInsetsZero;
     }
+    
+    self.tableView.emptyDataSetDelegate = self;
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.tableFooterView = [UIView new];
+    
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1/1.0]];
 
     CollectionAPI *collectionAPI = [[CollectionAPI alloc] init];
     collectionAPI.loginname = self.collectionLoginname;
@@ -88,6 +95,16 @@
     self.collectionModel = [self.array objectAtIndex:indexPath.row];
     detail.detailId = self.collectionModel.id;
     [self.navigationController pushViewController:detail animated:YES];
+}
+
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *title = @"暂无收藏";
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Regular" size:17],
+                                 NSForegroundColorAttributeName: [UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1/1.0]
+                                 };
+    return [[NSAttributedString alloc] initWithString:title attributes:attributes];
 }
 
 

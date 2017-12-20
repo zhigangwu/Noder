@@ -38,7 +38,6 @@
     
     self.tableview = [[UITableView alloc] init];
     self.nullview = [[NullView alloc] init];
-    
 
     NSString *accesstoken = [ControllerManager shareManager].string;
     MessageAPI *messageAPI = [[MessageAPI alloc] init];
@@ -81,12 +80,16 @@
                 self.tableview.estimatedRowHeight = 100;
                 self.tableview.delegate = self;
                 self.tableview.dataSource = self;
+                self.tableview.emptyDataSetSource = self;
+                self.tableview.emptyDataSetDelegate = self;
+                self.tableview.tableFooterView = [UIView new];
             }
 //            [self.tableview reloadData];
         } failure:NULL];
     }
     
     [self.tableview registerClass:[UnreadMessageCell class] forCellReuseIdentifier:@"UnreadMessageCell"];
+    [self.tableview setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1/1.0]];
     
     //不显示空白cell
     UIView *footview = [[UIView alloc] init];
@@ -147,7 +150,15 @@
     return NO;
 }
 
-
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *title = @"暂无收藏";
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Regular" size:17],
+                                 NSForegroundColorAttributeName: [UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1/1.0]
+                                 };
+    return [[NSAttributedString alloc] initWithString:title attributes:attributes];
+}
 
 
 @end

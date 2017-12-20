@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MessageDataModel.h"
+#import "UIScrollView+EmptyDataSet.h"
 
-@interface UnreadMessageTableViewController : UIViewController <UITableViewDelegate,UITableViewDataSource>
+@interface UnreadMessageTableViewController : UIViewController <UITableViewDelegate,UITableViewDataSource,DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 
 @property (nonatomic, strong) MessageDataModel *messageModel;
 @property (nonatomic, strong) NSArray *array;

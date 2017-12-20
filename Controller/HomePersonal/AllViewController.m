@@ -33,6 +33,8 @@
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         self.tableView.layoutMargins = UIEdgeInsetsZero;
     }
+    
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1/1.0]];
 
     TopicsApi *topApi = [[TopicsApi alloc] init];
     [topApi startWithBlockSuccess:^(__kindof LCBaseRequest *request){
@@ -40,6 +42,7 @@
         self.allModel = request.responseJSONObject;
         [self.tableView reloadData];
     }failure:NULL];
+    
     
     __weak typeof(self) weakSelf = self;
 

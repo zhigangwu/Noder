@@ -22,7 +22,6 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -30,7 +29,6 @@
     
     UITabBarController *tabBarController = [[UITabBarController alloc] init];
     
-
     PersonalCenterViewController *personalCenterVC = [[PersonalCenterViewController alloc] init];
     UINavigationController *navpersonal = [[UINavigationController alloc] initWithRootViewController:personalCenterVC];
     navpersonal.tabBarItem.title = @"我的";
@@ -43,7 +41,6 @@
     newPageTableViewController.tabBarItem.image = oringimage;
     newPageTableViewController.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
     
-
     HomePageController *homePageController = [[HomePageController alloc] init];
     UINavigationController *homeNavigation = [[UINavigationController alloc] initWithRootViewController:homePageController];
     homeNavigation.tabBarItem.title = @"主题";
@@ -101,4 +98,10 @@
     }
     return YES;
 }
+
+
+
+
+
+
 @end

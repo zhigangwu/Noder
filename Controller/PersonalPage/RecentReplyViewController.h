@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "LoginDataModel.h"
 
-@interface RecentReplyViewController : UITableViewController
+
+@interface RecentReplyViewController : UITableViewController 
 
 @property (nonatomic, strong) LoginDataModel *loginModel;
 @property (nonatomic, strong) LoginRecent_replies *recent_replies;

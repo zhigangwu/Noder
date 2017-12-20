@@ -16,9 +16,10 @@
 #import "RecentReplyViewController.h"
 #import "RecentTopicsViewController.h"
 #import "NewPageTableViewController.h"
+#import "ControllerManager.h"
 
 
-@interface SetPageViewController ()
+@interface SetPageViewController () <UITabBarControllerDelegate>
 
 @end
 
@@ -88,6 +89,7 @@
         table.layoutMargins = UIEdgeInsetsZero;
     }
     
+    [table setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1/1.0]];
     table.backgroundColor = [UIColor colorWithRed:216/255.0 green:216/255.0 blue:216/255.0 alpha:1/1.0];
     table.delegate = self;
     table.dataSource = self;
@@ -177,50 +179,23 @@
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://github.com/zhigangwu"]];
         }
     } else if (indexPath.section == 1){
-        
-        UITabBarController *tabBarController = [[UITabBarController alloc] init];
-
-        PersonalCenterViewController *personalCenterVC = [[PersonalCenterViewController alloc] init];
-        UINavigationController *navpersonal = [[UINavigationController alloc] initWithRootViewController:personalCenterVC];
-        navpersonal.tabBarItem.title = @"我的";
-        [navpersonal.tabBarItem setTag:2];
-        navpersonal.tabBarItem.image = [UIImage imageNamed:@"Rectangle 4"];
-
-        UIImage *oringimage = [[UIImage imageNamed:@"Group-2"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-//        NewPageTableViewController *newPageTableViewController = [[NewPageTableViewController alloc] init];
-        NewPageTableViewController *newPageTableViewController = [[NewPageTableViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:newPageTableViewController];
-        [tabBarController presentViewController:nav animated:YES completion:NULL];
-        newPageTableViewController.tabBarItem.title = @"";
-        newPageTableViewController.tabBarItem.image = oringimage;
-        newPageTableViewController.tabBarItem.imageInsets = UIEdgeInsetsMake(6, 0, -6, 0);
-
-        HomePageController *homePageController = [[HomePageController alloc] init];
-        UINavigationController *homeNavigation = [[UINavigationController alloc] initWithRootViewController:homePageController];
-        homeNavigation.tabBarItem.title = @"主题";
-
-        [homeNavigation.tabBarItem setTag:0];
-        homeNavigation.tabBarItem.image = [UIImage imageNamed:@"Group Copy"];
-
-        tabBarController.viewControllers = @[homeNavigation, nav, navpersonal];
-        tabBarController.delegate = self;
-
-        AppDelegate *mydelegate = [[UIApplication sharedApplication] delegate];
-        mydelegate.window.rootViewController = tabBarController;
+        UIActionSheet *actionsheet = [[UIActionSheet alloc] initWithTitle:@"确定退出"
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"取消"
+                                                   destructiveButtonTitle:@"退出登入"
+                                                        otherButtonTitles:nil, nil];
+        [actionsheet showInView:tableView];
     }
 }
 
-//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewControlle{
-//
-//    NSInteger index = [tabBarController.viewControllers indexOfObject:viewControlle];
-//    if (index == 1) {
-//        NewPageTableViewController *newPageTableViewController = [[NewPageTableViewController alloc] init];
-//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:newPageTableViewController];
-//        [tabBarController presentViewController:nav animated:YES completion:NULL];
-//        return NO;
-//    }
-//    return YES;
-//}
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSUserDefaults *userdefaults = [NSUserDefaults standardUserDefaults];
+    [userdefaults removeObjectForKey:@"accesstoken"];
+    [userdefaults synchronize];
+    
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 
 @end

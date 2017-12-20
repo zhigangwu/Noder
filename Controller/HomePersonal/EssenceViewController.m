@@ -32,8 +32,7 @@
         self.tableView.layoutMargins = UIEdgeInsetsZero;
     }
     
-//    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//    self.tableView.backgroundColor = [UIColor tableBackground];
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1/1.0]];
     
     EssenceAPI *essenceAPI = [[EssenceAPI alloc] init];
     [essenceAPI startWithBlockSuccess:^(__kindof LCBaseRequest *request){

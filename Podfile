@@ -3,6 +3,7 @@ inhibit_all_warnings!
 
 target 'Noder' do
 #pod 'CYLTabBarController', '~> 1.14.1'
+pod 'DZNEmptyDataSet'
 pod 'MJExtension'
 pod 'UITableView+FDTemplateLayoutCell', '~> 1.6'
 pod 'SGQRCode'

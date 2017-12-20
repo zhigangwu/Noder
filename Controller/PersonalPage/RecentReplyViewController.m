@@ -14,8 +14,9 @@
 #import "DetailViewController.h"
 #import "UIColor+TitleColor.h"
 #import "UIFont+SetFont.h"
+#import <UIScrollView+EmptyDataSet.h>
 
-@interface RecentReplyViewController ()
+@interface RecentReplyViewController () <DZNEmptyDataSetDelegate,DZNEmptyDataSetSource>
 
 @end
 
@@ -33,7 +34,8 @@
     //去掉返回按钮中的back
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
     
-//    self.tableView.backgroundColor = [UIColor whiteColor];
+//    self.tableView.backgroundColor = [UIColor whiteColor]
+    [self.tableView setSeparatorColor:[UIColor colorWithRed:220/255.0 green:220/255.0 blue:220/255.0 alpha:1/1.0]];
     
     //不显示空白cell
     UIView *footview = [[UIView alloc] init];
@@ -48,8 +50,10 @@
     if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
         self.tableView.layoutMargins = UIEdgeInsetsZero;
     }
-
     
+    self.tableView.emptyDataSetDelegate = self;
+    self.tableView.emptyDataSetSource = self;
+    self.tableView.tableFooterView = [UIView new];
     
     Loginapi *recentAPI = [[Loginapi alloc] init];
     recentAPI.loginname = self.recenrLoginname;
@@ -103,9 +107,15 @@
     [self.navigationController pushViewController:detail animated:YES];
 }
 
-
-
-
+- (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
+{
+    NSString *title = @"暂无收藏";
+    NSDictionary *attributes = @{
+                                 NSFontAttributeName:[UIFont fontWithName:@"PingFangSC-Regular" size:17],
+                                 NSForegroundColorAttributeName: [UIColor colorWithRed:210/255.0 green:210/255.0 blue:210/255.0 alpha:1/1.0]
+                                 };
+    return [[NSAttributedString alloc] initWithString:title attributes:attributes];
+}
 
 
 

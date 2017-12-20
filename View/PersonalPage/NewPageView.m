@@ -103,8 +103,10 @@
         self.TitleView.textColor = [UIColor titleColor];
         self.TitleView.text = @"输入标题";
         
-        imageViewA.image = [UIImage imageNamed:@"Line"];
-        imageViewB.image = [UIImage imageNamed:@"Line"];
+        imageViewA.contentMode = UIViewContentModeScaleAspectFit;
+        imageViewB.contentMode = UIViewContentModeScaleAspectFit;
+        imageViewA.image = [UIImage imageNamed:@"Line@2x"];
+        imageViewB.image = [UIImage imageNamed:@"Line@2x"];
         
         self.choseLabel.text = @"选择板块";
         self.choseLabel.font = [UIFont fontWithName:@"PingFangSC-Regular" size:16];
