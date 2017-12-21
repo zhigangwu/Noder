@@ -1,6 +1,5 @@
 # Noder
 -
-
 依据`condejs`社区提供的API开发的一个iOS平台APP.
 
 
@@ -21,18 +20,9 @@
 
 #### 首先感谢 [`bawn`](https://github.com/bawn)提供的设计图.
 
-
-<figure class="third">
-    <img src="https://github.com/zhigangwu/zhigangwu.github.io/blob/master/images/WechatIMG8.jpeg?raw=true">
-    <img src="https://github.com/zhigangwu/zhigangwu.github.io/blob/master/images/WechatIMG9.jpeg?raw=true">
-    <img src="https://github.com/zhigangwu/zhigangwu.github.io/blob/master/images/WechatIMG7.jpeg?raw=true">
-</figure>
-
-<figure class="third">
-    <img src="https://github.com/zhigangwu/zhigangwu.github.io/blob/master/images/WechatIMG6.jpeg?raw=true">
-    <img src="https://github.com/zhigangwu/zhigangwu.github.io/blob/master/images/WechatIMG5.jpeg?raw=true">
-   <img src="https://github.com/zhigangwu/zhigangwu.github.io/blob/master/images/WechatIMG4.jpeg?raw=true>
-</figure>
+![](https://github.com/zhigangwu/zhigangwu.github.io/raw/master/images/WechatIMG8.jpeg?raw=true)                    | ![](https://github.com/zhigangwu/zhigangwu.github.io/blob/master/images/WechatIMG9.jpeg?raw=true)           | ![](https://github.com/zhigangwu/zhigangwu.github.io/blob/master/images/WechatIMG7.jpeg?raw=true)     |
+--------------------|------------------|-----------------------|
+![](https://github.com/zhigangwu/zhigangwu.github.io/blob/master/images/WechatIMG6.jpeg?raw=true)  | ![](https://github.com/zhigangwu/zhigangwu.github.io/blob/master/images/WechatIMG5.jpeg?raw=true)    | ![](https://github.com/zhigangwu/zhigangwu.github.io/blob/master/images/WechatIMG4.jpeg?raw=true) |
 
 
 
